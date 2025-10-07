@@ -13,6 +13,8 @@ const Index = () => {
     setSent(true);
   };
 
+  console.log("Index component is rendering");
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* NAV */}
