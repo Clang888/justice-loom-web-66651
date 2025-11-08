@@ -75,26 +75,38 @@ const Briefcase = () => {
     }
   };
 
-  const handleDownload = async (formName: string, fileName: string) => {
+  const handleDownload = async (formName: string, formNumber: string) => {
     try {
-      // Try direct filename first, then with forms/ prefix
-      let downloadResult = await supabase.storage
-        .from("legal-forms")
-        .download(fileName);
-      
-      if (downloadResult.error) {
-        // Try with forms/ prefix
-        downloadResult = await supabase.storage
-          .from("legal-forms")
-          .download(`forms/${fileName}`);
+      // Query the legal_forms table to get the PDF file path
+      const { data: formData, error: queryError } = await supabase
+        .from("legal_forms")
+        .select("pdf_file_path, form_name")
+        .ilike("form_number", formNumber)
+        .maybeSingle();
+
+      if (queryError) throw queryError;
+
+      if (!formData) {
+        toast({
+          title: "Form not found",
+          description: `Could not find ${formName} in the database.`,
+          variant: "destructive",
+        });
+        return;
       }
 
-      if (downloadResult.error) throw downloadResult.error;
+      // Download from storage using the file path
+      const { data: fileData, error: downloadError } = await supabase.storage
+        .from("legal-forms")
+        .download(formData.pdf_file_path);
 
-      const url = URL.createObjectURL(downloadResult.data);
+      if (downloadError) throw downloadError;
+
+      // Create download
+      const url = URL.createObjectURL(fileData);
       const a = document.createElement("a");
       a.href = url;
-      a.download = fileName;
+      a.download = `${formData.form_name}.pdf`;
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
@@ -115,7 +127,7 @@ const Briefcase = () => {
   };
 
   const renderMessageContent = (content: string) => {
-    // Parse [DOWNLOAD:Form Name:filename.pdf] format
+    // Parse [DOWNLOAD:Form Name:form_number] format
     const downloadRegex = /\[DOWNLOAD:(.*?):(.*?)\]/g;
     const parts = [];
     let lastIndex = 0;
@@ -133,11 +145,11 @@ const Briefcase = () => {
 
       // Add download button
       const formName = match[1];
-      const fileName = match[2];
+      const formNumber = match[2];
       parts.push(
         <Button
           key={`download-${match.index}`}
-          onClick={() => handleDownload(formName, fileName)}
+          onClick={() => handleDownload(formName, formNumber)}
           className="inline-flex items-center gap-2 my-2 mx-1"
           size="sm"
         >
