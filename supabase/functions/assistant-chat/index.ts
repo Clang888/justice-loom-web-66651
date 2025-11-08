@@ -112,7 +112,7 @@ Tone: Professional yet conversational, patient, educational, and empathetic.`;
     console.error('Error in assistant-chat function:', error);
     return new Response(
       JSON.stringify({ 
-        error: error.message || 'An unexpected error occurred' 
+        error: error instanceof Error ? error.message : 'An unexpected error occurred' 
       }),
       { 
         status: 500,
