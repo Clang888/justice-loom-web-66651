@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { Send, Loader2, FileText, Mic, Square } from "lucide-react";
+import { Send, Loader2, FileText, Mic, Square, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
@@ -75,6 +75,82 @@ const Briefcase = () => {
     }
   };
 
+  const handleDownload = async (formName: string, fileName: string) => {
+    try {
+      const { data, error } = await supabase.storage
+        .from("legal-forms")
+        .download(fileName);
+
+      if (error) throw error;
+
+      const url = URL.createObjectURL(data);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = fileName;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+
+      toast({
+        title: "Download started",
+        description: `${formName} is being downloaded.`,
+      });
+    } catch (error) {
+      console.error("Download error:", error);
+      toast({
+        title: "Download failed",
+        description: "Unable to download the form. Please try again.",
+        variant: "destructive",
+      });
+    }
+  };
+
+  const renderMessageContent = (content: string) => {
+    // Parse [DOWNLOAD:Form Name:filename.pdf] format
+    const downloadRegex = /\[DOWNLOAD:(.*?):(.*?)\]/g;
+    const parts = [];
+    let lastIndex = 0;
+    let match;
+
+    while ((match = downloadRegex.exec(content)) !== null) {
+      // Add text before the download link
+      if (match.index > lastIndex) {
+        parts.push(
+          <span key={`text-${lastIndex}`}>
+            {content.substring(lastIndex, match.index)}
+          </span>
+        );
+      }
+
+      // Add download button
+      const formName = match[1];
+      const fileName = match[2];
+      parts.push(
+        <Button
+          key={`download-${match.index}`}
+          onClick={() => handleDownload(formName, fileName)}
+          className="inline-flex items-center gap-2 my-2 mx-1"
+          size="sm"
+        >
+          <Download className="w-4 h-4" />
+          Download {formName}
+        </Button>
+      );
+
+      lastIndex = match.index + match[0].length;
+    }
+
+    // Add remaining text
+    if (lastIndex < content.length) {
+      parts.push(
+        <span key={`text-${lastIndex}`}>{content.substring(lastIndex)}</span>
+      );
+    }
+
+    return parts.length > 0 ? parts : content;
+  };
+
   return (
     <section className="bg-background py-8 h-screen flex flex-col">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 flex-1 flex flex-col overflow-hidden">
@@ -123,7 +199,9 @@ const Briefcase = () => {
                       : "bg-secondary text-secondary-foreground"
                   }`}
                 >
-                  <p className="text-sm whitespace-pre-wrap">{message.content}</p>
+                  <div className="text-sm whitespace-pre-wrap">
+                    {renderMessageContent(message.content)}
+                  </div>
                 </div>
               </div>
             ))}
