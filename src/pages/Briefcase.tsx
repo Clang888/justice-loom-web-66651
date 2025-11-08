@@ -77,13 +77,21 @@ const Briefcase = () => {
 
   const handleDownload = async (formName: string, fileName: string) => {
     try {
-      const { data, error } = await supabase.storage
+      // Try direct filename first, then with forms/ prefix
+      let downloadResult = await supabase.storage
         .from("legal-forms")
         .download(fileName);
+      
+      if (downloadResult.error) {
+        // Try with forms/ prefix
+        downloadResult = await supabase.storage
+          .from("legal-forms")
+          .download(`forms/${fileName}`);
+      }
 
-      if (error) throw error;
+      if (downloadResult.error) throw downloadResult.error;
 
-      const url = URL.createObjectURL(data);
+      const url = URL.createObjectURL(downloadResult.data);
       const a = document.createElement("a");
       a.href = url;
       a.download = fileName;
