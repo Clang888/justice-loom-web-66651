@@ -73,8 +73,8 @@ const AITools = () => {
           {/* My Legal Assistant Card */}
           <div className="bg-card border border-border rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow">
             <div className="flex items-center gap-3 mb-4">
-              <div className="p-3 bg-accent/10 rounded-xl">
-                <MessageSquare className="w-8 h-8 text-accent" />
+              <div className="p-3 bg-primary/10 rounded-xl">
+                <MessageSquare className="w-8 h-8 text-primary" />
               </div>
               <div>
                 <h2 className="text-2xl font-bold">My Legal Assistant</h2>
@@ -83,7 +83,7 @@ const AITools = () => {
             </div>
 
             <div className="mb-6">
-              <span className="inline-block px-3 py-1 bg-accent/10 text-accent text-xs font-semibold rounded-full mb-4">
+              <span className="inline-block px-3 py-1 bg-primary/10 text-primary text-xs font-semibold rounded-full mb-4">
                 <MessageSquare className="w-3 h-3 inline mr-1" />
                 Consultative & Educational
               </span>
@@ -101,15 +101,15 @@ const AITools = () => {
               </h3>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li className="flex items-start gap-2">
-                  <span className="text-accent mt-0.5">•</span>
+                  <span className="text-primary mt-0.5">•</span>
                   <span>User explains full divorce situation → Assistant discusses options, timelines, considerations → Then recommends forms needed</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-accent mt-0.5">•</span>
+                  <span className="text-primary mt-0.5">•</span>
                   <span>Get detailed guidance on legal procedures and what to expect</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-accent mt-0.5">•</span>
+                  <span className="text-primary mt-0.5">•</span>
                   <span>Understand your rights and available legal options</span>
                 </li>
               </ul>
