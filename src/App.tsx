@@ -15,6 +15,8 @@ import Testimonials from "./pages/Testimonials";
 import Community from "./pages/Community";
 import Contact from "./pages/Contact";
 import Briefcase from "./pages/Briefcase";
+import Auth from "./pages/Auth";
+import Admin from "./pages/Admin";
 
 const queryClient = new QueryClient();
 
@@ -37,6 +39,8 @@ const App = () => (
               <Route path="/community" element={<Community />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/briefcase" element={<Briefcase />} />
+              <Route path="/auth" element={<Auth />} />
+              <Route path="/admin" element={<Admin />} />
             </Routes>
           </Layout>
         </BrowserRouter>

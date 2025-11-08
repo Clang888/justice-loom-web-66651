@@ -1,12 +1,76 @@
-import { ReactNode } from "react";
-import { Link } from "react-router-dom";
-import { Scale, ChevronRight } from "lucide-react";
+import { ReactNode, useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { Scale, ChevronRight, LogOut, Shield } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+import { User } from "@supabase/supabase-js";
+import { Button } from "@/components/ui/button";
+import { useToast } from "@/hooks/use-toast";
 
 interface LayoutProps {
   children: ReactNode;
 }
 
 const Layout = ({ children }: LayoutProps) => {
+  const [user, setUser] = useState<User | null>(null);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const navigate = useNavigate();
+  const { toast } = useToast();
+
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setUser(session?.user ?? null);
+      if (session?.user) {
+        setTimeout(() => {
+          checkAdminStatus(session.user.id);
+        }, 0);
+      }
+    });
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user ?? null);
+      if (session?.user) {
+        setTimeout(() => {
+          checkAdminStatus(session.user.id);
+        }, 0);
+      } else {
+        setIsAdmin(false);
+      }
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
+
+  const checkAdminStatus = async (userId: string) => {
+    try {
+      const { data } = await supabase
+        .from("user_roles")
+        .select("role")
+        .eq("user_id", userId)
+        .eq("role", "admin")
+        .maybeSingle();
+
+      setIsAdmin(!!data);
+    } catch (error) {
+      console.error("Error checking admin status:", error);
+    }
+  };
+
+  const handleLogout = async () => {
+    try {
+      await supabase.auth.signOut();
+      toast({
+        title: "Logged out",
+        description: "You have been logged out successfully",
+      });
+      navigate("/");
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to logout",
+        variant: "destructive",
+      });
+    }
+  };
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* NAV */}
@@ -25,6 +89,27 @@ const Layout = ({ children }: LayoutProps) => {
             <Link to="/speaking" className="hover:text-foreground">Speaking</Link>
             <Link to="/testimonials" className="hover:text-foreground">Testimonials</Link>
             <Link to="/community" className="hover:text-foreground">Community</Link>
+            {isAdmin && (
+              <Link to="/admin" className="hover:text-foreground flex items-center gap-1">
+                <Shield className="w-4 h-4" />
+                Admin
+              </Link>
+            )}
+            {user ? (
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={handleLogout}
+                className="inline-flex items-center gap-1"
+              >
+                <LogOut className="w-4 h-4" />
+                Logout
+              </Button>
+            ) : (
+              <Link to="/auth" className="inline-flex items-center gap-1 rounded-full border px-3 py-1.5 hover:bg-secondary">
+                Login <ChevronRight className="w-4 h-4" />
+              </Link>
+            )}
             <Link to="/contact" className="inline-flex items-center gap-1 rounded-full border px-3 py-1.5 hover:bg-secondary">
               Contact <ChevronRight className="w-4 h-4" />
             </Link>
