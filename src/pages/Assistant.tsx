@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { Send, Loader2, FileText, Mic, Square } from "lucide-react";
+import { Send, Loader2, MessageSquare, Mic, Square } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
@@ -10,11 +10,11 @@ interface Message {
   content: string;
 }
 
-const Briefcase = () => {
+const Assistant = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       role: "assistant",
-      content: "Hello! I'm your AI legal assistant. I can help you discover the right legal forms for your situation. Tell me what you need help with, such as divorce, small claims, or wills.",
+      content: "Hello! I'm your My Legal Assistant. I'm here to help you understand your legal situation in depth. Take your time to explain your case, and I'll ask questions to understand your situation fully. Together, we'll explore your options, discuss timelines and implications, and I'll recommend the specific forms you need. How can I help you today?",
     },
   ]);
   const [input, setInput] = useState("");
@@ -41,7 +41,7 @@ const Briefcase = () => {
     setIsLoading(true);
 
     try {
-      const { data, error } = await supabase.functions.invoke("briefcase-chat", {
+      const { data, error } = await supabase.functions.invoke("assistant-chat", {
         body: { messages: [...messages, userMessage] },
       });
 
@@ -80,24 +80,24 @@ const Briefcase = () => {
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 flex-1 flex flex-col overflow-hidden">
         <div className="mb-6">
           <h1 className="text-3xl font-bold mb-4 flex items-center gap-2">
-            <FileText className="w-8 h-8" />
-            Briefcase: Your Law Companion
+            <MessageSquare className="w-8 h-8" />
+            My Legal Assistant
           </h1>
           <p className="text-muted-foreground text-lg mb-6">
-            Get guidance for divorce, small claims and wills, with outcome prediction & financial analysis. 
-            Bilingual starting in HK, localised workflows, PDFs ready for Court filing. 
-            Expand to all common law jurisdictions.
+            Get in-depth legal consultation and guidance. Explain your situation, ask questions, 
+            and receive detailed advice on your legal options, timelines, and next steps. 
+            I'll help you understand your case and recommend the specific forms you need.
           </p>
           
           <div className="space-y-3 mb-6">
-            <h2 className="font-semibold text-lg">Key Features:</h2>
+            <h2 className="font-semibold text-lg">How I Can Help:</h2>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc pl-5">
-              <li>AI powered voice recognition captures a user's story & automatically fills out required court forms</li>
-              <li>Outcome prediction & financial analysis</li>
-              <li>Bilingual interface (starting in Hong Kong)</li>
-              <li>Localised workflows for common law jurisdictions</li>
-              <li>Court-ready PDFs for filing</li>
-              <li>Transparent subscription model - no mid-journey charges or paywall traps</li>
+              <li>Discuss your legal situation in detail with guided questions</li>
+              <li>Explain your legal options and their implications</li>
+              <li>Provide timelines and process guidance</li>
+              <li>Recommend specific legal forms based on your needs</li>
+              <li>Help you understand legal terminology and procedures</li>
+              <li>Voice input available for easier conversation</li>
             </ul>
           </div>
         </div>
@@ -158,7 +158,7 @@ const Briefcase = () => {
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                placeholder="Describe your legal situation or click mic to record..."
+                placeholder="Explain your legal situation or click mic to record..."
                 className="flex-1 px-4 py-3 rounded-lg border border-input bg-background focus:outline-none focus:ring-2 focus:ring-ring"
                 disabled={isLoading || isRecording}
               />
@@ -177,4 +177,4 @@ const Briefcase = () => {
   );
 };
 
-export default Briefcase;
+export default Assistant;

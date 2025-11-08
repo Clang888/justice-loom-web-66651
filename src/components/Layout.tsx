@@ -78,7 +78,7 @@ const Layout = ({ children }: LayoutProps) => {
         <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
           <Link to="/" className="flex items-center gap-2 font-semibold text-lg">
             <Scale className="w-6 h-6" aria-hidden="true" />
-            <span>Just Law Education</span>
+            <span>Just Law</span>
           </Link>
           <div className="hidden md:flex items-center gap-6 text-sm">
             <Link to="/mission" className="hover:text-foreground">Mission</Link>
@@ -127,7 +127,7 @@ const Layout = ({ children }: LayoutProps) => {
             <div>
               <div className="flex items-center gap-2 font-semibold mb-3">
                 <Scale className="w-5 h-5" />
-                <span>Just Law Education</span>
+                <span>Just Law</span>
               </div>
               <p className="text-sm text-muted-foreground">Making justice easy to find, easy to understand, and easy to use.</p>
             </div>
@@ -156,7 +156,7 @@ const Layout = ({ children }: LayoutProps) => {
             </div>
           </div>
           <div className="mt-8 pt-6 border-t border-border text-center text-sm text-muted-foreground">
-            &copy; {new Date().getFullYear()} Just Law Education. All rights reserved.
+            &copy; {new Date().getFullYear()} Just Law. All rights reserved.
           </div>
         </div>
       </footer>

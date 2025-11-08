@@ -17,6 +17,8 @@ import Contact from "./pages/Contact";
 import Briefcase from "./pages/Briefcase";
 import Auth from "./pages/Auth";
 import Admin from "./pages/Admin";
+import AITools from "./pages/AITools";
+import Assistant from "./pages/Assistant";
 
 const queryClient = new QueryClient();
 
@@ -39,6 +41,8 @@ const App = () => (
               <Route path="/community" element={<Community />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/briefcase" element={<Briefcase />} />
+              <Route path="/ai-tools" element={<AITools />} />
+              <Route path="/assistant" element={<Assistant />} />
               <Route path="/auth" element={<Auth />} />
               <Route path="/admin" element={<Admin />} />
             </Routes>

@@ -25,7 +25,7 @@ const Index = () => {
         <div className="lg:justify-self-end">
           <img
             src="/jle-hero-1600.jpg"
-            alt="Just Law Education - AI Powered"
+            alt="Just Law - AI Powered"
             className="w-full h-auto rounded-2xl border border-border shadow-sm object-cover"
           />
         </div>
