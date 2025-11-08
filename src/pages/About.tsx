@@ -7,7 +7,7 @@ const About = () => {
         <div className="grid md:grid-cols-2 gap-8">
           {/* Caroline Langley */}
           <div className="bg-secondary border border-border rounded-2xl p-6">
-            <img src="/caroline-langley.png" alt="Caroline Langley" className="w-full h-64 object-cover rounded-xl mb-4" />
+            <img src="/caroline-langley.png" alt="Caroline Langley" className="w-full aspect-square object-cover rounded-xl mb-4" />
             <h3 className="font-bold text-xl mb-1">CAROLINE LANGLEY</h3>
             <p className="text-sm font-semibold text-primary mb-3">CEO and Co-Founder</p>
             <p className="text-sm text-muted-foreground leading-relaxed">
@@ -17,7 +17,7 @@ const About = () => {
 
           {/* Alexandre Santos de Salles */}
           <div className="bg-secondary border border-border rounded-2xl p-6">
-            <img src="/alex-santos.png" alt="Alexandre Santos de Salles" className="w-full h-64 object-cover rounded-xl mb-4" />
+            <img src="/alex-santos.png" alt="Alexandre Santos de Salles" className="w-full aspect-square object-cover rounded-xl mb-4" />
             <h3 className="font-bold text-xl mb-1">ALEXANDRE SANTOS DE SALLES</h3>
             <p className="text-sm font-semibold text-primary mb-3">Co-Founder</p>
             <p className="text-sm text-muted-foreground leading-relaxed">
