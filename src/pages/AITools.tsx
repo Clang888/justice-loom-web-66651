@@ -24,9 +24,12 @@ const AITools = () => {
               <div className="p-3 bg-primary/10 rounded-xl">
                 <Briefcase className="w-8 h-8 text-primary" />
               </div>
-              <div>
-                <h2 className="text-2xl font-bold">Briefcase</h2>
-                <p className="text-sm text-muted-foreground">Quick Legal Form Discovery</p>
+              <div className="flex-1">
+                <div className="flex items-center gap-2">
+                  <h2 className="text-2xl font-bold">Briefcase</h2>
+                  <span className="px-2 py-0.5 bg-primary/10 text-primary text-xs font-semibold rounded-full">BETA</span>
+                </div>
+                <p className="text-sm text-muted-foreground">Quick Legal Form Discovery (HK Only)</p>
               </div>
             </div>
 
@@ -76,9 +79,12 @@ const AITools = () => {
               <div className="p-3 bg-primary/10 rounded-xl">
                 <MessageSquare className="w-8 h-8 text-primary" />
               </div>
-              <div>
-                <h2 className="text-2xl font-bold">My Legal Assistant</h2>
-                <p className="text-sm text-muted-foreground">In-Depth Legal Consultation</p>
+              <div className="flex-1">
+                <div className="flex items-center gap-2">
+                  <h2 className="text-2xl font-bold">My Legal Assistant</h2>
+                  <span className="px-2 py-0.5 bg-primary/10 text-primary text-xs font-semibold rounded-full">BETA</span>
+                </div>
+                <p className="text-sm text-muted-foreground">In-Depth Legal Consultation (HK Only)</p>
               </div>
             </div>
 

@@ -14,7 +14,7 @@ const Assistant = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       role: "assistant",
-      content: "Hello! I'm your My Legal Assistant. I'm here to help you understand your legal situation in depth. Take your time to explain your case, and I'll ask questions to understand your situation fully. Together, we'll explore your options, discuss timelines and implications, and I'll recommend the specific forms you need. How can I help you today?",
+      content: "Hello! I'm your My Legal Assistant. I'm here to help you understand your legal situation in depth. I'm currently in BETA and specialize in Hong Kong law only. Take your time to explain your case, and I'll ask questions to understand your situation fully. Together, we'll explore your options, discuss timelines and implications, and I'll recommend the specific forms you need. How can I help you today?",
     },
   ]);
   const [input, setInput] = useState("");
@@ -79,12 +79,17 @@ const Assistant = () => {
     <section className="bg-background py-8 h-screen flex flex-col">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 flex-1 flex flex-col overflow-hidden">
         <div className="mb-6">
-          <h1 className="text-3xl font-bold mb-4 flex items-center gap-2">
-            <MessageSquare className="w-8 h-8" />
-            My Legal Assistant
-          </h1>
+          <div className="flex items-center gap-3 mb-4">
+            <h1 className="text-3xl font-bold flex items-center gap-2">
+              <MessageSquare className="w-8 h-8" />
+              My Legal Assistant
+            </h1>
+            <span className="px-3 py-1 bg-primary/10 text-primary text-xs font-semibold rounded-full">
+              BETA - HK Only
+            </span>
+          </div>
           <p className="text-muted-foreground text-lg mb-6">
-            Get in-depth legal consultation and guidance. Explain your situation, ask questions, 
+            Get in-depth legal consultation and guidance for Hong Kong law. Explain your situation, ask questions, 
             and receive detailed advice on your legal options, timelines, and next steps. 
             I'll help you understand your case and recommend the specific forms you need.
           </p>

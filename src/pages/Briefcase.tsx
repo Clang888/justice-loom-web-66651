@@ -14,7 +14,7 @@ const Briefcase = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       role: "assistant",
-      content: "Hello! I'm your AI legal assistant. I can help you discover the right legal forms for your situation. Tell me what you need help with, such as divorce, small claims, or wills.",
+      content: "Hello! I'm your AI legal assistant for Hong Kong legal forms. I'm currently in BETA and specialize in Hong Kong jurisdiction only. I can help you discover the right legal forms for your situation. Tell me what you need help with, such as divorce, small claims, or wills.",
     },
   ]);
   const [input, setInput] = useState("");
@@ -79,14 +79,18 @@ const Briefcase = () => {
     <section className="bg-background py-8 h-screen flex flex-col">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 flex-1 flex flex-col overflow-hidden">
         <div className="mb-6">
-          <h1 className="text-3xl font-bold mb-4 flex items-center gap-2">
-            <FileText className="w-8 h-8" />
-            Briefcase: Your Law Companion
-          </h1>
+          <div className="flex items-center gap-3 mb-4">
+            <h1 className="text-3xl font-bold flex items-center gap-2">
+              <FileText className="w-8 h-8" />
+              Briefcase
+            </h1>
+            <span className="px-3 py-1 bg-primary/10 text-primary text-xs font-semibold rounded-full">
+              BETA - HK Only
+            </span>
+          </div>
           <p className="text-muted-foreground text-lg mb-6">
-            Get guidance for divorce, small claims and wills, with outcome prediction & financial analysis. 
-            Bilingual starting in HK, localised workflows, PDFs ready for Court filing. 
-            Expand to all common law jurisdictions.
+            Your AI-powered legal assistant for quick form discovery in Hong Kong. Describe the form you need or your legal 
+            situation, and I'll help you find the right documents. Voice input supported for convenience.
           </p>
           
           <div className="space-y-3 mb-6">
