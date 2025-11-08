@@ -193,37 +193,26 @@ const Briefcase = () => {
   };
 
   return (
-    <section className="bg-background py-8 h-screen flex flex-col">
-      <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 flex-1 flex flex-col overflow-hidden">
-        <div className="mb-6">
-          <div className="flex items-center gap-3 mb-4">
-            <h1 className="text-3xl font-bold flex items-center gap-2">
-              <FileText className="w-8 h-8" />
+    <section className="bg-background h-screen flex flex-col">
+      <div className="mx-auto max-w-4xl w-full px-4 sm:px-6 lg:px-8 flex-1 flex flex-col py-4">
+        {/* Compact Header */}
+        <div className="mb-4 flex-shrink-0">
+          <div className="flex items-center justify-between mb-2">
+            <h1 className="text-2xl font-bold flex items-center gap-2">
+              <FileText className="w-6 h-6" />
               Briefcase
             </h1>
-            <span className="px-3 py-1 bg-primary/10 text-primary text-xs font-semibold rounded-full">
+            <span className="px-2 py-1 bg-primary/10 text-primary text-xs font-semibold rounded-full">
               BETA - HK Only
             </span>
           </div>
-          <p className="text-muted-foreground text-lg mb-6">
-            Your AI-powered legal assistant for quick form discovery in Hong Kong. Describe the form you need or your legal 
-            situation, and I'll help you find the right documents. Voice input supported for convenience.
+          <p className="text-muted-foreground text-sm">
+            AI-powered legal assistant for Hong Kong court forms. Voice input supported.
           </p>
-          
-          <div className="space-y-3 mb-6">
-            <h2 className="font-semibold text-lg">Key Features:</h2>
-            <ul className="space-y-2 text-sm text-muted-foreground list-disc pl-5">
-              <li>AI powered voice recognition captures a user's story & automatically fills out required court forms</li>
-              <li>Outcome prediction & financial analysis</li>
-              <li>Bilingual interface (starting in Hong Kong)</li>
-              <li>Localised workflows for common law jurisdictions</li>
-              <li>Court-ready PDFs for filing</li>
-              <li>Transparent subscription model - no mid-journey charges or paywall traps</li>
-            </ul>
-          </div>
         </div>
 
-        <div className="flex-1 bg-card border border-border rounded-lg flex flex-col min-h-0">
+        {/* Chat Container - Takes most of screen */}
+        <div className="flex-1 bg-card border border-border rounded-lg flex flex-col min-h-0 overflow-hidden">
           {/* Messages */}
           <div className="flex-1 overflow-y-auto p-6 space-y-4 min-h-0">
             {messages.map((message, index) => (
