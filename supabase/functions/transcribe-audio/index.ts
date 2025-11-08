@@ -1,5 +1,7 @@
 import "https://deno.land/x/xhr@0.1.0/mod.ts";
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
+// Import OpenAI to satisfy type dependencies (not used directly, we use fetch instead)
+import "npm:openai@^4.52.5";
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
