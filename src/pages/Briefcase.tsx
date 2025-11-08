@@ -77,12 +77,26 @@ const Briefcase = () => {
 
   const handleDownload = async (formName: string, formNumber: string) => {
     try {
-      // Query the legal_forms table to get the PDF file path
-      const { data: formData, error: queryError } = await supabase
+      // Clean up form number and try multiple variations
+      const cleanFormNumber = formNumber.trim().toUpperCase();
+      
+      // Try exact match first
+      let { data: formData, error: queryError } = await supabase
         .from("legal_forms")
         .select("pdf_file_path, form_name")
-        .ilike("form_number", formNumber)
+        .ilike("form_number", cleanFormNumber)
         .maybeSingle();
+
+      // If not found, try with "FORM " prefix
+      if (!formData && !cleanFormNumber.startsWith("FORM")) {
+        const result = await supabase
+          .from("legal_forms")
+          .select("pdf_file_path, form_name")
+          .ilike("form_number", `FORM ${cleanFormNumber}`)
+          .maybeSingle();
+        formData = result.data;
+        queryError = result.error;
+      }
 
       if (queryError) throw queryError;
 
