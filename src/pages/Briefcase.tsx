@@ -66,13 +66,27 @@ const Briefcase = () => {
     <section className="min-h-screen bg-background py-8">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 h-full flex flex-col">
         <div className="mb-6">
-          <h1 className="text-3xl font-bold mb-2 flex items-center gap-2">
+          <h1 className="text-3xl font-bold mb-4 flex items-center gap-2">
             <FileText className="w-8 h-8" />
-            Briefcase: Legal Form Discovery
+            Briefcase: Your Law Companion
           </h1>
-          <p className="text-muted-foreground">
-            AI-powered assistant to help you find the right legal forms for your needs
+          <p className="text-muted-foreground text-lg mb-6">
+            Get guidance for divorce, small claims and wills, with outcome prediction & financial analysis. 
+            Bilingual starting in HK, localised workflows, PDFs ready for Court filing. 
+            Expand to all common law jurisdictions.
           </p>
+          
+          <div className="space-y-3 mb-6">
+            <h2 className="font-semibold text-lg">Key Features:</h2>
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc pl-5">
+              <li>AI powered voice recognition captures a user's story & automatically fills out required court forms</li>
+              <li>Outcome prediction & financial analysis</li>
+              <li>Bilingual interface (starting in Hong Kong)</li>
+              <li>Localised workflows for common law jurisdictions</li>
+              <li>Court-ready PDFs for filing</li>
+              <li>Transparent subscription model - no mid-journey charges or paywall traps</li>
+            </ul>
+          </div>
         </div>
 
         <div className="flex-1 bg-card border border-border rounded-lg flex flex-col overflow-hidden">

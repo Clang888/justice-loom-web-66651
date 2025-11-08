@@ -20,7 +20,6 @@ const Layout = ({ children }: LayoutProps) => {
             <Link to="/mission" className="hover:text-foreground">Mission</Link>
             <Link to="/about" className="hover:text-foreground">About</Link>
             <Link to="/services" className="hover:text-foreground">Services</Link>
-            <Link to="/ai-tools" className="hover:text-foreground">AI Tools</Link>
             <Link to="/briefcase" className="hover:text-foreground">Briefcase</Link>
             <Link to="/books" className="hover:text-foreground">Books</Link>
             <Link to="/speaking" className="hover:text-foreground">Speaking</Link>
@@ -59,7 +58,7 @@ const Layout = ({ children }: LayoutProps) => {
               <h4 className="font-semibold mb-3 text-sm">Resources</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li><Link to="/services" className="hover:underline">Services</Link></li>
-                <li><Link to="/ai-tools" className="hover:underline">AI Tools</Link></li>
+                <li><Link to="/briefcase" className="hover:underline">Briefcase</Link></li>
                 <li><Link to="/books" className="hover:underline">Books</Link></li>
               </ul>
             </div>
