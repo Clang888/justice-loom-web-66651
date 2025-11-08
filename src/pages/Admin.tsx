@@ -3,16 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
-import { Upload, FileText, Trash2, Loader2 } from "lucide-react";
-import { z } from "zod";
-
-const formSchema = z.object({
-  form_name: z.string().trim().min(1, "Form name is required").max(200),
-  form_number: z.string().trim().max(100).optional(),
-  category: z.string().trim().min(1, "Category is required").max(100),
-  description: z.string().trim().max(1000).optional(),
-  keywords: z.string().trim().max(500).optional(),
-});
+import { Upload, FileText, Trash2, Loader2, Bot, CheckCircle2, XCircle } from "lucide-react";
 
 interface LegalForm {
   id: string;
@@ -26,25 +17,32 @@ interface LegalForm {
   created_at: string | null;
 }
 
+interface FileUploadStatus {
+  file: File;
+  status: 'uploading' | 'analyzing' | 'ready' | 'failed';
+  metadata?: {
+    form_name: string;
+    form_number: string | null;
+    category: string;
+    description: string | null;
+    keywords: string[];
+    common_scenarios: string[];
+  };
+  error?: string;
+  filePath?: string;
+}
+
 const Admin = () => {
   const [isAdmin, setIsAdmin] = useState(false);
   const [loading, setLoading] = useState(true);
   const [forms, setForms] = useState<LegalForm[]>([]);
-  const [uploading, setUploading] = useState(false);
-  
-  // Form state
-  const [formName, setFormName] = useState("");
-  const [formNumber, setFormNumber] = useState("");
-  const [category, setCategory] = useState("");
-  const [description, setDescription] = useState("");
-  const [keywords, setKeywords] = useState("");
-  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [uploadQueue, setUploadQueue] = useState<FileUploadStatus[]>([]);
+  const [processing, setProcessing] = useState(false);
 
   const navigate = useNavigate();
   const { toast } = useToast();
 
   useEffect(() => {
-    // Set up auth state listener FIRST
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       (_event, session) => {
         if (session?.user) {
@@ -57,7 +55,6 @@ const Admin = () => {
       }
     );
 
-    // THEN check for existing session
     supabase.auth.getSession().then(({ data: { session } }) => {
       if (session?.user) {
         checkAdminStatus(session.user.id);
@@ -115,132 +112,194 @@ const Admin = () => {
     }
   };
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
+  const handleFilesSelected = async (files: FileList | null) => {
+    if (!files || files.length === 0) return;
+
+    const newFiles: FileUploadStatus[] = [];
+    
+    for (let i = 0; i < Math.min(files.length, 10); i++) {
+      const file = files[i];
+      
       if (file.size > 50 * 1024 * 1024) {
         toast({
           title: "File too large",
-          description: "Maximum file size is 50MB",
+          description: `${file.name} exceeds 50MB limit`,
           variant: "destructive",
         });
-        return;
+        continue;
       }
       
-      const validTypes = ['application/pdf', 'application/zip', 'application/x-zip-compressed'];
-      if (!validTypes.includes(file.type)) {
+      if (file.type !== 'application/pdf') {
         toast({
           title: "Invalid file type",
-          description: "Only PDF and ZIP files are allowed",
+          description: `${file.name} is not a PDF file`,
           variant: "destructive",
         });
-        return;
+        continue;
       }
       
-      setSelectedFile(file);
+      newFiles.push({
+        file,
+        status: 'uploading',
+      });
+    }
+
+    if (newFiles.length > 0) {
+      setUploadQueue(prev => [...prev, ...newFiles]);
+      processFiles(newFiles);
     }
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    if (!selectedFile) {
-      toast({
-        title: "No file selected",
-        description: "Please select a PDF or ZIP file to upload",
-        variant: "destructive",
-      });
-      return;
+  const processFiles = async (filesToProcess: FileUploadStatus[]) => {
+    for (const fileStatus of filesToProcess) {
+      await processFile(fileStatus);
+      // Small delay between files to avoid rate limiting
+      await new Promise(resolve => setTimeout(resolve, 500));
     }
+  };
 
-    // Validate form data
-    const validation = formSchema.safeParse({
-      form_name: formName,
-      form_number: formNumber || undefined,
-      category,
-      description: description || undefined,
-      keywords: keywords || undefined,
-    });
-
-    if (!validation.success) {
-      const firstError = validation.error.issues[0];
-      toast({
-        title: "Validation Error",
-        description: firstError.message,
-        variant: "destructive",
-      });
-      return;
-    }
-
-    setUploading(true);
-
+  const processFile = async (fileStatus: FileUploadStatus) => {
     try {
-      // Upload file to storage
-      const fileExt = selectedFile.name.split('.').pop();
+      // Step 1: Upload to storage
+      const fileExt = fileStatus.file.name.split('.').pop();
       const fileName = `${Date.now()}-${Math.random().toString(36).substring(7)}.${fileExt}`;
       const filePath = `forms/${fileName}`;
 
       const { error: uploadError } = await supabase.storage
         .from("legal-forms")
-        .upload(filePath, selectedFile);
+        .upload(filePath, fileStatus.file);
 
       if (uploadError) throw uploadError;
 
-      // Insert form metadata
-      const keywordsArray = keywords ? keywords.split(',').map(k => k.trim()).filter(k => k) : null;
-      
-      const { error: insertError } = await supabase
-        .from("legal_forms")
-        .insert({
-          form_name: validation.data.form_name,
-          form_number: validation.data.form_number || null,
-          category: validation.data.category,
-          description: validation.data.description || null,
-          keywords: keywordsArray,
-          pdf_file_path: filePath,
-        });
+      // Update status to analyzing
+      setUploadQueue(prev => prev.map(f => 
+        f.file === fileStatus.file 
+          ? { ...f, status: 'analyzing', filePath } 
+          : f
+      ));
 
-      if (insertError) throw insertError;
+      // Step 2: Analyze with AI
+      const formData = new FormData();
+      formData.append('file', fileStatus.file);
+
+      const { data: analyzeData, error: analyzeError } = await supabase.functions.invoke(
+        'analyze-legal-form',
+        {
+          body: formData,
+        }
+      );
+
+      if (analyzeError) throw analyzeError;
+
+      if (analyzeData.error) {
+        throw new Error(analyzeData.error);
+      }
+
+      // Update status to ready with metadata
+      setUploadQueue(prev => prev.map(f => 
+        f.file === fileStatus.file 
+          ? { 
+              ...f, 
+              status: 'ready',
+              metadata: analyzeData.metadata,
+              filePath 
+            } 
+          : f
+      ));
+
+    } catch (error: any) {
+      console.error('Error processing file:', error);
+      
+      // Update status to failed
+      setUploadQueue(prev => prev.map(f => 
+        f.file === fileStatus.file 
+          ? { 
+              ...f, 
+              status: 'failed',
+              error: error.message 
+            } 
+          : f
+      ));
+    }
+  };
+
+  const handleSaveAll = async () => {
+    const readyFiles = uploadQueue.filter(f => f.status === 'ready');
+    
+    if (readyFiles.length === 0) {
+      toast({
+        title: "No files ready",
+        description: "Wait for files to finish analyzing",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setProcessing(true);
+
+    try {
+      for (const fileStatus of readyFiles) {
+        if (!fileStatus.metadata || !fileStatus.filePath) continue;
+
+        const { error } = await supabase
+          .from("legal_forms")
+          .insert({
+            form_name: fileStatus.metadata.form_name,
+            form_number: fileStatus.metadata.form_number,
+            category: fileStatus.metadata.category,
+            description: fileStatus.metadata.description,
+            keywords: fileStatus.metadata.keywords,
+            common_scenarios: fileStatus.metadata.common_scenarios,
+            pdf_file_path: fileStatus.filePath,
+          });
+
+        if (error) throw error;
+      }
 
       toast({
         title: "Success",
-        description: "Form uploaded successfully",
+        description: `${readyFiles.length} form(s) saved successfully`,
       });
 
-      // Reset form
-      setFormName("");
-      setFormNumber("");
-      setCategory("");
-      setDescription("");
-      setKeywords("");
-      setSelectedFile(null);
-      
-      // Reload forms
+      // Clear upload queue and reload forms
+      setUploadQueue([]);
       loadForms();
+
     } catch (error: any) {
-      console.error("Error uploading form:", error);
+      console.error("Error saving forms:", error);
       toast({
-        title: "Upload Failed",
+        title: "Save Failed",
         description: error.message,
         variant: "destructive",
       });
     } finally {
-      setUploading(false);
+      setProcessing(false);
     }
+  };
+
+  const handleRetry = async (fileStatus: FileUploadStatus) => {
+    setUploadQueue(prev => prev.map(f => 
+      f.file === fileStatus.file 
+        ? { ...f, status: 'uploading', error: undefined } 
+        : f
+    ));
+    await processFile(fileStatus);
+  };
+
+  const handleRemoveFromQueue = (fileStatus: FileUploadStatus) => {
+    setUploadQueue(prev => prev.filter(f => f.file !== fileStatus.file));
   };
 
   const handleDelete = async (formId: string, filePath: string) => {
     if (!confirm("Are you sure you want to delete this form?")) return;
 
     try {
-      // Delete file from storage
       const { error: storageError } = await supabase.storage
         .from("legal-forms")
         .remove([filePath]);
 
       if (storageError) throw storageError;
 
-      // Delete from database
       const { error: dbError } = await supabase
         .from("legal_forms")
         .delete()
@@ -291,123 +350,157 @@ const Admin = () => {
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="mb-8">
           <h1 className="text-3xl font-bold mb-2">Admin Panel</h1>
-          <p className="text-muted-foreground">Manage legal forms and documents</p>
+          <p className="text-muted-foreground">AI-powered bulk upload for legal forms</p>
         </div>
 
-        {/* Upload Form */}
+        {/* Bulk Upload Zone */}
         <div className="bg-card border border-border rounded-lg p-6 mb-8">
           <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
-            <Upload className="w-5 h-5" />
-            Upload New Form
+            <Bot className="w-5 h-5" />
+            AI Bulk Upload
           </h2>
 
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="grid md:grid-cols-2 gap-4">
-              <div>
-                <label className="block text-sm font-medium mb-2">
-                  Form Name *
-                </label>
-                <input
-                  type="text"
-                  value={formName}
-                  onChange={(e) => setFormName(e.target.value)}
-                  className="w-full px-4 py-2 rounded-lg border border-input bg-background focus:outline-none focus:ring-2 focus:ring-ring"
-                  placeholder="e.g., Divorce Petition Form"
-                  required
-                  maxLength={200}
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium mb-2">
-                  Form Number
-                </label>
-                <input
-                  type="text"
-                  value={formNumber}
-                  onChange={(e) => setFormNumber(e.target.value)}
-                  className="w-full px-4 py-2 rounded-lg border border-input bg-background focus:outline-none focus:ring-2 focus:ring-ring"
-                  placeholder="e.g., HK-DIV-001"
-                  maxLength={100}
-                />
-              </div>
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium mb-2">
-                Category *
-              </label>
-              <input
-                type="text"
-                value={category}
-                onChange={(e) => setCategory(e.target.value)}
-                className="w-full px-4 py-2 rounded-lg border border-input bg-background focus:outline-none focus:ring-2 focus:ring-ring"
-                placeholder="e.g., Divorce, Small Claims, Wills"
-                required
-                maxLength={100}
-              />
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium mb-2">
-                Description
-              </label>
-              <textarea
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                className="w-full px-4 py-2 rounded-lg border border-input bg-background focus:outline-none focus:ring-2 focus:ring-ring"
-                rows={3}
-                placeholder="Brief description of the form..."
-                maxLength={1000}
-              />
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium mb-2">
-                Keywords (comma-separated)
-              </label>
-              <input
-                type="text"
-                value={keywords}
-                onChange={(e) => setKeywords(e.target.value)}
-                className="w-full px-4 py-2 rounded-lg border border-input bg-background focus:outline-none focus:ring-2 focus:ring-ring"
-                placeholder="e.g., divorce, petition, hong kong"
-                maxLength={500}
-              />
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium mb-2">
-                PDF/ZIP File (max 50MB) *
-              </label>
-              <input
-                type="file"
-                accept=".pdf,.zip"
-                onChange={handleFileChange}
-                className="w-full px-4 py-2 rounded-lg border border-input bg-background focus:outline-none focus:ring-2 focus:ring-ring"
-                required
-              />
-              {selectedFile && (
-                <p className="text-sm text-muted-foreground mt-2">
-                  Selected: {selectedFile.name} ({(selectedFile.size / 1024 / 1024).toFixed(2)} MB)
+          <div className="mb-6">
+            <label 
+              htmlFor="file-upload"
+              className="flex flex-col items-center justify-center w-full h-64 border-2 border-dashed border-border rounded-lg cursor-pointer bg-secondary/20 hover:bg-secondary/40 transition-colors"
+            >
+              <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                <Upload className="w-12 h-12 mb-4 text-muted-foreground" />
+                <p className="mb-2 text-sm font-semibold">
+                  Drop PDF files here or click to browse
                 </p>
-              )}
-            </div>
+                <p className="text-xs text-muted-foreground">
+                  Upload up to 10 PDFs (max 50MB each)
+                </p>
+                <p className="text-xs text-muted-foreground mt-2">
+                  AI will automatically extract metadata from each file
+                </p>
+              </div>
+              <input
+                id="file-upload"
+                type="file"
+                className="hidden"
+                accept=".pdf"
+                multiple
+                onChange={(e) => handleFilesSelected(e.target.files)}
+              />
+            </label>
+          </div>
 
-            <Button type="submit" disabled={uploading} className="w-full">
-              {uploading ? (
-                <>
-                  <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                  Uploading...
-                </>
-              ) : (
-                <>
-                  <Upload className="w-4 h-4 mr-2" />
-                  Upload Form
-                </>
-              )}
-            </Button>
-          </form>
+          {/* Upload Queue */}
+          {uploadQueue.length > 0 && (
+            <div className="space-y-3">
+              {uploadQueue.map((fileStatus, idx) => (
+                <div
+                  key={idx}
+                  className="border border-border rounded-lg p-4 bg-background"
+                >
+                  <div className="flex items-start gap-3">
+                    {fileStatus.status === 'uploading' && (
+                      <Loader2 className="w-5 h-5 animate-spin text-primary mt-1 shrink-0" />
+                    )}
+                    {fileStatus.status === 'analyzing' && (
+                      <Bot className="w-5 h-5 text-primary animate-pulse mt-1 shrink-0" />
+                    )}
+                    {fileStatus.status === 'ready' && (
+                      <CheckCircle2 className="w-5 h-5 text-green-500 mt-1 shrink-0" />
+                    )}
+                    {fileStatus.status === 'failed' && (
+                      <XCircle className="w-5 h-5 text-destructive mt-1 shrink-0" />
+                    )}
+
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center justify-between mb-2">
+                        <p className="font-medium truncate">{fileStatus.file.name}</p>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={() => handleRemoveFromQueue(fileStatus)}
+                        >
+                          <XCircle className="w-4 h-4" />
+                        </Button>
+                      </div>
+
+                      {fileStatus.status === 'uploading' && (
+                        <p className="text-sm text-muted-foreground">Uploading...</p>
+                      )}
+
+                      {fileStatus.status === 'analyzing' && (
+                        <p className="text-sm text-muted-foreground">Analyzing with AI...</p>
+                      )}
+
+                      {fileStatus.status === 'failed' && (
+                        <div>
+                          <p className="text-sm text-destructive mb-2">{fileStatus.error}</p>
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => handleRetry(fileStatus)}
+                          >
+                            Retry
+                          </Button>
+                        </div>
+                      )}
+
+                      {fileStatus.status === 'ready' && fileStatus.metadata && (
+                        <div className="bg-secondary/50 rounded-lg p-3 mt-2">
+                          <div className="grid gap-2 text-sm">
+                            <div>
+                              <span className="font-medium">Name:</span> {fileStatus.metadata.form_name}
+                            </div>
+                            {fileStatus.metadata.form_number && (
+                              <div>
+                                <span className="font-medium">Number:</span> {fileStatus.metadata.form_number}
+                              </div>
+                            )}
+                            <div>
+                              <span className="font-medium">Category:</span> {fileStatus.metadata.category}
+                            </div>
+                            {fileStatus.metadata.description && (
+                              <div>
+                                <span className="font-medium">Description:</span> {fileStatus.metadata.description}
+                              </div>
+                            )}
+                            {fileStatus.metadata.keywords.length > 0 && (
+                              <div className="flex flex-wrap gap-1 mt-1">
+                                {fileStatus.metadata.keywords.map((keyword, i) => (
+                                  <span
+                                    key={i}
+                                    className="px-2 py-0.5 bg-primary/10 text-xs rounded"
+                                  >
+                                    {keyword}
+                                  </span>
+                                ))}
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              ))}
+
+              <Button
+                onClick={handleSaveAll}
+                disabled={processing || uploadQueue.filter(f => f.status === 'ready').length === 0}
+                className="w-full"
+              >
+                {processing ? (
+                  <>
+                    <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                    Saving...
+                  </>
+                ) : (
+                  <>
+                    <CheckCircle2 className="w-4 h-4 mr-2" />
+                    Save All Ready Forms ({uploadQueue.filter(f => f.status === 'ready').length})
+                  </>
+                )}
+              </Button>
+            </div>
+          )}
         </div>
 
         {/* Forms List */}
