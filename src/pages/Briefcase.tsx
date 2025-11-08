@@ -109,15 +109,22 @@ const Briefcase = () => {
         return;
       }
 
-      // Download from storage using the file path
-      const { data: fileData, error: downloadError } = await supabase.storage
+      // Get signed URL for secure download (1 hour expiry)
+      const { data: signedUrlData, error: signedUrlError } = await supabase.storage
         .from("legal-forms")
-        .download(formData.pdf_file_path);
+        .createSignedUrl(formData.pdf_file_path, 3600);
 
-      if (downloadError) throw downloadError;
+      if (signedUrlError) throw signedUrlError;
+      if (!signedUrlData?.signedUrl) {
+        throw new Error("Failed to generate download URL");
+      }
 
-      // Create download
-      const url = URL.createObjectURL(fileData);
+      // Fetch the file using the signed URL
+      const response = await fetch(signedUrlData.signedUrl);
+      if (!response.ok) throw new Error("Failed to download file");
+      
+      const fileBlob = await response.blob();
+      const url = URL.createObjectURL(fileBlob);
       const a = document.createElement("a");
       a.href = url;
       a.download = `${formData.form_name}.pdf`;
