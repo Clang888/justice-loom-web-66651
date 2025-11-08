@@ -1,8 +1,9 @@
 import { useState, useRef, useEffect } from "react";
-import { Send, Loader2, FileText } from "lucide-react";
+import { Send, Loader2, FileText, Mic, Square } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
+import { useVoiceRecording } from "@/hooks/useVoiceRecording";
 
 interface Message {
   role: "user" | "assistant";
@@ -20,6 +21,7 @@ const Briefcase = () => {
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const { toast } = useToast();
+  const { isRecording, isProcessing, startRecording, stopRecording } = useVoiceRecording();
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -59,6 +61,17 @@ const Briefcase = () => {
       });
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  const handleVoiceRecording = async () => {
+    if (isRecording) {
+      const transcribedText = await stopRecording();
+      if (transcribedText) {
+        setInput(transcribedText);
+      }
+    } else {
+      await startRecording();
     }
   };
 
@@ -126,17 +139,32 @@ const Briefcase = () => {
             className="border-t border-border p-4 bg-card"
           >
             <div className="flex gap-2">
+              <Button
+                type="button"
+                variant="outline"
+                onClick={handleVoiceRecording}
+                disabled={isLoading || isProcessing}
+                className="px-4"
+              >
+                {isRecording ? (
+                  <Square className="w-4 h-4 text-destructive" />
+                ) : isProcessing ? (
+                  <Loader2 className="w-4 h-4 animate-spin" />
+                ) : (
+                  <Mic className="w-4 h-4" />
+                )}
+              </Button>
               <input
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                placeholder="Describe your legal situation..."
+                placeholder="Describe your legal situation or click mic to record..."
                 className="flex-1 px-4 py-3 rounded-lg border border-input bg-background focus:outline-none focus:ring-2 focus:ring-ring"
-                disabled={isLoading}
+                disabled={isLoading || isRecording}
               />
               <Button
                 type="submit"
-                disabled={isLoading || !input.trim()}
+                disabled={isLoading || !input.trim() || isRecording || isProcessing}
                 className="px-6"
               >
                 <Send className="w-4 h-4" />
