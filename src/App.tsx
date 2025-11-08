@@ -15,6 +15,7 @@ import Speaking from "./pages/Speaking";
 import Testimonials from "./pages/Testimonials";
 import Community from "./pages/Community";
 import Contact from "./pages/Contact";
+import Briefcase from "./pages/Briefcase";
 
 const queryClient = new QueryClient();
 
@@ -37,6 +38,7 @@ const App = () => (
               <Route path="/testimonials" element={<Testimonials />} />
               <Route path="/community" element={<Community />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/briefcase" element={<Briefcase />} />
             </Routes>
           </Layout>
         </BrowserRouter>

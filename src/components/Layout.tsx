@@ -21,6 +21,7 @@ const Layout = ({ children }: LayoutProps) => {
             <Link to="/about" className="hover:text-foreground">About</Link>
             <Link to="/services" className="hover:text-foreground">Services</Link>
             <Link to="/ai-tools" className="hover:text-foreground">AI Tools</Link>
+            <Link to="/briefcase" className="hover:text-foreground">Briefcase</Link>
             <Link to="/books" className="hover:text-foreground">Books</Link>
             <Link to="/speaking" className="hover:text-foreground">Speaking</Link>
             <Link to="/testimonials" className="hover:text-foreground">Testimonials</Link>
