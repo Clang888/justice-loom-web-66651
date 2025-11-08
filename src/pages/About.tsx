@@ -2,37 +2,27 @@ const About = () => {
   return (
     <section className="py-16 bg-card">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-bold">About us</h2>
-        <p className="mt-3 text-muted-foreground max-w-3xl">
-          We&apos;re a small, mission-driven team building practical tools so everyday people can navigate the law with confidence.
-        </p>
+        <h2 className="text-3xl font-bold mb-8">About us</h2>
 
-        <div className="mt-8 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {/* Caroline */}
+        <div className="grid md:grid-cols-2 gap-8">
+          {/* Caroline Langley */}
           <div className="bg-secondary border border-border rounded-2xl p-6">
-            <img src="/jle-hero-1600.jpg" alt="Caroline Langley" className="w-full h-40 object-cover rounded-xl mb-4" />
-            <h3 className="font-semibold">Caroline Langley</h3>
-            <p className="text-sm text-muted-foreground">
-              Founder & CEO · Barrister (HK, E&W, ROI; US-admitted). 35+ years cross-border practice; author, educator, and advocate for access to justice.
+            <img src="/caroline-langley.png" alt="Caroline Langley" className="w-full h-64 object-cover rounded-xl mb-4" />
+            <h3 className="font-bold text-xl mb-1">CAROLINE LANGLEY</h3>
+            <p className="text-sm font-semibold text-primary mb-3">CEO and Co-Founder</p>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              Caroline is a barrister and legal innovator based in Hong Kong with over 30 years of frontline experience in law. She is qualified and has practised in 4 jurisdictions. She founded Just Law Education to make legal knowledge clear, practical, and accessible. Her forthcoming book, <span className="italic">"A Litigant's Guide to Self Representation in HK Family Court"</span>, builds on that mission, offering step-by-step guidance for litigants in person. Her current project <span className="italic">"My Legal Assistant"</span>, uses AI to simplify court forms and procedures, a concept that recently attracted a buy out offer from a Silicon Valley tech company. Caroline is dedicated to transforming real world legal challenges into intelligent, user friendly digital solutions.
             </p>
-            <a href="https://www.linkedin.com/in/cdlangley" className="text-sm font-medium hover:underline">LinkedIn</a>
           </div>
 
-          {/* Placeholders */}
+          {/* Alexandre Santos de Salles */}
           <div className="bg-secondary border border-border rounded-2xl p-6">
-            <div className="w-full h-40 rounded-xl bg-muted mb-4"></div>
-            <h3 className="font-semibold">Head of Product</h3>
-            <p className="text-sm text-muted-foreground">AI & UX Lead</p>
-          </div>
-          <div className="bg-secondary border border-border rounded-2xl p-6">
-            <div className="w-full h-40 rounded-xl bg-muted mb-4"></div>
-            <h3 className="font-semibold">Community Lead</h3>
-            <p className="text-sm text-muted-foreground">Education & Outreach</p>
-          </div>
-          <div className="bg-secondary border border-border rounded-2xl p-6">
-            <div className="w-full h-40 rounded-xl bg-muted mb-4"></div>
-            <h3 className="font-semibold">Ops & Compliance</h3>
-            <p className="text-sm text-muted-foreground">Data & Risk</p>
+            <img src="/alex-santos.png" alt="Alexandre Santos de Salles" className="w-full h-64 object-cover rounded-xl mb-4" />
+            <h3 className="font-bold text-xl mb-1">ALEXANDRE SANTOS DE SALLES</h3>
+            <p className="text-sm font-semibold text-primary mb-3">Co-Founder</p>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              Alex is a technology consultant and product designer based in Ireland, specialising in accessible, human-centered digital solutions. With a focus on demystifying complex systems, Alex builds applications that enable users to navigate technology with confidence and ease. His recent work includes Passenger.ie, an app that transforms the train booking experience for elderly users, making online rail services effortless and inclusive. Alex's approach combines deep user empathy with technical innovation, translating real-world friction points into intuitive digital experiences. In addition to development, Alex delivers digital literacy training to seniors and government organisations across Ireland, bridging the gap between people and technology through both education and design.
+            </p>
           </div>
         </div>
       </div>
