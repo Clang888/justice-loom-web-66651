@@ -13,7 +13,7 @@ const Community = () => {
           <div className="bg-secondary border border-border rounded-2xl p-6">
             <img src="/linkedin-group.png" alt="Just Law LinkedIn Group" className="w-full h-32 object-cover rounded-lg mb-4" />
             <h3 className="font-semibold">LinkedIn Group</h3>
-            <p className="text-sm text-muted-foreground mt-2">"Just Law" — Innovating Law with AI. Join the conversation on the future of legal technology.</p>
+            <p className="text-sm text-muted-foreground mt-2">Just Law: Innovating Law with AI. Join the conversation with over 1,500 members.</p>
             <Link to="/contact" className="mt-3 inline-flex items-center gap-2 text-sm font-medium hover:underline">Get the invite <ChevronRight className="w-4 h-4" /></Link>
           </div>
           <div className="bg-secondary border border-border rounded-2xl p-6">
