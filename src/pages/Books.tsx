@@ -46,7 +46,7 @@ const Books = () => {
             <div>
               <h3 className="font-semibold">Hong Kong Family Court: A Guide to Self Representation</h3>
               <p className="text-sm text-muted-foreground mt-2">Published by HKU Press (2026). A step by step guide for anyone wanting to represent themselves in Family Court in Hong Kong.</p>
-              <Link to="/contact" className="mt-3 inline-flex items-center gap-2 text-sm font-medium hover:underline">Publication updates <ChevronRight className="w-4 h-4" /></Link>
+              
             </div>
           </div>
           <div className="bg-card border border-border rounded-2xl p-5 flex gap-4">
