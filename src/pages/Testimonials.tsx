@@ -17,8 +17,8 @@ const Testimonials = () => {
             <footer className="mt-4 text-muted-foreground">— Dr. Enzio von Pfeil, Associate Partner, St. James's Place Wealth Management (HK)</footer>
           </blockquote>
           <blockquote className="bg-secondary border border-border rounded-2xl p-6 text-sm">
-            <p>"Caroline's strategic insight and meticulous attention to detail transformed our approach to cross-border transactions. Her guidance was invaluable."</p>
-            <footer className="mt-4 text-muted-foreground">— Michael Chen, CEO, Pacific Rim Ventures (Singapore)</footer>
+            <p>"Caroline's knowledge of geopolitics coupled with her vast experience of mediation skills delivers an unmatched par excellence in a courtroom setting. What took 3 years at other law firms, she closed in 3 months time! Eternally grateful."</p>
+            <footer className="mt-4 text-muted-foreground">— Ntombi Matshoba (South Africa)</footer>
           </blockquote>
           <blockquote className="bg-secondary border border-border rounded-2xl p-6 text-sm">
             <p>"Caroline Langley became a quiet anchor in my fight to bring my children home. She showed up, listening first, offering thoughtful, practical guidance, and steadying me when the ground felt like quicksand. There's no ego with Caroline; she is humble, grounded, and unmistakably child centred. What also sets her apart is her clear grasp of how responsible media can protect children and influence outcomes. Caroline helped me balance public advocacy with legal strategy, never chasing headlines, always safeguarding the case and keeping the focus where it belongs. She doesn't just point to a path forward; she helps you find your footing on it. For any parent living the nightmare of parental abduction, Caroline's integrity, calm, and quiet expertise make an extraordinary difference."</p>
