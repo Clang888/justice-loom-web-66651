@@ -9,10 +9,17 @@ const Books = () => {
         <p className="text-muted-foreground mb-6">From courtroom timelines to financial disclosure, we publish practical resources you can actually use.</p>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div className="bg-card border border-border rounded-2xl p-5">
-            <h3 className="font-semibold">Hong Kong Family Court: A Guide to Self Representation</h3>
-            <p className="text-sm text-muted-foreground mt-2">Published by HKU Press. A step-by-step companion for SRLs in family proceedings.</p>
-            <Link to="/contact" className="mt-3 inline-flex items-center gap-2 text-sm font-medium hover:underline">Publication updates <ChevronRight className="w-4 h-4" /></Link>
+          <div className="bg-card border border-border rounded-2xl p-5 flex gap-4">
+            <img 
+              src="/book-cover-hk.png" 
+              alt="Hong Kong Family Court: A Guide to Self Representation book cover" 
+              className="w-24 h-auto rounded-lg shadow-md flex-shrink-0"
+            />
+            <div>
+              <h3 className="font-semibold">Hong Kong Family Court: A Guide to Self Representation</h3>
+              <p className="text-sm text-muted-foreground mt-2">Published by HKU Press. A step-by-step companion for SRLs in family proceedings.</p>
+              <Link to="/contact" className="mt-3 inline-flex items-center gap-2 text-sm font-medium hover:underline">Publication updates <ChevronRight className="w-4 h-4" /></Link>
+            </div>
           </div>
           <div className="bg-card border border-border rounded-2xl p-5">
             <h3 className="font-semibold">Divorce Journal & Workbook (US)</h3>
