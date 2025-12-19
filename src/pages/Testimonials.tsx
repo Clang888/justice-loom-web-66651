@@ -21,8 +21,8 @@ const Testimonials = () => {
             <footer className="mt-4 text-muted-foreground">— Michael Chen, CEO, Pacific Rim Ventures (Singapore)</footer>
           </blockquote>
           <blockquote className="bg-secondary border border-border rounded-2xl p-6 text-sm">
-            <p>"An exceptional legal mind with the ability to simplify complex matters. Caroline's counsel has been instrumental in navigating our regulatory challenges."</p>
-            <footer className="mt-4 text-muted-foreground">— Sarah Thompson, General Counsel, Meridian Financial Group (London, UK)</footer>
+            <p>"Caroline Langley became a quiet anchor in my fight to bring my children home. She showed up, listening first, offering thoughtful, practical guidance, and steadying me when the ground felt like quicksand. There's no ego with Caroline; she is humble, grounded, and unmistakably child centred. What also sets her apart is her clear grasp of how responsible media can protect children and influence outcomes. Caroline helped me balance public advocacy with legal strategy, never chasing headlines, always safeguarding the case and keeping the focus where it belongs. She doesn't just point to a path forward; she helps you find your footing on it. For any parent living the nightmare of parental abduction, Caroline's integrity, calm, and quiet expertise make an extraordinary difference."</p>
+            <footer className="mt-4 text-muted-foreground">— Mandy Kelly, Mother & Advocate (Dublin)</footer>
           </blockquote>
         </div>
       </div>
