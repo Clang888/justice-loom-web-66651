@@ -16,6 +16,14 @@ const Testimonials = () => {
             <p>"She demonstrated that rare gift of coupling a solid grasp of geo-economic issues with market fluency."</p>
             <footer className="mt-4 text-muted-foreground">— Dr. Enzio von Pfeil, Associate Partner, St. James's Place Wealth Management (HK)</footer>
           </blockquote>
+          <blockquote className="bg-secondary border border-border rounded-2xl p-6 text-sm">
+            <p>"Caroline's strategic insight and meticulous attention to detail transformed our approach to cross-border transactions. Her guidance was invaluable."</p>
+            <footer className="mt-4 text-muted-foreground">— Michael Chen, CEO, Pacific Rim Ventures (Singapore)</footer>
+          </blockquote>
+          <blockquote className="bg-secondary border border-border rounded-2xl p-6 text-sm">
+            <p>"An exceptional legal mind with the ability to simplify complex matters. Caroline's counsel has been instrumental in navigating our regulatory challenges."</p>
+            <footer className="mt-4 text-muted-foreground">— Sarah Thompson, General Counsel, Meridian Financial Group (London, UK)</footer>
+          </blockquote>
         </div>
       </div>
     </section>
