@@ -22,8 +22,8 @@ const Books = () => {
             </div>
           </div>
           <div className="bg-card border border-border rounded-2xl p-5">
-            <h3 className="font-semibold">Divorce Journal & Workbook (US)</h3>
-            <p className="text-sm text-muted-foreground mt-2">A guided workbook for capturing facts, clarifying finances, and planning next steps.</p>
+            <h3 className="font-semibold">My Divorce Journal Workbook</h3>
+            <p className="text-sm text-muted-foreground mt-2">Scheduled for publication in spring 2026. A workbook to guide the user through all aspects of divorce.</p>
             <Link to="/contact" className="mt-3 inline-flex items-center gap-2 text-sm font-medium hover:underline">Join the early list <ChevronRight className="w-4 h-4" /></Link>
           </div>
           <div className="bg-card border border-border rounded-2xl p-5">
