@@ -21,10 +21,17 @@ const Books = () => {
               <Link to="/contact" className="mt-3 inline-flex items-center gap-2 text-sm font-medium hover:underline">Publication updates <ChevronRight className="w-4 h-4" /></Link>
             </div>
           </div>
-          <div className="bg-card border border-border rounded-2xl p-5">
-            <h3 className="font-semibold">My Divorce Journal Workbook</h3>
-            <p className="text-sm text-muted-foreground mt-2">Scheduled for publication in spring 2026. A workbook to guide the user through all aspects of divorce.</p>
-            <Link to="/contact" className="mt-3 inline-flex items-center gap-2 text-sm font-medium hover:underline">Join the early list <ChevronRight className="w-4 h-4" /></Link>
+          <div className="bg-card border border-border rounded-2xl p-5 flex gap-4">
+            <img 
+              src="/book-cover-mdjw.png" 
+              alt="My Divorce Journal Workbook book cover" 
+              className="w-24 h-auto rounded-lg shadow-md flex-shrink-0"
+            />
+            <div>
+              <h3 className="font-semibold">My Divorce Journal Workbook</h3>
+              <p className="text-sm text-muted-foreground mt-2">Scheduled for publication in spring 2026. A workbook to guide the user through all aspects of divorce.</p>
+              <Link to="/contact" className="mt-3 inline-flex items-center gap-2 text-sm font-medium hover:underline">Join the waiting list <ChevronRight className="w-4 h-4" /></Link>
+            </div>
           </div>
           <div className="bg-card border border-border rounded-2xl p-5">
             <h4 className="font-semibold mb-2">Media & Talks</h4>
