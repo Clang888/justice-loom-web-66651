@@ -85,8 +85,7 @@ const Layout = ({ children }: LayoutProps) => {
             <Link to="/about" className="hover:text-foreground">About</Link>
             <Link to="/services" className="hover:text-foreground">Services</Link>
             <Link to="/ai-tools" className="hover:text-foreground">AI Tools</Link>
-            <Link to="/books" className="hover:text-foreground">Books</Link>
-            <Link to="/speaking" className="hover:text-foreground">Speaking</Link>
+            <Link to="/books" className="hover:text-foreground">Books & Public Speaking</Link>
             <Link to="/testimonials" className="hover:text-foreground">Testimonials</Link>
             <Link to="/community" className="hover:text-foreground">Community</Link>
             {isAdmin && (
@@ -136,7 +135,7 @@ const Layout = ({ children }: LayoutProps) => {
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li><Link to="/mission" className="hover:underline">Mission</Link></li>
                 <li><Link to="/about" className="hover:underline">About</Link></li>
-                <li><Link to="/speaking" className="hover:underline">Speaking</Link></li>
+                <li><Link to="/books" className="hover:underline">Books & Public Speaking</Link></li>
               </ul>
             </div>
             <div>
@@ -144,7 +143,7 @@ const Layout = ({ children }: LayoutProps) => {
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li><Link to="/services" className="hover:underline">Services</Link></li>
                 <li><Link to="/briefcase" className="hover:underline">Briefcase</Link></li>
-                <li><Link to="/books" className="hover:underline">Books</Link></li>
+                <li><Link to="/books" className="hover:underline">Books & Guides</Link></li>
               </ul>
             </div>
             <div>
