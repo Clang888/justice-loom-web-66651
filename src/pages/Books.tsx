@@ -75,8 +75,8 @@ const Books = () => {
                 ))}
               </ul>
             </ScrollArea>
-            <Link to="/contact" className="mt-4 inline-flex items-center gap-2 text-sm font-medium hover:underline">
-              Request Caroline for an event <ChevronRight className="w-4 h-4" />
+            <Link to="/speaking-enquiry" className="mt-4 inline-flex items-center gap-2 text-sm font-medium hover:underline">
+              Hire Caroline for a Speaking Engagement <ChevronRight className="w-4 h-4" />
             </Link>
           </div>
         </div>
