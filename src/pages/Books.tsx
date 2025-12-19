@@ -62,7 +62,10 @@ const Books = () => {
             </div>
           </div>
           <div className="bg-card border border-border rounded-2xl p-5 lg:row-span-2">
-            <h4 className="font-semibold mb-3">Speaking Engagements</h4>
+            <h4 className="font-semibold mb-2">Speaking Engagements</h4>
+            <Link to="/speaking-enquiry" className="mb-3 inline-flex items-center gap-2 text-sm font-medium hover:underline">
+              Hire Caroline for a Speaking Engagement <ChevronRight className="w-4 h-4" />
+            </Link>
             <p className="text-sm text-muted-foreground mb-3">30+ international speaking engagements including:</p>
             <ScrollArea className="h-[320px] pr-3">
               <ul className="space-y-3">
@@ -75,9 +78,6 @@ const Books = () => {
                 ))}
               </ul>
             </ScrollArea>
-            <Link to="/speaking-enquiry" className="mt-4 inline-flex items-center gap-2 text-sm font-medium hover:underline">
-              Hire Caroline for a Speaking Engagement <ChevronRight className="w-4 h-4" />
-            </Link>
           </div>
         </div>
       </div>
