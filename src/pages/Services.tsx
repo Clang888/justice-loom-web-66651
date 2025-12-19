@@ -12,9 +12,9 @@ const Services = () => {
 
         <div className="mt-8 grid md:grid-cols-3 gap-6">
           {[
-            { icon: <Hammer className="w-6 h-6" />, title: "Divorce & Finance", text: "Timetables (FDA/FDR), Form E guidance, disclosure checklists, settlement prep." },
-            { icon: <ShieldCheck className="w-6 h-6" />, title: "Wills & Estates", text: "Starter packs, asset schedules, executorship basics, witness requirements." },
-            { icon: <BookOpen className="w-6 h-6" />, title: "Small Claims", text: "Claim flow, evidence packs, hearing day prep, negotiation scripts." },
+            { icon: <Hammer className="w-6 h-6" />, title: "Divorce", text: "Timetables (FDA/FDR), Form E guidance, disclosure checklists, settlement prep." },
+            { icon: <ShieldCheck className="w-6 h-6" />, title: "Wills & Estate", text: "Starter packs, asset schedules, executorship basics, witness requirements." },
+            { icon: <BookOpen className="w-6 h-6" />, title: "Surrogacy", text: "Legal frameworks, parental orders, international considerations, documentation." },
           ].map((card, i) => (
             <div key={i} className="bg-card border border-border rounded-2xl p-6 shadow-sm">
               <div className="flex items-center gap-3">{card.icon}<h3 className="font-semibold text-lg">{card.title}</h3></div>
