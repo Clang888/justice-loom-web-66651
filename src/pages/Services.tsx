@@ -8,7 +8,7 @@ const Services = () => {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <h2 className="text-3xl font-bold">Services</h2>
         <p className="mt-3 text-muted-foreground max-w-2xl">
-          Plain-English pathways, worksheets, and templates to help you move forward with confidence.
+          Guides, worksheets and templates to help you navigate your way through your legal issues.
         </p>
 
         <div className="mt-8 grid md:grid-cols-3 gap-6">
