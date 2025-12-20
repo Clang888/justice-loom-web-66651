@@ -1,5 +1,6 @@
 import { Hammer, ShieldCheck, BookOpen, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import SurrogacyJourneyTracker from "@/components/SurrogacyJourneyTracker";
 
 const Services = () => {
   return (
@@ -25,6 +26,9 @@ const Services = () => {
             </div>
           ))}
         </div>
+
+        {/* Surrogacy Journey Tracker */}
+        <SurrogacyJourneyTracker />
       </div>
     </section>
   );
