@@ -1,6 +1,7 @@
 import { Hammer, ShieldCheck, BookOpen, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import SurrogacyJourneyTracker from "@/components/SurrogacyJourneyTracker";
+import FormECalculator from "@/components/FormECalculator";
 
 const Services = () => {
   return (
@@ -27,8 +28,11 @@ const Services = () => {
           ))}
         </div>
 
-        {/* Surrogacy Journey Tracker */}
-        <SurrogacyJourneyTracker />
+        {/* Tools Grid */}
+        <div className="mt-12 grid lg:grid-cols-2 gap-6">
+          <FormECalculator />
+          <SurrogacyJourneyTracker />
+        </div>
       </div>
     </section>
   );
