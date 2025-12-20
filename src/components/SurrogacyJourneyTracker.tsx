@@ -151,7 +151,7 @@ const SurrogacyJourneyTracker = () => {
   const progressPercentage = (completedStages.length / journeyStages.length) * 100;
 
   return (
-    <div className="mt-12 bg-card border border-border rounded-2xl p-6 sm:p-8 shadow-sm">
+    <div className="bg-card border border-border rounded-2xl p-6 sm:p-8 shadow-sm h-full flex flex-col">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
         <div>
           <h3 className="text-xl font-semibold flex items-center gap-2">
