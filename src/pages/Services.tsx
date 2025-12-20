@@ -13,7 +13,7 @@ const Services = () => {
         <div className="mt-8 grid md:grid-cols-3 gap-6">
           {[
             { icon: <Hammer className="w-6 h-6" />, title: "Divorce", text: "Timetables (FDA/FDR), Form E guidance, disclosure checklists, settlement prep." },
-            { icon: <ShieldCheck className="w-6 h-6" />, title: "Wills & Estate", text: "Starter packs, asset schedules, executorship basics, witness requirements." },
+            { icon: <ShieldCheck className="w-6 h-6" />, title: "Wills & Estates", text: "Starter packs, asset schedules, executorship basics, witness requirements." },
             { icon: <BookOpen className="w-6 h-6" />, title: "Surrogacy", text: "Legal frameworks, parental orders, international considerations, documentation." },
           ].map((card, i) => (
             <div key={i} className="bg-card border border-border rounded-2xl p-6 shadow-sm">
