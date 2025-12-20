@@ -29,7 +29,7 @@ const Services = () => {
         </div>
 
         {/* Tools Grid */}
-        <div className="mt-12 grid lg:grid-cols-2 gap-6">
+        <div className="mt-12 grid md:grid-cols-2 gap-6">
           <FormECalculator />
           <SurrogacyJourneyTracker />
         </div>
