@@ -27,7 +27,7 @@ const faqs = [
   },
   {
     question: "Can I pay a surrogate in HK?",
-    answer: "Commercial surrogacy is not clearly regulated in HK. Many intended parents from HK pursue surrogacy arrangements in jurisdictions where it is legally permitted and regulated. It is important to understand the legal implications in both the surrogacy jurisdiction and HK."
+    answer: "Absolutely not."
   }
 ];
 
