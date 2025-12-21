@@ -31,7 +31,8 @@ import {
   Printer,
   MessageSquare,
   Download,
-  Copy
+  Copy,
+  Check
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -565,13 +566,17 @@ const FormECalculator = () => {
             Print
           </Button>
           <Button 
-            variant="outline" 
+            variant={hasFeedbackCompleted ? "default" : "outline"}
             size="sm" 
             onClick={() => navigate("/form-e-feedback")}
-            className="flex items-center gap-2"
+            className="flex items-center gap-2 relative"
           >
-            <MessageSquare className="w-4 h-4" />
-            Feedback
+            {hasFeedbackCompleted ? (
+              <Check className="w-4 h-4" />
+            ) : (
+              <MessageSquare className="w-4 h-4" />
+            )}
+            {hasFeedbackCompleted ? "Feedback Submitted" : "Feedback"}
           </Button>
           <Button 
             variant="outline" 
