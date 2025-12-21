@@ -77,7 +77,7 @@ const Layout = ({ children }: LayoutProps) => {
       <header className="sticky top-0 z-50 bg-card/80 backdrop-blur border-b border-border">
         <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
           <Link to="/" className="flex items-center font-semibold text-lg">
-            <img src="/just-law-logo.png" alt="Just Law" className="h-16 w-auto" />
+            <img src="/just-law-logo.png" alt="Just Law" className="h-16 w-auto mix-blend-multiply dark:mix-blend-screen dark:invert" />
           </Link>
           <div className="hidden md:flex items-center gap-6 text-sm">
             <Link to="/services" className="hover:text-foreground">Services</Link>
