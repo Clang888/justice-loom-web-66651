@@ -23,6 +23,7 @@ import Admin from "./pages/Admin";
 import AITools from "./pages/AITools";
 import Assistant from "./pages/Assistant";
 import EggFreezingSurrogacy from "./pages/EggFreezingSurrogacy";
+import FormE from "./pages/FormE";
 
 const queryClient = new QueryClient();
 
@@ -51,6 +52,7 @@ const App = () => (
               <Route path="/ai-tools" element={<AITools />} />
               <Route path="/assistant" element={<Assistant />} />
               <Route path="/egg-freezing-surrogacy" element={<EggFreezingSurrogacy />} />
+              <Route path="/form-e" element={<FormE />} />
               <Route path="/auth" element={<Auth />} />
               <Route path="/admin" element={<Admin />} />
             </Routes>
