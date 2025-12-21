@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { 
   Calculator, 
@@ -29,7 +29,8 @@ import {
   PiggyBank,
   Printer,
   MessageSquare,
-  Download
+  Download,
+  Copy
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -52,6 +53,19 @@ interface Section {
 const FormECalculator = () => {
   const navigate = useNavigate();
   const [showTaxCalculator, setShowTaxCalculator] = useState(false);
+  const [showExportDropdown, setShowExportDropdown] = useState(false);
+  const exportDropdownRef = useRef<HTMLDivElement>(null);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (exportDropdownRef.current && !exportDropdownRef.current.contains(event.target as Node)) {
+        setShowExportDropdown(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
   
   // Part 2: Assets (Sections A-K) - Exactly as per Form E
   const [assetSections, setAssetSections] = useState<Section[]>([
@@ -326,7 +340,7 @@ const FormECalculator = () => {
     window.print();
   };
 
-  const handleExport = () => {
+  const generateExportData = () => {
     const rows: string[][] = [];
     rows.push(['Form E Financial Statement Export']);
     rows.push(['Generated on', new Date().toLocaleDateString()]);
@@ -379,6 +393,11 @@ const FormECalculator = () => {
     rows.push(['Total Children Expenses', '', `HK$${childrenExpenses.toLocaleString()}`]);
     rows.push(['TOTAL MONTHLY EXPENSES', '', `HK$${totalMonthlyExpenses.toLocaleString()}`]);
     
+    return rows;
+  };
+
+  const handleExportCSV = () => {
+    const rows = generateExportData();
     const csvContent = rows.map(row => row.map(cell => `"${cell}"`).join(',')).join('\n');
     const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
     const link = document.createElement('a');
@@ -386,6 +405,18 @@ const FormECalculator = () => {
     link.download = `Form-E-Export-${new Date().toISOString().split('T')[0]}.csv`;
     link.click();
     URL.revokeObjectURL(link.href);
+    setShowExportDropdown(false);
+  };
+
+  const handleCopyToClipboard = async () => {
+    const rows = generateExportData();
+    const textContent = rows.map(row => row.filter(cell => cell).join('\t')).join('\n');
+    try {
+      await navigator.clipboard.writeText(textContent);
+      setShowExportDropdown(false);
+    } catch (err) {
+      console.error('Failed to copy:', err);
+    }
   };
 
   const renderSection = (
@@ -462,15 +493,36 @@ const FormECalculator = () => {
           </p>
         </div>
         <div className="flex gap-2 print:hidden">
-          <Button 
-            variant="outline" 
-            size="sm" 
-            onClick={handleExport}
-            className="flex items-center gap-2"
-          >
-            <Download className="w-4 h-4" />
-            Export
-          </Button>
+          <div className="relative" ref={exportDropdownRef}>
+            <Button 
+              variant="outline" 
+              size="sm" 
+              onClick={() => setShowExportDropdown(!showExportDropdown)}
+              className="flex items-center gap-2"
+            >
+              <Download className="w-4 h-4" />
+              Export
+              <ChevronDown className="w-3 h-3" />
+            </Button>
+            {showExportDropdown && (
+              <div className="absolute right-0 mt-1 w-48 bg-background border border-border rounded-lg shadow-lg z-50">
+                <button
+                  onClick={handleExportCSV}
+                  className="w-full flex items-center gap-2 px-4 py-2 text-sm hover:bg-secondary/50 transition-colors rounded-t-lg"
+                >
+                  <Download className="w-4 h-4" />
+                  Export to CSV
+                </button>
+                <button
+                  onClick={handleCopyToClipboard}
+                  className="w-full flex items-center gap-2 px-4 py-2 text-sm hover:bg-secondary/50 transition-colors rounded-b-lg"
+                >
+                  <Copy className="w-4 h-4" />
+                  Copy to Clipboard
+                </button>
+              </div>
+            )}
+          </div>
           <Button 
             variant="outline" 
             size="sm" 
