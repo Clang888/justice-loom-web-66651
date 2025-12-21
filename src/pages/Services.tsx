@@ -1,7 +1,8 @@
-import { Hammer, ShieldCheck, BookOpen, ChevronRight } from "lucide-react";
+import { Hammer, ShieldCheck, BookOpen, ChevronRight, FileText, Calculator } from "lucide-react";
 import { Link } from "react-router-dom";
 import SurrogacyJourneyTracker from "@/components/SurrogacyJourneyTracker";
 import FormECalculator from "@/components/FormECalculator";
+import { Button } from "@/components/ui/button";
 
 const Services = () => {
   return (
@@ -13,19 +14,63 @@ const Services = () => {
         </p>
 
         <div className="mt-8 grid md:grid-cols-3 gap-6">
-          {[
-            { icon: <Hammer className="w-6 h-6" />, title: "Divorce", text: "Timetables (FDA/FDR), Form E guidance, disclosure checklists, settlement prep." },
-            { icon: <ShieldCheck className="w-6 h-6" />, title: "Wills & Estates", text: "Starter packs, asset schedules, executorship basics, witness requirements." },
-            { icon: <BookOpen className="w-6 h-6" />, title: "Surrogacy", text: "Legal frameworks, parental orders, international considerations, documentation." },
-          ].map((card, i) => (
-            <div key={i} className="bg-card border border-border rounded-2xl p-6 shadow-sm">
-              <div className="flex items-center gap-3">{card.icon}<h3 className="font-semibold text-lg">{card.title}</h3></div>
-              <p className="mt-3 text-sm text-muted-foreground">{card.text}</p>
-              <Link to="/contact" className="mt-4 inline-flex items-center gap-2 text-sm font-medium hover:underline">
-                Enquire <ChevronRight className="w-4 h-4" />
+          {/* Divorce Card - Enhanced with form links */}
+          <div className="bg-card border border-border rounded-2xl p-6 shadow-sm">
+            <div className="flex items-center gap-3">
+              <Hammer className="w-6 h-6" />
+              <h3 className="font-semibold text-lg">Divorce</h3>
+            </div>
+            <p className="mt-3 text-sm text-muted-foreground">
+              Timetables (FDA/FDR), Form E guidance, disclosure checklists, settlement prep.
+            </p>
+            
+            <div className="mt-4 space-y-2">
+              <Link to="/forms">
+                <Button variant="outline" size="sm" className="w-full justify-start gap-2">
+                  <FileText className="w-4 h-4" />
+                  Fillable Divorce Forms
+                </Button>
+              </Link>
+              <Link to="/forms?edit=form-e">
+                <Button variant="outline" size="sm" className="w-full justify-start gap-2">
+                  <Calculator className="w-4 h-4" />
+                  Form E (Financial Statement)
+                </Button>
               </Link>
             </div>
-          ))}
+            
+            <Link to="/contact" className="mt-4 inline-flex items-center gap-2 text-sm font-medium hover:underline">
+              Enquire <ChevronRight className="w-4 h-4" />
+            </Link>
+          </div>
+
+          {/* Wills & Estates Card */}
+          <div className="bg-card border border-border rounded-2xl p-6 shadow-sm">
+            <div className="flex items-center gap-3">
+              <ShieldCheck className="w-6 h-6" />
+              <h3 className="font-semibold text-lg">Wills & Estates</h3>
+            </div>
+            <p className="mt-3 text-sm text-muted-foreground">
+              Starter packs, asset schedules, executorship basics, witness requirements.
+            </p>
+            <Link to="/contact" className="mt-4 inline-flex items-center gap-2 text-sm font-medium hover:underline">
+              Enquire <ChevronRight className="w-4 h-4" />
+            </Link>
+          </div>
+
+          {/* Surrogacy Card */}
+          <div className="bg-card border border-border rounded-2xl p-6 shadow-sm">
+            <div className="flex items-center gap-3">
+              <BookOpen className="w-6 h-6" />
+              <h3 className="font-semibold text-lg">Surrogacy</h3>
+            </div>
+            <p className="mt-3 text-sm text-muted-foreground">
+              Legal frameworks, parental orders, international considerations, documentation.
+            </p>
+            <Link to="/contact" className="mt-4 inline-flex items-center gap-2 text-sm font-medium hover:underline">
+              Enquire <ChevronRight className="w-4 h-4" />
+            </Link>
+          </div>
         </div>
 
         {/* Tools Grid */}
