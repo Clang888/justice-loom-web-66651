@@ -139,9 +139,11 @@ const Layout = ({ children }: LayoutProps) => {
             <div>
               <h4 className="font-semibold mb-3 text-sm">Resources</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><Link to="/services" className="hover:underline">Services</Link></li>
-                <li><Link to="/briefcase" className="hover:underline">Briefcase</Link></li>
-                <li><Link to="/books" className="hover:underline">Books & Guides</Link></li>
+                <li><Link to="/services" className="hover:underline">Divorce & Wills</Link></li>
+                <li><Link to="/egg-freezing-surrogacy" className="hover:underline">Surrogacy & Egg Freezing</Link></li>
+                <li><Link to="/books" className="hover:underline">Books & Public Speaking</Link></li>
+                <li><Link to="/testimonials" className="hover:underline">Testimonials</Link></li>
+                <li><Link to="/community" className="hover:underline">Community</Link></li>
               </ul>
             </div>
             <div>
