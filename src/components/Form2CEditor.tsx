@@ -155,6 +155,14 @@ const Form2CEditor = ({ onClose }: Form2CEditorProps) => {
   if (isLoading) {
     return (
       <div className="fixed inset-0 bg-background/95 z-50 flex items-center justify-center">
+        <Button 
+          variant="ghost" 
+          size="icon" 
+          onClick={onClose}
+          className="absolute top-4 left-4"
+        >
+          <X className="h-5 w-5" />
+        </Button>
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto"></div>
           <p className="mt-4 text-muted-foreground">Loading form editor...</p>
