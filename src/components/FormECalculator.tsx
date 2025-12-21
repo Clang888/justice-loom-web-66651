@@ -169,7 +169,7 @@ const FormECalculator = () => {
         { id: "mortgages", label: "Mortgages (not already deducted from property values)", value: 0, icon: <Home className="w-4 h-4" /> },
         { id: "bankLoans", label: "Bank Loans", value: 0, icon: <CreditCard className="w-4 h-4" /> },
         { id: "creditCards", label: "Credit Card Balances", value: 0, icon: <CreditCard className="w-4 h-4" /> },
-        { id: "hirePurchase", label: "Hire Purchase", value: 0, icon: <Car className="w-4 h-4" /> },
+        { id: "hirePurchase", label: "Lease-to-Own / Rent-to-Own / Deferred Payment Plan", value: 0, icon: <Car className="w-4 h-4" /> },
         { id: "taxOwed", label: "Tax Owed", value: 0, icon: <Receipt className="w-4 h-4" /> },
         { id: "otherLiabilities", label: "Other Liabilities", value: 0, icon: <Minus className="w-4 h-4" /> },
       ]
