@@ -121,7 +121,6 @@ const journeyStages: JourneyStage[] = [
     description: "Beginning your new life as a family and maintaining positive relationships.",
     details: [
       "Settle into life with your new baby",
-      "Consider ongoing relationship with surrogate",
       "Plan for future conversations about surrogacy",
       "Connect with other families via surrogacy",
       "Keep records and mementos of the journey",
