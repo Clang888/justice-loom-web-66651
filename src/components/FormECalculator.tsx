@@ -696,7 +696,7 @@ const FormECalculator = () => {
 
       <div className="mt-4 p-4 bg-primary/5 rounded-xl border border-primary/10 flex-shrink-0">
         <p className="text-sm text-muted-foreground">
-          <strong className="text-foreground">Disclaimer:</strong> This calculator follows the official Form E structure. The actual Form E requires complete financial disclosure with supporting documents. Seek professional legal and financial advice.
+          <strong className="text-foreground">Disclaimer:</strong> This Form E Calculator is for guidance purposes only and is not a "Court ready" form for filing. The actual Form E requires complete financial disclosure with supporting documents. Seek professional legal and financial advice before submitting any court documents.
         </p>
       </div>
 
