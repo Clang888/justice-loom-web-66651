@@ -34,7 +34,7 @@ const journeyStages: JourneyStage[] = [
       "Consult with a fertility specialist",
       "Understand legal requirements depending on where the surrogate is located, where the child is to be born, and where the child is to be raised",
       "Consider counselling to prepare emotionally",
-      "Decide between gestational or traditional surrogacy",
+      "Understand the difference between gestational and traditional surrogacy",
       "Choose between agency-assisted or independent surrogacy"
     ],
     icon: <Heart className="w-5 h-5" />
