@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { FileText, Download, ExternalLink, ChevronDown, ChevronRight, Loader2, Edit } from "lucide-react";
+import { FileText, Download, ChevronDown, ChevronRight, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
@@ -10,17 +10,16 @@ interface LegalForm {
   form_number: string | null;
   category: string;
   description: string | null;
-  pdf_file_path: string;
+  pdf_file_path: string; // Can be .docx or .pdf
   keywords: string[] | null;
   common_scenarios: string[] | null;
 }
 
 interface FormsLibraryProps {
   onFormSelect?: (form: LegalForm) => void;
-  onEditForm?: (form: LegalForm) => void;
 }
 
-const FormsLibrary = ({ onFormSelect, onEditForm }: FormsLibraryProps) => {
+const FormsLibrary = ({ onFormSelect }: FormsLibraryProps) => {
   const [forms, setForms] = useState<LegalForm[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [expandedCategories, setExpandedCategories] = useState<Set<string>>(new Set(["Family Law"]));
@@ -75,17 +74,24 @@ const FormsLibrary = ({ onFormSelect, onEditForm }: FormsLibraryProps) => {
       if (error) throw error;
 
       if (data?.signedUrl) {
-        window.open(data.signedUrl, "_blank");
+        // Create a download link
+        const link = document.createElement('a');
+        link.href = data.signedUrl;
+        link.download = `${form.form_name}${form.form_number ? ` - ${form.form_number}` : ''}.docx`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        
         toast({
-          title: "Opening form",
-          description: `${form.form_name} is opening in a new tab.`,
+          title: "Downloading form",
+          description: `${form.form_name} is being downloaded.`,
         });
       }
     } catch (error) {
       console.error("Error accessing form:", error);
       toast({
         title: "Error",
-        description: "Failed to access the form. Please try again.",
+        description: "Failed to download the form. Please try again.",
         variant: "destructive",
       });
     }
@@ -179,24 +185,12 @@ const FormsLibrary = ({ onFormSelect, onEditForm }: FormsLibraryProps) => {
                         size="sm"
                         onClick={(e) => {
                           e.stopPropagation();
-                          onEditForm?.(form);
-                        }}
-                        className="text-xs"
-                      >
-                        <Edit className="w-3 h-3 mr-1" />
-                        Edit in Browser
-                      </Button>
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        onClick={(e) => {
-                          e.stopPropagation();
                           handleDownload(form);
                         }}
                         className="text-xs"
                       >
-                        <ExternalLink className="w-3 h-3 mr-1" />
-                        View PDF
+                        <Download className="w-3 h-3 mr-1" />
+                        Download
                       </Button>
                     </div>
                   </div>
@@ -217,16 +211,10 @@ const FormsLibrary = ({ onFormSelect, onEditForm }: FormsLibraryProps) => {
                 <span className="text-sm text-muted-foreground">{selectedForm.form_number}</span>
               )}
             </div>
-            <div className="flex items-center gap-2">
-              <Button onClick={() => onEditForm?.(selectedForm)}>
-                <Edit className="w-4 h-4 mr-2" />
-                Edit in Browser
-              </Button>
-              <Button variant="outline" onClick={() => handleDownload(selectedForm)}>
-                <Download className="w-4 h-4 mr-2" />
-                Download PDF
-              </Button>
-            </div>
+            <Button onClick={() => handleDownload(selectedForm)}>
+              <Download className="w-4 h-4 mr-2" />
+              Download Form
+            </Button>
           </div>
           
           {selectedForm.description && (
