@@ -32,7 +32,7 @@ const journeyStages: JourneyStage[] = [
     details: [
       "Research surrogacy laws in your jurisdiction",
       "Consult with a fertility specialist",
-      "Meet with a surrogacy lawyer to understand legal requirements",
+      "Understand legal requirements depending on where the surrogate is located, where the child is to be born, and where the child is to be raised",
       "Consider counselling to prepare emotionally",
       "Decide between gestational or traditional surrogacy",
       "Choose between agency-assisted or independent surrogacy"
