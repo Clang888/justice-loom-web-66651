@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ShieldCheck, Globe, Briefcase, MessageSquare, Zap, BookOpen, Hammer, ChevronRight } from "lucide-react";
+import { ShieldCheck, Globe, Briefcase, MessageSquare, BookOpen, Hammer, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Index = () => {
@@ -89,40 +89,13 @@ const Index = () => {
                 </div>
               </div>
 
-              <div className="mb-6">
-                <span className="inline-block px-3 py-1 bg-primary/10 text-primary text-xs font-semibold rounded-full mb-4">
-                  <Zap className="w-3 h-3 inline mr-1" />
-                  Fast & Transactional
-                </span>
-                <p className="text-muted-foreground mb-4">
-                  Describe your form or issue, get instant recommendations, fill PDFs in-browser, and download finalised documents.
-                </p>
-              </div>
-
-              <div className="mb-6">
-                <h4 className="font-semibold mb-3 flex items-center gap-2 text-sm">
-                  <BookOpen className="w-4 h-4" />
-                  Use Cases:
-                </h4>
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary mt-0.5">•</span>
-                    <span>"I need Form 3A" → retrieves the form directly</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary mt-0.5">•</span>
-                    <span>"I need a divorce petition form" → finds and suggests Form 3A</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary mt-0.5">•</span>
-                    <span>"What form do I need to change my company name?" → recommends the correct form</span>
-                  </li>
-                </ul>
-              </div>
+              <p className="text-muted-foreground mb-6">
+                Describe your issue. If it is the Hong Kong Family Court Form E that you need help with, then sign up to be one of our beta testers and try out Form E here. This helps us to complete the development of the other forms that are required in legal matters in Hong Kong.
+              </p>
 
               <Link to="/briefcase">
                 <Button className="w-full" size="lg">
-                  Open Briefcase
+                  Try Form E Beta
                 </Button>
               </Link>
             </div>
