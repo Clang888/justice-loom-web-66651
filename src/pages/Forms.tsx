@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { FileText, ArrowLeft, MessageSquare } from "lucide-react";
+import { FileText, ArrowLeft } from "lucide-react";
 import FormsLibrary from "@/components/FormsLibrary";
 import PDFEditor from "@/components/PDFEditor";
 import { supabase } from "@/integrations/supabase/client";
@@ -76,23 +76,9 @@ const Forms = () => {
           </div>
 
           {/* Quick Actions */}
-          <div className="grid md:grid-cols-2 gap-4 mb-8">
-            <Link to="/briefcase">
-              <div className="p-4 bg-card border border-border rounded-lg hover:border-primary/50 transition-colors cursor-pointer">
-                <div className="flex items-center gap-3">
-                  <div className="p-2 bg-primary/10 rounded-lg">
-                    <MessageSquare className="w-5 h-5 text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="font-medium">Not sure which form you need?</h3>
-                    <p className="text-sm text-muted-foreground">Chat with our AI assistant to find the right form</p>
-                  </div>
-                </div>
-              </div>
-            </Link>
-            
+          <div className="mb-8">
             <Link to="/ai-tools">
-              <div className="p-4 bg-card border border-border rounded-lg hover:border-primary/50 transition-colors cursor-pointer">
+              <div className="p-4 bg-card border border-border rounded-lg hover:border-primary/50 transition-colors cursor-pointer max-w-md">
                 <div className="flex items-center gap-3">
                   <div className="p-2 bg-green-500/10 rounded-lg">
                     <FileText className="w-5 h-5 text-green-600" />
