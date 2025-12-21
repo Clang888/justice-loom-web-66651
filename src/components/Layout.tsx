@@ -75,11 +75,11 @@ const Layout = ({ children }: LayoutProps) => {
     <div className="min-h-screen bg-background text-foreground">
       {/* NAV */}
       <header className="sticky top-0 z-50 bg-card/80 backdrop-blur border-b border-border">
-        <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+        <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center h-16">
           <Link to="/" className="flex items-center font-semibold text-lg">
             <img src="/just-law-logo.jpg" alt="Just Law" className="h-16 w-auto" />
           </Link>
-          <div className="hidden md:flex items-center gap-6 text-sm">
+          <div className="hidden md:flex items-center justify-center gap-6 text-sm flex-1">
             <Link to="/services" className="hover:text-foreground">Divorce & Wills</Link>
             <Link to="/egg-freezing-surrogacy" className="hover:text-foreground">Surrogacy & Egg Freezing</Link>
             
