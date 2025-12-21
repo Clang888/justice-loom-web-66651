@@ -59,6 +59,9 @@ const FormEFeedback = () => {
 
       if (error) throw error;
 
+      // Store feedback completion status in localStorage
+      localStorage.setItem('formE_feedback_completed', 'true');
+      
       setSubmitted(true);
       toast.success("Thank you for your feedback!");
     } catch (error) {
