@@ -107,7 +107,7 @@ const journeyStages: JourneyStage[] = [
     details: [
       "Be present for the birth (if agreed)",
       "Obtain birth certificate documentation",
-      "Apply for Parental Order (UK) within 6 months",
+      "Apply for Parental Order (HK) within 6 months",
       "Complete any required court hearings",
       "Finalise passport and citizenship matters",
       "Address any international legal requirements"
