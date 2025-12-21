@@ -56,7 +56,7 @@ const journeyStages: JourneyStage[] = [
   },
   {
     id: 3,
-    title: "Legal Agreements",
+    title: "Legal Agreements and Expenses",
     duration: "1-2 months",
     description: "Establishing comprehensive legal contracts to protect all parties involved.",
     details: [
