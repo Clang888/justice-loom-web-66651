@@ -6,7 +6,7 @@ import { Download, Loader2, ChevronLeft, ChevronRight, ZoomIn, ZoomOut, X } from
 import { useToast } from "@/hooks/use-toast";
 
 // Set up PDF.js worker
-pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.0.379/pdf.worker.min.js`;
+pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js`;
 
 interface FormField {
   name: string;
