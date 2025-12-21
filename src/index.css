@@ -6,32 +6,32 @@
 
 @layer base {
   :root {
-    --background: 45 30% 98%;
-    --foreground: 200 35% 20%;
-    --card: 45 40% 99%;
-    --card-foreground: 200 35% 20%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 200 35% 20%;
-    --primary: 200 45% 30%;
-    --primary-foreground: 45 30% 98%;
-    --secondary: 45 25% 94%;
-    --secondary-foreground: 200 35% 20%;
-    --muted: 45 20% 92%;
-    --muted-foreground: 200 20% 45%;
-    --accent: 35 80% 55%;
-    --accent-foreground: 200 35% 15%;
+    --background: 140 30% 97%;
+    --foreground: 160 35% 18%;
+    --card: 140 35% 99%;
+    --card-foreground: 160 35% 18%;
+    --popover: 140 30% 99%;
+    --popover-foreground: 160 35% 18%;
+    --primary: 160 40% 28%;
+    --primary-foreground: 140 30% 97%;
+    --secondary: 140 25% 93%;
+    --secondary-foreground: 160 35% 18%;
+    --muted: 140 20% 90%;
+    --muted-foreground: 160 20% 40%;
+    --accent: 45 75% 50%;
+    --accent-foreground: 160 35% 15%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
-    --border: 45 20% 88%;
-    --input: 45 20% 88%;
-    --ring: 200 45% 30%;
+    --border: 140 20% 86%;
+    --input: 140 20% 86%;
+    --ring: 160 40% 28%;
     --radius: 0.75rem;
     
     /* Custom colors */
-    --warm-cream: 45 40% 96%;
-    --warm-gold: 35 80% 55%;
-    --deep-teal: 200 45% 30%;
-    --soft-teal: 200 35% 45%;
+    --soft-mint: 140 35% 95%;
+    --warm-gold: 45 75% 50%;
+    --deep-green: 160 40% 28%;
+    --soft-green: 155 30% 45%;
   }
 }
 
@@ -50,15 +50,15 @@
 
 @layer components {
   .gradient-warm {
-    background: linear-gradient(135deg, hsl(45 40% 98%) 0%, hsl(45 30% 94%) 100%);
+    background: linear-gradient(135deg, hsl(140 35% 97%) 0%, hsl(140 30% 93%) 100%);
   }
   
   .gradient-hero {
-    background: linear-gradient(180deg, hsl(45 40% 98%) 0%, hsl(45 25% 92%) 50%, hsl(200 30% 95%) 100%);
+    background: linear-gradient(180deg, hsl(140 35% 97%) 0%, hsl(145 28% 92%) 50%, hsl(150 25% 94%) 100%);
   }
   
   .gradient-accent {
-    background: linear-gradient(135deg, hsl(200 45% 30%) 0%, hsl(200 40% 40%) 100%);
+    background: linear-gradient(135deg, hsl(160 40% 28%) 0%, hsl(155 35% 38%) 100%);
   }
   
   .card-elevated {
@@ -66,7 +66,7 @@
   }
   
   .text-gradient {
-    background: linear-gradient(135deg, hsl(200 45% 30%) 0%, hsl(200 35% 45%) 100%);
+    background: linear-gradient(135deg, hsl(160 40% 28%) 0%, hsl(155 30% 45%) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
