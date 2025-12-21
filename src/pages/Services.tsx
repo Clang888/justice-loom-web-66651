@@ -1,9 +1,12 @@
-import { Hammer, ShieldCheck, ChevronRight, FileText, Calculator } from "lucide-react";
+import { Hammer, ShieldCheck, ChevronRight, FileText, Calculator, FlaskConical } from "lucide-react";
 import { Link } from "react-router-dom";
-import FormECalculator from "@/components/FormECalculator";
 import { Button } from "@/components/ui/button";
+import { useState } from "react";
+import FormECalculator from "@/components/FormECalculator";
 
 const Services = () => {
+  const [showCalculator, setShowCalculator] = useState(false);
+
   return (
     <section className="py-16 bg-secondary">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -36,6 +39,15 @@ const Services = () => {
                   Form E (Financial Statement)
                 </Button>
               </Link>
+              <Button 
+                variant="outline" 
+                size="sm" 
+                className="w-full justify-start gap-2"
+                onClick={() => setShowCalculator(!showCalculator)}
+              >
+                <FlaskConical className="w-4 h-4" />
+                Beta Testing Form E Calculator
+              </Button>
             </div>
             
             <Link to="/contact" className="mt-4 inline-flex items-center gap-2 text-sm font-medium hover:underline">
@@ -58,10 +70,12 @@ const Services = () => {
           </div>
         </div>
 
-        {/* Tools Grid */}
-        <div className="mt-12">
-          <FormECalculator />
-        </div>
+        {/* Form E Calculator - shown when toggled */}
+        {showCalculator && (
+          <div className="mt-8">
+            <FormECalculator />
+          </div>
+        )}
       </div>
     </section>
   );
