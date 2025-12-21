@@ -17,7 +17,7 @@ const Index = () => {
               Navigate the legal system with confidence
             </p>
             <p className="mt-5 text-base text-muted-foreground max-w-xl">
-              Our mission: make justice easy to find, easy to understand, and easy to use.
+              Our mission: to make justice easy to find, easy to understand, and easy to use.
             </p>
             <div className="mt-6 flex items-center gap-6 text-sm text-muted-foreground">
               <div className="flex items-center gap-2"><Globe className="w-4 h-4 text-blue-500" /> Common-law focus: Hong Kong, United States, England & Wales, Republic of Ireland.</div>
