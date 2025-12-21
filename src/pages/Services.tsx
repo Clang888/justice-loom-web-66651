@@ -134,7 +134,7 @@ const Services = () => {
               </div>
 
               <p className="text-sm text-muted-foreground mb-4">
-                Enter your email to access our beta Form E Calculator. We'll keep you updated on new features and improvements.
+                Enter your email to access our beta Form E Calculator. We'll keep you updated on new features and improvements. Your participation and feedback is important to us.
               </p>
 
               <form onSubmit={handleEmailSubmit} className="space-y-4">
