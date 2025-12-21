@@ -14,8 +14,8 @@ const faqs = [
     answer: "Surrogacy is highly regulated in Hong Kong by the Human Reproductive Technology Ordinance (HRTO) and the Parent and Child Ordinance (PCO). Many HK residents pursue surrogacy arrangements abroad."
   },
   {
-    question: "What is a parental order and when do I need one?",
-    answer: "A parental order transfers legal parenthood from the surrogate (and her partner, if applicable) to the intended parents. The requirements vary depending on where the surrogacy takes place and where you intend to raise the child."
+    question: "What is a Parental Order and when do I need one?",
+    answer: "A Parental Order transfers legal parenthood from the surrogate (and her partner, if applicable) to the intended parents. The requirements vary depending on where the surrogacy takes place and where you intend to raise the child."
   },
   {
     question: "Can I use a surrogate abroad and bring the child back to HK?",
