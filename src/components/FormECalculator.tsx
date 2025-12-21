@@ -387,7 +387,7 @@ const FormECalculator = () => {
   );
 
   return (
-    <div className="bg-card border border-border rounded-2xl p-4 sm:p-6 shadow-sm h-full flex flex-col max-h-[80vh] overflow-hidden">
+    <div className="print-form-e bg-card border border-border rounded-2xl p-4 sm:p-6 shadow-sm h-full flex flex-col max-h-[80vh] overflow-hidden">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
         <div>
           <h3 className="text-xl font-semibold flex items-center gap-2">

@@ -38,37 +38,62 @@
 
 /* Print styles for Form E Calculator */
 @media print {
+  /* Hide everything first */
+  body * {
+    visibility: hidden;
+  }
+  
+  /* Reset body styles */
   body {
     background: white !important;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
+    margin: 0;
+    padding: 0;
   }
   
-  /* Hide navigation and other elements */
-  nav, header, footer, .print\\:hidden {
+  /* Show only the Form E Calculator and its contents */
+  .print-form-e,
+  .print-form-e * {
+    visibility: visible;
+  }
+  
+  .print-form-e {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    max-height: none !important;
+    overflow: visible !important;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    padding: 20px !important;
+  }
+  
+  /* Hide print buttons */
+  .print\\:hidden {
     display: none !important;
   }
   
-  /* Make the calculator full width */
-  .max-h-\\[80vh\\] {
+  /* Expand all sections */
+  .print-form-e [class*="overflow-auto"] {
+    overflow: visible !important;
     max-height: none !important;
-    overflow: visible !important;
-  }
-  
-  /* Expand all sections for printing */
-  [class*="overflow-auto"] {
-    overflow: visible !important;
   }
   
   /* Page breaks */
-  .space-y-6 > div {
+  .print-form-e .space-y-6 > div {
     page-break-inside: avoid;
   }
   
-  /* Better spacing */
-  .rounded-2xl {
-    border-radius: 0 !important;
-    box-shadow: none !important;
-    border: 1px solid #ddd !important;
+  /* Better typography for print */
+  .print-form-e h3,
+  .print-form-e h4 {
+    font-size: 14pt !important;
+  }
+  
+  .print-form-e {
+    font-size: 10pt;
   }
 }
