@@ -15,7 +15,7 @@ const Index = () => {
               Your Guide to <span className="text-gradient">Self-Representation</span>
             </h1>
             <p className="mt-4 text-xl sm:text-2xl text-muted-foreground font-medium">
-              Navigate the legal system with confidence
+              Navigate Legal Systems with Confidence
             </p>
             <p className="mt-6 text-base text-muted-foreground max-w-xl leading-relaxed">
               Our mission: to make justice easy to find, easy to understand, and easy to use.
