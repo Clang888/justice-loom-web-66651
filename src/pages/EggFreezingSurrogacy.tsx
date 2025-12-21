@@ -19,7 +19,7 @@ const faqs = [
   },
   {
     question: "Can I use a surrogate abroad and bring the child back to HK?",
-    answer: "Yes, but this involves complex legal considerations. The child may not automatically have HK residency rights, and you will need to navigate both the laws of the country where the surrogacy takes place and HK immigration and family law. Early legal advice is essential."
+    answer: "Yes, but although the 'intended parents' on a child's birth certificate abroad are the 'legal parents' this does not have any legal weight in Hong Kong. The intended parents must apply for a Parental Order to be recognised as the legal parents of a surrogate baby born abroad."
   },
   {
     question: "Do I need my partner's consent to use my frozen eggs?",
