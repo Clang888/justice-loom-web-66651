@@ -278,7 +278,7 @@ const SurrogacyJourneyTracker = () => {
 
       <div className="mt-8 p-4 bg-primary/5 rounded-xl border border-primary/10">
         <p className="text-sm text-muted-foreground">
-          <strong className="text-foreground">Note:</strong> Timelines vary based on jurisdiction, individual circumstances, and whether you're pursuing domestic or international surrogacy. This tracker is for educational purposes—consult with legal and medical professionals for personalised guidance.
+          <strong className="text-foreground">Note:</strong> Timelines vary based on jurisdiction, individual circumstances, and whether you're pursuing domestic or international surrogacy. This tracker is for educational purposes. Consult with relevant professionals for personalised guidance.
         </p>
       </div>
     </div>
