@@ -18,12 +18,6 @@ const divorceCategories = [
     forms: [] as FormItem[],
   },
   {
-    id: "children",
-    title: "Children",
-    icon: Users,
-    forms: [] as FormItem[],
-  },
-  {
     id: "financial",
     title: "Financial",
     icon: Wallet,
@@ -34,6 +28,12 @@ const divorceCategories = [
         description: "Joint application for divorce based on two years' separation",
       },
     ] as FormItem[],
+  },
+  {
+    id: "children",
+    title: "Children",
+    icon: Users,
+    forms: [] as FormItem[],
   },
 ];
 
@@ -61,7 +61,7 @@ const DivorceForms = () => {
           Select a category to view available forms. Click on any form to fill it out online.
         </p>
 
-        <div className="mt-8 grid md:grid-cols-3 gap-6">
+        <div className="mt-8 grid grid-cols-1 max-w-2xl gap-6">
           {divorceCategories.map((category) => (
             <div
               key={category.id}
