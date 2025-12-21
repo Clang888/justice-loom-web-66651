@@ -85,12 +85,12 @@ const Index = () => {
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold">Briefcase</h3>
-                  <p className="text-sm text-muted-foreground">Find It Fill It Download It</p>
+                  <p className="text-sm text-muted-foreground">Describe It, Fill It, Download It</p>
                 </div>
               </div>
 
               <p className="text-muted-foreground mb-6">
-                Describe your issue. If it is the Hong Kong Family Court Form E that you need help with, then sign up to be one of our beta testers and try out Form E here. This helps us to complete the development of the other forms that are required in legal matters in Hong Kong.
+                Tell us your issue, and we will provide the relevant court form based on your information. Some forms are ready to download. The Hong Kong Form E is in Beta Testing and is free for you to try. The remainder of the forms are in development and will be ready in Q1 of 2026.
               </p>
 
               <Link to="/briefcase">
