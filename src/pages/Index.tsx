@@ -16,7 +16,7 @@ const Index = () => {
             <p className="mt-3 text-xl sm:text-2xl text-muted-foreground font-medium">
               Navigate the legal system with confidence
             </p>
-            <p className="mt-5 text-lg text-muted-foreground max-w-xl">
+            <p className="mt-5 text-base text-muted-foreground max-w-xl">
               Our mission: make justice easy to find, easy to understand, and easy to use.
             </p>
             <div className="mt-6 flex items-center gap-6 text-sm text-muted-foreground">
