@@ -85,7 +85,7 @@ const Index = () => {
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold">Briefcase</h3>
-                  <p className="text-sm text-muted-foreground">Quick Legal Form Discovery</p>
+                  <p className="text-sm text-muted-foreground">Find It Fill It Download It</p>
                 </div>
               </div>
 
@@ -95,9 +95,7 @@ const Index = () => {
                   Fast & Transactional
                 </span>
                 <p className="text-muted-foreground mb-4">
-                  Briefcase helps Hong Kong residents quickly find and access legal forms. 
-                  Users can describe what form they need or describe their problem to get instant form recommendations. 
-                  Users can then fill the PDFs directly in their browser and download completed documents.
+                  Describe your form or issue, get instant recommendations, fill PDFs in-browser, and download finalised documents.
                 </p>
               </div>
 
