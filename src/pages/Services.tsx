@@ -74,9 +74,6 @@ const Services = () => {
               <Scale className="w-6 h-6" />
               <h3 className="font-semibold text-lg">Divorce</h3>
             </div>
-            <p className="mt-3 text-sm text-muted-foreground">
-              Timetables (FDA/FDR), Form E guidance, disclosure checklists, settlement prep.
-            </p>
             
             <div className="mt-4 space-y-2">
               <Link to="/divorce-forms">
