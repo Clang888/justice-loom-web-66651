@@ -24,34 +24,39 @@ const Form2CEditor = ({ onClose }: Form2CEditorProps) => {
 
     setFabricCanvas(canvas);
 
-    // Load the form image as background
-    FabricImage.fromURL("/forms/form-2c.png", { crossOrigin: "anonymous" })
-      .then((img) => {
-        const containerWidth = containerRef.current?.clientWidth || 800;
-        const imgWidth = img.width || 800;
-        const imgHeight = img.height || 1000;
-        
-        // Scale to fit container width
-        const scaleFactor = Math.min(containerWidth / imgWidth, 1);
-        
-        canvas.setWidth(imgWidth * scaleFactor);
-        canvas.setHeight(imgHeight * scaleFactor);
-        
-        img.scaleToWidth(imgWidth * scaleFactor);
-        
-        // Set as background
-        canvas.backgroundImage = img;
-        canvas.renderAll();
-        
-        setScale(scaleFactor);
-        setIsLoading(false);
-        toast.success("Form loaded! Click anywhere to add text.");
-      })
-      .catch((err) => {
-        console.error("Error loading form image:", err);
-        toast.error("Failed to load form image");
-        setIsLoading(false);
-      });
+    // Load the form image as background using HTMLImageElement
+    const img = new Image();
+    img.crossOrigin = "anonymous";
+    img.onload = () => {
+      const fabricImg = new FabricImage(img);
+      const containerWidth = containerRef.current?.clientWidth || 800;
+      const imgWidth = fabricImg.width || 800;
+      const imgHeight = fabricImg.height || 1000;
+      
+      // Scale to fit container width
+      const scaleFactor = Math.min(containerWidth / imgWidth, 1);
+      
+      canvas.setWidth(imgWidth * scaleFactor);
+      canvas.setHeight(imgHeight * scaleFactor);
+      
+      fabricImg.scaleToWidth(imgWidth * scaleFactor);
+      
+      // Set as background
+      canvas.backgroundImage = fabricImg;
+      canvas.renderAll();
+      
+      setScale(scaleFactor);
+      setIsLoading(false);
+      toast.success("Form loaded! Click anywhere to add text.");
+    };
+    
+    img.onerror = (err) => {
+      console.error("Error loading form image:", err);
+      toast.error("Failed to load form image");
+      setIsLoading(false);
+    };
+    
+    img.src = "/forms/form-2c.png";
 
     return () => {
       canvas.dispose();
