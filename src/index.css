@@ -96,4 +96,42 @@
   .print-form-e {
     font-size: 10pt;
   }
+
+  /* Fix expenses summary overlap */
+  .print-form-e .space-y-2 {
+    margin-bottom: 8px !important;
+  }
+
+  .print-form-e .space-y-2 > div {
+    margin-bottom: 4px !important;
+    page-break-inside: avoid;
+  }
+
+  /* Ensure summary boxes don't overlap */
+  .print-form-e [class*="bg-amber-50"],
+  .print-form-e [class*="bg-green-50"],
+  .print-form-e [class*="bg-red-50"],
+  .print-form-e [class*="bg-primary"] {
+    page-break-inside: avoid;
+    margin-top: 16px !important;
+    padding: 12px !important;
+  }
+
+  /* Keep disclaimer separate */
+  .print-form-e > div:last-of-type {
+    page-break-before: auto;
+    margin-top: 24px !important;
+  }
+
+  /* Ensure flex items don't overlap */
+  .print-form-e .flex.justify-between {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    gap: 8px !important;
+  }
+
+  /* Sticky headers should not be sticky in print */
+  .print-form-e .sticky {
+    position: static !important;
+  }
 }
