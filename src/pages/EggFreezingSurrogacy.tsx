@@ -6,28 +6,28 @@ import { useState } from "react";
 
 const faqs = [
   {
-    question: "How long can I store my frozen eggs in the UK?",
-    answer: "Under UK law, eggs can be stored for up to 55 years, following the Human Fertilisation and Embryology (Statutory Storage Period for Embryos and Gametes) Regulations 2022. However, you must renew your consent every 10 years to continue storage."
+    question: "How long can I store my frozen eggs in HK?",
+    answer: "Under HK law, eggs can be stored for up to 10 years, with extensions possible under certain circumstances. You should check with your fertility clinic about specific storage policies and renewal requirements."
   },
   {
-    question: "Is surrogacy legal in the UK?",
-    answer: "Yes, surrogacy is legal in the UK, but surrogacy contracts are not legally enforceable. The surrogate is the legal mother at birth, even if she is not genetically related to the child. Intended parents must apply for a parental order after the birth to become the legal parents."
+    question: "Is surrogacy legal in HK?",
+    answer: "Surrogacy arrangements are not regulated by specific legislation in Hong Kong. Commercial surrogacy is generally discouraged, and there are no legal frameworks for surrogacy contracts. Many HK residents pursue surrogacy arrangements abroad."
   },
   {
     question: "What is a parental order and when do I need one?",
-    answer: "A parental order transfers legal parenthood from the surrogate (and her partner, if applicable) to the intended parents. You must apply within 6 months of the child's birth, and at least one intended parent must be genetically related to the child."
+    answer: "A parental order transfers legal parenthood from the surrogate (and her partner, if applicable) to the intended parents. The requirements vary depending on where the surrogacy takes place and where you intend to raise the child."
   },
   {
-    question: "Can I use a surrogate abroad and bring the child back to the UK?",
-    answer: "Yes, but this involves complex legal considerations. The child may not automatically have British citizenship, and you will need to navigate both the laws of the country where the surrogacy takes place and UK immigration and family law. Early legal advice is essential."
+    question: "Can I use a surrogate abroad and bring the child back to HK?",
+    answer: "Yes, but this involves complex legal considerations. The child may not automatically have HK residency rights, and you will need to navigate both the laws of the country where the surrogacy takes place and HK immigration and family law. Early legal advice is essential."
   },
   {
     question: "Do I need my partner's consent to use my frozen eggs?",
     answer: "If you froze your eggs alone, you do not need your partner's consent to use them. However, if embryos were created with a partner's sperm, both parties must consent to their use. Consent can be withdrawn at any time before the embryos are used."
   },
   {
-    question: "Can I pay a surrogate in the UK?",
-    answer: "Commercial surrogacy is not permitted in the UK. However, you can pay the surrogate's reasonable expenses, which typically include maternity clothing, travel costs, loss of earnings, and other pregnancy-related expenses. Courts scrutinise payments when granting parental orders."
+    question: "Can I pay a surrogate in HK?",
+    answer: "Commercial surrogacy is not clearly regulated in HK. Many intended parents from HK pursue surrogacy arrangements in jurisdictions where it is legally permitted and regulated. It is important to understand the legal implications in both the surrogacy jurisdiction and HK."
   }
 ];
 
