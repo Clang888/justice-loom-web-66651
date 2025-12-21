@@ -11,7 +11,7 @@ const Index = () => {
           <div>
             <p className="inline-block rounded-full bg-primary text-primary-foreground text-xs font-medium px-3 py-1 mb-4">Access to Justice</p>
             <h1 className="text-4xl sm:text-5xl font-extrabold leading-tight">
-              Guiding you through legal self-representation.
+              Your guide to self-representation
             </h1>
             <p className="mt-3 text-xl sm:text-2xl text-muted-foreground font-medium">
               Navigate the legal system with confidence
