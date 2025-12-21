@@ -12,7 +12,7 @@ const Index = () => {
           <div className="animate-fade-in">
             <p className="inline-block rounded-full bg-gradient-accent text-primary-foreground text-sm font-semibold px-5 py-2 mb-6 shadow-warm">Just Law</p>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight font-serif">
-              Your guide to <span className="text-gradient">self-representation</span>
+              Your Guide to <span className="text-gradient">Self-Representation</span>
             </h1>
             <p className="mt-4 text-xl sm:text-2xl text-muted-foreground font-medium">
               Navigate the legal system with confidence
