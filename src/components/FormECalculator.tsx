@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 import { 
   Calculator, 
   Home, 
@@ -54,7 +55,16 @@ const FormECalculator = () => {
   const navigate = useNavigate();
   const [showTaxCalculator, setShowTaxCalculator] = useState(false);
   const [showExportDropdown, setShowExportDropdown] = useState(false);
+  const [hasFeedbackCompleted, setHasFeedbackCompleted] = useState(false);
   const exportDropdownRef = useRef<HTMLDivElement>(null);
+
+  // Check if user has completed feedback (stored in localStorage)
+  useEffect(() => {
+    const feedbackCompleted = localStorage.getItem('formE_feedback_completed');
+    if (feedbackCompleted === 'true') {
+      setHasFeedbackCompleted(true);
+    }
+  }, []);
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -497,14 +507,25 @@ const FormECalculator = () => {
             <Button 
               variant="outline" 
               size="sm" 
-              onClick={() => setShowExportDropdown(!showExportDropdown)}
+              onClick={() => {
+                if (!hasFeedbackCompleted) {
+                  toast.info("Please complete the feedback form before exporting", {
+                    action: {
+                      label: "Give Feedback",
+                      onClick: () => navigate("/form-e-feedback")
+                    }
+                  });
+                  return;
+                }
+                setShowExportDropdown(!showExportDropdown);
+              }}
               className="flex items-center gap-2"
             >
               <Download className="w-4 h-4" />
               Export
               <ChevronDown className="w-3 h-3" />
             </Button>
-            {showExportDropdown && (
+            {showExportDropdown && hasFeedbackCompleted && (
               <div className="absolute right-0 mt-1 w-48 bg-background border border-border rounded-lg shadow-lg z-50">
                 <button
                   onClick={handleExportCSV}
@@ -526,7 +547,18 @@ const FormECalculator = () => {
           <Button 
             variant="outline" 
             size="sm" 
-            onClick={handlePrint}
+            onClick={() => {
+              if (!hasFeedbackCompleted) {
+                toast.info("Please complete the feedback form before printing", {
+                  action: {
+                    label: "Give Feedback",
+                    onClick: () => navigate("/form-e-feedback")
+                  }
+                });
+                return;
+              }
+              handlePrint();
+            }}
             className="flex items-center gap-2"
           >
             <Printer className="w-4 h-4" />
