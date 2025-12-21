@@ -1,4 +1,4 @@
-import { Hammer, ShieldCheck, FileText, Calculator, FlaskConical, Mail, Loader2 } from "lucide-react";
+import { Scale, ShieldCheck, FileText, Calculator, FlaskConical, Mail, Loader2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
@@ -71,7 +71,7 @@ const Services = () => {
           {/* Divorce Card */}
           <div className="bg-card border border-border rounded-2xl p-6 shadow-sm">
             <div className="flex items-center gap-3">
-              <Hammer className="w-6 h-6" />
+              <Scale className="w-6 h-6" />
               <h3 className="font-semibold text-lg">Divorce</h3>
             </div>
             <p className="mt-3 text-sm text-muted-foreground">
