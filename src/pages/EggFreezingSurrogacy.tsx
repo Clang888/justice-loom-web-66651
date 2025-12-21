@@ -23,7 +23,7 @@ const faqs = [
   },
   {
     question: "Do I need my partner's consent to use my frozen eggs?",
-    answer: "If you froze your eggs alone, you do not need your partner's consent to use them. However, if embryos were created with a partner's sperm, both parties must consent to their use. Consent can be withdrawn at any time before the embryos are used."
+    answer: "In Hong Kong, you must be married in order to use your frozen eggs. If embryos were created with a partner's sperm, both parties must consent to their use. Consent can be withdrawn at any time before the embryos are used."
   },
   {
     question: "Can I pay a surrogate in HK?",
