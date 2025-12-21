@@ -42,7 +42,7 @@ const Services = () => {
                 onClick={() => setShowForm2CEditor(true)}
               >
                 <Edit className="w-4 h-4" />
-                Form 2C - Joint Application (Fill Online)
+                Form 2C: Joint Application (Fill Online)
               </Button>
               <Link to="/forms?edit=form-e">
                 <Button variant="outline" size="sm" className="w-full justify-start gap-2">
