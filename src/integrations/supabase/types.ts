@@ -96,6 +96,39 @@ export type Database = {
         }
         Relationships: []
       }
+      form_e_feedback: {
+        Row: {
+          additional_comments: string | null
+          created_at: string
+          email: string | null
+          id: string
+          overall_rating: number | null
+          what_could_improve: string | null
+          what_liked: string | null
+          what_not_liked: string | null
+        }
+        Insert: {
+          additional_comments?: string | null
+          created_at?: string
+          email?: string | null
+          id?: string
+          overall_rating?: number | null
+          what_could_improve?: string | null
+          what_liked?: string | null
+          what_not_liked?: string | null
+        }
+        Update: {
+          additional_comments?: string | null
+          created_at?: string
+          email?: string | null
+          id?: string
+          overall_rating?: number | null
+          what_could_improve?: string | null
+          what_liked?: string | null
+          what_not_liked?: string | null
+        }
+        Relationships: []
+      }
       legal_forms: {
         Row: {
           category: string

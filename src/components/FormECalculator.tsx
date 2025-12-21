@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { 
   Calculator, 
   Home, 
@@ -25,7 +26,9 @@ import {
   Banknote,
   FileText,
   Gem,
-  PiggyBank
+  PiggyBank,
+  Printer,
+  MessageSquare
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -46,6 +49,7 @@ interface Section {
 }
 
 const FormECalculator = () => {
+  const navigate = useNavigate();
   const [showTaxCalculator, setShowTaxCalculator] = useState(false);
   
   // Part 2: Assets (Sections A-K) - Exactly as per Form E
@@ -317,6 +321,10 @@ const FormECalculator = () => {
     })));
   };
 
+  const handlePrint = () => {
+    window.print();
+  };
+
   const renderSection = (
     section: Section,
     setSections: React.Dispatch<React.SetStateAction<Section[]>>,
@@ -390,15 +398,35 @@ const FormECalculator = () => {
             Financial Statement for Divorce Proceedings (Hong Kong)
           </p>
         </div>
-        <Button 
-          variant="outline" 
-          size="sm" 
-          onClick={resetCalculator}
-          className="flex items-center gap-2"
-        >
-          <RotateCcw className="w-4 h-4" />
-          Reset All
-        </Button>
+        <div className="flex gap-2 print:hidden">
+          <Button 
+            variant="outline" 
+            size="sm" 
+            onClick={handlePrint}
+            className="flex items-center gap-2"
+          >
+            <Printer className="w-4 h-4" />
+            Print
+          </Button>
+          <Button 
+            variant="outline" 
+            size="sm" 
+            onClick={() => navigate("/form-e-feedback")}
+            className="flex items-center gap-2"
+          >
+            <MessageSquare className="w-4 h-4" />
+            Feedback
+          </Button>
+          <Button 
+            variant="outline" 
+            size="sm" 
+            onClick={resetCalculator}
+            className="flex items-center gap-2"
+          >
+            <RotateCcw className="w-4 h-4" />
+            Reset All
+          </Button>
+        </div>
       </div>
 
       <div className="flex-1 overflow-auto space-y-6 pr-1">
