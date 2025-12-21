@@ -1,4 +1,4 @@
-import { Hammer, ShieldCheck, ChevronRight, FileText, Calculator, FlaskConical } from "lucide-react";
+import { Hammer, ShieldCheck, FileText, Calculator, FlaskConical } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
@@ -49,10 +49,6 @@ const Services = () => {
                 Beta Testing Form E Calculator
               </Button>
             </div>
-            
-            <Link to="/contact" className="mt-4 inline-flex items-center gap-2 text-sm font-medium hover:underline">
-              Enquire <ChevronRight className="w-4 h-4" />
-            </Link>
           </div>
 
           {/* Wills & Estates Card */}
@@ -64,9 +60,6 @@ const Services = () => {
             <p className="mt-3 text-sm text-muted-foreground">
               Starter packs, asset schedules, executorship basics, witness requirements.
             </p>
-            <Link to="/contact" className="mt-4 inline-flex items-center gap-2 text-sm font-medium hover:underline">
-              Enquire <ChevronRight className="w-4 h-4" />
-            </Link>
           </div>
         </div>
 
