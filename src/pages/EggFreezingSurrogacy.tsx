@@ -123,7 +123,7 @@ const EggFreezingSurrogacy = () => {
                 Comprehensive guides covering legal requirements, timelines, and practical considerations.
               </p>
               <Link to="/books" className="inline-flex items-center gap-2 text-sm font-medium hover:underline">
-                Browse Guides <ChevronRight className="w-4 h-4" />
+                Browse Surrogacy Friendly States in the USA <ChevronRight className="w-4 h-4" />
               </Link>
             </div>
             
