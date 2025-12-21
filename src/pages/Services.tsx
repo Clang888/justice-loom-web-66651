@@ -65,9 +65,9 @@ const Services = () => {
 
   return (
     <section className="py-16 bg-secondary">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
         <h2 className="text-3xl font-bold">Services</h2>
-        <p className="mt-3 text-muted-foreground max-w-2xl">
+        <p className="mt-3 text-muted-foreground max-w-2xl mx-auto">
           Guides, worksheets and templates to help you navigate your way through your legal issues.
         </p>
 
