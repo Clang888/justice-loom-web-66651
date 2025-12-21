@@ -90,7 +90,7 @@ const Index = () => {
               </div>
 
               <p className="text-muted-foreground mb-6">
-                Tell us your issue, and we will provide the relevant court form based on your information. Some forms are ready to download. The Hong Kong Form E is in Beta Testing and is free for you to try. The remainder of the forms are in development and will be ready in Q1 of 2026.
+                Tell us your issue, and we will provide the relevant court form based on your information. Some forms are ready to download now. The Hong Kong Form E is in Beta Testing and is free for you to try. The remainder of the forms are in development and will be ready in Q1 of 2026.
               </p>
 
               <Link to="/briefcase">
