@@ -69,7 +69,7 @@ const Services = () => {
 
         <div className="mt-8 flex flex-col md:flex-row justify-center gap-6">
           {/* Divorce Card */}
-          <div className="bg-card border border-border rounded-2xl p-6 shadow-sm">
+          <div className="bg-card border border-border rounded-2xl p-6 shadow-sm max-w-xs">
             <div className="flex items-center gap-3">
               <Scale className="w-6 h-6" />
               <h3 className="font-semibold text-lg">Divorce</h3>
