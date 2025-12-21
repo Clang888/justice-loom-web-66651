@@ -110,7 +110,7 @@ const Services = () => {
               <h3 className="font-semibold text-lg">Wills & Estates</h3>
             </div>
             <p className="mt-3 text-sm text-muted-foreground">
-              Simple wills, Enduring Power of Attorney,<br />Advanced Directives, Executors and Witnesses.
+              Simple Wills, Enduring Power of Attorney<br />Advanced Directives, Executors and Witnesses.
             </p>
           </div>
         </div>
