@@ -262,7 +262,7 @@ const Form2CEditor = ({ onClose }: Form2CEditorProps) => {
           <Button variant="ghost" size="icon" onClick={onClose}>
             <X className="h-5 w-5" />
           </Button>
-          <h2 className="font-semibold">Form 2C - Two Years' Separation Petition</h2>
+          <h2 className="font-semibold">Petition_Form 2C: Two Years' Separation</h2>
         </div>
         
         <div className="flex items-center gap-2">
