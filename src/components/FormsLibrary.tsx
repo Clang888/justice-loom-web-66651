@@ -64,13 +64,30 @@ const FormsLibrary = ({ onFormSelect }: FormsLibraryProps) => {
     });
   };
 
-  const handleDownload = (form: LegalForm) => {
-    // Open the PDF in a new tab (external HK Judiciary URL)
-    window.open(form.pdf_file_path, "_blank");
-    toast({
-      title: "Opening form",
-      description: `${form.form_name} is opening in a new tab.`,
-    });
+  const handleDownload = async (form: LegalForm) => {
+    try {
+      // Get signed URL from Supabase Storage
+      const { data, error } = await supabase.storage
+        .from("legal-forms")
+        .createSignedUrl(form.pdf_file_path, 3600); // 1 hour expiry
+
+      if (error) throw error;
+
+      if (data?.signedUrl) {
+        window.open(data.signedUrl, "_blank");
+        toast({
+          title: "Opening form",
+          description: `${form.form_name} is opening in a new tab.`,
+        });
+      }
+    } catch (error) {
+      console.error("Error accessing form:", error);
+      toast({
+        title: "Error",
+        description: "Failed to access the form. Please try again.",
+        variant: "destructive",
+      });
+    }
   };
 
   const handleFormClick = (form: LegalForm) => {
