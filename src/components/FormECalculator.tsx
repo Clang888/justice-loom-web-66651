@@ -28,7 +28,8 @@ import {
   Gem,
   PiggyBank,
   Printer,
-  MessageSquare
+  MessageSquare,
+  Download
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -325,6 +326,68 @@ const FormECalculator = () => {
     window.print();
   };
 
+  const handleExport = () => {
+    const rows: string[][] = [];
+    rows.push(['Form E Financial Statement Export']);
+    rows.push(['Generated on', new Date().toLocaleDateString()]);
+    rows.push([]);
+    
+    // Assets
+    rows.push(['PART 2: ASSETS']);
+    assetSections.forEach(section => {
+      rows.push([section.title]);
+      section.items.forEach(item => {
+        if (item.value > 0) {
+          rows.push(['', item.label, `HK$${item.value.toLocaleString()}`]);
+        }
+      });
+    });
+    rows.push(['Sub-total (A-J)', '', `HK$${subTotalAtoJ.toLocaleString()}`]);
+    rows.push(['Pensions/MPF (K)', '', `HK$${pensionsTotal.toLocaleString()}`]);
+    rows.push(['TOTAL ASSETS', '', `HK$${totalAssets.toLocaleString()}`]);
+    rows.push([]);
+    
+    // Liabilities
+    rows.push(['PART 2: LIABILITIES']);
+    liabilitySections.forEach(section => {
+      rows.push([section.title]);
+      section.items.forEach(item => {
+        if (item.value > 0) {
+          rows.push(['', item.label, `HK$${item.value.toLocaleString()}`]);
+        }
+      });
+    });
+    rows.push(['TOTAL LIABILITIES', '', `HK$${totalLiabilities.toLocaleString()}`]);
+    rows.push([]);
+    
+    // Net Worth
+    rows.push(['NET VALUE (Assets - Liabilities)', '', `HK$${netWorth.toLocaleString()}`]);
+    rows.push([]);
+    
+    // Expenses
+    rows.push(['PART 4: MONTHLY EXPENSES']);
+    expenseSections.forEach(section => {
+      rows.push([section.title]);
+      section.items.forEach(item => {
+        if (item.value > 0) {
+          rows.push(['', item.label, `HK$${item.value.toLocaleString()}`]);
+        }
+      });
+    });
+    rows.push(['Total Household Expenses', '', `HK$${householdExpenses.toLocaleString()}`]);
+    rows.push(['Total Personal Expenses', '', `HK$${personalExpenses.toLocaleString()}`]);
+    rows.push(['Total Children Expenses', '', `HK$${childrenExpenses.toLocaleString()}`]);
+    rows.push(['TOTAL MONTHLY EXPENSES', '', `HK$${totalMonthlyExpenses.toLocaleString()}`]);
+    
+    const csvContent = rows.map(row => row.map(cell => `"${cell}"`).join(',')).join('\n');
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = `Form-E-Export-${new Date().toISOString().split('T')[0]}.csv`;
+    link.click();
+    URL.revokeObjectURL(link.href);
+  };
+
   const renderSection = (
     section: Section,
     setSections: React.Dispatch<React.SetStateAction<Section[]>>,
@@ -399,6 +462,15 @@ const FormECalculator = () => {
           </p>
         </div>
         <div className="flex gap-2 print:hidden">
+          <Button 
+            variant="outline" 
+            size="sm" 
+            onClick={handleExport}
+            className="flex items-center gap-2"
+          >
+            <Download className="w-4 h-4" />
+            Export
+          </Button>
           <Button 
             variant="outline" 
             size="sm" 
