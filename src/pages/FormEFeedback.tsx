@@ -8,10 +8,10 @@ import { z } from "zod";
 
 const feedbackSchema = z.object({
   email: z.string().email("Please enter a valid email").optional().or(z.literal("")),
-  what_liked: z.string().max(2000, "Must be under 2000 characters").optional(),
-  what_not_liked: z.string().max(2000, "Must be under 2000 characters").optional(),
-  what_could_improve: z.string().max(2000, "Must be under 2000 characters").optional(),
-  overall_rating: z.number().min(1).max(5).optional(),
+  what_liked: z.string().min(1, "Please tell us what you liked").max(2000, "Must be under 2000 characters"),
+  what_not_liked: z.string().min(1, "Please tell us what you didn't like or understand").max(2000, "Must be under 2000 characters"),
+  what_could_improve: z.string().min(1, "Please share what could be improved").max(2000, "Must be under 2000 characters"),
+  overall_rating: z.number().min(1, "Please provide a rating").max(5),
   additional_comments: z.string().max(2000, "Must be under 2000 characters").optional(),
 });
 
@@ -139,9 +139,9 @@ const FormEFeedback = () => {
 
             {/* Overall Rating */}
             <div>
-              <label className="block text-sm font-medium mb-2">
-                Overall Rating
-              </label>
+            <label className="block text-sm font-medium mb-2">
+              Overall Rating <span className="text-destructive">*</span>
+            </label>
               <div className="flex gap-2">
                 {[1, 2, 3, 4, 5].map((rating) => (
                   <button
@@ -166,9 +166,9 @@ const FormEFeedback = () => {
 
             {/* What did you like? */}
             <div>
-              <label className="block text-sm font-medium mb-2">
-                What did you like about the Form E Calculator?
-              </label>
+            <label className="block text-sm font-medium mb-2">
+              What did you like about the Form E Calculator? <span className="text-destructive">*</span>
+            </label>
               <textarea
                 value={formData.what_liked}
                 onChange={(e) => handleInputChange("what_liked", e.target.value)}
@@ -180,9 +180,9 @@ const FormEFeedback = () => {
 
             {/* What didn't you like / understand? */}
             <div>
-              <label className="block text-sm font-medium mb-2">
-                What didn't you like or understand?
-              </label>
+            <label className="block text-sm font-medium mb-2">
+              What didn't you like or understand? <span className="text-destructive">*</span>
+            </label>
               <textarea
                 value={formData.what_not_liked}
                 onChange={(e) => handleInputChange("what_not_liked", e.target.value)}
@@ -194,9 +194,9 @@ const FormEFeedback = () => {
 
             {/* What could be improved? */}
             <div>
-              <label className="block text-sm font-medium mb-2">
-                What could be improved?
-              </label>
+            <label className="block text-sm font-medium mb-2">
+              What could be improved? <span className="text-destructive">*</span>
+            </label>
               <textarea
                 value={formData.what_could_improve}
                 onChange={(e) => handleInputChange("what_could_improve", e.target.value)}
