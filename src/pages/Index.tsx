@@ -93,11 +93,18 @@ const Index = () => {
                 Tell us your issue, and we will provide the relevant court form based on your information. Some forms are ready to download now. The Hong Kong Form E is in Beta Testing and is free for you to try. The remainder of the forms are in development and will be ready in Q1 of 2026.
               </p>
 
-              <Link to="/briefcase">
-                <Button className="w-full" size="lg">
-                  Try Form E Beta
-                </Button>
-              </Link>
+              <div className="flex gap-3">
+                <Link to="/forms" className="flex-1">
+                  <Button className="w-full" size="lg" variant="outline">
+                    Browse Forms
+                  </Button>
+                </Link>
+                <Link to="/briefcase" className="flex-1">
+                  <Button className="w-full" size="lg">
+                    Try Form E Beta
+                  </Button>
+                </Link>
+              </div>
             </div>
 
             {/* My Legal Assistant Card */}
