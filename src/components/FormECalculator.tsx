@@ -50,9 +50,9 @@ const FormECalculator = () => {
   const netWorth = totalAssets - totalLiabilities;
 
   const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat('en-GB', {
+    return new Intl.NumberFormat('en-HK', {
       style: 'currency',
-      currency: 'GBP',
+      currency: 'HKD',
       minimumFractionDigits: 0,
       maximumFractionDigits: 0,
     }).format(amount);
@@ -99,7 +99,7 @@ const FormECalculator = () => {
                 <div className="text-muted-foreground">{asset.icon}</div>
                 <span className="flex-1 text-sm">{asset.label}</span>
                 <div className="flex items-center gap-1">
-                  <span className="text-muted-foreground text-sm">£</span>
+                  <span className="text-muted-foreground text-sm">HK$</span>
                   <input
                     type="number"
                     value={asset.value || ''}
@@ -130,7 +130,7 @@ const FormECalculator = () => {
                 <div className="text-muted-foreground">{liability.icon}</div>
                 <span className="flex-1 text-sm">{liability.label}</span>
                 <div className="flex items-center gap-1">
-                  <span className="text-muted-foreground text-sm">£</span>
+                  <span className="text-muted-foreground text-sm">HK$</span>
                   <input
                     type="number"
                     value={liability.value || ''}
