@@ -78,6 +78,12 @@ const EggFreezingSurrogacy = () => {
                 <span>Cross-border storage regulations</span>
               </li>
             </ul>
+            <Link to="/contact">
+              <Button variant="outline" className="w-full justify-between">
+                Get Legal Advice
+                <ChevronRight className="w-4 h-4" />
+              </Button>
+            </Link>
           </div>
 
           {/* Surrogacy Card */}
@@ -107,6 +113,12 @@ const EggFreezingSurrogacy = () => {
                 <span>Birth registration and citizenship</span>
               </li>
             </ul>
+            <Link to="/contact">
+              <Button variant="outline" className="w-full justify-between">
+                Get Legal Advice
+                <ChevronRight className="w-4 h-4" />
+              </Button>
+            </Link>
           </div>
         </div>
 
