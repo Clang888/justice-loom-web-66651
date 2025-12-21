@@ -78,6 +78,24 @@ export type Database = {
           },
         ]
       }
+      form_e_beta_signups: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+        }
+        Relationships: []
+      }
       legal_forms: {
         Row: {
           category: string
