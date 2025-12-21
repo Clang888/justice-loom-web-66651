@@ -1,6 +1,6 @@
 import { Baby, Snowflake, BookOpen, ChevronRight, Scale, HelpCircle, ChevronDown } from "lucide-react";
 import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
+
 import SurrogacyJourneyTracker from "@/components/SurrogacyJourneyTracker";
 import { useState } from "react";
 
@@ -165,16 +165,9 @@ const EggFreezingSurrogacy = () => {
         </div>
 
         <div className="mt-12 bg-card border border-border rounded-2xl p-8 text-center">
-          <h2 className="text-2xl font-semibold mb-3">Need Personalised Advice?</h2>
-          <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
-            Every fertility and surrogacy journey is unique. Get expert legal guidance tailored to your specific situation.
+          <p className="text-muted-foreground max-w-xl mx-auto">
+            If you need some guidance through the surrogacy process please contact <Link to="/contact" className="text-primary hover:underline font-medium">Just Law</Link>.
           </p>
-          <Link to="/contact">
-            <Button size="lg">
-              Book a Consultation
-              <ChevronRight className="w-4 h-4 ml-2" />
-            </Button>
-          </Link>
         </div>
       </div>
     </section>
