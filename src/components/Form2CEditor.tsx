@@ -18,55 +18,81 @@ const Form2CEditor = ({ onClose }: Form2CEditorProps) => {
 
   // Initialize canvas after component mounts
   useEffect(() => {
-    if (!canvasRef.current) return;
-
-    const canvas = new FabricCanvas(canvasRef.current, {
-      backgroundColor: "#f5f5f5",
-      width: 800,
-      height: 1000,
+    console.log("Form2CEditor: useEffect running", { 
+      canvasRef: canvasRef.current, 
+      containerRef: containerRef.current 
     });
+    
+    if (!canvasRef.current) {
+      console.error("Form2CEditor: canvasRef is null");
+      return;
+    }
 
-    setFabricCanvas(canvas);
+    let canvas: FabricCanvas | null = null;
+    
+    try {
+      canvas = new FabricCanvas(canvasRef.current, {
+        backgroundColor: "#f5f5f5",
+        width: 800,
+        height: 1000,
+      });
+      console.log("Form2CEditor: Canvas created successfully");
+      setFabricCanvas(canvas);
+    } catch (err) {
+      console.error("Form2CEditor: Error creating canvas", err);
+      toast.error("Failed to initialize canvas");
+      setIsLoading(false);
+      return;
+    }
 
     // Load the form image as background using HTMLImageElement
     const img = new window.Image();
     img.crossOrigin = "anonymous";
     
     img.onload = () => {
-      console.log("Image loaded successfully", img.width, img.height);
-      const fabricImg = new FabricImage(img);
-      const containerWidth = containerRef.current?.clientWidth || 800;
-      const imgWidth = img.width || 800;
-      const imgHeight = img.height || 1000;
-      
-      // Scale to fit container width
-      const scaleFactor = Math.min((containerWidth - 32) / imgWidth, 1);
-      
-      canvas.setWidth(imgWidth * scaleFactor);
-      canvas.setHeight(imgHeight * scaleFactor);
-      
-      fabricImg.scaleToWidth(imgWidth * scaleFactor);
-      
-      // Set as background
-      canvas.backgroundImage = fabricImg;
-      canvas.renderAll();
-      
-      setScale(scaleFactor);
-      setIsLoading(false);
-      setImageLoaded(true);
-      toast.success("Form loaded! Click anywhere to add text.");
+      console.log("Form2CEditor: Image loaded successfully", img.width, img.height);
+      try {
+        const fabricImg = new FabricImage(img);
+        const containerWidth = containerRef.current?.clientWidth || 800;
+        const imgWidth = img.width || 800;
+        const imgHeight = img.height || 1000;
+        
+        // Scale to fit container width
+        const scaleFactor = Math.min((containerWidth - 32) / imgWidth, 1);
+        
+        canvas!.setWidth(imgWidth * scaleFactor);
+        canvas!.setHeight(imgHeight * scaleFactor);
+        
+        fabricImg.scaleToWidth(imgWidth * scaleFactor);
+        
+        // Set as background
+        canvas!.backgroundImage = fabricImg;
+        canvas!.renderAll();
+        
+        setScale(scaleFactor);
+        setIsLoading(false);
+        setImageLoaded(true);
+        toast.success("Form loaded! Click anywhere to add text.");
+      } catch (err) {
+        console.error("Form2CEditor: Error setting up fabric image", err);
+        toast.error("Failed to set up form");
+        setIsLoading(false);
+      }
     };
     
     img.onerror = (err) => {
-      console.error("Error loading form image:", err);
+      console.error("Form2CEditor: Error loading form image:", err);
       toast.error("Failed to load form image");
       setIsLoading(false);
     };
     
+    console.log("Form2CEditor: Starting image load from /forms/form-2c.png");
     img.src = "/forms/form-2c.png";
 
     return () => {
-      canvas.dispose();
+      if (canvas) {
+        canvas.dispose();
+      }
     };
   }, []);
 
