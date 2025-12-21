@@ -2,8 +2,11 @@ import { useEffect, useRef, useState, useCallback } from "react";
 import { Canvas as FabricCanvas, FabricImage, IText } from "fabric";
 import * as pdfjsLib from "pdfjs-dist";
 import { Button } from "@/components/ui/button";
-import { Download, X, Plus, ZoomIn, ZoomOut, Type, ChevronLeft, ChevronRight, Loader2 } from "lucide-react";
+import { Download, X, Plus, ZoomIn, ZoomOut, Type, ChevronLeft, ChevronRight, Loader2, Save, LogIn } from "lucide-react";
 import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
+import { useNavigate } from "react-router-dom";
+import { User } from "@supabase/supabase-js";
 
 // Set up PDF.js worker
 pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js`;
@@ -14,17 +17,91 @@ interface FormEEditorProps {
 
 const FIXED_WIDTH = 800;
 const FIXED_HEIGHT = 1100;
+const FORM_E_NAME = "Form E: Financial Statement";
 
 const FormEEditor = ({ onClose }: FormEEditorProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
+  
   const [fabricCanvas, setFabricCanvas] = useState<FabricCanvas | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [isSaving, setIsSaving] = useState(false);
   const [scale, setScale] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
   const [pageCanvasData, setPageCanvasData] = useState<Record<number, any>>({});
   const [pageImages, setPageImages] = useState<string[]>([]);
+  const [user, setUser] = useState<User | null>(null);
+  const [savedFormId, setSavedFormId] = useState<string | null>(null);
+  const [legalFormId, setLegalFormId] = useState<string | null>(null);
+  const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
+
+  // Check authentication
+  useEffect(() => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(
+      (_event, session) => {
+        setUser(session?.user ?? null);
+      }
+    );
+
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setUser(session?.user ?? null);
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
+
+  // Load legal form ID and existing saved form
+  useEffect(() => {
+    const loadSavedForm = async () => {
+      if (!user) return;
+
+      try {
+        // Get the legal form ID for Form E
+        const { data: legalForm, error: legalFormError } = await supabase
+          .from("legal_forms")
+          .select("id")
+          .eq("form_name", FORM_E_NAME)
+          .single();
+
+        if (legalFormError || !legalForm) {
+          console.error("Error fetching legal form:", legalFormError);
+          return;
+        }
+
+        setLegalFormId(legalForm.id);
+
+        // Check if user has a saved form
+        const { data: savedForm, error: savedFormError } = await supabase
+          .from("saved_forms")
+          .select("id, form_data")
+          .eq("user_id", user.id)
+          .eq("legal_form_id", legalForm.id)
+          .maybeSingle();
+
+        if (savedFormError) {
+          console.error("Error fetching saved form:", savedFormError);
+          return;
+        }
+
+        if (savedForm) {
+          setSavedFormId(savedForm.id);
+          if (savedForm.form_data && typeof savedForm.form_data === "object") {
+            const formData = savedForm.form_data as Record<string, any>;
+            if (formData.pageCanvasData) {
+              setPageCanvasData(formData.pageCanvasData);
+              toast.success("Loaded your saved progress");
+            }
+          }
+        }
+      } catch (error) {
+        console.error("Error loading saved form:", error);
+      }
+    };
+
+    loadSavedForm();
+  }, [user]);
 
   // Load PDF and convert pages to images
   useEffect(() => {
@@ -109,7 +186,6 @@ const FormEEditor = ({ onClose }: FormEEditorProps) => {
       try {
         const fabricImg = new FabricImage(img);
         
-        // Scale to fit fixed dimensions while maintaining aspect ratio
         const scaleX = FIXED_WIDTH / img.width;
         const scaleY = FIXED_HEIGHT / img.height;
         const imgScale = Math.min(scaleX, scaleY);
@@ -122,7 +198,6 @@ const FormEEditor = ({ onClose }: FormEEditorProps) => {
         
         fabricCanvas.backgroundImage = fabricImg;
         
-        // Restore any saved text objects for this page
         if (pageCanvasData[currentPage]) {
           fabricCanvas.loadFromJSON(pageCanvasData[currentPage], () => {
             fabricCanvas.renderAll();
@@ -145,7 +220,23 @@ const FormEEditor = ({ onClose }: FormEEditorProps) => {
     img.src = imageUrl;
   }, [fabricCanvas, currentPage, pageImages, pageCanvasData]);
 
-  // Save current page data before switching
+  // Track changes
+  useEffect(() => {
+    if (!fabricCanvas) return;
+
+    const handleObjectModified = () => {
+      setHasUnsavedChanges(true);
+    };
+
+    fabricCanvas.on("object:modified", handleObjectModified);
+    fabricCanvas.on("object:added", handleObjectModified);
+
+    return () => {
+      fabricCanvas.off("object:modified", handleObjectModified);
+      fabricCanvas.off("object:added", handleObjectModified);
+    };
+  }, [fabricCanvas]);
+
   const saveCurrentPageData = useCallback(() => {
     if (!fabricCanvas) return;
     
@@ -160,6 +251,67 @@ const FormEEditor = ({ onClose }: FormEEditorProps) => {
     if (newPage < 1 || newPage > totalPages || newPage === currentPage) return;
     saveCurrentPageData();
     setCurrentPage(newPage);
+  };
+
+  // Save progress to database
+  const handleSaveProgress = async () => {
+    if (!user) {
+      toast.error("Please log in to save your progress");
+      return;
+    }
+
+    if (!legalFormId) {
+      toast.error("Form configuration not found");
+      return;
+    }
+
+    setIsSaving(true);
+    saveCurrentPageData();
+
+    try {
+      // Wait a bit for state to update
+      await new Promise(resolve => setTimeout(resolve, 100));
+
+      const formData = {
+        pageCanvasData: { ...pageCanvasData, [currentPage]: fabricCanvas?.toJSON() }
+      };
+
+      if (savedFormId) {
+        // Update existing saved form
+        const { error } = await supabase
+          .from("saved_forms")
+          .update({ 
+            form_data: formData,
+            updated_at: new Date().toISOString()
+          })
+          .eq("id", savedFormId);
+
+        if (error) throw error;
+      } else {
+        // Create new saved form
+        const { data, error } = await supabase
+          .from("saved_forms")
+          .insert({
+            user_id: user.id,
+            legal_form_id: legalFormId,
+            form_data: formData,
+            is_completed: false
+          })
+          .select("id")
+          .single();
+
+        if (error) throw error;
+        setSavedFormId(data.id);
+      }
+
+      setHasUnsavedChanges(false);
+      toast.success("Progress saved successfully");
+    } catch (error) {
+      console.error("Error saving progress:", error);
+      toast.error("Failed to save progress");
+    } finally {
+      setIsSaving(false);
+    }
   };
 
   // Handle click to add text
@@ -224,12 +376,10 @@ const FormEEditor = ({ onClose }: FormEEditorProps) => {
   const handleDownload = useCallback(async () => {
     if (!fabricCanvas || pageImages.length === 0) return;
 
-    // Save current page first
     saveCurrentPageData();
 
     toast.info("Preparing download... This may take a moment for all pages.");
 
-    // Download each page
     for (let page = 1; page <= totalPages; page++) {
       const img = new window.Image();
       img.crossOrigin = "anonymous";
@@ -249,7 +399,6 @@ const FormEEditor = ({ onClose }: FormEEditorProps) => {
 
           fabricCanvas.backgroundImage = fabricImg;
           
-          // Load saved data for this page
           if (pageCanvasData[page]) {
             await new Promise<void>((res) => {
               fabricCanvas.loadFromJSON(pageCanvasData[page], () => {
@@ -309,6 +458,9 @@ const FormEEditor = ({ onClose }: FormEEditorProps) => {
             <X className="h-5 w-5" />
           </Button>
           <h2 className="font-semibold">Form E: Financial Statement</h2>
+          {hasUnsavedChanges && (
+            <span className="text-xs text-muted-foreground">(unsaved changes)</span>
+          )}
         </div>
         
         <div className="flex items-center gap-2">
@@ -351,6 +503,30 @@ const FormEEditor = ({ onClose }: FormEEditorProps) => {
             <Plus className="h-4 w-4 mr-1" />
             <Type className="h-4 w-4" />
           </Button>
+
+          {/* Save Progress Button */}
+          {user ? (
+            <Button 
+              variant="outline" 
+              onClick={handleSaveProgress} 
+              disabled={isSaving}
+            >
+              {isSaving ? (
+                <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+              ) : (
+                <Save className="h-4 w-4 mr-2" />
+              )}
+              Save Progress
+            </Button>
+          ) : (
+            <Button 
+              variant="outline" 
+              onClick={() => navigate("/auth")}
+            >
+              <LogIn className="h-4 w-4 mr-2" />
+              Log in to Save
+            </Button>
+          )}
           
           <Button onClick={handleDownload}>
             <Download className="h-4 w-4 mr-2" />
@@ -362,6 +538,7 @@ const FormEEditor = ({ onClose }: FormEEditorProps) => {
       {/* Instructions */}
       <div className="bg-muted/50 p-2 text-center text-sm text-muted-foreground">
         Click anywhere on the form to add text. Click on text to edit. Drag to reposition.
+        {user && " Your progress is saved to your account."}
       </div>
 
       {/* Canvas container */}
