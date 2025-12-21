@@ -27,7 +27,7 @@ const faqs = [
   },
   {
     question: "Can I pay a surrogate in HK?",
-    answer: "Absolutely not."
+    answer: "If you need some guidance through the surrogacy process please contact Just Law."
   }
 ];
 
