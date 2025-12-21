@@ -29,6 +29,7 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import HKTaxCalculator from "./HKTaxCalculator";
 
 interface FinancialItem {
   id: string;
@@ -45,6 +46,8 @@ interface Section {
 }
 
 const FormECalculator = () => {
+  const [showTaxCalculator, setShowTaxCalculator] = useState(false);
+  
   // Part 2: Assets (Sections A-K) - Exactly as per Form E
   const [assetSections, setAssetSections] = useState<Section[]>([
     {
@@ -345,6 +348,15 @@ const FormECalculator = () => {
               <div className="text-muted-foreground">{item.icon}</div>
               <span className="flex-1 text-sm">{item.label}</span>
               <div className="flex items-center gap-1">
+                {item.id === "taxOwed" && (
+                  <button
+                    onClick={() => setShowTaxCalculator(true)}
+                    className="mr-2 p-1.5 bg-primary/10 hover:bg-primary/20 rounded text-primary transition-colors"
+                    title="Open HK Tax Calculator"
+                  >
+                    <Calculator className="w-4 h-4" />
+                  </button>
+                )}
                 <span className="text-muted-foreground text-xs">HK$</span>
                 <input
                   type="number"
@@ -498,6 +510,16 @@ const FormECalculator = () => {
           <strong className="text-foreground">Disclaimer:</strong> This calculator follows the official Form E structure. The actual Form E requires complete financial disclosure with supporting documents. Seek professional legal and financial advice.
         </p>
       </div>
+
+      {/* HK Tax Calculator Modal */}
+      {showTaxCalculator && (
+        <HKTaxCalculator
+          onClose={() => setShowTaxCalculator(false)}
+          onApplyTax={(taxAmount) => {
+            updateSectionItem(setLiabilitySections, "L", "taxOwed", taxAmount);
+          }}
+        />
+      )}
     </div>
   );
 };
