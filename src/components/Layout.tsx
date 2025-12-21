@@ -124,6 +124,7 @@ const Layout = ({ children }: LayoutProps) => {
             <div>
               <div className="flex items-center gap-2 font-semibold mb-3">
                 <img src="/just-law-logo.jpg" alt="Just Law" className="h-8 w-auto" />
+                <span>Just Law</span>
               </div>
               <p className="text-sm text-muted-foreground">Making justice easy to find, easy to understand, and easy to use.</p>
             </div>
