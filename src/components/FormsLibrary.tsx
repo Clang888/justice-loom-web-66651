@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { FileText, Download, ExternalLink, ChevronDown, ChevronRight, Loader2 } from "lucide-react";
+import { FileText, Download, ExternalLink, ChevronDown, ChevronRight, Loader2, Edit } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
@@ -17,9 +17,10 @@ interface LegalForm {
 
 interface FormsLibraryProps {
   onFormSelect?: (form: LegalForm) => void;
+  onEditForm?: (form: LegalForm) => void;
 }
 
-const FormsLibrary = ({ onFormSelect }: FormsLibraryProps) => {
+const FormsLibrary = ({ onFormSelect, onEditForm }: FormsLibraryProps) => {
   const [forms, setForms] = useState<LegalForm[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [expandedCategories, setExpandedCategories] = useState<Set<string>>(new Set(["Family Law"]));
@@ -174,6 +175,18 @@ const FormsLibrary = ({ onFormSelect }: FormsLibraryProps) => {
                     </div>
                     <div className="flex items-center gap-2 flex-shrink-0">
                       <Button
+                        variant="default"
+                        size="sm"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          onEditForm?.(form);
+                        }}
+                        className="text-xs"
+                      >
+                        <Edit className="w-3 h-3 mr-1" />
+                        Edit in Browser
+                      </Button>
+                      <Button
                         variant="outline"
                         size="sm"
                         onClick={(e) => {
@@ -204,10 +217,16 @@ const FormsLibrary = ({ onFormSelect }: FormsLibraryProps) => {
                 <span className="text-sm text-muted-foreground">{selectedForm.form_number}</span>
               )}
             </div>
-            <Button onClick={() => handleDownload(selectedForm)}>
-              <Download className="w-4 h-4 mr-2" />
-              Download PDF
-            </Button>
+            <div className="flex items-center gap-2">
+              <Button onClick={() => onEditForm?.(selectedForm)}>
+                <Edit className="w-4 h-4 mr-2" />
+                Edit in Browser
+              </Button>
+              <Button variant="outline" onClick={() => handleDownload(selectedForm)}>
+                <Download className="w-4 h-4 mr-2" />
+                Download PDF
+              </Button>
+            </div>
           </div>
           
           {selectedForm.description && (
