@@ -124,11 +124,18 @@ const Form2CEditor = ({ onClose }: Form2CEditorProps) => {
   // Handle file upload
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const files = event.target.files;
-    if (!files || files.length === 0) return;
+    console.log("Files received:", files);
+    
+    if (!files || files.length === 0) {
+      console.log("No files selected");
+      return;
+    }
 
     const fileArray = Array.from(files);
+    console.log("File array:", fileArray.map(f => ({ name: f.name, type: f.type, size: f.size })));
+    
     if (fileArray.length !== 3) {
-      toast.error("Please upload exactly 3 PNG images for the 3 pages");
+      toast.error(`Please upload exactly 3 images for the 3 pages. You uploaded ${fileArray.length}.`);
       return;
     }
 
@@ -138,11 +145,14 @@ const Form2CEditor = ({ onClose }: Form2CEditorProps) => {
     const imageUrls: string[] = [];
     fileArray.forEach((file) => {
       const url = URL.createObjectURL(file);
+      console.log("Created URL for", file.name, ":", url);
       imageUrls.push(url);
     });
 
+    console.log("Setting page images:", imageUrls);
     setPageImages(imageUrls);
     setCurrentPage(1);
+    setNeedsUpload(false);
     toast.success("Form pages loaded! Click anywhere to add text.");
   };
 
