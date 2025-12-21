@@ -1,29 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 9%;
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 9%;
+    --background: 45 30% 98%;
+    --foreground: 200 35% 20%;
+    --card: 45 40% 99%;
+    --card-foreground: 200 35% 20%;
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 9%;
-    --primary: 215 25% 20%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 0 0% 96%;
-    --secondary-foreground: 0 0% 9%;
-    --muted: 0 0% 96%;
-    --muted-foreground: 0 0% 45%;
-    --accent: 0 0% 96%;
-    --accent-foreground: 0 0% 9%;
+    --popover-foreground: 200 35% 20%;
+    --primary: 200 45% 30%;
+    --primary-foreground: 45 30% 98%;
+    --secondary: 45 25% 94%;
+    --secondary-foreground: 200 35% 20%;
+    --muted: 45 20% 92%;
+    --muted-foreground: 200 20% 45%;
+    --accent: 35 80% 55%;
+    --accent-foreground: 200 35% 15%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 89%;
-    --input: 0 0% 89%;
-    --ring: 0 0% 9%;
-    --radius: 0.5rem;
+    --border: 45 20% 88%;
+    --input: 45 20% 88%;
+    --ring: 200 45% 30%;
+    --radius: 0.75rem;
+    
+    /* Custom colors */
+    --warm-cream: 45 40% 96%;
+    --warm-gold: 35 80% 55%;
+    --deep-teal: 200 45% 30%;
+    --soft-teal: 200 35% 45%;
   }
 }
 
@@ -33,6 +41,52 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+@layer components {
+  .gradient-warm {
+    background: linear-gradient(135deg, hsl(45 40% 98%) 0%, hsl(45 30% 94%) 100%);
+  }
+  
+  .gradient-hero {
+    background: linear-gradient(180deg, hsl(45 40% 98%) 0%, hsl(45 25% 92%) 50%, hsl(200 30% 95%) 100%);
+  }
+  
+  .gradient-accent {
+    background: linear-gradient(135deg, hsl(200 45% 30%) 0%, hsl(200 40% 40%) 100%);
+  }
+  
+  .card-elevated {
+    @apply bg-card shadow-lg shadow-primary/5 border border-border/50;
+  }
+  
+  .text-gradient {
+    background: linear-gradient(135deg, hsl(200 45% 30%) 0%, hsl(200 35% 45%) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .hover-lift {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/10;
+  }
+  
+  .nav-link {
+    @apply relative text-muted-foreground hover:text-foreground transition-colors duration-200;
+  }
+  
+  .nav-link::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-full h-0.5 bg-accent scale-x-0 transition-transform duration-300 origin-right;
+  }
+  
+  .nav-link:hover::after {
+    @apply scale-x-100 origin-left;
   }
 }
 
