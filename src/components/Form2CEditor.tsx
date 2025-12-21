@@ -118,14 +118,14 @@ const Form2CEditor = ({ onClose }: Form2CEditorProps) => {
   const addTextAtPosition = useCallback((x: number, y: number) => {
     if (!fabricCanvas) return;
 
-    const text = new IText("Click to edit", {
+    const text = new IText("", {
       left: x,
-      top: y,
+      top: y - 14, // Position text above the click point so it sits on the line
       fontSize: 14,
       fontFamily: "Arial",
       fill: "#000000",
-      backgroundColor: "rgba(255,255,255,0.8)",
-      padding: 2,
+      backgroundColor: "rgba(255,255,255,0.9)",
+      padding: 1,
     });
 
     fabricCanvas.add(text);
