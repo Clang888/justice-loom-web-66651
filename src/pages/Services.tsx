@@ -1,6 +1,5 @@
-import { Hammer, ShieldCheck, BookOpen, ChevronRight, FileText, Calculator } from "lucide-react";
+import { Hammer, ShieldCheck, ChevronRight, FileText, Calculator } from "lucide-react";
 import { Link } from "react-router-dom";
-import SurrogacyJourneyTracker from "@/components/SurrogacyJourneyTracker";
 import FormECalculator from "@/components/FormECalculator";
 import { Button } from "@/components/ui/button";
 
@@ -13,7 +12,7 @@ const Services = () => {
           Guides, worksheets and templates to help you navigate your way through your legal issues.
         </p>
 
-        <div className="mt-8 grid md:grid-cols-3 gap-6">
+        <div className="mt-8 grid md:grid-cols-2 gap-6">
           {/* Divorce Card - Enhanced with form links */}
           <div className="bg-card border border-border rounded-2xl p-6 shadow-sm">
             <div className="flex items-center gap-3">
@@ -57,26 +56,11 @@ const Services = () => {
               Enquire <ChevronRight className="w-4 h-4" />
             </Link>
           </div>
-
-          {/* Surrogacy Card */}
-          <div className="bg-card border border-border rounded-2xl p-6 shadow-sm">
-            <div className="flex items-center gap-3">
-              <BookOpen className="w-6 h-6" />
-              <h3 className="font-semibold text-lg">Surrogacy</h3>
-            </div>
-            <p className="mt-3 text-sm text-muted-foreground">
-              Legal frameworks, parental orders, international considerations, documentation.
-            </p>
-            <Link to="/contact" className="mt-4 inline-flex items-center gap-2 text-sm font-medium hover:underline">
-              Enquire <ChevronRight className="w-4 h-4" />
-            </Link>
-          </div>
         </div>
 
         {/* Tools Grid */}
-        <div className="mt-12 grid md:grid-cols-2 gap-6">
+        <div className="mt-12">
           <FormECalculator />
-          <SurrogacyJourneyTracker />
         </div>
       </div>
     </section>
