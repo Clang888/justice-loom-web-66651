@@ -1,57 +1,10 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import { FileText, ArrowLeft } from "lucide-react";
 import FormsLibrary from "@/components/FormsLibrary";
-import PDFEditor from "@/components/PDFEditor";
-import { supabase } from "@/integrations/supabase/client";
-import { useToast } from "@/hooks/use-toast";
-
-interface LegalForm {
-  id: string;
-  form_name: string;
-  form_number: string | null;
-  category: string;
-  description: string | null;
-  pdf_file_path: string;
-  keywords: string[] | null;
-  common_scenarios: string[] | null;
-}
 
 const Forms = () => {
-  const [editingForm, setEditingForm] = useState<{ url: string; name: string } | null>(null);
-  const { toast } = useToast();
-
-  const handleEditForm = async (form: LegalForm) => {
-    try {
-      // Get signed URL from Supabase Storage
-      const { data, error } = await supabase.storage
-        .from("legal-forms")
-        .createSignedUrl(form.pdf_file_path, 3600);
-
-      if (error) throw error;
-
-      if (data?.signedUrl) {
-        setEditingForm({ url: data.signedUrl, name: form.form_name });
-      }
-    } catch (error) {
-      console.error("Error accessing form:", error);
-      toast({
-        title: "Error",
-        description: "Failed to open the form for editing.",
-        variant: "destructive",
-      });
-    }
-  };
-
   return (
     <>
-      {editingForm && (
-        <PDFEditor
-          pdfUrl={editingForm.url}
-          formName={editingForm.name}
-          onClose={() => setEditingForm(null)}
-        />
-      )}
       
       <section className="bg-background min-h-screen">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-8">
@@ -93,7 +46,7 @@ const Forms = () => {
           </div>
 
           {/* Forms Library */}
-          <FormsLibrary onEditForm={handleEditForm} />
+          <FormsLibrary />
 
           {/* Source Attribution */}
           <div className="mt-8 p-4 bg-secondary/50 rounded-lg text-center">
