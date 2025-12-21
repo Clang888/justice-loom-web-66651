@@ -67,7 +67,7 @@ const Services = () => {
     <section className="py-16 bg-secondary">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
 
-        <div className="mt-8 grid md:grid-cols-2 gap-6">
+        <div className="mt-8 flex flex-col md:flex-row justify-center gap-6">
           {/* Divorce Card */}
           <div className="bg-card border border-border rounded-2xl p-6 shadow-sm">
             <div className="flex items-center gap-3">
@@ -110,7 +110,7 @@ const Services = () => {
               <h3 className="font-semibold text-lg">Wills & Estates</h3>
             </div>
             <p className="mt-3 text-sm text-muted-foreground">
-              Starter packs, asset schedules, executorship basics, witness requirements.
+              Simple wills, Enduring Power of Attorney, Advanced Directives, Executors and Witnesses.
             </p>
           </div>
         </div>
