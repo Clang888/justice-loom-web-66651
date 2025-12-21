@@ -17,7 +17,7 @@ const Index = () => {
               Navigate the legal system with confidence
             </p>
             <p className="mt-5 text-lg text-muted-foreground max-w-xl">
-              Founded by Caroline Langley, barrister with 30+ years of multi-jurisdictional experience. Our mission: make justice easy to find, easy to understand, and easy to use.
+              Our mission: make justice easy to find, easy to understand, and easy to use.
             </p>
             <div className="mt-6 flex items-center gap-6 text-sm text-muted-foreground">
               <div className="flex items-center gap-2"><Globe className="w-4 h-4" /> Common-law focus (HK, UK, IE, AU, CA, US)</div>
