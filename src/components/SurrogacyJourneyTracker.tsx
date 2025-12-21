@@ -62,7 +62,7 @@ const journeyStages: JourneyStage[] = [
     details: [
       "Engage separate legal counsel for each party",
       "Draft surrogacy agreement covering all scenarios",
-      "Address financial arrangements and expenses",
+      "Address financial arrangements and keep track of all expenses",
       "Define parental rights and responsibilities",
       "Include provisions for medical decisions",
       "Execute and notarise all agreements"
