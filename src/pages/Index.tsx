@@ -11,7 +11,7 @@ const Index = () => {
           <div>
             <p className="inline-block rounded-full bg-primary text-primary-foreground text-xs font-medium px-3 py-1 mb-4">Access to Justice</p>
             <h1 className="text-4xl sm:text-5xl font-extrabold leading-tight">
-              Easy-to-use legal guidance for <span className="underline decoration-amber-400 decoration-4 underline-offset-4">self-represented people</span>
+              Legal Guidance for Everyone
             </h1>
             <p className="mt-5 text-lg text-muted-foreground max-w-xl">
               Founded by Caroline Langley, barrister with 30+ years of multi-jurisdictional experience. Our mission: make justice easy to find, easy to understand, and easy to use.
