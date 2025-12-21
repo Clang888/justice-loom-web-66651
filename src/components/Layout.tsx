@@ -81,7 +81,7 @@ const Layout = ({ children }: LayoutProps) => {
             <span>Just Law</span>
           </Link>
           <div className="hidden md:flex items-center gap-6 text-sm">
-            <Link to="/" className="hover:text-foreground">Home</Link>
+            <Link to="/services" className="hover:text-foreground">Services</Link>
             <Link to="/services" className="hover:text-foreground">Services</Link>
             <Link to="/egg-freezing-surrogacy" className="hover:text-foreground">Egg Freezing & Surrogacy</Link>
             
