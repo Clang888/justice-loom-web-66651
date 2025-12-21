@@ -117,7 +117,7 @@ const EggFreezingSurrogacy = () => {
             <div className="bg-card border border-border rounded-2xl p-6 shadow-sm">
               <div className="flex items-center gap-3 mb-4">
                 <BookOpen className="w-6 h-6" />
-                <h3 className="font-semibold text-lg">Educational Guides</h3>
+                <h3 className="font-semibold text-lg">Surrogacy Friendly States in the USA</h3>
               </div>
               <p className="text-sm text-muted-foreground mb-4">
                 Comprehensive guides covering legal requirements, timelines, and practical considerations.
