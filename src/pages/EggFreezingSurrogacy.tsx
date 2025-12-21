@@ -11,7 +11,7 @@ const faqs = [
   },
   {
     question: "Is surrogacy legal in HK?",
-    answer: "Surrogacy arrangements are not regulated by specific legislation in Hong Kong. Commercial surrogacy is generally discouraged, and there are no legal frameworks for surrogacy contracts. Many HK residents pursue surrogacy arrangements abroad."
+    answer: "Surrogacy is highly regulated in Hong Kong by the Human Reproductive Technology Ordinance (HRTO) and the Parent and Child Ordinance (PCO). Many HK residents pursue surrogacy arrangements abroad."
   },
   {
     question: "What is a parental order and when do I need one?",
