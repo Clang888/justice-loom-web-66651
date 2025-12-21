@@ -18,7 +18,7 @@ const About = () => {
           <div className="bg-secondary border border-border rounded-2xl p-6">
             <img src="/alex-santos.png" alt="Alexandre Santos de Salles" className="w-full aspect-square object-cover rounded-xl mb-4" />
             <h3 className="font-bold text-xl mb-1">ALEX SANTOS</h3>
-            <p className="text-sm font-semibold text-primary mb-3">Co-Founder</p>
+            <p className="text-sm font-semibold text-primary mb-3">CTO and Co-Founder</p>
             <p className="text-sm text-muted-foreground leading-relaxed">
               Alex is a technology consultant and product designer based in Ireland, specialising in accessible, human-centered digital solutions. With a focus on demystifying complex systems, Alex builds applications that enable users to navigate technology with confidence and ease. His recent work includes Passenger.ie, an app that transforms the train booking experience for elderly users, making online rail services effortless and inclusive. Alex's approach combines deep user empathy with technical innovation, translating real-world friction points into intuitive digital experiences. In addition to development, Alex delivers digital literacy training to seniors and government organisations across Ireland, bridging the gap between people and technology through both education and design.
             </p>
