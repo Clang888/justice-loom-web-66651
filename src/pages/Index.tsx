@@ -9,7 +9,7 @@ const Index = () => {
       <section className="relative overflow-hidden bg-gradient-to-b from-card to-secondary">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 grid lg:grid-cols-2 gap-10 items-center">
           <div>
-            <p className="inline-block rounded-full bg-primary text-primary-foreground text-xs font-medium px-3 py-1 mb-4">Just Law</p>
+            <p className="inline-block rounded-full bg-primary text-primary-foreground text-sm font-semibold px-4 py-1.5 mb-4">Just Law</p>
             <h1 className="text-4xl sm:text-5xl font-extrabold leading-tight">
               Your guide to self-representation
             </h1>
