@@ -14,27 +14,33 @@ const Form2CEditor = ({ onClose }: Form2CEditorProps) => {
   const [fabricCanvas, setFabricCanvas] = useState<FabricCanvas | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [scale, setScale] = useState(1);
+  const [imageLoaded, setImageLoaded] = useState(false);
 
+  // Initialize canvas after component mounts
   useEffect(() => {
-    if (!canvasRef.current || !containerRef.current) return;
+    if (!canvasRef.current) return;
 
     const canvas = new FabricCanvas(canvasRef.current, {
       backgroundColor: "#f5f5f5",
+      width: 800,
+      height: 1000,
     });
 
     setFabricCanvas(canvas);
 
     // Load the form image as background using HTMLImageElement
-    const img = new Image();
+    const img = new window.Image();
     img.crossOrigin = "anonymous";
+    
     img.onload = () => {
+      console.log("Image loaded successfully", img.width, img.height);
       const fabricImg = new FabricImage(img);
       const containerWidth = containerRef.current?.clientWidth || 800;
-      const imgWidth = fabricImg.width || 800;
-      const imgHeight = fabricImg.height || 1000;
+      const imgWidth = img.width || 800;
+      const imgHeight = img.height || 1000;
       
       // Scale to fit container width
-      const scaleFactor = Math.min(containerWidth / imgWidth, 1);
+      const scaleFactor = Math.min((containerWidth - 32) / imgWidth, 1);
       
       canvas.setWidth(imgWidth * scaleFactor);
       canvas.setHeight(imgHeight * scaleFactor);
@@ -47,6 +53,7 @@ const Form2CEditor = ({ onClose }: Form2CEditorProps) => {
       
       setScale(scaleFactor);
       setIsLoading(false);
+      setImageLoaded(true);
       toast.success("Form loaded! Click anywhere to add text.");
     };
     
@@ -65,7 +72,7 @@ const Form2CEditor = ({ onClose }: Form2CEditorProps) => {
 
   // Handle click to add text
   useEffect(() => {
-    if (!fabricCanvas) return;
+    if (!fabricCanvas || !imageLoaded) return;
 
     const handleMouseDown = (e: any) => {
       // Only add text if clicking on empty area
@@ -80,7 +87,7 @@ const Form2CEditor = ({ onClose }: Form2CEditorProps) => {
     return () => {
       fabricCanvas.off("mouse:down", handleMouseDown);
     };
-  }, [fabricCanvas]);
+  }, [fabricCanvas, imageLoaded]);
 
   const addTextAtPosition = useCallback((x: number, y: number) => {
     if (!fabricCanvas) return;
@@ -152,25 +159,6 @@ const Form2CEditor = ({ onClose }: Form2CEditorProps) => {
     toast.success("Form downloaded successfully!");
   }, [fabricCanvas]);
 
-  if (isLoading) {
-    return (
-      <div className="fixed inset-0 bg-background/95 z-50 flex items-center justify-center">
-        <Button 
-          variant="ghost" 
-          size="icon" 
-          onClick={onClose}
-          className="absolute top-4 left-4"
-        >
-          <X className="h-5 w-5" />
-        </Button>
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto"></div>
-          <p className="mt-4 text-muted-foreground">Loading form editor...</p>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <div className="fixed inset-0 bg-background/95 z-50 flex flex-col">
       {/* Header */}
@@ -183,24 +171,24 @@ const Form2CEditor = ({ onClose }: Form2CEditorProps) => {
         </div>
         
         <div className="flex items-center gap-2">
-          <Button variant="outline" size="icon" onClick={handleZoomOut}>
+          <Button variant="outline" size="icon" onClick={handleZoomOut} disabled={isLoading}>
             <ZoomOut className="h-4 w-4" />
           </Button>
           <span className="text-sm text-muted-foreground w-16 text-center">
             {Math.round(scale * 100)}%
           </span>
-          <Button variant="outline" size="icon" onClick={handleZoomIn}>
+          <Button variant="outline" size="icon" onClick={handleZoomIn} disabled={isLoading}>
             <ZoomIn className="h-4 w-4" />
           </Button>
           
           <div className="w-px h-6 bg-border mx-2" />
           
-          <Button variant="outline" size="sm" onClick={addTextField}>
+          <Button variant="outline" size="sm" onClick={addTextField} disabled={isLoading}>
             <Plus className="h-4 w-4 mr-1" />
             <Type className="h-4 w-4" />
           </Button>
           
-          <Button onClick={handleDownload}>
+          <Button onClick={handleDownload} disabled={isLoading}>
             <Download className="h-4 w-4 mr-2" />
             Download
           </Button>
@@ -209,14 +197,22 @@ const Form2CEditor = ({ onClose }: Form2CEditorProps) => {
 
       {/* Instructions */}
       <div className="bg-muted/50 p-2 text-center text-sm text-muted-foreground">
-        Click anywhere on the form to add text. Click on text to edit. Drag to reposition.
+        {isLoading ? "Loading form..." : "Click anywhere on the form to add text. Click on text to edit. Drag to reposition."}
       </div>
 
-      {/* Canvas container */}
+      {/* Canvas container - always rendered so ref is available */}
       <div 
         ref={containerRef}
-        className="flex-1 overflow-auto p-4 flex justify-center"
+        className="flex-1 overflow-auto p-4 flex justify-center items-start"
       >
+        {isLoading && (
+          <div className="absolute inset-0 flex items-center justify-center bg-background/80 z-10">
+            <div className="text-center">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto"></div>
+              <p className="mt-4 text-muted-foreground">Loading form editor...</p>
+            </div>
+          </div>
+        )}
         <div className="shadow-lg border border-border bg-white">
           <canvas ref={canvasRef} />
         </div>
