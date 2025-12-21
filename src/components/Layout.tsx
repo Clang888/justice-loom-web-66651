@@ -80,7 +80,7 @@ const Layout = ({ children }: LayoutProps) => {
             <img src="/just-law-logo.jpg" alt="Just Law" className="h-16 w-auto" />
           </Link>
           <div className="hidden md:flex items-center gap-6 text-sm">
-            <Link to="/services" className="hover:text-foreground">Services</Link>
+            <Link to="/services" className="hover:text-foreground">Divorce & Wills</Link>
             <Link to="/egg-freezing-surrogacy" className="hover:text-foreground">Surrogacy & Egg Freezing</Link>
             
             <Link to="/books" className="hover:text-foreground">Books & Public Speaking</Link>
