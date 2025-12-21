@@ -1,13 +1,11 @@
-import { Hammer, ShieldCheck, FileText, Calculator, FlaskConical, Edit } from "lucide-react";
+import { Hammer, ShieldCheck, FileText, Calculator, FlaskConical } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import FormECalculator from "@/components/FormECalculator";
-import Form2CEditor from "@/components/Form2CEditor";
 
 const Services = () => {
   const [showCalculator, setShowCalculator] = useState(false);
-  const [showForm2CEditor, setShowForm2CEditor] = useState(false);
 
   return (
     <section className="py-16 bg-secondary">
@@ -18,7 +16,7 @@ const Services = () => {
         </p>
 
         <div className="mt-8 grid md:grid-cols-2 gap-6">
-          {/* Divorce Card - Enhanced with form links */}
+          {/* Divorce Card */}
           <div className="bg-card border border-border rounded-2xl p-6 shadow-sm">
             <div className="flex items-center gap-3">
               <Hammer className="w-6 h-6" />
@@ -29,21 +27,12 @@ const Services = () => {
             </p>
             
             <div className="mt-4 space-y-2">
-              <Link to="/forms">
+              <Link to="/divorce-forms">
                 <Button variant="outline" size="sm" className="w-full justify-start gap-2">
                   <FileText className="w-4 h-4" />
                   Fillable Divorce Forms
                 </Button>
               </Link>
-              <Button 
-                variant="outline" 
-                size="sm" 
-                className="w-full justify-start gap-2"
-                onClick={() => setShowForm2CEditor(true)}
-              >
-                <Edit className="w-4 h-4" />
-                Form 2C: Joint Application (Fill Online)
-              </Button>
               <Link to="/forms?edit=form-e">
                 <Button variant="outline" size="sm" className="w-full justify-start gap-2">
                   <Calculator className="w-4 h-4" />
@@ -81,11 +70,6 @@ const Services = () => {
           </div>
         )}
       </div>
-
-      {/* Form 2C Editor Modal */}
-      {showForm2CEditor && (
-        <Form2CEditor onClose={() => setShowForm2CEditor(false)} />
-      )}
     </section>
   );
 };
