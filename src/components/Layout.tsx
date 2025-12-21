@@ -143,7 +143,6 @@ const Layout = ({ children }: LayoutProps) => {
                 <li><Link to="/egg-freezing-surrogacy" className="hover:underline">Surrogacy & Egg Freezing</Link></li>
                 <li><Link to="/books" className="hover:underline">Books & Public Speaking</Link></li>
                 <li><Link to="/testimonials" className="hover:underline">Testimonials</Link></li>
-                <li><Link to="/community" className="hover:underline">Community</Link></li>
               </ul>
             </div>
             <div>
