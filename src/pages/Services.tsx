@@ -69,7 +69,7 @@ const Services = () => {
 
         <div className="mt-8 flex flex-col md:flex-row justify-center gap-6">
           {/* Divorce Card */}
-          <div className="bg-card border border-border rounded-2xl p-6 shadow-sm max-w-xs">
+          <div className="bg-card border border-border rounded-2xl p-6 shadow-sm w-full max-w-sm">
             <div className="flex items-center gap-3">
               <Scale className="w-6 h-6" />
               <h3 className="font-semibold text-lg">Divorce</h3>
@@ -104,7 +104,7 @@ const Services = () => {
           </div>
 
           {/* Wills & Estates Card */}
-          <div className="bg-card border border-border rounded-2xl p-6 shadow-sm max-w-xs">
+          <div className="bg-card border border-border rounded-2xl p-6 shadow-sm w-full max-w-sm">
             <div className="flex items-center gap-3">
               <ShieldCheck className="w-6 h-6" />
               <h3 className="font-semibold text-lg">Wills & Estates</h3>
