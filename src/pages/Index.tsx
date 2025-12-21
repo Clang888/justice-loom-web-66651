@@ -20,7 +20,7 @@ const Index = () => {
               Our mission: make justice easy to find, easy to understand, and easy to use.
             </p>
             <div className="mt-6 flex items-center gap-6 text-sm text-muted-foreground">
-              <div className="flex items-center gap-2"><Globe className="w-4 h-4" /> Common-law focus (HK, UK, IE, AU, CA, US)</div>
+              <div className="flex items-center gap-2"><Globe className="w-4 h-4 text-blue-500" /> Common-law focus (HK, UK, IE, AU, CA, US)</div>
             </div>
           </div>
           <div className="lg:justify-self-end">
