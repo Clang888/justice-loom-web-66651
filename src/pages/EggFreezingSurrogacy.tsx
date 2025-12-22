@@ -16,9 +16,6 @@ const EggFreezingSurrogacy = () => {
               <Baby className="w-6 h-6 text-primary" />
               <h2 className="font-semibold text-xl">Surrogacy</h2>
             </div>
-            <p className="text-muted-foreground mb-4">
-              Navigate the legal frameworks for domestic and international surrogacy arrangements.
-            </p>
             <ul className="space-y-2 text-sm text-muted-foreground mb-6">
               <li className="flex items-start gap-2">
                 <Scale className="w-4 h-4 mt-0.5 flex-shrink-0" />
