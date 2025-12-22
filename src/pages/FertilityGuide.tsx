@@ -43,20 +43,22 @@ const FertilityGuide = () => {
               margin: 0 auto;
             }
             h1 { font-size: 28px; margin-bottom: 8px; font-weight: bold; }
-            h2 { font-size: 22px; margin-top: 32px; margin-bottom: 16px; font-weight: 600; }
-            h3 { font-size: 16px; margin-bottom: 8px; font-weight: 600; }
-            p { margin-bottom: 12px; color: #444; }
+            h2 { font-size: 22px; margin-top: 32px; margin-bottom: 16px; font-weight: 600; page-break-after: avoid; }
+            h3 { font-size: 16px; margin-bottom: 8px; font-weight: 600; page-break-after: avoid; }
+            p { margin-bottom: 12px; color: #444; orphans: 3; widows: 3; }
             ul { margin-left: 20px; margin-bottom: 12px; }
             li { margin-bottom: 4px; color: #444; }
-            img { max-width: 100%; height: auto; border-radius: 8px; margin: 16px 0; }
-            table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+            img { max-width: 100%; height: auto; border-radius: 8px; margin: 16px 0; page-break-inside: avoid; }
+            table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; page-break-inside: auto; }
             th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
             th { background: #f5f5f5; font-weight: 600; }
-            section { margin-bottom: 32px; page-break-inside: avoid; }
+            tr { page-break-inside: avoid; page-break-after: auto; }
+            thead { display: table-header-group; }
+            section { margin-bottom: 32px; page-break-inside: auto; }
             .text-primary { color: #1e3a5f; }
             .text-muted-foreground { color: #666; }
-            .bg-secondary\\/50, .bg-primary\\/10 { background: #f8f8f8; padding: 16px; border-radius: 8px; margin: 12px 0; }
-            .border-l-4 { border-left: 4px solid; padding-left: 16px; }
+            .bg-secondary\\/50, .bg-primary\\/10 { background: #f8f8f8; padding: 16px; border-radius: 8px; margin: 12px 0; page-break-inside: avoid; }
+            .border-l-4 { border-left: 4px solid; padding-left: 16px; page-break-inside: avoid; }
             .border-blue-500 { border-color: #3b82f6; }
             .border-green-500 { border-color: #22c55e; }
             .border-orange-500 { border-color: #f97316; }
@@ -67,6 +69,7 @@ const FertilityGuide = () => {
             .text-cyan-500 { color: #06b6d4; }
             .grid { display: grid; gap: 16px; }
             .md\\:grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+            .md\\:grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
             .flex { display: flex; }
             .items-center { align-items: center; }
             .gap-2 { gap: 8px; }
@@ -82,6 +85,7 @@ const FertilityGuide = () => {
             .space-y-3 > * + * { margin-top: 12px; }
             .space-y-4 > * + * { margin-top: 16px; }
             .rounded-xl { border-radius: 12px; }
+            .rounded-lg { border-radius: 8px; }
             .p-3 { padding: 12px; }
             .p-5 { padding: 20px; }
             .text-sm { font-size: 14px; }
@@ -92,9 +96,9 @@ const FertilityGuide = () => {
             .font-bold { font-weight: 700; }
             .font-medium { font-weight: 500; }
             svg { display: inline-block; width: 20px; height: 20px; vertical-align: middle; }
+            @page { margin: 1.5cm; size: A4; }
             @media print {
-              body { padding: 20px; }
-              @page { margin: 1cm; }
+              body { padding: 0; }
             }
           </style>
         </head>
