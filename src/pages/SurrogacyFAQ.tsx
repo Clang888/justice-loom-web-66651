@@ -26,6 +26,42 @@ const faqs = [
   {
     question: "Can I pay a surrogate in HK?",
     answer: "If you need some guidance through the surrogacy process please contact Just Law."
+  },
+  {
+    question: "What is the difference between gestational and traditional surrogacy?",
+    answer: "In gestational surrogacy, the surrogate carries an embryo created from the intended parents' or donors' eggs and sperm, meaning she has no genetic connection to the child. In traditional surrogacy, the surrogate uses her own eggs, making her the biological mother. Gestational surrogacy is more common and legally straightforward in most jurisdictions."
+  },
+  {
+    question: "How much does surrogacy cost in the USA?",
+    answer: "Surrogacy costs in the USA typically range from USD $100,000 to $200,000 or more, depending on the state, agency fees, surrogate compensation, medical expenses, legal fees, and whether egg or sperm donation is required. It's important to budget for unexpected expenses as well."
+  },
+  {
+    question: "What happens if the surrogate wants to keep the baby?",
+    answer: "With proper legal contracts in place, this scenario is extremely rare. In surrogacy-friendly jurisdictions, pre-birth orders establish the intended parents as the legal parents before birth. A well-drafted surrogacy agreement protects all parties and makes such disputes legally untenable."
+  },
+  {
+    question: "Can single parents or same-sex couples use surrogacy?",
+    answer: "Yes, many surrogacy-friendly states in the USA and other countries welcome single parents and same-sex couples. However, laws vary significantly by jurisdiction. Some states have restrictions, so it's crucial to work with a lawyer who understands the specific laws where your surrogacy will take place."
+  },
+  {
+    question: "What medical tests are required before egg freezing?",
+    answer: "Before egg freezing, you'll typically undergo blood tests to check hormone levels (AMH, FSH, estradiol), an ultrasound to assess ovarian reserve, and screening for infectious diseases. Your fertility specialist will also review your medical history and may recommend additional tests based on your individual circumstances."
+  },
+  {
+    question: "What is the success rate of using frozen eggs?",
+    answer: "Success rates depend on the age at which eggs were frozen. Eggs frozen before age 35 have higher success rates. Generally, about 80-90% of eggs survive the thawing process, and fertilisation rates are similar to fresh eggs. Your fertility clinic can provide personalised estimates based on your situation."
+  },
+  {
+    question: "How do I choose a surrogacy agency?",
+    answer: "Look for agencies with a strong track record, transparent pricing, thorough surrogate screening processes, and legal expertise. Ask about their matching process, support services, and what happens if complications arise. Seek references from previous intended parents and ensure they have experience with international clients if applicable."
+  },
+  {
+    question: "What legal documents are needed for international surrogacy?",
+    answer: "You'll typically need a surrogacy agreement, pre-birth or post-birth parentage order, the child's birth certificate, passport applications, and potentially immigration documents. Requirements vary by country. Working with lawyers in both the surrogacy country and your home country is essential to ensure all paperwork is properly handled."
+  },
+  {
+    question: "Can I freeze embryos instead of eggs?",
+    answer: "Yes, embryo freezing is an option if you have a partner or are using donor sperm. Embryos often have higher survival rates after thawing compared to eggs. However, embryos are considered shared property, which can create complications if relationships change. Discuss the pros and cons with your fertility specialist."
   }
 ];
 
