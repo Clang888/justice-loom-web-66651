@@ -90,37 +90,83 @@ const FertilityPlanningGuide = () => {
             </thead>
             <tbody>
               <tr className="border-t border-border">
-                <td className="p-3 font-medium">Cost Range</td>
+                <td className="p-3 font-medium">Cost Range (per cycle)</td>
                 <td className="p-3 text-muted-foreground">HK$30,000-50,000</td>
                 <td className="p-3 text-muted-foreground">HK$60,000-120,000</td>
               </tr>
               <tr className="border-t border-border bg-secondary/30">
-                <td className="p-3 font-medium">Wait Time</td>
+                <td className="p-3 font-medium">Medication Costs</td>
+                <td className="p-3 text-muted-foreground">Often included or subsidized</td>
+                <td className="p-3 text-muted-foreground">HK$15,000-30,000 extra</td>
+              </tr>
+              <tr className="border-t border-border">
+                <td className="p-3 font-medium">Wait Time for First Appointment</td>
                 <td className="p-3 text-muted-foreground">3-6 months</td>
                 <td className="p-3 text-muted-foreground">1-4 weeks</td>
               </tr>
+              <tr className="border-t border-border bg-secondary/30">
+                <td className="p-3 font-medium">Appointment Flexibility</td>
+                <td className="p-3 text-muted-foreground">Limited to weekday slots</td>
+                <td className="p-3 text-muted-foreground">Evening & weekend options available</td>
+              </tr>
               <tr className="border-t border-border">
-                <td className="p-3 font-medium">Flexibility</td>
-                <td className="p-3 text-muted-foreground">Limited scheduling</td>
-                <td className="p-3 text-muted-foreground">Flexible appointments</td>
+                <td className="p-3 font-medium">Doctor Continuity</td>
+                <td className="p-3 text-muted-foreground">May see different doctors</td>
+                <td className="p-3 text-muted-foreground">Same doctor throughout</td>
               </tr>
               <tr className="border-t border-border bg-secondary/30">
-                <td className="p-3 font-medium">Experience</td>
-                <td className="p-3 text-muted-foreground">High volume, established</td>
-                <td className="p-3 text-muted-foreground">Varies by clinic</td>
+                <td className="p-3 font-medium">Experience & Volume</td>
+                <td className="p-3 text-muted-foreground">High volume, established protocols</td>
+                <td className="p-3 text-muted-foreground">Varies—check success rates</td>
               </tr>
               <tr className="border-t border-border">
                 <td className="p-3 font-medium">Language</td>
                 <td className="p-3 text-muted-foreground">Cantonese primary</td>
-                <td className="p-3 text-muted-foreground">Multilingual options</td>
+                <td className="p-3 text-muted-foreground">English, Cantonese, Mandarin</td>
               </tr>
               <tr className="border-t border-border bg-secondary/30">
-                <td className="p-3 font-medium">Annual Storage</td>
+                <td className="p-3 font-medium">Annual Storage Fees</td>
                 <td className="p-3 text-muted-foreground">HK$3,000-5,000/year</td>
                 <td className="p-3 text-muted-foreground">HK$5,000-12,000/year</td>
               </tr>
+              <tr className="border-t border-border">
+                <td className="p-3 font-medium">Facilities</td>
+                <td className="p-3 text-muted-foreground">Hospital setting, shared spaces</td>
+                <td className="p-3 text-muted-foreground">Private rooms, hotel-like comfort</td>
+              </tr>
+              <tr className="border-t border-border bg-secondary/30">
+                <td className="p-3 font-medium">TCM Integration</td>
+                <td className="p-3 text-muted-foreground">Rarely offered</td>
+                <td className="p-3 text-muted-foreground">Some clinics offer acupuncture</td>
+              </tr>
+              <tr className="border-t border-border">
+                <td className="p-3 font-medium">Payment Plans</td>
+                <td className="p-3 text-muted-foreground">Full payment upfront</td>
+                <td className="p-3 text-muted-foreground">Installment options available</td>
+              </tr>
             </tbody>
           </table>
+        </div>
+
+        <div className="mt-6 grid md:grid-cols-2 gap-4">
+          <div className="bg-secondary/50 rounded-xl p-5">
+            <h3 className="font-semibold mb-2">Best for Public Hospitals</h3>
+            <ul className="text-sm text-muted-foreground space-y-1">
+              <li>• Budget-conscious patients</li>
+              <li>• Those comfortable with Cantonese</li>
+              <li>• Patients with flexible schedules</li>
+              <li>• Those who prefer established institutional protocols</li>
+            </ul>
+          </div>
+          <div className="bg-secondary/50 rounded-xl p-5">
+            <h3 className="font-semibold mb-2">Best for Private Clinics</h3>
+            <ul className="text-sm text-muted-foreground space-y-1">
+              <li>• Busy professionals needing schedule flexibility</li>
+              <li>• English or Mandarin speakers</li>
+              <li>• Those wanting personalized, continuous care</li>
+              <li>• Patients seeking premium comfort and privacy</li>
+            </ul>
+          </div>
         </div>
       </section>
 
@@ -131,10 +177,42 @@ const FertilityPlanningGuide = () => {
           <h2 className="text-2xl font-semibold">Traditional Chinese Foods for Egg Health</h2>
         </div>
         
-        <p className="text-muted-foreground mb-6">
+        <p className="text-muted-foreground mb-4">
           Traditional Chinese Medicine (TCM) emphasizes nourishing the blood and kidney essence (腎精) 
           to support egg quality and reproductive health. These foods are commonly recommended by TCM practitioners.
         </p>
+
+        {/* Preparation Timeline */}
+        <div className="bg-primary/10 border border-primary/20 rounded-xl p-5 mb-6">
+          <h3 className="font-semibold mb-3 flex items-center gap-2">
+            <Clock className="w-5 h-5 text-primary" />
+            When to Start Preparing
+          </h3>
+          <div className="text-sm space-y-3">
+            <p className="text-muted-foreground">
+              <strong>Ideal preparation period: 3 months before egg retrieval</strong>
+            </p>
+            <p className="text-muted-foreground">
+              Eggs take approximately 90 days to mature from dormant follicles to ovulation-ready eggs. 
+              This means your diet, lifestyle, and supplements during this 3-month window directly impact 
+              the quality of eggs retrieved.
+            </p>
+            <div className="grid md:grid-cols-3 gap-3 mt-4">
+              <div className="bg-background/50 rounded-lg p-3">
+                <p className="font-medium text-xs text-primary mb-1">3 Months Before</p>
+                <p className="text-xs text-muted-foreground">Begin TCM foods, CoQ10, reduce alcohol/caffeine, start moderate exercise</p>
+              </div>
+              <div className="bg-background/50 rounded-lg p-3">
+                <p className="font-medium text-xs text-primary mb-1">1 Month Before</p>
+                <p className="text-xs text-muted-foreground">Intensify nourishing soups, prioritize sleep, reduce stress, avoid cold foods</p>
+              </div>
+              <div className="bg-background/50 rounded-lg p-3">
+                <p className="font-medium text-xs text-primary mb-1">During Stimulation</p>
+                <p className="text-xs text-muted-foreground">Warm, protein-rich meals, gentle walking only, stay hydrated</p>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <div className="grid md:grid-cols-2 gap-4">
           <div className="bg-secondary/50 rounded-xl p-5">
