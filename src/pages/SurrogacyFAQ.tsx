@@ -25,7 +25,7 @@ const faqs = [
   },
   {
     question: "Can I pay a surrogate in HK?",
-    answer: "If you need some guidance through the surrogacy process please contact Just Law."
+    answer: "No."
   },
   {
     question: "What is the difference between gestational and traditional surrogacy?",
