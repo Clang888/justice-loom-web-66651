@@ -1,7 +1,6 @@
 import { Baby, Snowflake, Scale } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import SurrogacyJourneyTracker from "@/components/SurrogacyJourneyTracker";
 
 const EggFreezingSurrogacy = () => {
   return (
@@ -77,43 +76,11 @@ const EggFreezingSurrogacy = () => {
               </Link>
 
               <div className="bg-card border border-border rounded-2xl p-6 shadow-sm">
-                <div className="text-sm text-muted-foreground space-y-4 mb-6">
-                  <p className="font-medium text-foreground">
-                    PLEASE NOTE that this information is a general guide and not legal advice. Laws change frequently. For the most current and specific guidance, please consult with a qualified lawyer specialising in reproductive law.
-                  </p>
-                  
-                  <p>
-                    Surrogacy laws in the U.S. are set by each state, not by the federal government. This means the rules are complex and can be very different from one state to another. Some states strongly support surrogacy, while others are restrictive or even ban it. Below please find a list of surrogacy friendly states and surrogacy agencies in those states.
-                  </p>
-
-                  <div>
-                    <h4 className="font-semibold text-foreground mb-2">CRITICAL DISCLAIMERS & ADVICE</h4>
-                    <ul className="space-y-3">
-                      <li>
-                        <strong>Type of Surrogacy Matters:</strong> The above primarily refers to gestational surrogacy. Traditional surrogacy (where the surrogate is the egg donor) is legally riskier and prohibited or heavily restricted in many more states due to complex parental rights issues.
-                      </li>
-                      <li>
-                        <strong>Pre-Birth Orders:</strong> A key goal in surrogacy friendly states is obtaining a pre-birth order, which establishes the intended parents as the legal parents before birth, avoiding the need for adoption.
-                      </li>
-                      <li>
-                        <strong>Residency:</strong> Some states require the intended parents, the surrogate, or both to be residents. Always check local statutes.
-                      </li>
-                      <li>
-                        <strong>Marital Status/Sexual Orientation:</strong> Laws in some states (e.g., Louisiana, Florida historically) favour or only protect married heterosexual couples. This is changing but must be verified. You must consult with reproductive law attorney. They can navigate the specific county court procedures, draft the contract, and secure the parentage order. The <a href="https://www.asrm.org/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">American Society for Reproductive Medicine (ASRM)</a> or <a href="https://adoptionart.org/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Academy of Adoption & Assisted Reproduction Attorneys (AAAA)</a> are good starting points for referrals.
-                      </li>
-                      <li>
-                        <strong>Agency Selection:</strong> If using an agency, ensure they have proven expertise and established legal partnerships in the states where they match surrogates and intended parents.
-                      </li>
-                    </ul>
-                  </div>
-
-                  <p className="italic">
-                    This information is a general guide and not legal advice. Laws change frequently. For the most current and specific guidance, please consult with a qualified lawyer specialising in reproductive law.
-                  </p>
-                </div>
+                <h3 className="text-lg font-semibold mb-2">Surrogacy Journey Tracker</h3>
+                <p className="text-sm text-muted-foreground">
+                  Understanding your options and making informed decisions about your surrogacy journey... <Link to="/surrogacy-states" className="text-primary hover:underline font-medium">read more</Link>
+                </p>
               </div>
-              
-              <SurrogacyJourneyTracker />
             </div>
           </div>
 
