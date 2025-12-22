@@ -1,5 +1,6 @@
-import { Building2, MapPin, Phone, Globe, Mail, MessageCircle } from "lucide-react";
+import { Building2, MapPin, Phone, Globe, Mail, MessageCircle, BookOpen } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 
 const clinics = [
   {
@@ -113,6 +114,24 @@ const EggFreezingClinicsHK = () => {
           A list of reputable fertility clinics offering egg freezing services in Hong Kong. 
           Please verify information directly with the clinics as details may change.
         </p>
+
+        {/* Premium Guide Banner */}
+        <div className="mt-8 bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10 border border-primary/20 rounded-2xl p-6">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+            <div>
+              <h2 className="text-lg font-semibold mb-1">Premium Fertility Planning Guide</h2>
+              <p className="text-sm text-muted-foreground">
+                Complete roadmap with TCM foods, clinic comparisons, legal guidance & recovery tips
+              </p>
+            </div>
+            <Link to="/fertility-guide">
+              <Button className="gap-2 whitespace-nowrap">
+                <BookOpen className="w-4 h-4" />
+                View Guide
+              </Button>
+            </Link>
+          </div>
+        </div>
 
         <div className="mt-10 grid md:grid-cols-2 gap-6">
           {clinics.map((clinic: Clinic, index: number) => (

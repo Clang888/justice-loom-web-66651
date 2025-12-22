@@ -28,6 +28,7 @@ import SurrogacyFAQ from "./pages/SurrogacyFAQ";
 import EggFreezingClinicsHK from "./pages/EggFreezingClinicsHK";
 import FormE from "./pages/FormE";
 import FormEFeedback from "./pages/FormEFeedback";
+import FertilityGuide from "./pages/FertilityGuide";
 
 const queryClient = new QueryClient();
 
@@ -61,6 +62,7 @@ const App = () => (
               <Route path="/egg-freezing-clinics-hk" element={<EggFreezingClinicsHK />} />
               <Route path="/form-e" element={<FormE />} />
               <Route path="/form-e-feedback" element={<FormEFeedback />} />
+              <Route path="/fertility-guide" element={<FertilityGuide />} />
               <Route path="/auth" element={<Auth />} />
               <Route path="/admin" element={<Admin />} />
             </Routes>
