@@ -125,7 +125,7 @@ const FertilityPlanningGuide = () => {
                 <td className="p-3 text-muted-foreground">English, Cantonese, Mandarin</td>
               </tr>
               <tr className="border-t border-border bg-secondary/30">
-                <td className="p-3 font-medium">Annual Storage Fees</td>
+                <td className="p-3 font-medium">Annual Egg Storage Fees</td>
                 <td className="p-3 text-muted-foreground">HK$3,000-5,000/year</td>
                 <td className="p-3 text-muted-foreground">HK$5,000-12,000/year</td>
               </tr>
