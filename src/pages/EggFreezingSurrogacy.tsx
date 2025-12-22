@@ -77,12 +77,6 @@ const EggFreezingSurrogacy = () => {
               </Link>
 
               <div className="bg-card border border-border rounded-2xl p-6 shadow-sm">
-                <h3 className="font-semibold text-lg mb-4">Surrogacy Friendly States in the USA</h3>
-
-                <Link to="/surrogacy-states" className="inline-flex items-center gap-2 text-sm font-medium hover:underline mb-4">
-                  Browse Surrogacy Friendly States in the USA
-                </Link>
-                
                 <div className="text-sm text-muted-foreground space-y-4 mb-6">
                   <p className="font-medium text-foreground">
                     PLEASE NOTE that this information is a general guide and not legal advice. Laws change frequently. For the most current and specific guidance, please consult with a qualified lawyer specialising in reproductive law.
