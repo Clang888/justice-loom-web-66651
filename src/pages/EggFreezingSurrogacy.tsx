@@ -8,10 +8,6 @@ const EggFreezingSurrogacy = () => {
     <section className="py-16 bg-secondary">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <h1 className="text-3xl font-bold">Egg Freezing & Surrogacy</h1>
-        <p className="mt-3 text-muted-foreground max-w-2xl">
-          Comprehensive legal guidance for fertility preservation and surrogacy arrangements, 
-          helping you navigate the complex legal landscape with confidence.
-        </p>
 
         <div className="mt-10 grid md:grid-cols-2 gap-8">
           {/* Surrogacy Card */}
