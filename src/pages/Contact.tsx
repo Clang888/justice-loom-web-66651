@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Mail, Phone } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 
@@ -82,17 +81,11 @@ const Contact = () => {
           </div>
 
           <div className="bg-card border border-border rounded-2xl p-6">
-            <div className="flex items-center gap-3 mb-2">
-              <Mail className="w-5 h-5" />
-              <h3 className="font-semibold">Email</h3>
-            </div>
+            <h3 className="font-semibold mb-2">Email</h3>
             <p className="text-sm text-muted-foreground">justlaweducation@gmail.com</p>
           </div>
           <div className="bg-card border border-border rounded-2xl p-6">
-            <div className="flex items-center gap-3 mb-2">
-              <Phone className="w-5 h-5" />
-              <h3 className="font-semibold">Phone</h3>
-            </div>
+            <h3 className="font-semibold mb-2">Phone</h3>
             <p className="text-sm text-muted-foreground">+853 92959750</p>
           </div>
         </div>
