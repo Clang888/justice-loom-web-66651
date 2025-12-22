@@ -117,7 +117,7 @@ const FertilityPlanningGuide = () => {
               <tr className="border-t border-border bg-secondary/30">
                 <td className="p-3 font-medium">Experience & Volume</td>
                 <td className="p-3 text-muted-foreground">High volume, established protocols</td>
-                <td className="p-3 text-muted-foreground">Varies—check success rates</td>
+                <td className="p-3 text-muted-foreground">Varies—check CHRT statistics</td>
               </tr>
               <tr className="border-t border-border">
                 <td className="p-3 font-medium">Language</td>
@@ -146,6 +146,25 @@ const FertilityPlanningGuide = () => {
               </tr>
             </tbody>
           </table>
+        </div>
+
+        {/* How to Check Success Rates */}
+        <div className="mt-6 bg-primary/10 border border-primary/20 rounded-xl p-5">
+          <h3 className="font-semibold mb-2">How to Check Clinic Success Rates</h3>
+          <p className="text-sm text-muted-foreground mb-3">
+            The <strong>Council on Human Reproductive Technology (CHRT)</strong> publishes annual statistics 
+            for all licensed fertility centres in Hong Kong. These reports include pregnancy rates, live birth 
+            rates, and cycle volumes by clinic.
+          </p>
+          <ul className="text-sm text-muted-foreground space-y-1 mb-3">
+            <li>• <strong>CHRT Annual Statistics:</strong> <a href="https://www.chrt.org.hk/english/publications/publications.html" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">www.chrt.org.hk</a> (Publications section)</li>
+            <li>• <strong>Hong Kong Medical Journal:</strong> Peer-reviewed articles on IVF outcomes in HK</li>
+            <li>• <strong>Individual clinic websites:</strong> Some clinics publish their own success rates (e.g., HKU-QMH CARE)</li>
+          </ul>
+          <p className="text-xs text-muted-foreground italic">
+            Tip: When comparing rates, ensure you're comparing like-for-like (same age groups, fresh vs frozen cycles, 
+            pregnancy rate vs live birth rate).
+          </p>
         </div>
 
         <div className="mt-6 grid md:grid-cols-2 gap-4">
