@@ -137,7 +137,7 @@ const FertilityGuide = () => {
         <div className="bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10 border border-primary/20 rounded-2xl p-6 mb-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div>
-              <h1 className="text-2xl font-bold mb-1">Premium Fertility Planning Guide</h1>
+              <h1 className="text-2xl font-bold mb-1">Preparing for Egg Retrieval</h1>
               <p className="text-muted-foreground">
                 Complete roadmap with TCM foods, clinic comparisons, legal guidance & more
               </p>
