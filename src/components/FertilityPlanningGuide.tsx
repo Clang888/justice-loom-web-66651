@@ -28,7 +28,7 @@ const FertilityPlanningGuide = () => {
         <img 
           src={planningCalendarImage} 
           alt="Planning calendar for fertility journey" 
-          className="w-full rounded-xl object-cover h-48 md:h-64 mb-6"
+          className="w-full rounded-xl object-cover h-32 md:h-40 mb-4"
         />
         
         <div className="space-y-4">
