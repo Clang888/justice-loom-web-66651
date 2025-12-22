@@ -36,7 +36,7 @@ const Contact = () => {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <h2 className="text-3xl font-bold">Get in touch</h2>
         <p className="mt-3 text-muted-foreground max-w-2xl">
-          Reach out for consultations, speaking engagement requests or general questions.
+          Contact us for consultations, speaking engagement requests or general questions.
         </p>
 
         <div className="mt-8 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
