@@ -71,7 +71,7 @@ const Contact = () => {
                   disabled={isSubmitting}
                   className="w-full rounded-xl px-6 py-2.5 bg-primary text-primary-foreground font-medium hover:bg-primary/90 disabled:opacity-50"
                 >
-                  {isSubmitting ? "Subscribing..." : "Subscribe"}
+                  {isSubmitting ? "Entering..." : "Enter"}
                 </button>
               </form>
             ) : (
