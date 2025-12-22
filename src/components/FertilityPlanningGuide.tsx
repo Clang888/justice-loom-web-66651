@@ -121,7 +121,7 @@ const FertilityPlanningGuide = () => {
               </tr>
               <tr className="border-t border-border">
                 <td className="p-3 font-medium">Language</td>
-                <td className="p-3 text-muted-foreground">Cantonese primary</td>
+                <td className="p-3 text-muted-foreground">Cantonese or Mandarin</td>
                 <td className="p-3 text-muted-foreground">English, Cantonese, Mandarin</td>
               </tr>
               <tr className="border-t border-border bg-secondary/30">
