@@ -28,14 +28,16 @@ const FertilityGuide = () => {
       <html>
         <head>
           <title>Hong Kong Fertility Planning Guide</title>
+          <meta charset="UTF-8">
           <style>
+            @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
             * {
               margin: 0;
               padding: 0;
               box-sizing: border-box;
             }
             body {
-              font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+              font-family: 'Inter', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
               line-height: 1.6;
               color: #1a1a1a;
               padding: 40px;
@@ -43,67 +45,66 @@ const FertilityGuide = () => {
               margin: 0 auto;
             }
             h1 { font-size: 28px; margin-bottom: 8px; font-weight: bold; }
-            h2 { font-size: 22px; margin-top: 32px; margin-bottom: 16px; font-weight: 600; page-break-after: avoid; }
-            h3 { font-size: 16px; margin-bottom: 8px; font-weight: 600; page-break-after: avoid; }
-            p { margin-bottom: 12px; color: #444; orphans: 3; widows: 3; }
-            ul { margin-left: 20px; margin-bottom: 12px; }
-            li { margin-bottom: 4px; color: #444; }
-            img { max-width: 100%; height: auto; border-radius: 8px; margin: 16px 0; page-break-inside: avoid; }
-            table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; page-break-inside: auto; }
-            th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+            h2 { font-size: 20px; margin-top: 24px; margin-bottom: 12px; font-weight: 600; page-break-after: avoid; }
+            h3 { font-size: 14px; margin-bottom: 6px; font-weight: 600; page-break-after: avoid; }
+            p { margin-bottom: 10px; color: #444; font-size: 13px; orphans: 3; widows: 3; }
+            ul { margin-left: 16px; margin-bottom: 10px; }
+            li { margin-bottom: 3px; color: #444; font-size: 13px; }
+            img { max-width: 100%; height: 120px; object-fit: cover; border-radius: 8px; margin: 12px 0; page-break-inside: avoid; }
+            table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 11px; page-break-inside: avoid; }
+            th, td { border: 1px solid #ddd; padding: 6px 8px; text-align: left; }
             th { background: #f5f5f5; font-weight: 600; }
             tr { page-break-inside: avoid; page-break-after: auto; }
             thead { display: table-header-group; }
-            section { margin-bottom: 32px; page-break-inside: auto; }
+            section { margin-bottom: 24px; page-break-inside: auto; }
             .text-primary { color: #1e3a5f; }
             .text-muted-foreground { color: #666; }
-            .bg-secondary\\/50, .bg-primary\\/10 { background: #f8f8f8; padding: 16px; border-radius: 8px; margin: 12px 0; page-break-inside: avoid; }
-            .border-l-4 { border-left: 4px solid; padding-left: 16px; page-break-inside: avoid; }
+            .bg-secondary\\/50, .bg-primary\\/10 { background: #f8f8f8; padding: 12px; border-radius: 8px; margin: 10px 0; page-break-inside: avoid; }
+            .border-l-4 { border-left: 4px solid; padding-left: 12px; margin-bottom: 8px; page-break-inside: avoid; }
             .border-blue-500 { border-color: #3b82f6; }
             .border-green-500 { border-color: #22c55e; }
             .border-orange-500 { border-color: #f97316; }
             .border-cyan-500 { border-color: #06b6d4; }
-            .text-blue-500 { color: #3b82f6; }
-            .text-green-500 { color: #22c55e; }
-            .text-orange-500 { color: #f97316; }
-            .text-cyan-500 { color: #06b6d4; }
-            .grid { display: grid; gap: 16px; }
+            .grid { display: grid; gap: 12px; }
             .md\\:grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
             .md\\:grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
             .flex { display: flex; }
             .items-center { align-items: center; }
-            .gap-2 { gap: 8px; }
-            .gap-3 { gap: 12px; }
-            .mb-2 { margin-bottom: 8px; }
-            .mb-3 { margin-bottom: 12px; }
-            .mb-4 { margin-bottom: 16px; }
-            .mb-6 { margin-bottom: 24px; }
-            .mt-6 { margin-top: 24px; }
-            .ml-7 { margin-left: 28px; }
-            .space-y-1 > * + * { margin-top: 4px; }
-            .space-y-2 > * + * { margin-top: 8px; }
-            .space-y-3 > * + * { margin-top: 12px; }
-            .space-y-4 > * + * { margin-top: 16px; }
-            .rounded-xl { border-radius: 12px; }
-            .rounded-lg { border-radius: 8px; }
-            .p-3 { padding: 12px; }
-            .p-5 { padding: 20px; }
-            .text-sm { font-size: 14px; }
-            .text-xs { font-size: 12px; }
-            .text-2xl { font-size: 22px; }
-            .text-3xl { font-size: 28px; }
+            .gap-2 { gap: 6px; }
+            .gap-3 { gap: 10px; }
+            .gap-4 { gap: 12px; }
+            .mb-2 { margin-bottom: 6px; }
+            .mb-3 { margin-bottom: 10px; }
+            .mb-4 { margin-bottom: 12px; }
+            .mb-6 { margin-bottom: 16px; }
+            .mt-6 { margin-top: 16px; }
+            .space-y-1 > * + * { margin-top: 3px; }
+            .space-y-2 > * + * { margin-top: 6px; }
+            .space-y-3 > * + * { margin-top: 10px; }
+            .space-y-4 > * + * { margin-top: 12px; }
+            .rounded-xl { border-radius: 10px; }
+            .rounded-lg { border-radius: 6px; }
+            .p-3 { padding: 10px; }
+            .p-5 { padding: 14px; }
+            .text-sm { font-size: 13px; }
+            .text-xs { font-size: 11px; }
+            .text-2xl { font-size: 20px; }
+            .text-3xl { font-size: 24px; }
             .font-semibold { font-weight: 600; }
             .font-bold { font-weight: 700; }
             .font-medium { font-weight: 500; }
-            svg { display: inline-block; width: 20px; height: 20px; vertical-align: middle; }
+            svg { display: none; }
+            /* Page break controls */
+            .page-break-before { page-break-before: always; }
+            section:nth-of-type(3) { page-break-before: always; }
+            section:nth-of-type(5) { page-break-before: always; }
             @page { 
-              margin: 1.5cm; 
+              margin: 1.2cm; 
               size: A4; 
-              margin-top: 1cm;
-              margin-bottom: 1cm;
             }
             @media print {
               body { padding: 0; }
+              img { height: 100px; }
             }
           </style>
         </head>
