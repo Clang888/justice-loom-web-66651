@@ -157,7 +157,7 @@ const EggFreezingSurrogacy = () => {
                 </p>
               </div>
 
-              <Link to="/books" className="inline-flex items-center gap-2 text-sm font-medium hover:underline">
+              <Link to="/surrogacy-states" className="inline-flex items-center gap-2 text-sm font-medium hover:underline">
                 Browse Surrogacy Friendly States in the USA
               </Link>
             </div>
