@@ -111,19 +111,20 @@ const EggFreezingSurrogacy = () => {
                 </p>
               </Link>
 
-              <Link to="/fertility-guide" className="block bg-card border border-border rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
-                <h3 className="font-semibold text-lg mb-2">Egg Retrieval Preparation Guide</h3>
-                <p className="text-sm text-muted-foreground">
-                  Comprehensive guide covering timelines, clinic comparisons, and preparation tips.
-                </p>
-              </Link>
-
-              <Button 
-                size="lg"
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white uppercase font-semibold"
-              >
-                PURCHASE GUIDE HK$100
-              </Button>
+              <div className="bg-card border border-border rounded-2xl p-6 shadow-sm">
+                <Link to="/fertility-guide" className="block hover:opacity-80 transition-opacity">
+                  <h3 className="font-semibold text-lg mb-2">Egg Retrieval Preparation Guide</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Comprehensive guide covering timelines, clinic comparisons, and preparation tips.
+                  </p>
+                </Link>
+                <Button 
+                  size="lg"
+                  className="w-full mt-4 bg-blue-600 hover:bg-blue-700 text-white uppercase font-semibold"
+                >
+                  PURCHASE GUIDE HK$100
+                </Button>
+              </div>
             </div>
           </div>
         </div>
