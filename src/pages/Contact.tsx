@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Mail, Phone, Newspaper } from "lucide-react";
+import { Mail, Phone } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 
@@ -42,13 +42,6 @@ const Contact = () => {
         <div className="mt-8 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {/* Newsletter Signup */}
           <div className="bg-card border border-border rounded-2xl p-6 md:col-span-2">
-            <div className="flex items-center gap-3 mb-4">
-              <Newspaper className="w-5 h-5" />
-              <h3 className="font-semibold">Newsletter</h3>
-            </div>
-            <p className="text-sm text-muted-foreground mb-4">
-              Get bi-monthly updates: new guides, upcoming reforms, and tips you can use.
-            </p>
             {!newsletterSent ? (
               <form onSubmit={onNewsletterSubmit} className="space-y-3">
                 <div>
