@@ -18,46 +18,51 @@ const FertilityGuide = () => {
       {/* Print-specific styles */}
       <style>{`
         @media print {
-          /* Hide non-essential elements */
-          header, footer, nav, 
-          .no-print,
-          button:not(.print-button) {
+          /* Hide navigation and buttons only */
+          .no-print {
             display: none !important;
           }
           
-          /* Reset page styling */
-          body {
+          /* Ensure colors print */
+          * {
             -webkit-print-color-adjust: exact !important;
             print-color-adjust: exact !important;
+            color-adjust: exact !important;
           }
           
-          /* Make the guide full width */
+          /* Make the guide container visible and full width */
           .print-container {
             max-width: 100% !important;
-            padding: 0 !important;
-            margin: 0 !important;
-          }
-          
-          .print-container > div {
             border: none !important;
             box-shadow: none !important;
-            padding: 20px !important;
           }
           
-          /* Ensure images print */
+          /* Ensure images print with proper sizing */
           img {
             max-width: 100% !important;
+            height: auto !important;
             page-break-inside: avoid;
+            display: block !important;
           }
           
-          /* Avoid page breaks inside sections */
+          /* Keep sections together when possible */
           section {
             page-break-inside: avoid;
           }
           
           /* Page margins */
           @page {
-            margin: 1cm;
+            margin: 1.5cm;
+            size: A4;
+          }
+          
+          /* Ensure text is visible */
+          body, html {
+            background: white !important;
+          }
+          
+          .text-foreground, .text-muted-foreground, p, li, h1, h2, h3, span, td, th {
+            color: black !important;
           }
         }
       `}</style>
