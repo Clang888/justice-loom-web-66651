@@ -1,4 +1,4 @@
-import { Baby, Snowflake, ChevronRight, Scale, HelpCircle, Flag } from "lucide-react";
+import { Baby, Snowflake, ChevronRight, Scale, Flag } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import SurrogacyJourneyTracker from "@/components/SurrogacyJourneyTracker";
@@ -132,22 +132,6 @@ const EggFreezingSurrogacy = () => {
             <SurrogacyJourneyTracker />
           </div>
         </div>
-
-        {/* FAQ Link */}
-        <div className="mt-12">
-          <Link 
-            to="/surrogacy-faq" 
-            className="flex items-center gap-3 bg-card border border-border rounded-xl p-6 hover:bg-muted/50 transition-colors"
-          >
-            <HelpCircle className="w-6 h-6 text-primary" />
-            <div>
-              <h2 className="font-semibold">Frequently Asked Questions</h2>
-              <p className="text-sm text-muted-foreground">Common questions about egg freezing and surrogacy in Hong Kong</p>
-            </div>
-            <ChevronRight className="w-5 h-5 ml-auto text-muted-foreground" />
-          </Link>
-        </div>
-
         <div className="mt-12 bg-card border border-border rounded-2xl p-8 text-center">
           <h2 className="text-2xl font-semibold mb-3">Need Personalised Advice?</h2>
           <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
