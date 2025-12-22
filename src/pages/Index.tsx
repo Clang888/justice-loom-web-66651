@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { ShieldCheck, Globe, Briefcase, MessageSquare, BookOpen, Hammer, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import heroImage from "@/assets/hero-litigant-2.jpg";
+import heroImage from "@/assets/hero-street-group.jpg";
 
 const Index = () => {
   return (
