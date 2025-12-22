@@ -1,4 +1,4 @@
-import { Baby, Snowflake, Scale, Building2 } from "lucide-react";
+import { Baby, Snowflake, Scale } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import SurrogacyJourneyTracker from "@/components/SurrogacyJourneyTracker";
@@ -121,10 +121,7 @@ const EggFreezingSurrogacy = () => {
           <div>
             <h2 className="text-2xl font-semibold mb-6">Egg Freezing Resources</h2>
             <Link to="/egg-freezing-clinics-hk" className="block bg-card border border-border rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
-              <div className="flex items-center gap-3 mb-4">
-                <Building2 className="w-6 h-6 text-primary flex-shrink-0" />
-                <h3 className="font-semibold text-lg">Egg Freezing Clinics in Hong Kong</h3>
-              </div>
+              <h3 className="font-semibold text-lg mb-4">Egg Freezing Clinics in Hong Kong</h3>
               <p className="text-sm text-muted-foreground">
                 Find reputable fertility clinics offering egg freezing services in Hong Kong.
               </p>
