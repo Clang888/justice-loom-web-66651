@@ -13,7 +13,6 @@ import {
 } from "lucide-react";
 
 import tcmFoodsImage from "@/assets/tcm-foods-fertility.jpg";
-import wellnessTeaImage from "@/assets/fertility-wellness-tea.jpg";
 import consultationImage from "@/assets/fertility-consultation.jpg";
 import clinicInteriorImage from "@/assets/fertility-clinic-interior.jpg";
 import recoveryRestImage from "@/assets/fertility-recovery-rest.jpg";
@@ -26,11 +25,6 @@ const FertilityPlanningGuide = () => {
       <div className="text-center border-b border-border pb-8">
         <h1 className="text-3xl font-bold mb-2">Hong Kong Fertility Planning Guide</h1>
         <p className="text-muted-foreground">Your Complete Roadmap to Egg Freezing Success</p>
-        <img 
-          src={wellnessTeaImage} 
-          alt="Peaceful moment with herbal tea" 
-          className="mt-6 w-full max-w-2xl mx-auto rounded-xl object-cover h-48 md:h-64"
-        />
       </div>
 
       {/* Section 1: Timeline */}
