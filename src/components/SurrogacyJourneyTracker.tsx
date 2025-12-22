@@ -158,7 +158,7 @@ const SurrogacyJourneyTracker = () => {
             Surrogacy Journey Tracker
           </h3>
           <p className="text-sm text-muted-foreground mt-1">
-            Understanding your path from beginning to parenthood
+            Your path from imagining to parenthood
           </p>
         </div>
         <div className="w-24 h-2 bg-secondary rounded-full overflow-hidden">
