@@ -27,7 +27,7 @@ const FertilityGuide = () => {
       <!DOCTYPE html>
       <html>
         <head>
-          <title>Hong Kong Fertility Planning Guide</title>
+          <title>Optimal Retrieval Planning Guide</title>
           <meta charset="UTF-8">
           <style>
             @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
