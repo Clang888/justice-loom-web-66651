@@ -138,7 +138,7 @@ const EggFreezingSurrogacy = () => {
           {/* Egg Freezing Resources */}
           <div>
             <h2 className="text-2xl font-semibold mb-6">Egg Freezing Resources</h2>
-            <div className="bg-card border border-border rounded-2xl p-6 shadow-sm">
+            <Link to="/egg-freezing-clinics-hk" className="block bg-card border border-border rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
               <div className="flex items-center gap-3 mb-4">
                 <Building2 className="w-6 h-6 text-primary flex-shrink-0" />
                 <h3 className="font-semibold text-lg">Egg Freezing Clinics in Hong Kong</h3>
@@ -146,7 +146,7 @@ const EggFreezingSurrogacy = () => {
               <p className="text-sm text-muted-foreground">
                 Find reputable fertility clinics offering egg freezing services in Hong Kong.
               </p>
-            </div>
+            </Link>
           </div>
         </div>
         <div className="mt-12 bg-card border border-border rounded-2xl p-8 text-center">
