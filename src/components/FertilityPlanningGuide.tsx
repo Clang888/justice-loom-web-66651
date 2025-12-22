@@ -21,8 +21,9 @@ const FertilityPlanningGuide = () => {
 
       {/* Section 1: Timeline */}
       <section>
-        <div className="mb-6">
+        <div className="flex justify-between items-center mb-6">
           <h2 className="text-2xl font-semibold">Step-by-Step Timeline (時間表)</h2>
+          <span className="text-xs text-muted-foreground">Pages 1-2</span>
         </div>
 
         <img 
@@ -84,8 +85,9 @@ const FertilityPlanningGuide = () => {
 
       {/* Section 2: Clinic Comparison */}
       <section>
-        <div className="mb-6">
+        <div className="flex justify-between items-center mb-6">
           <h2 className="text-2xl font-semibold">Public and Private Clinic Comparisons</h2>
+          <span className="text-xs text-muted-foreground">Pages 3-4</span>
         </div>
 
         <img 
@@ -186,8 +188,9 @@ const FertilityPlanningGuide = () => {
 
       {/* Section 3: How to Check Clinic Success Rates */}
       <section>
-        <div className="mb-6">
+        <div className="flex justify-between items-center mb-6">
           <h2 className="text-2xl font-semibold">How to Check Clinic Success Rates</h2>
+          <span className="text-xs text-muted-foreground">Page 5</span>
         </div>
 
         <div className="bg-primary/10 border border-primary/20 rounded-xl p-5">
@@ -210,8 +213,9 @@ const FertilityPlanningGuide = () => {
 
       {/* Section 3: Traditional Chinese Foods */}
       <section>
-        <div className="mb-6">
+        <div className="flex justify-between items-center mb-6">
           <h2 className="text-2xl font-semibold">Traditional Chinese Foods for Optimum Egg Health</h2>
+          <span className="text-xs text-muted-foreground">Pages 6-7</span>
         </div>
 
         <img 
@@ -321,8 +325,9 @@ const FertilityPlanningGuide = () => {
 
       {/* Section 4: Legal & Financial */}
       <section>
-        <div className="mb-6">
+        <div className="flex justify-between items-center mb-6">
           <h2 className="text-2xl font-semibold">Legal and Financial Considerations (法律與財務)</h2>
+          <span className="text-xs text-muted-foreground">Page 8</span>
         </div>
         
         <div className="grid md:grid-cols-2 gap-6">
@@ -368,9 +373,12 @@ const FertilityPlanningGuide = () => {
 
       {/* Section 5: Consultation Questions */}
       <section>
-        <div className="flex items-center gap-3 mb-6">
-          <MessageSquare className="w-6 h-6 text-primary" />
-          <h2 className="text-2xl font-semibold">Questions for Your Consultation</h2>
+        <div className="flex justify-between items-center mb-6">
+          <div className="flex items-center gap-3">
+            <MessageSquare className="w-6 h-6 text-primary" />
+            <h2 className="text-2xl font-semibold">Questions for Your Consultation</h2>
+          </div>
+          <span className="text-xs text-muted-foreground">Pages 9-10</span>
         </div>
 
         <img 
@@ -416,9 +424,12 @@ const FertilityPlanningGuide = () => {
 
       {/* Section 6: Recovery Guide */}
       <section>
-        <div className="flex items-center gap-3 mb-6">
-          <Heart className="w-6 h-6 text-primary" />
-          <h2 className="text-2xl font-semibold">Recovery & Self-Care</h2>
+        <div className="flex justify-between items-center mb-6">
+          <div className="flex items-center gap-3">
+            <Heart className="w-6 h-6 text-primary" />
+            <h2 className="text-2xl font-semibold">Recovery & Self-Care</h2>
+          </div>
+          <span className="text-xs text-muted-foreground">Pages 11-12</span>
         </div>
 
         <img 
