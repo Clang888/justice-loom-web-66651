@@ -42,9 +42,6 @@ const EggFreezingSurrogacy = () => {
               <Snowflake className="w-6 h-6 text-primary" />
               <h2 className="font-semibold text-xl">Egg Freezing</h2>
             </div>
-            <p className="text-muted-foreground mb-4">
-              Understanding your legal rights and options when preserving your fertility for the future.
-            </p>
             <ul className="space-y-2 text-sm text-muted-foreground mb-6">
               <li className="flex items-start gap-2">
                 <Scale className="w-4 h-4 mt-0.5 flex-shrink-0" />
