@@ -1,4 +1,4 @@
-import { ChevronLeft, CheckCircle2 } from "lucide-react";
+import { ChevronLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
@@ -48,8 +48,7 @@ const SurrogacyStates = () => {
 
         {/* Friendly States */}
         <div className="mt-10">
-          <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
-            <CheckCircle2 className="w-5 h-5 text-green-600" />
+          <h2 className="text-xl font-semibold mb-4">
             Surrogacy Friendly States
           </h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -68,9 +67,15 @@ const SurrogacyStates = () => {
           <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
             Receive personalised expert guidance on international surrogacy<br />before you take the first step.
           </p>
-          <Link to="/contact">
-            <Button size="lg">Book a Consultation</Button>
-          </Link>
+          <Button 
+            size="lg" 
+            onClick={() => {
+              window.scrollTo(0, 0);
+              window.location.href = '/contact';
+            }}
+          >
+            Book a Consultation
+          </Button>
         </div>
       </div>
     </section>
