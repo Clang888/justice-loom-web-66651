@@ -83,7 +83,7 @@ const Books = () => {
             <img 
               src="/just-law-logo.jpg" 
               alt="Just Law" 
-              className="w-32 h-auto opacity-80"
+              className="w-56 h-auto opacity-80"
             />
           </div>
         </div>
