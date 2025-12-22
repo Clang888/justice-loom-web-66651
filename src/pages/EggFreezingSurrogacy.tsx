@@ -112,7 +112,7 @@ const EggFreezingSurrogacy = () => {
               </Link>
 
               <Link to="/fertility-guide" className="block bg-card border border-border rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
-                <h3 className="font-semibold text-lg mb-2">Fertility Planning Guide</h3>
+                <h3 className="font-semibold text-lg mb-2">Egg Retrieval Preparation Guide</h3>
                 <p className="text-sm text-muted-foreground">
                   Comprehensive guide covering timelines, clinic comparisons, and preparation tips.
                 </p>
