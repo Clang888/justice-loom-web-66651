@@ -139,7 +139,7 @@ const FertilityGuide = () => {
             <div>
               <h1 className="text-2xl font-bold mb-1">Preparing for Egg Retrieval</h1>
               <p className="text-muted-foreground">
-                Complete roadmap with TCM foods, clinic comparisons, legal guidance & more
+                Your Complete Roadmap to Egg Freezing Success
               </p>
             </div>
             <div className="flex gap-2">
@@ -157,7 +157,7 @@ const FertilityGuide = () => {
                 size="lg"
                 className="gap-2 whitespace-nowrap bg-blue-600 hover:bg-blue-700 text-white uppercase font-semibold"
               >
-                PURCHASE GUIDE HK$100
+                PURCHASE GUIDE HK$199
               </Button>
             </div>
           </div>
@@ -185,7 +185,7 @@ const FertilityGuide = () => {
               size="lg"
               className="gap-2 bg-blue-600 hover:bg-blue-700 text-white uppercase font-semibold"
             >
-              PURCHASE GUIDE HK$100
+              PURCHASE GUIDE HK$199
             </Button>
           </div>
           <p className="text-xs text-muted-foreground mt-3">
