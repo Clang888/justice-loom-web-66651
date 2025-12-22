@@ -1,13 +1,20 @@
 import { useState } from "react";
-import { Mail, Phone, MessageSquare } from "lucide-react";
+import { Mail, Phone, MessageSquare, Newspaper } from "lucide-react";
 
 const Contact = () => {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [sent, setSent] = useState(false);
+  const [newsletter, setNewsletter] = useState({ name: "", email: "" });
+  const [newsletterSent, setNewsletterSent] = useState(false);
 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setSent(true);
+  };
+
+  const onNewsletterSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setNewsletterSent(true);
   };
 
   return (
@@ -71,6 +78,53 @@ const Contact = () => {
           </div>
 
           <div className="space-y-6">
+            {/* Newsletter Signup */}
+            <div className="bg-card border border-border rounded-2xl p-6">
+              <div className="flex items-center gap-3 mb-4">
+                <Newspaper className="w-5 h-5" />
+                <h3 className="font-semibold">Newsletter</h3>
+              </div>
+              <p className="text-sm text-muted-foreground mb-4">
+                Get bi-monthly updates: new guides, upcoming reforms, and tips you can use.
+              </p>
+              {!newsletterSent ? (
+                <form onSubmit={onNewsletterSubmit} className="space-y-3">
+                  <div>
+                    <label htmlFor="newsletter-name" className="block text-sm font-medium mb-1">Name</label>
+                    <input
+                      id="newsletter-name"
+                      type="text"
+                      required
+                      value={newsletter.name}
+                      onChange={(e) => setNewsletter({ ...newsletter, name: e.target.value })}
+                      className="w-full rounded-xl border border-border bg-background px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="newsletter-email" className="block text-sm font-medium mb-1">Email</label>
+                    <input
+                      id="newsletter-email"
+                      type="email"
+                      required
+                      value={newsletter.email}
+                      onChange={(e) => setNewsletter({ ...newsletter, email: e.target.value })}
+                      className="w-full rounded-xl border border-border bg-background px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    className="w-full rounded-xl px-6 py-2.5 bg-primary text-primary-foreground font-medium hover:bg-primary/90"
+                  >
+                    Subscribe
+                  </button>
+                </form>
+              ) : (
+                <div className="rounded-xl bg-secondary p-4 text-center">
+                  <p className="text-sm font-medium">You&apos;re subscribed! Thanks for joining.</p>
+                </div>
+              )}
+            </div>
+
             <div className="bg-card border border-border rounded-2xl p-6">
               <div className="flex items-center gap-3 mb-2">
                 <Mail className="w-5 h-5" />
