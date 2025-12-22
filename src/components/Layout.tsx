@@ -1,6 +1,6 @@
 import { ReactNode, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { ChevronRight, LogOut, Shield } from "lucide-react";
+import { LogOut, Shield } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { User } from "@supabase/supabase-js";
 import { Button } from "@/components/ui/button";
@@ -104,12 +104,12 @@ const Layout = ({ children }: LayoutProps) => {
                 Logout
               </Button>
             ) : (
-              <Link to="/auth" className="inline-flex items-center gap-1 rounded-full border px-3 py-1.5 hover:bg-secondary">
-                Login <ChevronRight className="w-4 h-4" />
+              <Link to="/auth" className="rounded-full border px-3 py-1.5 hover:bg-secondary">
+                Login
               </Link>
             )}
-            <Link to="/contact" className="inline-flex items-center gap-1 rounded-full border px-3 py-1.5 hover:bg-secondary">
-              Contact <ChevronRight className="w-4 h-4" />
+            <Link to="/contact" className="rounded-full border px-3 py-1.5 hover:bg-secondary">
+              Contact
             </Link>
           </div>
         </nav>
