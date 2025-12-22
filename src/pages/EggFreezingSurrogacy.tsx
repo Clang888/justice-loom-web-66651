@@ -1,4 +1,4 @@
-import { Baby, Snowflake, BookOpen, ChevronRight, Scale, HelpCircle, ChevronDown } from "lucide-react";
+import { Baby, Snowflake, ChevronRight, Scale, HelpCircle, ChevronDown } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import SurrogacyJourneyTracker from "@/components/SurrogacyJourneyTracker";
@@ -118,10 +118,9 @@ const EggFreezingSurrogacy = () => {
             <div className="bg-card border border-border rounded-2xl p-6 shadow-sm">
               <div className="flex items-start justify-between gap-4 mb-4">
                 <div className="flex items-center gap-3">
-                  <BookOpen className="w-6 h-6" />
+                  <USMapOutline className="w-10 h-8 text-primary flex-shrink-0" />
                   <h3 className="font-semibold text-lg">Surrogacy Friendly States in the USA</h3>
                 </div>
-                <USMapOutline className="w-24 h-16 text-primary opacity-60 flex-shrink-0" />
               </div>
               
               <div className="text-sm text-muted-foreground space-y-4 mb-6">
