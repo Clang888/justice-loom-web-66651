@@ -1,20 +1,41 @@
 import { useState } from "react";
 import { Mail, Phone, MessageSquare, Newspaper } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "sonner";
 
 const Contact = () => {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [sent, setSent] = useState(false);
   const [newsletter, setNewsletter] = useState({ name: "", email: "" });
   const [newsletterSent, setNewsletterSent] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setSent(true);
   };
 
-  const onNewsletterSubmit = (e: React.FormEvent) => {
+  const onNewsletterSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
+    
+    const { error } = await supabase
+      .from('newsletter_subscribers')
+      .insert({ name: newsletter.name, email: newsletter.email });
+    
+    setIsSubmitting(false);
+    
+    if (error) {
+      if (error.code === '23505') {
+        toast.error("This email is already subscribed!");
+      } else {
+        toast.error("Failed to subscribe. Please try again.");
+      }
+      return;
+    }
+    
     setNewsletterSent(true);
+    toast.success("Successfully subscribed!");
   };
 
   return (
@@ -113,9 +134,10 @@ const Contact = () => {
                   </div>
                   <button
                     type="submit"
-                    className="w-full rounded-xl px-6 py-2.5 bg-primary text-primary-foreground font-medium hover:bg-primary/90"
+                    disabled={isSubmitting}
+                    className="w-full rounded-xl px-6 py-2.5 bg-primary text-primary-foreground font-medium hover:bg-primary/90 disabled:opacity-50"
                   >
-                    Subscribe
+                    {isSubmitting ? "Subscribing..." : "Subscribe"}
                   </button>
                 </form>
               ) : (
