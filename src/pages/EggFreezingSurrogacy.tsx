@@ -46,22 +46,10 @@ const EggFreezingSurrogacy = () => {
               <h2 className="font-semibold text-xl">Egg Freezing</h2>
             </div>
             <ul className="space-y-2 text-sm text-muted-foreground mb-6">
-              <li className="flex items-start gap-2">
-                <Scale className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                <span>Consent and storage agreements</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <Scale className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                <span>Storage duration and renewal rights</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <Scale className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                <span>Partner consent considerations</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <Scale className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                <span>Cross-border storage regulations</span>
-              </li>
+              <li>Consent and storage agreements</li>
+              <li>Storage duration and renewal rights</li>
+              <li>Partner consent considerations</li>
+              <li>Cross-border storage regulations</li>
             </ul>
           </div>
         </div>
