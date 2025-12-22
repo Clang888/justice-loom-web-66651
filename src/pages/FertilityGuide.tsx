@@ -139,7 +139,7 @@ const FertilityGuide = () => {
             <div>
               <h1 className="text-2xl font-bold mb-1">Preparing for Egg Retrieval</h1>
               <p className="text-muted-foreground">
-                Your Complete Roadmap to Egg Freezing Success
+                Your Complete Roadmap for Egg Freezing Success
               </p>
             </div>
             <div className="flex gap-2">
