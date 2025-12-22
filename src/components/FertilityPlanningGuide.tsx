@@ -1,6 +1,5 @@
 import { 
   Calendar, 
-  Building2, 
   Scale, 
   MessageSquare, 
   Heart, 
@@ -108,8 +107,7 @@ const FertilityPlanningGuide = () => {
 
       {/* Section 2: Clinic Comparison */}
       <section>
-        <div className="flex items-center gap-3 mb-6">
-          <Building2 className="w-6 h-6 text-primary" />
+        <div className="mb-6">
           <h2 className="text-2xl font-semibold">Public Hospital or Private Clinic?</h2>
         </div>
 
