@@ -13,6 +13,10 @@ import {
   Soup
 } from "lucide-react";
 
+import tcmFoodsImage from "@/assets/tcm-foods-fertility.jpg";
+import wellnessTeaImage from "@/assets/fertility-wellness-tea.jpg";
+import consultationImage from "@/assets/fertility-consultation.jpg";
+
 const FertilityPlanningGuide = () => {
   return (
     <div className="space-y-12 text-foreground">
@@ -20,6 +24,11 @@ const FertilityPlanningGuide = () => {
       <div className="text-center border-b border-border pb-8">
         <h1 className="text-3xl font-bold mb-2">Hong Kong Fertility Planning Guide</h1>
         <p className="text-muted-foreground">Your Complete Roadmap to Egg Freezing Success</p>
+        <img 
+          src={wellnessTeaImage} 
+          alt="Peaceful moment with herbal tea" 
+          className="mt-6 w-full max-w-2xl mx-auto rounded-xl object-cover h-48 md:h-64"
+        />
       </div>
 
       {/* Section 1: Timeline */}
@@ -195,6 +204,12 @@ const FertilityPlanningGuide = () => {
           <Soup className="w-6 h-6 text-primary" />
           <h2 className="text-2xl font-semibold">Traditional Chinese Foods for Egg Health</h2>
         </div>
+
+        <img 
+          src={tcmFoodsImage} 
+          alt="Traditional Chinese medicine ingredients for fertility including red dates, goji berries, and black sesame" 
+          className="w-full rounded-xl object-cover h-48 md:h-64 mb-6"
+        />
         
         <p className="text-muted-foreground mb-4">
           Traditional Chinese Medicine (TCM) emphasizes nourishing the blood and kidney essence (腎精) 
@@ -356,7 +371,12 @@ const FertilityPlanningGuide = () => {
           <MessageSquare className="w-6 h-6 text-primary" />
           <h2 className="text-2xl font-semibold">Questions for Your Consultation</h2>
         </div>
-        
+
+        <img 
+          src={consultationImage} 
+          alt="Doctor consultation in a modern fertility clinic" 
+          className="w-full rounded-xl object-cover h-48 md:h-64 mb-6"
+        />
         <div className="space-y-4">
           <div className="bg-secondary/50 rounded-xl p-5">
             <h3 className="font-semibold mb-3">About the Clinic</h3>
