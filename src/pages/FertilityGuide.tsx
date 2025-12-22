@@ -51,6 +51,7 @@ const FertilityGuide = () => {
             ul { margin-left: 16px; margin-bottom: 10px; }
             li { margin-bottom: 3px; color: #444; font-size: 13px; }
             img { max-width: 100%; height: 120px; object-fit: cover; border-radius: 8px; margin: 12px 0; page-break-inside: avoid; }
+            img.tcm-food-image { height: 200px; }
             table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 11px; page-break-inside: avoid; }
             th, td { border: 1px solid #ddd; padding: 6px 8px; text-align: left; }
             th { background: #f5f5f5; font-weight: 600; }
@@ -105,6 +106,7 @@ const FertilityGuide = () => {
             @media print {
               body { padding: 0; }
               img { height: 100px; }
+              img.tcm-food-image { height: 180px; }
             }
           </style>
         </head>
