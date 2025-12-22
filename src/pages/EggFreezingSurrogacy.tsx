@@ -1,8 +1,7 @@
-import { Baby, Snowflake, ChevronRight, Scale, HelpCircle, ChevronDown } from "lucide-react";
+import { Baby, Snowflake, ChevronRight, Scale, HelpCircle, ChevronDown, Flag } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import SurrogacyJourneyTracker from "@/components/SurrogacyJourneyTracker";
-import USMapOutline from "@/components/USMapOutline";
 import { useState } from "react";
 
 const faqs = [
@@ -118,7 +117,7 @@ const EggFreezingSurrogacy = () => {
             <div className="bg-card border border-border rounded-2xl p-6 shadow-sm">
               <div className="flex items-start justify-between gap-4 mb-4">
                 <div className="flex items-center gap-3">
-                  <USMapOutline className="w-10 h-8 text-primary flex-shrink-0" />
+                  <Flag className="w-6 h-6 text-primary flex-shrink-0" />
                   <h3 className="font-semibold text-lg">Surrogacy Friendly States in the USA</h3>
                 </div>
               </div>
