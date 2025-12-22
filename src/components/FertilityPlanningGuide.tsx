@@ -162,25 +162,6 @@ const FertilityPlanningGuide = () => {
           </table>
         </div>
 
-        {/* How to Check Success Rates */}
-        <div className="mt-6 bg-primary/10 border border-primary/20 rounded-xl p-5">
-          <h3 className="font-semibold mb-2">How to Check Clinic Success Rates</h3>
-          <p className="text-sm text-muted-foreground mb-3">
-            The <strong>Council on Human Reproductive Technology (CHRT)</strong> publishes annual statistics 
-            for all licensed fertility centres in Hong Kong. These reports include pregnancy rates, live birth 
-            rates, and cycle volumes by clinic.
-          </p>
-          <ul className="text-sm text-muted-foreground space-y-1 mb-3">
-            <li>• <strong>CHRT Annual Statistics:</strong> <a href="https://www.chrt.org.hk/english/publications/publications.html" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">www.chrt.org.hk</a> (Publications section)</li>
-            <li>• <strong>Hong Kong Medical Journal:</strong> Peer-reviewed articles on IVF outcomes in HK</li>
-            <li>• <strong>Individual clinic websites:</strong> Some clinics publish their own success rates (e.g., HKU-QMH CARE)</li>
-          </ul>
-          <p className="text-xs text-muted-foreground italic">
-            Tip: When comparing rates, ensure you're comparing like-for-like (same age groups, fresh vs frozen cycles, 
-            pregnancy rate vs live birth rate).
-          </p>
-        </div>
-
         <div className="mt-6 grid md:grid-cols-2 gap-4">
           <div className="bg-secondary/50 rounded-xl p-5">
             <h3 className="font-semibold mb-2">Best for Public Hospitals</h3>
@@ -203,10 +184,34 @@ const FertilityPlanningGuide = () => {
         </div>
       </section>
 
+      {/* Section 3: How to Check Clinic Success Rates */}
+      <section>
+        <div className="mb-6">
+          <h2 className="text-2xl font-semibold">How to Check Clinic Success Rates</h2>
+        </div>
+
+        <div className="bg-primary/10 border border-primary/20 rounded-xl p-5">
+          <p className="text-sm text-muted-foreground mb-3">
+            The <strong>Council on Human Reproductive Technology (CHRT)</strong> publishes annual statistics 
+            for all licensed fertility centres in Hong Kong. These reports include pregnancy rates, live birth 
+            rates, and cycle volumes by clinic.
+          </p>
+          <ul className="text-sm text-muted-foreground space-y-1 mb-3">
+            <li>• <strong>CHRT Annual Statistics:</strong> <a href="https://www.chrt.org.hk/english/publications/publications.html" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">www.chrt.org.hk</a> (Publications section)</li>
+            <li>• <strong>Hong Kong Medical Journal:</strong> Peer-reviewed articles on IVF outcomes in HK</li>
+            <li>• <strong>Individual clinic websites:</strong> Some clinics publish their own success rates (e.g., HKU-QMH CARE)</li>
+          </ul>
+          <p className="text-xs text-muted-foreground italic">
+            Tip: When comparing rates, ensure you're comparing like-for-like (same age groups, fresh vs frozen cycles, 
+            pregnancy rate vs live birth rate).
+          </p>
+        </div>
+      </section>
+
       {/* Section 3: Traditional Chinese Foods */}
       <section>
         <div className="mb-6">
-          <h2 className="text-2xl font-semibold">Traditional Chinese Foods for Egg Health</h2>
+          <h2 className="text-2xl font-semibold">Traditional Chinese Foods for Optimum Egg Health</h2>
         </div>
 
         <img 
@@ -317,7 +322,7 @@ const FertilityPlanningGuide = () => {
       {/* Section 4: Legal & Financial */}
       <section>
         <div className="mb-6">
-          <h2 className="text-2xl font-semibold">Legal & Financial Considerations (法律與財務)</h2>
+          <h2 className="text-2xl font-semibold">Legal and Financial Considerations (法律與財務)</h2>
         </div>
         
         <div className="grid md:grid-cols-2 gap-6">
