@@ -104,11 +104,11 @@ const Layout = ({ children }: LayoutProps) => {
                 Logout
               </Button>
             ) : (
-              <Link to="/auth" className="rounded-full border px-3 py-1.5 hover:bg-secondary">
+              <Link to="/auth" className="rounded-full bg-[#1e3a5f] text-white px-4 py-1.5 hover:bg-[#152a45] transition-colors">
                 Login
               </Link>
             )}
-            <Link to="/contact" className="rounded-full border px-3 py-1.5 hover:bg-secondary">
+            <Link to="/contact" className="rounded-full bg-[#1e3a5f] text-white px-4 py-1.5 hover:bg-[#152a45] transition-colors">
               Contact
             </Link>
           </div>
