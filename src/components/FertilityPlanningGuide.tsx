@@ -1,10 +1,6 @@
 import { 
-  Calendar, 
-  Scale, 
   MessageSquare, 
   Heart, 
-  DollarSign,
-  FileText,
   CheckCircle2,
   Search,
   Salad,
@@ -29,9 +25,8 @@ const FertilityPlanningGuide = () => {
 
       {/* Section 1: Timeline */}
       <section>
-        <div className="flex items-center gap-3 mb-6">
-          <Calendar className="w-6 h-6 text-primary" />
-          <h2 className="text-2xl font-semibold">Step-by-Step Timeline</h2>
+        <div className="mb-6">
+          <h2 className="text-2xl font-semibold">Step-by-Step Timeline (時間表)</h2>
         </div>
 
         <img 
@@ -104,7 +99,7 @@ const FertilityPlanningGuide = () => {
         <img 
           src={clinicInteriorImage} 
           alt="Modern fertility clinic waiting room in Hong Kong" 
-          className="w-full rounded-xl object-cover h-48 md:h-64 mb-6"
+          className="w-full rounded-xl object-cover h-32 md:h-40 mb-4"
         />
         <div className="overflow-x-auto">
           <table className="w-full text-sm border border-border rounded-xl overflow-hidden">
@@ -329,16 +324,14 @@ const FertilityPlanningGuide = () => {
 
       {/* Section 4: Legal & Financial */}
       <section>
-        <div className="flex items-center gap-3 mb-6">
-          <Scale className="w-6 h-6 text-primary" />
-          <h2 className="text-2xl font-semibold">Legal & Financial Considerations</h2>
+        <div className="mb-6">
+          <h2 className="text-2xl font-semibold">Legal & Financial Considerations (法律與財務)</h2>
         </div>
         
         <div className="grid md:grid-cols-2 gap-6">
           <div className="bg-secondary/50 rounded-xl p-5">
-            <h3 className="font-semibold mb-3 flex items-center gap-2">
-              <FileText className="w-4 h-4 text-primary" />
-              Hong Kong Legal Framework
+            <h3 className="font-semibold mb-3">
+              Hong Kong Legal Framework (香港法律框架)
             </h3>
             <ul className="text-sm text-muted-foreground space-y-2">
               <li>• Maximum storage period: 10 years (extendable)</li>
@@ -351,9 +344,8 @@ const FertilityPlanningGuide = () => {
           </div>
 
           <div className="bg-secondary/50 rounded-xl p-5">
-            <h3 className="font-semibold mb-3 flex items-center gap-2">
-              <DollarSign className="w-4 h-4 text-primary" />
-              Cost Breakdown (Typical)
+            <h3 className="font-semibold mb-3">
+              Cost Breakdown (費用明細)
             </h3>
             <ul className="text-sm text-muted-foreground space-y-2">
               <li>• Initial consultation: HK$1,500-3,000</li>
