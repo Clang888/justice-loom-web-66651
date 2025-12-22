@@ -221,7 +221,7 @@ const FertilityPlanningGuide = () => {
         <img 
           src={tcmFoodsImage} 
           alt="Traditional Chinese medicine ingredients for fertility including red dates, goji berries, and black sesame" 
-          className="w-full rounded-xl object-cover h-48 md:h-64 mb-6"
+          className="w-full rounded-xl object-cover h-64 md:h-96 mb-6"
         />
         
         <p className="text-muted-foreground mb-4">
