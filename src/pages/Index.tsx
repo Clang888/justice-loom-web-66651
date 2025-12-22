@@ -19,7 +19,7 @@ const Index = () => {
               Navigate Your Legal Systems with Confidence
             </p>
             <p className="mt-6 text-base text-muted-foreground max-w-xl leading-relaxed">
-              Our mission: to make justice easy to find, easy to understand, and easy to use.
+              Our mission is to make justice easy to find, easy to understand, and easy to use.
             </p>
             <div className="mt-8 flex items-center gap-3 text-sm text-muted-foreground bg-card/60 backdrop-blur-sm rounded-xl px-4 py-3 border border-border/50 inline-flex">
               <Globe className="w-5 h-5 text-accent" /> 
