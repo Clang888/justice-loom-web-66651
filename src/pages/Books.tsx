@@ -79,6 +79,13 @@ const Books = () => {
               </ul>
             </ScrollArea>
           </div>
+          <div className="bg-card border border-border rounded-2xl p-5 flex items-center justify-center">
+            <img 
+              src="/just-law-logo.jpg" 
+              alt="Just Law" 
+              className="w-32 h-auto opacity-80"
+            />
+          </div>
         </div>
       </div>
     </section>
