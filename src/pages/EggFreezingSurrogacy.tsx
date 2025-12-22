@@ -64,9 +64,9 @@ const EggFreezingSurrogacy = () => {
         </div>
 
         {/* Resources Section - Two Column Layout */}
-        <div className="mt-12 grid md:grid-cols-2 gap-8">
+        <div className="mt-12 grid md:grid-cols-2 gap-8 items-start">
           {/* Surrogacy Resources */}
-          <div>
+          <div className="text-center">
             <h2 className="text-2xl font-semibold mb-6">Surrogacy Resources</h2>
             <div className="space-y-6">
               <Link to="/surrogacy-states" className="block bg-card border border-border rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
@@ -118,7 +118,7 @@ const EggFreezingSurrogacy = () => {
           </div>
 
           {/* Egg Freezing Resources */}
-          <div>
+          <div className="text-center">
             <h2 className="text-2xl font-semibold mb-6">Egg Freezing Resources</h2>
             <div className="space-y-6">
               <Link to="/egg-freezing-clinics-hk" className="block bg-card border border-border rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
