@@ -74,7 +74,7 @@ const Layout = ({ children }: LayoutProps) => {
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* NAV */}
-      <header className="sticky top-0 z-50 bg-card/80 backdrop-blur border-b border-border">
+      <header className="sticky top-0 z-50 bg-card/80 backdrop-blur border-b border-border no-print">
         <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center h-16">
           <Link to="/" className="flex items-center font-semibold text-lg">
             <img src="/just-law-logo.jpg" alt="Just Law" className="h-16 w-auto" />
@@ -119,7 +119,7 @@ const Layout = ({ children }: LayoutProps) => {
       <main>{children}</main>
 
       {/* FOOTER */}
-      <footer className="bg-card border-t border-border py-8">
+      <footer className="bg-card border-t border-border py-8 no-print">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-4 gap-8">
             <div>
