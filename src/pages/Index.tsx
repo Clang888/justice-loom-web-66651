@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { ShieldCheck, Globe, Briefcase, MessageSquare, BookOpen, Hammer, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import heroImage from "@/assets/hero-option-2.jpg";
 
 const Index = () => {
   return (
@@ -27,7 +28,7 @@ const Index = () => {
           </div>
           <div className="lg:justify-self-end animate-scale-in" style={{ animationDelay: '0.2s' }}>
             <img
-              src="/jle-hero-1600.jpg"
+              src={heroImage}
               alt="Just Law - AI Powered"
               className="w-full h-auto rounded-2xl border border-border/50 shadow-elevated object-cover"
             />
