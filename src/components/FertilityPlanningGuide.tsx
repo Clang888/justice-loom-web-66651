@@ -3,13 +3,9 @@ import {
   Scale, 
   MessageSquare, 
   Heart, 
-  Utensils,
-  Clock,
   DollarSign,
   FileText,
   CheckCircle2,
-  Leaf,
-  Soup,
   Search,
   Salad,
   Syringe,
@@ -228,8 +224,7 @@ const FertilityPlanningGuide = () => {
 
       {/* Section 3: Traditional Chinese Foods */}
       <section>
-        <div className="flex items-center gap-3 mb-6">
-          <Soup className="w-6 h-6 text-primary" />
+        <div className="mb-6">
           <h2 className="text-2xl font-semibold">Traditional Chinese Foods for Egg Health</h2>
         </div>
 
@@ -246,8 +241,7 @@ const FertilityPlanningGuide = () => {
 
         {/* Preparation Timeline */}
         <div className="bg-primary/10 border border-primary/20 rounded-xl p-5 mb-6">
-          <h3 className="font-semibold mb-3 flex items-center gap-2">
-            <Clock className="w-5 h-5 text-primary" />
+          <h3 className="font-semibold mb-3">
             When to Start Preparing
           </h3>
           <div className="text-sm space-y-3">
@@ -278,8 +272,7 @@ const FertilityPlanningGuide = () => {
 
         <div className="grid md:grid-cols-2 gap-4">
           <div className="bg-secondary/50 rounded-xl p-5">
-            <h3 className="font-semibold mb-3 flex items-center gap-2">
-              <Leaf className="w-4 h-4 text-primary" />
+            <h3 className="font-semibold mb-3">
               Blood-Nourishing Foods (補血)
             </h3>
             <ul className="text-sm text-muted-foreground space-y-2">
@@ -292,8 +285,7 @@ const FertilityPlanningGuide = () => {
           </div>
 
           <div className="bg-secondary/50 rounded-xl p-5">
-            <h3 className="font-semibold mb-3 flex items-center gap-2">
-              <Utensils className="w-4 h-4 text-primary" />
+            <h3 className="font-semibold mb-3">
               Kidney-Tonifying Foods (補腎)
             </h3>
             <ul className="text-sm text-muted-foreground space-y-2">
@@ -306,8 +298,7 @@ const FertilityPlanningGuide = () => {
           </div>
 
           <div className="bg-secondary/50 rounded-xl p-5">
-            <h3 className="font-semibold mb-3 flex items-center gap-2">
-              <Soup className="w-4 h-4 text-primary" />
+            <h3 className="font-semibold mb-3">
               Fertility Soups (湯水)
             </h3>
             <ul className="text-sm text-muted-foreground space-y-2">
@@ -320,8 +311,7 @@ const FertilityPlanningGuide = () => {
           </div>
 
           <div className="bg-secondary/50 rounded-xl p-5">
-            <h3 className="font-semibold mb-3 flex items-center gap-2">
-              <Clock className="w-4 h-4 text-primary" />
+            <h3 className="font-semibold mb-3">
               Foods to Limit
             </h3>
             <ul className="text-sm text-muted-foreground space-y-2">
