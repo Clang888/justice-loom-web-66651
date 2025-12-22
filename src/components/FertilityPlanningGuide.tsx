@@ -16,6 +16,9 @@ import {
 import tcmFoodsImage from "@/assets/tcm-foods-fertility.jpg";
 import wellnessTeaImage from "@/assets/fertility-wellness-tea.jpg";
 import consultationImage from "@/assets/fertility-consultation.jpg";
+import clinicInteriorImage from "@/assets/fertility-clinic-interior.jpg";
+import recoveryRestImage from "@/assets/fertility-recovery-rest.jpg";
+import planningCalendarImage from "@/assets/fertility-planning-calendar.jpg";
 
 const FertilityPlanningGuide = () => {
   return (
@@ -37,6 +40,12 @@ const FertilityPlanningGuide = () => {
           <Calendar className="w-6 h-6 text-primary" />
           <h2 className="text-2xl font-semibold">Step-by-Step Timeline</h2>
         </div>
+
+        <img 
+          src={planningCalendarImage} 
+          alt="Planning calendar for fertility journey" 
+          className="w-full rounded-xl object-cover h-48 md:h-64 mb-6"
+        />
         
         <div className="space-y-4">
           <div className="bg-secondary/50 rounded-xl p-5 border-l-4 border-primary">
@@ -87,7 +96,12 @@ const FertilityPlanningGuide = () => {
           <Building2 className="w-6 h-6 text-primary" />
           <h2 className="text-2xl font-semibold">Clinic Comparison Matrix</h2>
         </div>
-        
+
+        <img 
+          src={clinicInteriorImage} 
+          alt="Modern fertility clinic waiting room in Hong Kong" 
+          className="w-full rounded-xl object-cover h-48 md:h-64 mb-6"
+        />
         <div className="overflow-x-auto">
           <table className="w-full text-sm border border-border rounded-xl overflow-hidden">
             <thead className="bg-secondary">
@@ -419,7 +433,12 @@ const FertilityPlanningGuide = () => {
           <Heart className="w-6 h-6 text-primary" />
           <h2 className="text-2xl font-semibold">Recovery & Self-Care</h2>
         </div>
-        
+
+        <img 
+          src={recoveryRestImage} 
+          alt="Woman relaxing at home during recovery" 
+          className="w-full rounded-xl object-cover h-48 md:h-64 mb-6"
+        />
         <div className="grid md:grid-cols-2 gap-6">
           <div className="bg-secondary/50 rounded-xl p-5">
             <h3 className="font-semibold mb-3">Day of Retrieval</h3>
