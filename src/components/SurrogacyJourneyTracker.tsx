@@ -161,16 +161,11 @@ const SurrogacyJourneyTracker = () => {
             Understanding your path from beginning to parenthood
           </p>
         </div>
-        <div className="flex items-center gap-3">
-          <div className="text-sm text-muted-foreground">
-            {completedStages.length} of {journeyStages.length} stages
-          </div>
-          <div className="w-24 h-2 bg-secondary rounded-full overflow-hidden">
-            <div 
-              className="h-full bg-primary transition-all duration-500 ease-out rounded-full"
-              style={{ width: `${progressPercentage}%` }}
-            />
-          </div>
+        <div className="w-24 h-2 bg-secondary rounded-full overflow-hidden">
+          <div 
+            className="h-full bg-primary transition-all duration-500 ease-out rounded-full"
+            style={{ width: `${progressPercentage}%` }}
+          />
         </div>
       </div>
 
