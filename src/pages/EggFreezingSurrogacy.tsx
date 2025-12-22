@@ -7,10 +7,6 @@ const EggFreezingSurrogacy = () => {
   return (
     <section className="py-16 bg-secondary">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center gap-3 mb-2">
-          <Baby className="w-8 h-8 text-primary" />
-          <Snowflake className="w-8 h-8 text-primary" />
-        </div>
         <h1 className="text-3xl font-bold">Egg Freezing & Surrogacy</h1>
         <p className="mt-3 text-muted-foreground max-w-2xl">
           Comprehensive legal guidance for fertility preservation and surrogacy arrangements, 
