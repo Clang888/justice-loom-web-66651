@@ -61,7 +61,7 @@ const faqs = [
   },
   {
     question: "Can I freeze embryos instead of eggs?",
-    answer: "Yes, embryo freezing is an option if you have a partner or are using donor sperm. Embryos often have higher survival rates after thawing compared to eggs. However, embryos are considered shared property, which can create complications if relationships change. Discuss the pros and cons with your fertility specialist."
+    answer: "Yes, if you are a married heterosexual couple. Single women and same-sex couples cannot currently access treatment with donor sperm in Hong Kong, whether for IUI, IVF, or embryo freezing, under the existing regulatory framework."
   }
 ];
 
