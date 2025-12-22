@@ -94,7 +94,7 @@ const FertilityPlanningGuide = () => {
       <section>
         <div className="flex items-center gap-3 mb-6">
           <Building2 className="w-6 h-6 text-primary" />
-          <h2 className="text-2xl font-semibold">Clinic Comparison Matrix</h2>
+          <h2 className="text-2xl font-semibold">Public Hospital or Private Clinic?</h2>
         </div>
 
         <img 
