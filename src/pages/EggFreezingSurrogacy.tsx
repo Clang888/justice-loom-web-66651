@@ -18,35 +18,6 @@ const EggFreezingSurrogacy = () => {
         </p>
 
         <div className="mt-10 grid md:grid-cols-2 gap-8">
-          {/* Egg Freezing Card */}
-          <div className="bg-card border border-border rounded-2xl p-6 shadow-sm">
-            <div className="flex items-center gap-3 mb-4">
-              <Snowflake className="w-6 h-6 text-primary" />
-              <h2 className="font-semibold text-xl">Egg Freezing</h2>
-            </div>
-            <p className="text-muted-foreground mb-4">
-              Understanding your legal rights and options when preserving your fertility for the future.
-            </p>
-            <ul className="space-y-2 text-sm text-muted-foreground mb-6">
-              <li className="flex items-start gap-2">
-                <Scale className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                <span>Consent and storage agreements</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <Scale className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                <span>Storage duration and renewal rights</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <Scale className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                <span>Partner consent considerations</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <Scale className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                <span>Cross-border storage regulations</span>
-              </li>
-            </ul>
-          </div>
-
           {/* Surrogacy Card */}
           <div className="bg-card border border-border rounded-2xl p-6 shadow-sm">
             <div className="flex items-center gap-3 mb-4">
@@ -72,6 +43,35 @@ const EggFreezingSurrogacy = () => {
               <li className="flex items-start gap-2">
                 <Scale className="w-4 h-4 mt-0.5 flex-shrink-0" />
                 <span>Birth registration and citizenship</span>
+              </li>
+            </ul>
+          </div>
+
+          {/* Egg Freezing Card */}
+          <div className="bg-card border border-border rounded-2xl p-6 shadow-sm">
+            <div className="flex items-center gap-3 mb-4">
+              <Snowflake className="w-6 h-6 text-primary" />
+              <h2 className="font-semibold text-xl">Egg Freezing</h2>
+            </div>
+            <p className="text-muted-foreground mb-4">
+              Understanding your legal rights and options when preserving your fertility for the future.
+            </p>
+            <ul className="space-y-2 text-sm text-muted-foreground mb-6">
+              <li className="flex items-start gap-2">
+                <Scale className="w-4 h-4 mt-0.5 flex-shrink-0" />
+                <span>Consent and storage agreements</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <Scale className="w-4 h-4 mt-0.5 flex-shrink-0" />
+                <span>Storage duration and renewal rights</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <Scale className="w-4 h-4 mt-0.5 flex-shrink-0" />
+                <span>Partner consent considerations</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <Scale className="w-4 h-4 mt-0.5 flex-shrink-0" />
+                <span>Cross-border storage regulations</span>
               </li>
             </ul>
           </div>
