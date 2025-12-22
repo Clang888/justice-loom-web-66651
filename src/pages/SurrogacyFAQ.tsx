@@ -41,7 +41,7 @@ const faqs = [
   },
   {
     question: "Can single parents or same-sex couples use surrogacy?",
-    answer: "Yes, many surrogacy-friendly states in the USA and other countries welcome single parents and same-sex couples. However, laws vary significantly by jurisdiction. Some states have restrictions, so it's crucial to work with a lawyer who understands the specific laws where your surrogacy will take place."
+    answer: "A couple must be legally married in order to be granted a Parental Order by the Hong Kong Court."
   },
   {
     question: "What medical tests are required before egg freezing?",
