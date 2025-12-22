@@ -101,7 +101,7 @@ const EggFreezingSurrogacy = () => {
                   size="lg"
                   className="w-full mt-4 bg-blue-600 hover:bg-blue-700 text-white uppercase font-semibold"
                 >
-                  PURCHASE GUIDE HK$100
+                  PURCHASE GUIDE HK$199
                 </Button>
               </div>
             </div>
