@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Mail, Phone, MessageSquare, Newspaper } from "lucide-react";
+import { Mail, Phone, Newspaper } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 
@@ -103,17 +103,20 @@ const Contact = () => {
             <p className="text-sm text-muted-foreground">+853 92959750</p>
           </div>
           <div className="bg-card border border-border rounded-2xl p-6">
-            <div className="flex items-center gap-3 mb-2">
-              <MessageSquare className="w-5 h-5" />
-              <h3 className="font-semibold">Social</h3>
-            </div>
             <a 
               href="https://www.linkedin.com/groups/3000964/" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-sm text-muted-foreground hover:text-foreground hover:underline"
+              className="block"
             >
-              Join us on LinkedIn - Just Law Group
+              <img 
+                src="/li-china-logo-2.png" 
+                alt="LinkedIn China - Just Law" 
+                className="h-8 object-contain"
+              />
+              <p className="text-sm text-muted-foreground hover:text-foreground mt-2">
+                Join us on LinkedIn - Just Law Group
+              </p>
             </a>
           </div>
         </div>
