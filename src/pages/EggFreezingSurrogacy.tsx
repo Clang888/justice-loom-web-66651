@@ -1,4 +1,4 @@
-import { Baby, Snowflake, Scale, Flag, Building2 } from "lucide-react";
+import { Baby, Snowflake, Scale, Building2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import SurrogacyJourneyTracker from "@/components/SurrogacyJourneyTracker";
@@ -70,22 +70,14 @@ const EggFreezingSurrogacy = () => {
             <h2 className="text-2xl font-semibold mb-6">Surrogacy Resources</h2>
             <div className="space-y-6">
               <Link to="/surrogacy-states" className="block bg-card border border-border rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
-                <div className="flex items-center gap-3 mb-2">
-                  <Flag className="w-6 h-6 text-primary flex-shrink-0" />
-                  <h3 className="font-semibold text-lg">Surrogacy Friendly States in the USA</h3>
-                </div>
+                <h3 className="font-semibold text-lg mb-2">Surrogacy Friendly States in the USA</h3>
                 <p className="text-sm text-muted-foreground">
                   Browse the list of US states with supportive surrogacy laws.
                 </p>
               </Link>
 
               <div className="bg-card border border-border rounded-2xl p-6 shadow-sm">
-                <div className="flex items-start justify-between gap-4 mb-4">
-                  <div className="flex items-center gap-3">
-                    <Flag className="w-6 h-6 text-primary flex-shrink-0" />
-                    <h3 className="font-semibold text-lg">Surrogacy Friendly States in the USA</h3>
-                  </div>
-                </div>
+                <h3 className="font-semibold text-lg mb-4">Surrogacy Friendly States in the USA</h3>
 
                 <Link to="/surrogacy-states" className="inline-flex items-center gap-2 text-sm font-medium hover:underline mb-4">
                   Browse Surrogacy Friendly States in the USA
