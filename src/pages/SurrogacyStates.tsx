@@ -55,10 +55,7 @@ const SurrogacyStates = () => {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {friendlyStates.map((state) => (
               <div key={state.name} className="p-4 rounded-xl border bg-green-50 border-green-200">
-                <div className="flex items-start justify-between gap-2 mb-2">
-                  <h3 className="font-semibold">{state.name}</h3>
-                  <CheckCircle2 className="w-5 h-5 text-green-600" />
-                </div>
+                <h3 className="font-semibold mb-2">{state.name}</h3>
                 <p className="text-sm text-muted-foreground">{state.notes}</p>
               </div>
             ))}
