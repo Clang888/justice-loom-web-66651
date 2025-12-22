@@ -25,6 +25,7 @@ import Assistant from "./pages/Assistant";
 import EggFreezingSurrogacy from "./pages/EggFreezingSurrogacy";
 import SurrogacyStates from "./pages/SurrogacyStates";
 import SurrogacyFAQ from "./pages/SurrogacyFAQ";
+import EggFreezingClinicsHK from "./pages/EggFreezingClinicsHK";
 import FormE from "./pages/FormE";
 import FormEFeedback from "./pages/FormEFeedback";
 
@@ -57,6 +58,7 @@ const App = () => (
               <Route path="/egg-freezing-surrogacy" element={<EggFreezingSurrogacy />} />
               <Route path="/surrogacy-states" element={<SurrogacyStates />} />
               <Route path="/surrogacy-faq" element={<SurrogacyFAQ />} />
+              <Route path="/egg-freezing-clinics-hk" element={<EggFreezingClinicsHK />} />
               <Route path="/form-e" element={<FormE />} />
               <Route path="/form-e-feedback" element={<FormEFeedback />} />
               <Route path="/auth" element={<Auth />} />
