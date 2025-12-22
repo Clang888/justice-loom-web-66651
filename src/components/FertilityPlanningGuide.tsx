@@ -52,9 +52,9 @@ const FertilityPlanningGuide = () => {
         />
         
         <div className="space-y-4">
-          <div className="bg-secondary/50 rounded-xl p-5 border-l-4 border-primary">
+          <div className="bg-secondary/50 rounded-xl p-5 border-l-4 border-blue-500">
             <h3 className="font-semibold mb-2 flex items-center gap-2">
-              <Search className="w-5 h-5 text-primary" />
+              <Search className="w-5 h-5 text-blue-500" />
               Month 1-2: Research & Initial Consultation
             </h3>
             <ul className="text-sm text-muted-foreground space-y-1 ml-7">
@@ -65,9 +65,9 @@ const FertilityPlanningGuide = () => {
             </ul>
           </div>
           
-          <div className="bg-secondary/50 rounded-xl p-5 border-l-4 border-primary">
+          <div className="bg-secondary/50 rounded-xl p-5 border-l-4 border-green-500">
             <h3 className="font-semibold mb-2 flex items-center gap-2">
-              <Salad className="w-5 h-5 text-primary" />
+              <Salad className="w-5 h-5 text-green-500" />
               Month 3: Preparation Phase
             </h3>
             <ul className="text-sm text-muted-foreground space-y-1 ml-7">
@@ -78,9 +78,9 @@ const FertilityPlanningGuide = () => {
             </ul>
           </div>
           
-          <div className="bg-secondary/50 rounded-xl p-5 border-l-4 border-primary">
+          <div className="bg-secondary/50 rounded-xl p-5 border-l-4 border-orange-500">
             <h3 className="font-semibold mb-2 flex items-center gap-2">
-              <Syringe className="w-5 h-5 text-primary" />
+              <Syringe className="w-5 h-5 text-orange-500" />
               Month 4: Stimulation Cycle (10-14 days)
             </h3>
             <ul className="text-sm text-muted-foreground space-y-1 ml-7">
@@ -91,9 +91,9 @@ const FertilityPlanningGuide = () => {
             </ul>
           </div>
           
-          <div className="bg-secondary/50 rounded-xl p-5 border-l-4 border-primary">
+          <div className="bg-secondary/50 rounded-xl p-5 border-l-4 border-cyan-500">
             <h3 className="font-semibold mb-2 flex items-center gap-2">
-              <Snowflake className="w-5 h-5 text-primary" />
+              <Snowflake className="w-5 h-5 text-cyan-500" />
               Post-Retrieval: Recovery & Storage
             </h3>
             <ul className="text-sm text-muted-foreground space-y-1 ml-7">
