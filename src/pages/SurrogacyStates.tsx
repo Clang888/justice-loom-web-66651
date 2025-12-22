@@ -67,15 +67,11 @@ const SurrogacyStates = () => {
           <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
             Receive personalised expert guidance on international surrogacy<br />before you take the first step.
           </p>
-          <Button 
-            size="lg" 
-            onClick={() => {
-              window.scrollTo(0, 0);
-              window.location.href = '/contact';
-            }}
-          >
-            Book a Consultation
-          </Button>
+          <Link to="/contact">
+            <Button size="lg">
+              Book a Consultation
+            </Button>
+          </Link>
         </div>
       </div>
     </section>
