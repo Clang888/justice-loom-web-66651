@@ -30,9 +30,9 @@ const journeyStages: JourneyStage[] = [
     duration: "1-3 months",
     description: "Understanding your options and making informed decisions about your surrogacy journey.",
     details: [
-      "Research surrogacy laws in your jurisdiction",
+      "Research surrogacy laws where you live",
       "Consult with a fertility specialist",
-      "Understand legal requirements depending on where the surrogate is located, where the child is to be born, and where the child is to be raised",
+      "Understand all of the legal requirements where the surrogate is located, where the child will be born, and where the child will be raised",
       "Consider counselling to prepare emotionally",
       "Understand the difference between gestational and traditional surrogacy",
       "Choose between agency-assisted or independent surrogacy"
