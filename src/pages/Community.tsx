@@ -52,8 +52,7 @@ const Community = () => {
           <div className="bg-secondary border border-border rounded-2xl p-6">
             <img src="/li-china-logo.png" alt="LinkedIn China - Just Law" className="w-full h-32 object-contain rounded-lg mb-4" />
             <h3 className="font-semibold">LinkedIn Group</h3>
-            <p className="text-sm text-muted-foreground mt-2">Just Law: Innovating Law with AI. Join the conversation with over 1,500 members.</p>
-            
+            <p className="text-sm text-muted-foreground mt-2">Just Law. Join the conversation with over 1,500 members.</p>
           </div>
           <div className="bg-secondary border border-border rounded-2xl p-6">
             <div className="flex items-center gap-3 mb-4"><Mail className="w-6 h-6" /><h3 className="font-semibold">Newsletter</h3></div>
