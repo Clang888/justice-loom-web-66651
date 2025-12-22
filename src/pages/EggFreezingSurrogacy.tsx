@@ -1,8 +1,12 @@
-import { Baby, Snowflake, Scale } from "lucide-react";
+import { useState } from "react";
+import { Baby, Snowflake, Scale, ChevronDown, ChevronUp } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import SurrogacyJourneyTracker from "@/components/SurrogacyJourneyTracker";
 
 const EggFreezingSurrogacy = () => {
+  const [showTracker, setShowTracker] = useState(false);
+
   return (
     <section className="py-16 bg-secondary">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -75,11 +79,23 @@ const EggFreezingSurrogacy = () => {
                 </p>
               </Link>
 
-              <div className="bg-card border border-border rounded-2xl p-6 shadow-sm">
+              <div className="bg-card border border-border rounded-2xl p-6 shadow-sm text-left">
                 <h3 className="text-lg font-semibold mb-2">Surrogacy Journey Tracker</h3>
                 <p className="text-sm text-muted-foreground">
-                  Understanding your options and making informed decisions about your surrogacy journey... <Link to="/surrogacy-states" className="text-primary hover:underline font-medium">read more</Link>
+                  Understanding your options and making informed decisions about your surrogacy journey...{" "}
+                  <button 
+                    onClick={() => setShowTracker(!showTracker)} 
+                    className="text-primary hover:underline font-medium inline-flex items-center gap-1"
+                  >
+                    {showTracker ? "show less" : "read more"}
+                    {showTracker ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                  </button>
                 </p>
+                {showTracker && (
+                  <div className="mt-6">
+                    <SurrogacyJourneyTracker />
+                  </div>
+                )}
               </div>
             </div>
           </div>
