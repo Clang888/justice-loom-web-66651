@@ -11,9 +11,9 @@ interface StateInfo {
 }
 
 const surrogacyStates: StateInfo[] = [
-  { name: "California", status: "friendly", notes: "Most surrogacy-friendly state with comprehensive laws protecting all parties.", preBirthOrder: true, compensatedSurrogacy: true },
+  { name: "California", status: "friendly", notes: "Most surrogacy friendly state with comprehensive laws protecting all parties.", preBirthOrder: true, compensatedSurrogacy: true },
   { name: "Connecticut", status: "friendly", notes: "Strong legal protections with established surrogacy framework.", preBirthOrder: true, compensatedSurrogacy: true },
-  { name: "Delaware", status: "friendly", notes: "Surrogacy-friendly with clear legal pathways.", preBirthOrder: true, compensatedSurrogacy: true },
+  { name: "Delaware", status: "friendly", notes: "Surrogacy friendly with clear legal pathways.", preBirthOrder: true, compensatedSurrogacy: true },
   { name: "Maine", status: "friendly", notes: "Supportive legal environment for surrogacy arrangements.", preBirthOrder: true, compensatedSurrogacy: true },
   { name: "Nevada", status: "friendly", notes: "Well-established surrogacy laws with strong protections.", preBirthOrder: true, compensatedSurrogacy: true },
   { name: "New Hampshire", status: "friendly", notes: "Clear statutory framework for gestational surrogacy.", preBirthOrder: true, compensatedSurrogacy: true },
