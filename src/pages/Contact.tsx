@@ -102,23 +102,6 @@ const Contact = () => {
             </div>
             <p className="text-sm text-muted-foreground">+853 92959750</p>
           </div>
-          <div className="bg-card border border-border rounded-2xl p-6">
-            <a 
-              href="https://www.linkedin.com/groups/3000964/" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="block"
-            >
-              <img 
-                src="/li-china-logo-2.png" 
-                alt="LinkedIn China - Just Law" 
-                className="h-8 object-contain"
-              />
-              <p className="text-sm text-muted-foreground hover:text-foreground mt-2">
-                Join us on LinkedIn - Just Law Group
-              </p>
-            </a>
-          </div>
         </div>
       </div>
     </section>
