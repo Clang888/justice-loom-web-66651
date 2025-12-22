@@ -75,9 +75,9 @@ const SurrogacyStates = () => {
 
         {/* CTA */}
         <div className="mt-12 bg-card border border-border rounded-2xl p-8 text-center">
-          <h2 className="text-2xl font-semibold mb-3">Need Legal Guidance?</h2>
+          <h2 className="text-2xl font-semibold mb-3">Need Guidance?</h2>
           <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
-            Receive personalized expert guidance on international surrogacy before you take the first step.
+            Receive personalised expert guidance on international surrogacy before you take the first step.
           </p>
           <Link to="/contact">
             <Button size="lg">Book a Consultation</Button>
