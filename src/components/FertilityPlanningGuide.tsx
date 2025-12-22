@@ -318,7 +318,7 @@ const FertilityPlanningGuide = () => {
               <li>• Only married couples can use frozen eggs for IVF</li>
               <li>• Single women can freeze but cannot use for conception in HK</li>
               <li>• Eggs can be transported overseas for use</li>
-              <li>• Donor egg use is prohibited in Hong Kong</li>
+              <li>• Egg donation is prohibited—you cannot donate eggs or receive donor eggs in HK</li>
               <li>• Written consent required for storage and disposal</li>
             </ul>
           </div>
