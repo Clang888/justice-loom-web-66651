@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowLeft, Download, Lock, Printer } from "lucide-react";
+import { ArrowLeft, Download, Printer } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import FertilityPlanningGuide from "@/components/FertilityPlanningGuide";
 import { useRef } from "react";
@@ -155,10 +155,9 @@ const FertilityGuide = () => {
               <Button 
                 onClick={handleDownload}
                 size="lg"
-                className="gap-2 whitespace-nowrap"
+                className="gap-2 whitespace-nowrap bg-blue-600 hover:bg-blue-700 text-white"
               >
-                <Lock className="w-4 h-4" />
-                Purchase · HK$199
+                Purchase Guide HK $199
               </Button>
             </div>
           </div>
@@ -184,10 +183,9 @@ const FertilityGuide = () => {
             <Button 
               onClick={handleDownload}
               size="lg"
-              className="gap-2"
+              className="gap-2 bg-blue-600 hover:bg-blue-700 text-white"
             >
-              <Lock className="w-4 h-4" />
-              Purchase Guide · HK$199
+              Purchase Guide HK $199
             </Button>
           </div>
           <p className="text-xs text-muted-foreground mt-3">
