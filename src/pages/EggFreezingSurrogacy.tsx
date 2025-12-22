@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Baby, Snowflake, Scale, ChevronDown, ChevronUp } from "lucide-react";
+import { Baby, Snowflake, ChevronDown, ChevronUp } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import SurrogacyJourneyTracker from "@/components/SurrogacyJourneyTracker";
@@ -20,22 +20,10 @@ const EggFreezingSurrogacy = () => {
               <h2 className="font-semibold text-xl">Surrogacy</h2>
             </div>
             <ul className="space-y-2 text-sm text-muted-foreground mb-6">
-              <li className="flex items-start gap-2">
-                <Scale className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                <span>UK surrogacy law and parental orders</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <Scale className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                <span>International surrogacy considerations</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <Scale className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                <span>Surrogate and intended parent agreements</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <Scale className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                <span>Birth registration and citizenship</span>
-              </li>
+              <li>UK surrogacy law and parental orders</li>
+              <li>International surrogacy considerations</li>
+              <li>Surrogate and intended parent agreements</li>
+              <li>Birth registration and citizenship</li>
             </ul>
           </div>
 
