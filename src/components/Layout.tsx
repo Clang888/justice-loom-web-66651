@@ -85,6 +85,7 @@ const Layout = ({ children }: LayoutProps) => {
             
             <Link to="/books" className="hover:text-foreground text-center">Books &<br />Public Speaking</Link>
             <Link to="/testimonials" className="hover:text-foreground">Testimonials</Link>
+            <Link to="/surrogacy-faq" className="hover:text-foreground">FAQs</Link>
             <Link to="/community" className="hover:text-foreground">Community</Link>
             {isAdmin && (
               <Link to="/admin" className="hover:text-foreground flex items-center gap-1">
