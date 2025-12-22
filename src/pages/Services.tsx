@@ -91,7 +91,7 @@ const Services = () => {
               <Button 
                 variant="outline" 
                 size="sm" 
-                className="w-full justify-start gap-2"
+                className="w-full justify-start gap-2 bg-green-500 text-white border-green-500 hover:bg-green-600 hover:border-green-600"
                 onClick={handleBetaClick}
               >
                 <FlaskConical className="w-4 h-4" />
