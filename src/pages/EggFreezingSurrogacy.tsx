@@ -120,12 +120,21 @@ const EggFreezingSurrogacy = () => {
           {/* Egg Freezing Resources */}
           <div>
             <h2 className="text-2xl font-semibold mb-6">Egg Freezing Resources</h2>
-            <Link to="/egg-freezing-clinics-hk" className="block bg-card border border-border rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
-              <h3 className="font-semibold text-lg mb-4">Egg Freezing Clinics in Hong Kong</h3>
-              <p className="text-sm text-muted-foreground">
-                Find reputable fertility clinics offering egg freezing services in Hong Kong.
-              </p>
-            </Link>
+            <div className="space-y-6">
+              <Link to="/egg-freezing-clinics-hk" className="block bg-card border border-border rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
+                <h3 className="font-semibold text-lg mb-2">Egg Freezing Clinics in Hong Kong</h3>
+                <p className="text-sm text-muted-foreground">
+                  Find reputable fertility clinics offering egg freezing services in Hong Kong.
+                </p>
+              </Link>
+
+              <Link to="/fertility-guide" className="block bg-card border border-border rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
+                <h3 className="font-semibold text-lg mb-2">Fertility Planning Guide</h3>
+                <p className="text-sm text-muted-foreground">
+                  Comprehensive guide covering timelines, clinic comparisons, and preparation tips.
+                </p>
+              </Link>
+            </div>
           </div>
         </div>
         <div className="mt-12 bg-card border border-border rounded-2xl p-8 text-center">
