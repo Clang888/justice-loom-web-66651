@@ -16,7 +16,7 @@ const FertilityPlanningGuide = () => {
       {/* Header */}
       <div className="text-center border-b border-border pb-8">
         <h1 className="text-3xl font-bold mb-2">Hong Kong Fertility Planning Guide</h1>
-        <p className="text-muted-foreground">Your Complete Roadmap to Egg Freezing Success</p>
+        <p className="text-muted-foreground">Your Complete Roadmap for Egg Freezing Success</p>
       </div>
 
       {/* Section 1: Timeline */}
