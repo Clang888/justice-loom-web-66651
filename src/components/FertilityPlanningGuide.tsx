@@ -172,7 +172,7 @@ const FertilityPlanningGuide = () => {
             <h3 className="font-semibold mb-2">Best for Public Hospitals</h3>
             <ul className="text-sm text-muted-foreground space-y-1">
               <li>• Budget-conscious patients</li>
-              <li>• Those comfortable with Cantonese</li>
+              <li>• Those comfortable with Cantonese or Mandarin</li>
               <li>• Patients with flexible schedules</li>
               <li>• Those who prefer established institutional protocols</li>
             </ul>
