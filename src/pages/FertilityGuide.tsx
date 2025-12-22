@@ -2,145 +2,190 @@ import { Link } from "react-router-dom";
 import { ArrowLeft, Download, Lock, Printer } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import FertilityPlanningGuide from "@/components/FertilityPlanningGuide";
+import { useRef } from "react";
 
 const FertilityGuide = () => {
+  const printRef = useRef<HTMLDivElement>(null);
+
   const handleDownload = () => {
     // TODO: Implement payment gate with Stripe
     console.log("Download clicked - implement Stripe payment");
   };
 
   const handlePrintPDF = () => {
-    window.print();
+    if (!printRef.current) return;
+    
+    const printContent = printRef.current.innerHTML;
+    const printWindow = window.open('', '_blank');
+    
+    if (!printWindow) {
+      alert('Please allow popups to download the PDF');
+      return;
+    }
+    
+    printWindow.document.write(`
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <title>Hong Kong Fertility Planning Guide</title>
+          <style>
+            * {
+              margin: 0;
+              padding: 0;
+              box-sizing: border-box;
+            }
+            body {
+              font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+              line-height: 1.6;
+              color: #1a1a1a;
+              padding: 40px;
+              max-width: 800px;
+              margin: 0 auto;
+            }
+            h1 { font-size: 28px; margin-bottom: 8px; font-weight: bold; }
+            h2 { font-size: 22px; margin-top: 32px; margin-bottom: 16px; font-weight: 600; }
+            h3 { font-size: 16px; margin-bottom: 8px; font-weight: 600; }
+            p { margin-bottom: 12px; color: #444; }
+            ul { margin-left: 20px; margin-bottom: 12px; }
+            li { margin-bottom: 4px; color: #444; }
+            img { max-width: 100%; height: auto; border-radius: 8px; margin: 16px 0; }
+            table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+            th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+            th { background: #f5f5f5; font-weight: 600; }
+            section { margin-bottom: 32px; page-break-inside: avoid; }
+            .text-primary { color: #1e3a5f; }
+            .text-muted-foreground { color: #666; }
+            .bg-secondary\\/50, .bg-primary\\/10 { background: #f8f8f8; padding: 16px; border-radius: 8px; margin: 12px 0; }
+            .border-l-4 { border-left: 4px solid; padding-left: 16px; }
+            .border-blue-500 { border-color: #3b82f6; }
+            .border-green-500 { border-color: #22c55e; }
+            .border-orange-500 { border-color: #f97316; }
+            .border-cyan-500 { border-color: #06b6d4; }
+            .text-blue-500 { color: #3b82f6; }
+            .text-green-500 { color: #22c55e; }
+            .text-orange-500 { color: #f97316; }
+            .text-cyan-500 { color: #06b6d4; }
+            .grid { display: grid; gap: 16px; }
+            .md\\:grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+            .flex { display: flex; }
+            .items-center { align-items: center; }
+            .gap-2 { gap: 8px; }
+            .gap-3 { gap: 12px; }
+            .mb-2 { margin-bottom: 8px; }
+            .mb-3 { margin-bottom: 12px; }
+            .mb-4 { margin-bottom: 16px; }
+            .mb-6 { margin-bottom: 24px; }
+            .mt-6 { margin-top: 24px; }
+            .ml-7 { margin-left: 28px; }
+            .space-y-1 > * + * { margin-top: 4px; }
+            .space-y-2 > * + * { margin-top: 8px; }
+            .space-y-3 > * + * { margin-top: 12px; }
+            .space-y-4 > * + * { margin-top: 16px; }
+            .rounded-xl { border-radius: 12px; }
+            .p-3 { padding: 12px; }
+            .p-5 { padding: 20px; }
+            .text-sm { font-size: 14px; }
+            .text-xs { font-size: 12px; }
+            .text-2xl { font-size: 22px; }
+            .text-3xl { font-size: 28px; }
+            .font-semibold { font-weight: 600; }
+            .font-bold { font-weight: 700; }
+            .font-medium { font-weight: 500; }
+            svg { display: inline-block; width: 20px; height: 20px; vertical-align: middle; }
+            @media print {
+              body { padding: 20px; }
+              @page { margin: 1cm; }
+            }
+          </style>
+        </head>
+        <body>
+          ${printContent}
+        </body>
+      </html>
+    `);
+    
+    printWindow.document.close();
+    
+    // Wait for images to load before printing
+    setTimeout(() => {
+      printWindow.print();
+    }, 500);
   };
 
   return (
-    <>
-      {/* Print-specific styles */}
-      <style>{`
-        @media print {
-          /* Hide navigation and buttons only */
-          .no-print {
-            display: none !important;
-          }
-          
-          /* Ensure colors print */
-          * {
-            -webkit-print-color-adjust: exact !important;
-            print-color-adjust: exact !important;
-            color-adjust: exact !important;
-          }
-          
-          /* Make the guide container visible and full width */
-          .print-container {
-            max-width: 100% !important;
-            border: none !important;
-            box-shadow: none !important;
-          }
-          
-          /* Ensure images print with proper sizing */
-          img {
-            max-width: 100% !important;
-            height: auto !important;
-            page-break-inside: avoid;
-            display: block !important;
-          }
-          
-          /* Keep sections together when possible */
-          section {
-            page-break-inside: avoid;
-          }
-          
-          /* Page margins */
-          @page {
-            margin: 1.5cm;
-            size: A4;
-          }
-          
-          /* Ensure text is visible */
-          body, html {
-            background: white !important;
-          }
-          
-          .text-foreground, .text-muted-foreground, p, li, h1, h2, h3, span, td, th {
-            color: black !important;
-          }
-        }
-      `}</style>
-      
-      <section className="py-16 bg-background">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <Link 
-            to="/egg-freezing-clinics-hk" 
-            className="text-sm text-muted-foreground hover:underline mb-6 inline-flex items-center gap-2 no-print"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            Back to Egg Freezing Clinics
-          </Link>
+    <section className="py-16 bg-background">
+      <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <Link 
+          to="/egg-freezing-clinics-hk" 
+          className="text-sm text-muted-foreground hover:underline mb-6 inline-flex items-center gap-2"
+        >
+          <ArrowLeft className="w-4 h-4" />
+          Back to Egg Freezing Clinics
+        </Link>
 
-          {/* Premium Banner */}
-          <div className="bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10 border border-primary/20 rounded-2xl p-6 mb-8 no-print">
-            <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-              <div>
-                <h1 className="text-2xl font-bold mb-1">Premium Fertility Planning Guide</h1>
-                <p className="text-muted-foreground">
-                  Complete roadmap with TCM foods, clinic comparisons, legal guidance & more
-                </p>
-              </div>
-              <div className="flex gap-2">
-                <Button 
-                  onClick={handlePrintPDF}
-                  size="lg"
-                  variant="outline"
-                  className="gap-2 whitespace-nowrap"
-                >
-                  <Printer className="w-4 h-4" />
-                  Download PDF
-                </Button>
-                <Button 
-                  onClick={handleDownload}
-                  size="lg"
-                  className="gap-2 whitespace-nowrap"
-                >
-                  <Lock className="w-4 h-4" />
-                  Purchase · HK$199
-                </Button>
-              </div>
+        {/* Premium Banner */}
+        <div className="bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10 border border-primary/20 rounded-2xl p-6 mb-8">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+            <div>
+              <h1 className="text-2xl font-bold mb-1">Premium Fertility Planning Guide</h1>
+              <p className="text-muted-foreground">
+                Complete roadmap with TCM foods, clinic comparisons, legal guidance & more
+              </p>
             </div>
-          </div>
-
-          {/* Guide Preview */}
-          <div className="bg-card border border-border rounded-2xl p-8 shadow-sm print-container">
-            <FertilityPlanningGuide />
-          </div>
-
-          {/* Bottom CTA */}
-          <div className="mt-8 text-center no-print">
-            <div className="flex justify-center gap-3">
+            <div className="flex gap-2">
               <Button 
                 onClick={handlePrintPDF}
                 size="lg"
                 variant="outline"
-                className="gap-2"
+                className="gap-2 whitespace-nowrap"
               >
-                <Download className="w-4 h-4" />
+                <Printer className="w-4 h-4" />
                 Download PDF
               </Button>
               <Button 
                 onClick={handleDownload}
                 size="lg"
-                className="gap-2"
+                className="gap-2 whitespace-nowrap"
               >
                 <Lock className="w-4 h-4" />
-                Purchase Guide · HK$199
+                Purchase · HK$199
               </Button>
             </div>
-            <p className="text-xs text-muted-foreground mt-3">
-              One-time purchase · Instant PDF download · Lifetime access
-            </p>
           </div>
         </div>
-      </section>
-    </>
+
+        {/* Guide Content - wrapped in ref for printing */}
+        <div ref={printRef} className="bg-card border border-border rounded-2xl p-8 shadow-sm">
+          <FertilityPlanningGuide />
+        </div>
+
+        {/* Bottom CTA */}
+        <div className="mt-8 text-center">
+          <div className="flex justify-center gap-3">
+            <Button 
+              onClick={handlePrintPDF}
+              size="lg"
+              variant="outline"
+              className="gap-2"
+            >
+              <Download className="w-4 h-4" />
+              Download PDF
+            </Button>
+            <Button 
+              onClick={handleDownload}
+              size="lg"
+              className="gap-2"
+            >
+              <Lock className="w-4 h-4" />
+              Purchase Guide · HK$199
+            </Button>
+          </div>
+          <p className="text-xs text-muted-foreground mt-3">
+            One-time purchase · Instant PDF download · Lifetime access
+          </p>
+        </div>
+      </div>
+    </section>
   );
 };
 
