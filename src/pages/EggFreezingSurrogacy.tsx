@@ -117,6 +117,13 @@ const EggFreezingSurrogacy = () => {
                   Comprehensive guide covering timelines, clinic comparisons, and preparation tips.
                 </p>
               </Link>
+
+              <Button 
+                size="lg"
+                className="w-full bg-blue-600 hover:bg-blue-700 text-white uppercase font-semibold"
+              >
+                PURCHASE GUIDE HK$100
+              </Button>
             </div>
           </div>
         </div>
