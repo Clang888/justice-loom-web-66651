@@ -96,7 +96,12 @@ const FertilityGuide = () => {
             .font-bold { font-weight: 700; }
             .font-medium { font-weight: 500; }
             svg { display: inline-block; width: 20px; height: 20px; vertical-align: middle; }
-            @page { margin: 1.5cm; size: A4; }
+            @page { 
+              margin: 1.5cm; 
+              size: A4; 
+              margin-top: 1cm;
+              margin-bottom: 1cm;
+            }
             @media print {
               body { padding: 0; }
             }
