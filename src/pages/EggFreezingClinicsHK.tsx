@@ -1,44 +1,101 @@
-import { Building2, MapPin, Phone, Globe } from "lucide-react";
+import { Building2, MapPin, Phone, Globe, Mail, MessageCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const clinics = [
   {
-    name: "Hong Kong Sanatorium & Hospital – Assisted Reproductive Centre",
-    address: "2 Village Road, Happy Valley, Hong Kong",
+    name: "HKU–Queen Mary Hospital (HKU-QMH CARE)",
+    address: "Room 528, 5/F, Block K, Queen Mary Hospital, Pokfulam Road, Hong Kong",
+    phone: "+852 2255 4262",
+    email: "hkuivf@hku.hk",
+    website: "https://hkuivf.hku.hk"
+  },
+  {
+    name: "CUHK IVFHK (Prince of Wales Hospital – ART Unit)",
+    address: "9/F, Old Block (EF Wing), Prince of Wales Hospital, Shatin, N.T., Hong Kong",
+    phone: "+852 3505 1456",
+    phoneAlt: "+852 3505 3148 (ART patients)",
+    whatsapp: "+852 6501 1574",
+    email: "ivfhkmed@cuhk.edu.hk",
+    website: "https://ivfhk.com"
+  },
+  {
+    name: "Hong Kong Sanatorium & Hospital – IVF Centre",
+    address: "6/F, Li Shu Pui Block, 2 Village Road, Happy Valley, Hong Kong",
     phone: "+852 2835 8060",
-    website: "https://www.hksh.com"
+    whatsapp: "+852 2835 8060",
+    email: "ivf@hksh-hospital.com",
+    website: "https://www.hksh.com/en/medical-services/facilities-services-centres-and-clinics/ivf-centre.html"
   },
   {
-    name: "Queen Mary Hospital – Assisted Reproduction Unit",
-    address: "102 Pok Fu Lam Road, Pok Fu Lam, Hong Kong",
-    phone: "+852 2255 4517",
-    website: "https://www.ha.org.hk"
+    name: "Hong Kong Assisted Reproduction Centre (HKARC)",
+    address: "Room 1502, 15/F, Henley Building, 5 Queen's Road Central, Central, Hong Kong",
+    phone: "+852 2117 3855",
+    whatsapp: "+852 9018 8248",
+    email: "enquiry@hkarc.com.hk",
+    website: "https://hkarc.com.hk"
   },
   {
-    name: "The University of Hong Kong – Centre of Assisted Reproduction and Embryology (CARE)",
-    address: "Level 4, Block E, Queen Mary Hospital, 102 Pok Fu Lam Road, Hong Kong",
-    phone: "+852 2255 4653",
-    website: "https://www.hku.hk"
+    name: "HEAL Fertility",
+    address: "10/F, One Chinachem Central, 22 Des Voeux Road Central, Central, Hong Kong",
+    phone: "+852 3703 3608",
+    email: "info@heal-fertility.com",
+    website: "https://heal-fertility.com"
   },
   {
-    name: "Victory ART Laboratory",
-    address: "1/F, 27 Hospital Road, Sai Ying Pun, Hong Kong",
-    phone: "+852 2818 9338",
-    website: "https://www.victoryart.com.hk"
+    name: "HK IVF Centre (Ocean Centre, Tsim Sha Tsui)",
+    address: "Room 1322–1325, 13/F, Ocean Centre, Harbour City, 5 Canton Road, Tsim Sha Tsui, Kowloon, Hong Kong",
+    phone: "+852 3468 3168",
+    email: "info@hkivf.com",
+    website: "https://hkivf.com"
   },
   {
-    name: "Hong Kong IVF Centre",
-    address: "Suite 901-902, 9/F, New World Tower 1, 16-18 Queen's Road Central, Hong Kong",
-    phone: "+852 2868 2311",
-    website: "https://www.hkivf.com"
+    name: "Hong Kong Reproductive Medicine Centre (HKRMC)",
+    address: "Suite 1228–30, 12/F, Ocean Centre, Tsim Sha Tsui, Hong Kong",
+    phone: "+852 8200 8168",
+    whatsapp: "+852 5489 8756",
+    email: "enquiry@reprodmed.com",
+    website: "https://reprodmed.com"
   },
   {
-    name: "Virtus Fertility Centre Hong Kong",
-    address: "21/F, 100 Queen's Road Central, Hong Kong",
-    phone: "+852 2100 2328",
-    website: "https://www.virtusfertilitycentre.com.hk"
+    name: "Union Reproductive Medicine Centre (Tsim Sha Tsui)",
+    address: "12/F, H Zentre, 15 Middle Road, Tsim Sha Tsui, Kowloon, Hong Kong",
+    phone: "+852 3126 1623",
+    whatsapp: "+852 9380 0023",
+    email: "urmc@union.org",
+    website: "https://www.union.org/urmc"
+  },
+  {
+    name: "The IVF Clinic (The Women's Clinic Group – Central)",
+    address: "13/F, Central Tower, 28 Queen's Road Central, Central, Hong Kong",
+    phone: "+852 2208 6338",
+    email: "info@theivfclinic.com.hk",
+    website: "https://thewomensclinic.com.hk"
+  },
+  {
+    name: "OT&P Healthcare (Egg Freezing)",
+    address: "OT&P Central Family Clinic, LG/F, Century Square, 1 D'Aguilar Street, Central, Hong Kong",
+    phone: "+852 2155 9055",
+    email: "business@otandp.com",
+    website: "https://otandp.com"
+  },
+  {
+    name: "SG IVF Center (Tsuen Wan)",
+    address: "Unit 01–09, 19/F, International Enterprise Centre 1, 11 Chai Wan Kok Street, Tsuen Wan, N.T., Hong Kong",
+    phone: "+852 2115 0833",
+    email: "info@sgivfhk.com",
+    website: "https://sgivfhk.com/en/"
   }
 ];
+
+interface Clinic {
+  name: string;
+  address: string;
+  phone: string;
+  phoneAlt?: string;
+  whatsapp?: string;
+  email: string;
+  website: string;
+}
 
 const EggFreezingClinicsHK = () => {
   return (
@@ -58,7 +115,7 @@ const EggFreezingClinicsHK = () => {
         </p>
 
         <div className="mt-10 grid md:grid-cols-2 gap-6">
-          {clinics.map((clinic, index) => (
+          {clinics.map((clinic: Clinic, index: number) => (
             <div key={index} className="bg-card border border-border rounded-2xl p-6 shadow-sm">
               <h2 className="font-semibold text-lg mb-4">{clinic.name}</h2>
               <ul className="space-y-3 text-sm text-muted-foreground">
@@ -66,9 +123,26 @@ const EggFreezingClinicsHK = () => {
                   <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0 text-primary" />
                   <span>{clinic.address}</span>
                 </li>
+                <li className="flex items-start gap-3">
+                  <Phone className="w-4 h-4 mt-0.5 flex-shrink-0 text-primary" />
+                  <div className="flex flex-col">
+                    <a href={`tel:${clinic.phone.replace(/\s/g, '')}`} className="hover:underline">{clinic.phone}</a>
+                    {clinic.phoneAlt && (
+                      <span className="text-xs">{clinic.phoneAlt}</span>
+                    )}
+                  </div>
+                </li>
+                {clinic.whatsapp && (
+                  <li className="flex items-center gap-3">
+                    <MessageCircle className="w-4 h-4 flex-shrink-0 text-primary" />
+                    <a href={`https://wa.me/${clinic.whatsapp.replace(/[^0-9]/g, '')}`} target="_blank" rel="noopener noreferrer" className="hover:underline">
+                      WhatsApp: {clinic.whatsapp}
+                    </a>
+                  </li>
+                )}
                 <li className="flex items-center gap-3">
-                  <Phone className="w-4 h-4 flex-shrink-0 text-primary" />
-                  <a href={`tel:${clinic.phone}`} className="hover:underline">{clinic.phone}</a>
+                  <Mail className="w-4 h-4 flex-shrink-0 text-primary" />
+                  <a href={`mailto:${clinic.email}`} className="hover:underline">{clinic.email}</a>
                 </li>
                 <li className="flex items-center gap-3">
                   <Globe className="w-4 h-4 flex-shrink-0 text-primary" />
