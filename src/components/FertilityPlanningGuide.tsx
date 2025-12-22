@@ -480,7 +480,7 @@ const FertilityPlanningGuide = () => {
           Always consult with qualified healthcare professionals for personalized guidance.
         </p>
         <p className="text-xs text-muted-foreground mt-2">
-          © Just Law Elizabeth · Hong Kong Fertility Planning Guide
+          ©️2025 Just Law Education. All Rights Reserved. Optimal Egg Retrieval Guide.
         </p>
       </div>
     </div>
