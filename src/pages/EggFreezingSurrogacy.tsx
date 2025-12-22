@@ -138,7 +138,7 @@ const EggFreezingSurrogacy = () => {
                       <strong>Type of Surrogacy Matters:</strong> The above primarily refers to gestational surrogacy. Traditional surrogacy (where the surrogate is the egg donor) is legally riskier and prohibited or heavily restricted in many more states due to complex parental rights issues.
                     </li>
                     <li>
-                      <strong>Pre-Birth Orders:</strong> A key goal in surrogacy-friendly states is obtaining a pre-birth order, which establishes the intended parents as the legal parents before birth, avoiding the need for adoption.
+                      <strong>Pre-Birth Orders:</strong> A key goal in surrogacy friendly states is obtaining a pre-birth order, which establishes the intended parents as the legal parents before birth, avoiding the need for adoption.
                     </li>
                     <li>
                       <strong>Residency:</strong> Some states require the intended parents, the surrogate, or both to be residents. Always check local statutes.
