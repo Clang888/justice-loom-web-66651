@@ -2,6 +2,7 @@ import { Baby, Snowflake, BookOpen, ChevronRight, Scale, HelpCircle, ChevronDown
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import SurrogacyJourneyTracker from "@/components/SurrogacyJourneyTracker";
+import USMapOutline from "@/components/USMapOutline";
 import { useState } from "react";
 
 const faqs = [
@@ -115,9 +116,12 @@ const EggFreezingSurrogacy = () => {
           <h2 className="text-2xl font-semibold mb-6">Resources</h2>
           <div className="grid md:grid-cols-2 gap-6">
             <div className="bg-card border border-border rounded-2xl p-6 shadow-sm">
-              <div className="flex items-center gap-3 mb-4">
-                <BookOpen className="w-6 h-6" />
-                <h3 className="font-semibold text-lg">Surrogacy Friendly States in the USA</h3>
+              <div className="flex items-start justify-between gap-4 mb-4">
+                <div className="flex items-center gap-3">
+                  <BookOpen className="w-6 h-6" />
+                  <h3 className="font-semibold text-lg">Surrogacy Friendly States in the USA</h3>
+                </div>
+                <USMapOutline className="w-24 h-16 text-primary opacity-60 flex-shrink-0" />
               </div>
               
               <div className="text-sm text-muted-foreground space-y-4 mb-6">
