@@ -112,7 +112,7 @@ const EggFreezingSurrogacy = () => {
 
         {/* Resources Section */}
         <div className="mt-12">
-          <h2 className="text-2xl font-semibold mb-6">Resources & Tools</h2>
+          <h2 className="text-2xl font-semibold mb-6">Resources</h2>
           <div className="grid md:grid-cols-2 gap-6">
             <div className="bg-card border border-border rounded-2xl p-6 shadow-sm">
               <div className="flex items-center gap-3 mb-4">
