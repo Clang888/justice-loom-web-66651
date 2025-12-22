@@ -59,15 +59,7 @@ const SurrogacyStates = () => {
                   <h3 className="font-semibold">{state.name}</h3>
                   <CheckCircle2 className="w-5 h-5 text-green-600" />
                 </div>
-                <p className="text-sm text-muted-foreground mb-3">{state.notes}</p>
-                <div className="flex flex-wrap gap-2 text-xs">
-                  {state.preBirthOrder && (
-                    <span className="px-2 py-1 bg-green-100 text-green-700 rounded-full">Pre-Birth Order</span>
-                  )}
-                  {state.compensatedSurrogacy && (
-                    <span className="px-2 py-1 bg-green-100 text-green-700 rounded-full">Compensated</span>
-                  )}
-                </div>
+                <p className="text-sm text-muted-foreground">{state.notes}</p>
               </div>
             ))}
           </div>
