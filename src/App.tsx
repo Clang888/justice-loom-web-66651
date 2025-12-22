@@ -23,6 +23,7 @@ import Admin from "./pages/Admin";
 import AITools from "./pages/AITools";
 import Assistant from "./pages/Assistant";
 import EggFreezingSurrogacy from "./pages/EggFreezingSurrogacy";
+import SurrogacyStates from "./pages/SurrogacyStates";
 import FormE from "./pages/FormE";
 import FormEFeedback from "./pages/FormEFeedback";
 
@@ -53,6 +54,7 @@ const App = () => (
               <Route path="/ai-tools" element={<AITools />} />
               <Route path="/assistant" element={<Assistant />} />
               <Route path="/egg-freezing-surrogacy" element={<EggFreezingSurrogacy />} />
+              <Route path="/surrogacy-states" element={<SurrogacyStates />} />
               <Route path="/form-e" element={<FormE />} />
               <Route path="/form-e-feedback" element={<FormEFeedback />} />
               <Route path="/auth" element={<Auth />} />
