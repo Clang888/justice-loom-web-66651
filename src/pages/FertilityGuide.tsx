@@ -155,9 +155,9 @@ const FertilityGuide = () => {
               <Button 
                 onClick={handleDownload}
                 size="lg"
-                className="gap-2 whitespace-nowrap bg-blue-600 hover:bg-blue-700 text-white"
+                className="gap-2 whitespace-nowrap bg-blue-600 hover:bg-blue-700 text-white uppercase font-semibold"
               >
-                Purchase Guide HK $199
+                PURCHASE GUIDE HK$100
               </Button>
             </div>
           </div>
@@ -183,9 +183,9 @@ const FertilityGuide = () => {
             <Button 
               onClick={handleDownload}
               size="lg"
-              className="gap-2 bg-blue-600 hover:bg-blue-700 text-white"
+              className="gap-2 bg-blue-600 hover:bg-blue-700 text-white uppercase font-semibold"
             >
-              Purchase Guide HK $199
+              PURCHASE GUIDE HK$100
             </Button>
           </div>
           <p className="text-xs text-muted-foreground mt-3">
