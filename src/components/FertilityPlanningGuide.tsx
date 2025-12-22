@@ -85,7 +85,7 @@ const FertilityPlanningGuide = () => {
       {/* Section 2: Clinic Comparison */}
       <section>
         <div className="mb-6">
-          <h2 className="text-2xl font-semibold">Public and Private Comparisons</h2>
+          <h2 className="text-2xl font-semibold">Public and Private Clinic Comparisons</h2>
         </div>
 
         <img 
