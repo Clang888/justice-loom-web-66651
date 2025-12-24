@@ -12,21 +12,6 @@ const EggFreezingSurrogacy = () => {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <h1 className="text-3xl font-bold">Egg Freezing & Surrogacy</h1>
 
-        <div className="mt-10 max-w-xl">
-          {/* Surrogacy Card */}
-          <div className="bg-card border border-border rounded-2xl p-6 shadow-sm">
-            <div className="flex items-center gap-3 mb-4">
-              <Baby className="w-6 h-6 text-primary" />
-              <h2 className="font-semibold text-xl">Surrogacy</h2>
-            </div>
-            <ul className="space-y-2 text-sm text-muted-foreground mb-6">
-              <li>UK surrogacy law and parental orders</li>
-              <li>International surrogacy considerations</li>
-              <li>Surrogate and intended parent agreements</li>
-              <li>Birth registration and citizenship</li>
-            </ul>
-          </div>
-        </div>
 
         {/* Resources Section - Two Column Layout */}
         <div className="mt-12 grid md:grid-cols-2 gap-8 items-start">
@@ -60,6 +45,20 @@ const EggFreezingSurrogacy = () => {
                     <SurrogacyJourneyTracker />
                   </div>
                 )}
+              </div>
+
+              {/* Surrogacy Considerations Card */}
+              <div className="bg-card border border-border rounded-2xl p-6 shadow-sm">
+                <div className="flex items-center justify-center gap-3 mb-4">
+                  <Baby className="w-6 h-6 text-primary" />
+                  <h3 className="font-semibold text-xl">Surrogacy Considerations</h3>
+                </div>
+                <ul className="space-y-2 text-sm text-muted-foreground text-left">
+                  <li>UK surrogacy law and parental orders</li>
+                  <li>International surrogacy considerations</li>
+                  <li>Surrogate and intended parent agreements</li>
+                  <li>Birth registration and citizenship</li>
+                </ul>
               </div>
             </div>
           </div>
