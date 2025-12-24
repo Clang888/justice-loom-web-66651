@@ -328,19 +328,19 @@ const EggFreezingClinicsHK = () => {
           </div>
         </div>
 
-        {/* Premium Guide Banner */}
+        {/* Egg Optimisation Guide Banner */}
         <div className="mt-8 bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10 border border-primary/20 rounded-2xl p-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div>
-              <h2 className="text-lg font-semibold mb-1">Premium Fertility Planning Guide</h2>
+              <h2 className="text-lg font-semibold mb-1">Egg Optimisation Planning Guide</h2>
               <p className="text-sm text-muted-foreground">
                 Complete roadmap with TCM foods, clinic comparisons, legal guidance & recovery tips
               </p>
             </div>
             <Link to="/fertility-guide">
-              <Button className="gap-2 whitespace-nowrap">
+              <Button className="gap-2 whitespace-nowrap bg-blue-600 hover:bg-blue-700 text-white">
                 <BookOpen className="w-4 h-4" />
-                View Guide
+                Purchase Guide HK$199
               </Button>
             </Link>
           </div>
