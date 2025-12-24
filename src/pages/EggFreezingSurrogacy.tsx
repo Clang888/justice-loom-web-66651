@@ -82,21 +82,6 @@ const EggFreezingSurrogacy = () => {
           <div className="text-center">
             <h2 className="text-2xl font-semibold mb-6">Egg Freezing Resources</h2>
             <div className="space-y-6">
-              <div className="bg-card border-2 border-blue-300 rounded-2xl p-6 shadow-sm">
-                <Link to="/fertility-guide" className="block hover:opacity-80 transition-opacity">
-                  <h3 className="font-semibold text-lg mb-2">Egg Optimisation Planning Guide</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Comprehensive guide covering timelines, clinic comparisons, and preparation tips.
-                  </p>
-                </Link>
-                <Button 
-                  size="lg"
-                  className="w-full mt-4 bg-blue-600 hover:bg-blue-700 text-white uppercase font-semibold"
-                >
-                  PURCHASE GUIDE HK$199
-                </Button>
-              </div>
-
               <Link to="/egg-freezing-clinics-hk" className="block bg-card border-2 border-green-500 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
                 <span className="block bg-green-600 text-white text-xs font-semibold px-2 py-1 rounded mb-2 w-fit mx-auto">FREE</span>
                 <h3 className="font-semibold text-lg mb-2">Egg Freezing Clinics in Hong Kong</h3>
@@ -104,6 +89,24 @@ const EggFreezingSurrogacy = () => {
                   Find reputable fertility clinics offering egg freezing services in Hong Kong.
                 </p>
               </Link>
+
+              <div>
+                <h3 className="text-lg font-semibold mb-3 text-center">Egg Freezing Considerations</h3>
+                <div className="bg-card border-2 border-blue-300 rounded-2xl p-6 shadow-sm">
+                  <Link to="/fertility-guide" className="block hover:opacity-80 transition-opacity">
+                    <h3 className="font-semibold text-lg mb-2">Egg Optimisation Planning Guide</h3>
+                    <p className="text-sm text-muted-foreground">
+                      Comprehensive guide covering timelines, clinic comparisons, and preparation tips.
+                    </p>
+                  </Link>
+                  <Button 
+                    size="lg"
+                    className="w-full mt-4 bg-blue-600 hover:bg-blue-700 text-white uppercase font-semibold"
+                  >
+                    PURCHASE GUIDE HK$199
+                  </Button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
