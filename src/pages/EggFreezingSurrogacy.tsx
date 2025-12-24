@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
-
+import FertilityGuideTeaser from "@/components/FertilityGuideTeaser";
 const EggFreezingSurrogacy = () => {
   const [isLoading, setIsLoading] = useState(false);
 
@@ -76,13 +76,9 @@ const EggFreezingSurrogacy = () => {
           <div className="text-center">
             <h2 className="text-2xl font-semibold mb-6">Egg Freezing Resources</h2>
             <div className="grid gap-6">
-              <div className="bg-card border-2 border-blue-300 rounded-2xl p-6 shadow-sm min-h-[180px] flex flex-col justify-center">
-                <Link to="/fertility-guide" className="block hover:opacity-80 transition-opacity">
-                  <h3 className="font-semibold text-lg mb-2">Egg Optimisation Planning Guide</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Comprehensive guide covering timelines, clinic comparisons, and preparation tips.
-                  </p>
-                </Link>
+              <div className="bg-card border-2 border-blue-300 rounded-2xl p-6 shadow-sm flex flex-col">
+                <h3 className="font-semibold text-lg mb-4 text-center">Egg Optimisation Planning Guide</h3>
+                <FertilityGuideTeaser />
                 <Button 
                   size="lg"
                   onClick={handlePurchase}
