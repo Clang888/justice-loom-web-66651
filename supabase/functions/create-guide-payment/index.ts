@@ -56,9 +56,6 @@ serve(async (req) => {
       mode: "payment",
       locale: "en",
       billing_address_collection: "required",
-      phone_number_collection: {
-        enabled: true,
-      },
       payment_method_types: ["card"],
       success_url: `${req.headers.get("origin")}/fertility-guide?payment=success`,
       cancel_url: `${req.headers.get("origin")}/egg-freezing-surrogacy?payment=canceled`,
