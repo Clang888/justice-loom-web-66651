@@ -79,21 +79,32 @@ const EggFreezingSurrogacy = () => {
               <div className="bg-card border-2 border-blue-300 rounded-2xl p-6 shadow-sm flex flex-col">
                 <h3 className="font-semibold text-lg mb-3 text-center">Egg Optimisation Planning Guide</h3>
                 
-                {/* Compact Teaser */}
+                {/* Teaser from actual guide */}
                 <div className="bg-secondary/50 rounded-lg p-4 mb-4 text-left">
-                  <p className="text-xs text-muted-foreground mb-2">Preview: Step-by-Step Timeline</p>
-                  <div className="border-l-2 border-blue-500 pl-3 mb-2">
-                    <p className="text-sm font-medium">Month 1-2: Research & Initial Consultation</p>
-                    <p className="text-xs text-muted-foreground">Research clinics, schedule consultations, complete fertility tests</p>
-                  </div>
-                  <div className="border-l-2 border-green-500 pl-3">
-                    <p className="text-sm font-medium">Month 3: Preparation Phase</p>
-                    <p className="text-xs text-muted-foreground">Lifestyle optimization, pre-procedure tests, finalize clinic</p>
+                  <p className="text-xs font-medium text-primary mb-3">Step-by-Step Timeline 時間表</p>
+                  
+                  <div className="space-y-3">
+                    <div className="border-l-2 border-blue-500 pl-3">
+                      <p className="text-sm font-medium">Month 1-2: Research & Initial Consultation</p>
+                      <p className="text-xs text-muted-foreground">Research clinics, schedule consultations, complete baseline fertility tests (AMH, AFC, FSH)</p>
+                    </div>
+                    <div className="border-l-2 border-green-500 pl-3">
+                      <p className="text-sm font-medium">Month 3: Preparation Phase</p>
+                      <p className="text-xs text-muted-foreground">Lifestyle changes, pre-procedure tests, finalise clinic selection</p>
+                    </div>
+                    <div className="border-l-2 border-amber-500 pl-3">
+                      <p className="text-sm font-medium">Month 4: Stimulation Cycle (10-14 days)</p>
+                      <p className="text-xs text-muted-foreground">Hormone injections, monitoring ultrasounds, egg retrieval</p>
+                    </div>
+                    <div className="border-l-2 border-purple-500 pl-3">
+                      <p className="text-sm font-medium">Post-Retrieval: Recovery & Storage</p>
+                      <p className="text-xs text-muted-foreground">Rest, receive egg count report, set up storage schedule</p>
+                    </div>
                   </div>
                 </div>
                 
                 <p className="text-xs text-muted-foreground mb-3 text-center">
-                  Full guide includes clinic comparisons, TCM foods, legal considerations & more
+                  Full guide includes HK clinic comparisons, TCM foods for egg health, legal & financial considerations
                 </p>
                 
                 <Button 
