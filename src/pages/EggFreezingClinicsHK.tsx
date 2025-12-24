@@ -290,7 +290,7 @@ const EggFreezingClinicsHK = () => {
             <div>
               <h2 className="text-lg font-semibold mb-1">Download Clinics List</h2>
               <p className="text-sm text-muted-foreground">
-                Save this list for offline reference in CSV or PDF format
+                Fertility clinics offering egg freezing services in Hong Kong.
               </p>
             </div>
             <Button onClick={downloadPDF} className="whitespace-nowrap bg-blue-600 hover:bg-blue-700 text-white">
