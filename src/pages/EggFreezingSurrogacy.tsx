@@ -3,9 +3,32 @@ import { Baby, Snowflake, ChevronDown, ChevronUp } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import SurrogacyJourneyTracker from "@/components/SurrogacyJourneyTracker";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "sonner";
 
 const EggFreezingSurrogacy = () => {
   const [showTracker, setShowTracker] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handlePurchase = async () => {
+    setIsLoading(true);
+    try {
+      const { data, error } = await supabase.functions.invoke('create-guide-payment', {
+        body: {}
+      });
+
+      if (error) throw error;
+
+      if (data?.url) {
+        window.open(data.url, '_blank');
+      }
+    } catch (error) {
+      console.error('Payment error:', error);
+      toast.error('Unable to start checkout. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <section className="py-16 bg-secondary">
@@ -76,9 +99,11 @@ const EggFreezingSurrogacy = () => {
                 </Link>
                 <Button 
                   size="lg"
+                  onClick={handlePurchase}
+                  disabled={isLoading}
                   className="w-full mt-4 bg-blue-600 hover:bg-blue-700 text-white uppercase font-semibold"
                 >
-                  PURCHASE GUIDE HK$199
+                  {isLoading ? "Loading..." : "PURCHASE GUIDE HK$199"}
                 </Button>
               </div>
 

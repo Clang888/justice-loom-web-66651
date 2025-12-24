@@ -2,14 +2,32 @@ import { Link } from "react-router-dom";
 import { ArrowLeft, Download, Printer } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import FertilityPlanningGuide from "@/components/FertilityPlanningGuide";
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "sonner";
 
 const FertilityGuide = () => {
   const printRef = useRef<HTMLDivElement>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleDownload = () => {
-    // TODO: Implement payment gate with Stripe
-    console.log("Download clicked - implement Stripe payment");
+  const handlePurchase = async () => {
+    setIsLoading(true);
+    try {
+      const { data, error } = await supabase.functions.invoke('create-guide-payment', {
+        body: {}
+      });
+
+      if (error) throw error;
+
+      if (data?.url) {
+        window.open(data.url, '_blank');
+      }
+    } catch (error) {
+      console.error('Payment error:', error);
+      toast.error('Unable to start checkout. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handlePrintPDF = () => {
@@ -155,11 +173,12 @@ const FertilityGuide = () => {
                 Download PDF
               </Button>
               <Button 
-                onClick={handleDownload}
+                onClick={handlePurchase}
+                disabled={isLoading}
                 size="lg"
                 className="gap-2 whitespace-nowrap bg-blue-600 hover:bg-blue-700 text-white uppercase font-semibold"
               >
-                PURCHASE GUIDE HK$199
+                {isLoading ? "Loading..." : "PURCHASE GUIDE HK$199"}
               </Button>
             </div>
           </div>
@@ -183,11 +202,12 @@ const FertilityGuide = () => {
               Download PDF
             </Button>
             <Button 
-              onClick={handleDownload}
+              onClick={handlePurchase}
+              disabled={isLoading}
               size="lg"
               className="gap-2 bg-blue-600 hover:bg-blue-700 text-white uppercase font-semibold"
             >
-              PURCHASE GUIDE HK$199
+              {isLoading ? "Loading..." : "PURCHASE GUIDE HK$199"}
             </Button>
           </div>
           <p className="text-xs text-muted-foreground mt-3">
