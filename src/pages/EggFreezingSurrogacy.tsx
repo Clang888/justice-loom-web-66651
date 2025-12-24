@@ -18,8 +18,8 @@ const EggFreezingSurrogacy = () => {
           {/* Surrogacy Resources */}
           <div className="text-center">
             <h2 className="text-2xl font-semibold mb-6">Surrogacy Resources</h2>
-            <div className="space-y-6">
-              <Link to="/surrogacy-states" className="block bg-card border-2 border-green-500 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
+            <div className="grid gap-6">
+              <Link to="/surrogacy-states" className="block bg-card border-2 border-green-500 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow min-h-[180px] flex flex-col justify-center">
                 <span className="block bg-green-600 text-white text-xs font-semibold px-2 py-1 rounded mb-2 w-fit mx-auto">FREE</span>
                 <h3 className="font-semibold text-lg mb-2">USA Surrogacy Friendly States</h3>
                 <p className="text-sm text-muted-foreground">
@@ -27,7 +27,7 @@ const EggFreezingSurrogacy = () => {
                 </p>
               </Link>
 
-              <div className="bg-card border-2 border-green-500 rounded-2xl p-6 shadow-sm text-center">
+              <div className="bg-card border-2 border-green-500 rounded-2xl p-6 shadow-sm text-center min-h-[180px] flex flex-col justify-center">
                 <span className="block bg-green-600 text-white text-xs font-semibold px-2 py-1 rounded mb-2 w-fit mx-auto">FREE</span>
                 <h3 className="text-lg font-semibold mb-2">Surrogacy Journey Tracker</h3>
                 <p className="text-sm text-muted-foreground">
@@ -48,7 +48,7 @@ const EggFreezingSurrogacy = () => {
               </div>
 
               {/* Surrogacy Considerations Card */}
-              <div className="bg-card border border-border rounded-2xl p-6 shadow-sm">
+              <div className="bg-card border border-border rounded-2xl p-6 shadow-sm min-h-[180px] flex flex-col justify-center">
                 <div className="flex items-center justify-center gap-3 mb-4">
                   <Baby className="w-6 h-6 text-primary" />
                   <h3 className="font-semibold text-xl">Surrogacy Considerations</h3>
@@ -66,8 +66,8 @@ const EggFreezingSurrogacy = () => {
           {/* Egg Freezing Resources */}
           <div className="text-center">
             <h2 className="text-2xl font-semibold mb-6">Egg Freezing Resources</h2>
-            <div className="space-y-6">
-              <div className="bg-card border-2 border-blue-300 rounded-2xl p-6 shadow-sm">
+            <div className="grid gap-6">
+              <div className="bg-card border-2 border-blue-300 rounded-2xl p-6 shadow-sm min-h-[180px] flex flex-col justify-center">
                 <Link to="/fertility-guide" className="block hover:opacity-80 transition-opacity">
                   <h3 className="font-semibold text-lg mb-2">Egg Optimisation Planning Guide</h3>
                   <p className="text-sm text-muted-foreground">
@@ -82,7 +82,7 @@ const EggFreezingSurrogacy = () => {
                 </Button>
               </div>
 
-              <Link to="/egg-freezing-clinics-hk" className="block bg-card border-2 border-green-500 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
+              <Link to="/egg-freezing-clinics-hk" className="block bg-card border-2 border-green-500 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow min-h-[180px] flex flex-col justify-center">
                 <span className="block bg-green-600 text-white text-xs font-semibold px-2 py-1 rounded mb-2 w-fit mx-auto">FREE</span>
                 <h3 className="font-semibold text-lg mb-2">Egg Freezing Clinics in Hong Kong</h3>
                 <p className="text-sm text-muted-foreground">
@@ -91,7 +91,7 @@ const EggFreezingSurrogacy = () => {
               </Link>
 
               {/* Egg Freezing Info Card */}
-              <div className="bg-card border border-border rounded-2xl p-6 shadow-sm">
+              <div className="bg-card border border-border rounded-2xl p-6 shadow-sm min-h-[180px] flex flex-col justify-center">
                 <div className="flex items-center justify-center gap-3 mb-4">
                   <Snowflake className="w-6 h-6 text-primary" />
                   <h3 className="font-semibold text-xl">Egg Freezing Considerations</h3>
