@@ -302,7 +302,7 @@ const EggFreezingClinicsHK = () => {
         </div>
         <h1 className="text-3xl font-bold">Egg Freezing Clinics in Hong Kong</h1>
         <p className="mt-3 text-muted-foreground max-w-2xl">
-          A list of reputable fertility clinics offering egg freezing services in Hong Kong. 
+          A list of fertility clinics offering egg freezing services in Hong Kong. 
           Please verify information directly with the clinics as details may change.
         </p>
 
