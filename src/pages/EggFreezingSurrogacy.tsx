@@ -12,7 +12,7 @@ const EggFreezingSurrogacy = () => {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <h1 className="text-3xl font-bold">Egg Freezing & Surrogacy</h1>
 
-        <div className="mt-10 grid md:grid-cols-2 gap-8">
+        <div className="mt-10 max-w-xl">
           {/* Surrogacy Card */}
           <div className="bg-card border border-border rounded-2xl p-6 shadow-sm">
             <div className="flex items-center gap-3 mb-4">
@@ -24,20 +24,6 @@ const EggFreezingSurrogacy = () => {
               <li>International surrogacy considerations</li>
               <li>Surrogate and intended parent agreements</li>
               <li>Birth registration and citizenship</li>
-            </ul>
-          </div>
-
-          {/* Egg Freezing Card */}
-          <div className="bg-card border border-border rounded-2xl p-6 shadow-sm">
-            <div className="flex items-center gap-3 mb-4">
-              <Snowflake className="w-6 h-6 text-primary" />
-              <h2 className="font-semibold text-xl">Egg Freezing</h2>
-            </div>
-            <ul className="space-y-2 text-sm text-muted-foreground mb-6">
-              <li>Consent and storage agreements</li>
-              <li>Storage duration and renewal rights</li>
-              <li>Partner consent considerations</li>
-              <li>Cross-border storage regulations</li>
             </ul>
           </div>
         </div>
@@ -107,6 +93,20 @@ const EggFreezingSurrogacy = () => {
                   Find reputable fertility clinics offering egg freezing services in Hong Kong.
                 </p>
               </Link>
+
+              {/* Egg Freezing Info Card */}
+              <div className="bg-card border border-border rounded-2xl p-6 shadow-sm">
+                <div className="flex items-center justify-center gap-3 mb-4">
+                  <Snowflake className="w-6 h-6 text-primary" />
+                  <h3 className="font-semibold text-xl">Egg Freezing</h3>
+                </div>
+                <ul className="space-y-2 text-sm text-muted-foreground text-left">
+                  <li>Consent and storage agreements</li>
+                  <li>Storage duration and renewal rights</li>
+                  <li>Partner consent considerations</li>
+                  <li>Cross-border storage regulations</li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
