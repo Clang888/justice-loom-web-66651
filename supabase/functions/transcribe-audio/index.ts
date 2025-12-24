@@ -4,10 +4,25 @@ import { z } from "https://deno.land/x/zod@v3.22.4/mod.ts";
 // Import OpenAI to satisfy type dependencies (not used directly, we use fetch instead)
 import "npm:openai@^4.52.5";
 
-const corsHeaders = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
-};
+// Allowed origins for CORS
+const allowedOrigins = [
+  'https://bztievslvjgppilznaon.lovable.app',
+  'https://justlawexperts.com',
+  'https://www.justlawexperts.com',
+  'http://localhost:8080',
+  'http://localhost:5173',
+  'http://localhost:3000',
+];
+
+function getCorsHeaders(req: Request) {
+  const origin = req.headers.get('origin') || '';
+  const allowedOrigin = allowedOrigins.includes(origin) ? origin : allowedOrigins[0];
+  return {
+    'Access-Control-Allow-Origin': allowedOrigin,
+    'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+    'Access-Control-Allow-Credentials': 'true',
+  };
+}
 
 // Input validation schema - max 25MB base64 (which is ~18.75MB binary)
 // Base64 encoding increases size by ~33%, so 33.5MB base64 = ~25MB binary
@@ -49,6 +64,8 @@ function processBase64Chunks(base64String: string, chunkSize = 32768) {
 }
 
 serve(async (req) => {
+  const corsHeaders = getCorsHeaders(req);
+  
   if (req.method === 'OPTIONS') {
     return new Response('ok', { headers: corsHeaders });
   }
