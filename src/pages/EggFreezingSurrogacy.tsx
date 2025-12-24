@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
-
+import planningCalendarImage from "@/assets/fertility-planning-calendar.jpg";
 const EggFreezingSurrogacy = () => {
   const [isLoading, setIsLoading] = useState(false);
 
@@ -79,26 +79,37 @@ const EggFreezingSurrogacy = () => {
               <div className="bg-card border-2 border-blue-300 rounded-2xl p-6 shadow-sm flex flex-col">
                 <h3 className="font-semibold text-lg mb-3 text-center">Egg Optimisation Planning Guide</h3>
                 
-                {/* Teaser from actual guide */}
-                <div className="bg-secondary/50 rounded-lg p-4 mb-4 text-left">
-                  <p className="text-xs font-medium text-primary mb-3">Step-by-Step Timeline 時間表</p>
-                  
-                  <div className="space-y-3">
-                    <div className="border-l-2 border-blue-500 pl-3">
-                      <p className="text-sm font-medium">Month 1-2: Research & Initial Consultation</p>
-                      <p className="text-xs text-muted-foreground">Research clinics, schedule consultations, complete baseline fertility tests (AMH, AFC, FSH)</p>
+                {/* Teaser matching guide design */}
+                <div className="rounded-xl overflow-hidden border-4 border-[#8fa89a] mb-4">
+                  <div className="flex">
+                    {/* Calendar image */}
+                    <div className="w-2/5">
+                      <img 
+                        src={planningCalendarImage} 
+                        alt="Planning calendar" 
+                        className="w-full h-full object-cover"
+                      />
                     </div>
-                    <div className="border-l-2 border-green-500 pl-3">
-                      <p className="text-sm font-medium">Month 3: Preparation Phase</p>
-                      <p className="text-xs text-muted-foreground">Lifestyle changes, pre-procedure tests, finalise clinic selection</p>
-                    </div>
-                    <div className="border-l-2 border-amber-500 pl-3">
-                      <p className="text-sm font-medium">Month 4: Stimulation Cycle (10-14 days)</p>
-                      <p className="text-xs text-muted-foreground">Hormone injections, monitoring ultrasounds, egg retrieval</p>
-                    </div>
-                    <div className="border-l-2 border-purple-500 pl-3">
-                      <p className="text-sm font-medium">Post-Retrieval: Recovery & Storage</p>
-                      <p className="text-xs text-muted-foreground">Rest, receive egg count report, set up storage schedule</p>
+                    {/* Timeline text on yellow background */}
+                    <div className="w-3/5 bg-[#f5d547] p-4 flex flex-col justify-center" style={{ fontFamily: "'Comic Sans MS', cursive, sans-serif" }}>
+                      <div className="space-y-3">
+                        <div>
+                          <p className="text-sm font-bold text-black">Month 1-2:</p>
+                          <p className="text-sm text-black">Research & Initial Consultation</p>
+                        </div>
+                        <div>
+                          <p className="text-sm font-bold text-black">Month 3:</p>
+                          <p className="text-sm text-black">Preparation Phase</p>
+                        </div>
+                        <div>
+                          <p className="text-sm font-bold text-black">Month 4:</p>
+                          <p className="text-sm text-black">Stimulation Cycle (10-14 days)</p>
+                        </div>
+                        <div>
+                          <p className="text-sm font-bold text-black">Post-Retrieval:</p>
+                          <p className="text-sm text-black">Recovery & Storage</p>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
