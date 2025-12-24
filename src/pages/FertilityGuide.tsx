@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
-import { ArrowLeft, Download, Printer } from "lucide-react";
+import { Link, useSearchParams } from "react-router-dom";
+import { ArrowLeft, Download, Printer, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import FertilityPlanningGuide from "@/components/FertilityPlanningGuide";
 import { useRef, useState } from "react";
@@ -9,6 +9,8 @@ import { toast } from "sonner";
 const FertilityGuide = () => {
   const printRef = useRef<HTMLDivElement>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [searchParams] = useSearchParams();
+  const paymentSuccess = searchParams.get('payment') === 'success';
 
   const handlePurchase = async () => {
     setIsLoading(true);
@@ -153,6 +155,36 @@ const FertilityGuide = () => {
           Back to Egg Freezing Clinics
         </Link>
 
+        {/* Payment Success Banner */}
+        {paymentSuccess && (
+          <div className="bg-green-50 border border-green-200 rounded-2xl p-6 mb-8">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+              <div className="flex items-center gap-3">
+                <CheckCircle className="w-8 h-8 text-green-600" />
+                <div>
+                  <h2 className="text-xl font-bold text-green-800">Thank You for Your Purchase!</h2>
+                  <p className="text-green-700">
+                    Your guide is ready to download.
+                  </p>
+                </div>
+              </div>
+              <a 
+                href="/guides/egg-optimisation-guide.pdf" 
+                download="Egg-Optimisation-Planning-Guide.pdf"
+                className="inline-flex"
+              >
+                <Button 
+                  size="lg"
+                  className="gap-2 bg-green-600 hover:bg-green-700 text-white"
+                >
+                  <Download className="w-4 h-4" />
+                  Download Your PDF Guide
+                </Button>
+              </a>
+            </div>
+          </div>
+        )}
+
         {/* Premium Banner */}
         <div className="bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10 border border-primary/20 rounded-2xl p-6 mb-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
@@ -170,16 +202,18 @@ const FertilityGuide = () => {
                 className="gap-2 whitespace-nowrap"
               >
                 <Printer className="w-4 h-4" />
-                Download PDF
+                Print Preview
               </Button>
-              <Button 
-                onClick={handlePurchase}
-                disabled={isLoading}
-                size="lg"
-                className="gap-2 whitespace-nowrap bg-blue-600 hover:bg-blue-700 text-white uppercase font-semibold"
-              >
-                {isLoading ? "Loading..." : "PURCHASE GUIDE HK$199"}
-              </Button>
+              {!paymentSuccess && (
+                <Button 
+                  onClick={handlePurchase}
+                  disabled={isLoading}
+                  size="lg"
+                  className="gap-2 whitespace-nowrap bg-blue-600 hover:bg-blue-700 text-white uppercase font-semibold"
+                >
+                  {isLoading ? "Loading..." : "PURCHASE GUIDE HK$199"}
+                </Button>
+              )}
             </div>
           </div>
         </div>
@@ -191,28 +225,51 @@ const FertilityGuide = () => {
 
         {/* Bottom CTA */}
         <div className="mt-8 text-center">
-          <div className="flex justify-center gap-3">
-            <Button 
-              onClick={handlePrintPDF}
-              size="lg"
-              variant="outline"
-              className="gap-2"
-            >
-              <Download className="w-4 h-4" />
-              Download PDF
-            </Button>
-            <Button 
-              onClick={handlePurchase}
-              disabled={isLoading}
-              size="lg"
-              className="gap-2 bg-blue-600 hover:bg-blue-700 text-white uppercase font-semibold"
-            >
-              {isLoading ? "Loading..." : "PURCHASE GUIDE HK$199"}
-            </Button>
-          </div>
-          <p className="text-xs text-muted-foreground mt-3">
-            One-time purchase · Instant PDF download · Lifetime access
-          </p>
+          {paymentSuccess ? (
+            <div>
+              <a 
+                href="/guides/egg-optimisation-guide.pdf" 
+                download="Egg-Optimisation-Planning-Guide.pdf"
+                className="inline-flex"
+              >
+                <Button 
+                  size="lg"
+                  className="gap-2 bg-green-600 hover:bg-green-700 text-white"
+                >
+                  <Download className="w-4 h-4" />
+                  Download Your PDF Guide
+                </Button>
+              </a>
+              <p className="text-xs text-muted-foreground mt-3">
+                Thank you for your purchase · Lifetime access
+              </p>
+            </div>
+          ) : (
+            <div>
+              <div className="flex justify-center gap-3">
+                <Button 
+                  onClick={handlePrintPDF}
+                  size="lg"
+                  variant="outline"
+                  className="gap-2"
+                >
+                  <Printer className="w-4 h-4" />
+                  Print Preview
+                </Button>
+                <Button 
+                  onClick={handlePurchase}
+                  disabled={isLoading}
+                  size="lg"
+                  className="gap-2 bg-blue-600 hover:bg-blue-700 text-white uppercase font-semibold"
+                >
+                  {isLoading ? "Loading..." : "PURCHASE GUIDE HK$199"}
+                </Button>
+              </div>
+              <p className="text-xs text-muted-foreground mt-3">
+                One-time purchase · Instant PDF download · Lifetime access
+              </p>
+            </div>
+          )}
         </div>
       </div>
     </section>
