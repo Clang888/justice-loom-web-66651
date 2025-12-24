@@ -1,6 +1,7 @@
-import { Building2, MapPin, Phone, Globe, Mail, MessageCircle, BookOpen, Download } from "lucide-react";
+import { Building2, MapPin, Phone, Globe, Mail, MessageCircle, BookOpen, Download, FileText } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { PDFDocument, rgb, StandardFonts } from "pdf-lib";
 
 const clinics = [
   {
@@ -121,6 +122,174 @@ const EggFreezingClinicsHK = () => {
     URL.revokeObjectURL(link.href);
   };
 
+  const downloadPDF = async () => {
+    const pdfDoc = await PDFDocument.create();
+    const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
+    const boldFont = await pdfDoc.embedFont(StandardFonts.HelveticaBold);
+    
+    const pageWidth = 595;
+    const pageHeight = 842;
+    const margin = 50;
+    const lineHeight = 14;
+    
+    let page = pdfDoc.addPage([pageWidth, pageHeight]);
+    let yPosition = pageHeight - margin;
+
+    // Title
+    page.drawText("Egg Freezing Clinics in Hong Kong", {
+      x: margin,
+      y: yPosition,
+      size: 20,
+      font: boldFont,
+      color: rgb(0.1, 0.1, 0.1),
+    });
+    yPosition -= 30;
+
+    // Subtitle
+    page.drawText("A comprehensive list of fertility clinics offering egg freezing services", {
+      x: margin,
+      y: yPosition,
+      size: 10,
+      font: font,
+      color: rgb(0.4, 0.4, 0.4),
+    });
+    yPosition -= 10;
+
+    page.drawText(`Generated: ${new Date().toLocaleDateString()}`, {
+      x: margin,
+      y: yPosition,
+      size: 9,
+      font: font,
+      color: rgb(0.5, 0.5, 0.5),
+    });
+    yPosition -= 35;
+
+    // Clinics
+    for (const clinic of clinics) {
+      // Check if we need a new page
+      if (yPosition < 150) {
+        page = pdfDoc.addPage([pageWidth, pageHeight]);
+        yPosition = pageHeight - margin;
+      }
+
+      // Clinic name
+      page.drawText(clinic.name, {
+        x: margin,
+        y: yPosition,
+        size: 12,
+        font: boldFont,
+        color: rgb(0.15, 0.15, 0.15),
+      });
+      yPosition -= lineHeight + 4;
+
+      // Address
+      const addressLines = wrapText(clinic.address, 80);
+      for (const line of addressLines) {
+        page.drawText(`Address: ${line}`, {
+          x: margin + 10,
+          y: yPosition,
+          size: 9,
+          font: font,
+          color: rgb(0.3, 0.3, 0.3),
+        });
+        yPosition -= lineHeight;
+      }
+
+      // Phone
+      let phoneText = `Phone: ${clinic.phone}`;
+      if (clinic.phoneAlt) phoneText += ` / ${clinic.phoneAlt}`;
+      page.drawText(phoneText, {
+        x: margin + 10,
+        y: yPosition,
+        size: 9,
+        font: font,
+        color: rgb(0.3, 0.3, 0.3),
+      });
+      yPosition -= lineHeight;
+
+      // WhatsApp (if available)
+      if (clinic.whatsapp) {
+        page.drawText(`WhatsApp: ${clinic.whatsapp}`, {
+          x: margin + 10,
+          y: yPosition,
+          size: 9,
+          font: font,
+          color: rgb(0.3, 0.3, 0.3),
+        });
+        yPosition -= lineHeight;
+      }
+
+      // Email
+      page.drawText(`Email: ${clinic.email}`, {
+        x: margin + 10,
+        y: yPosition,
+        size: 9,
+        font: font,
+        color: rgb(0.3, 0.3, 0.3),
+      });
+      yPosition -= lineHeight;
+
+      // Website
+      page.drawText(`Website: ${clinic.website}`, {
+        x: margin + 10,
+        y: yPosition,
+        size: 9,
+        font: font,
+        color: rgb(0.2, 0.4, 0.7),
+      });
+      yPosition -= lineHeight + 15;
+    }
+
+    // Disclaimer at the bottom of the last page
+    if (yPosition < 80) {
+      page = pdfDoc.addPage([pageWidth, pageHeight]);
+      yPosition = pageHeight - margin;
+    }
+    
+    yPosition = 60;
+    page.drawText("Disclaimer: This list is for informational purposes only and does not constitute an endorsement.", {
+      x: margin,
+      y: yPosition,
+      size: 8,
+      font: font,
+      color: rgb(0.5, 0.5, 0.5),
+    });
+    page.drawText("Please verify information directly with clinics and consult medical professionals before making decisions.", {
+      x: margin,
+      y: yPosition - 10,
+      size: 8,
+      font: font,
+      color: rgb(0.5, 0.5, 0.5),
+    });
+
+    const pdfBytes = await pdfDoc.save();
+    const blob = new Blob([new Uint8Array(pdfBytes)], { type: "application/pdf" });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = "egg-freezing-clinics-hong-kong.pdf";
+    link.click();
+    URL.revokeObjectURL(link.href);
+  };
+
+  // Helper function to wrap long text
+  const wrapText = (text: string, maxChars: number): string[] => {
+    if (text.length <= maxChars) return [text];
+    const words = text.split(' ');
+    const lines: string[] = [];
+    let currentLine = '';
+    
+    for (const word of words) {
+      if ((currentLine + ' ' + word).trim().length <= maxChars) {
+        currentLine = (currentLine + ' ' + word).trim();
+      } else {
+        if (currentLine) lines.push(currentLine);
+        currentLine = word;
+      }
+    }
+    if (currentLine) lines.push(currentLine);
+    return lines;
+  };
+
   return (
     <section className="py-16 bg-secondary">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -128,14 +297,20 @@ const EggFreezingClinicsHK = () => {
           ← Back to Egg Freezing & Surrogacy
         </Link>
         
-        <div className="flex items-center justify-between mb-2">
+        <div className="flex items-center justify-between mb-2 flex-wrap gap-3">
           <div className="flex items-center gap-3">
             <Building2 className="w-8 h-8 text-primary" />
           </div>
-          <Button variant="outline" onClick={downloadCSV} className="gap-2">
-            <Download className="w-4 h-4" />
-            Download List
-          </Button>
+          <div className="flex gap-2">
+            <Button variant="outline" onClick={downloadCSV} className="gap-2">
+              <Download className="w-4 h-4" />
+              CSV
+            </Button>
+            <Button variant="outline" onClick={downloadPDF} className="gap-2">
+              <FileText className="w-4 h-4" />
+              PDF
+            </Button>
+          </div>
         </div>
         <h1 className="text-3xl font-bold">Egg Freezing Clinics in Hong Kong</h1>
         <p className="mt-3 text-muted-foreground max-w-2xl">
