@@ -59,10 +59,6 @@ serve(async (req) => {
       phone_number_collection: {
         enabled: true,
       },
-      // Restrict shipping/billing to Hong Kong and China
-      shipping_address_collection: {
-        allowed_countries: ["HK", "CN"],
-      },
       payment_method_types: ["card"],
       success_url: `${req.headers.get("origin")}/fertility-guide?payment=success`,
       cancel_url: `${req.headers.get("origin")}/egg-freezing-surrogacy?payment=canceled`,

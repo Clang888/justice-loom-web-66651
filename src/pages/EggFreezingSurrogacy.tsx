@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
-import FertilityGuideTeaser from "@/components/FertilityGuideTeaser";
+
 const EggFreezingSurrogacy = () => {
   const [isLoading, setIsLoading] = useState(false);
 
@@ -77,13 +77,30 @@ const EggFreezingSurrogacy = () => {
             <h2 className="text-2xl font-semibold mb-6">Egg Freezing Resources</h2>
             <div className="grid gap-6">
               <div className="bg-card border-2 border-blue-300 rounded-2xl p-6 shadow-sm flex flex-col">
-                <h3 className="font-semibold text-lg mb-4 text-center">Egg Optimisation Planning Guide</h3>
-                <FertilityGuideTeaser />
+                <h3 className="font-semibold text-lg mb-3 text-center">Egg Optimisation Planning Guide</h3>
+                
+                {/* Compact Teaser */}
+                <div className="bg-secondary/50 rounded-lg p-4 mb-4 text-left">
+                  <p className="text-xs text-muted-foreground mb-2">Preview: Step-by-Step Timeline</p>
+                  <div className="border-l-2 border-blue-500 pl-3 mb-2">
+                    <p className="text-sm font-medium">Month 1-2: Research & Initial Consultation</p>
+                    <p className="text-xs text-muted-foreground">Research clinics, schedule consultations, complete fertility tests</p>
+                  </div>
+                  <div className="border-l-2 border-green-500 pl-3">
+                    <p className="text-sm font-medium">Month 3: Preparation Phase</p>
+                    <p className="text-xs text-muted-foreground">Lifestyle optimization, pre-procedure tests, finalize clinic</p>
+                  </div>
+                </div>
+                
+                <p className="text-xs text-muted-foreground mb-3 text-center">
+                  Full guide includes clinic comparisons, TCM foods, legal considerations & more
+                </p>
+                
                 <Button 
                   size="lg"
                   onClick={handlePurchase}
                   disabled={isLoading}
-                  className="w-full mt-4 bg-blue-600 hover:bg-blue-700 text-white uppercase font-semibold"
+                  className="w-full bg-blue-600 hover:bg-blue-700 text-white uppercase font-semibold"
                 >
                   {isLoading ? "Loading..." : "PURCHASE GUIDE HK$199"}
                 </Button>
