@@ -1,4 +1,4 @@
-import { Building2, MapPin, Phone, Globe, Mail, MessageCircle, BookOpen } from "lucide-react";
+import { Building2, MapPin, Phone, Globe, Mail, MessageCircle, BookOpen, Download } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
@@ -99,6 +99,28 @@ interface Clinic {
 }
 
 const EggFreezingClinicsHK = () => {
+  const downloadCSV = () => {
+    const headers = ["Name", "Address", "Phone", "WhatsApp", "Email", "Website"];
+    const csvContent = [
+      headers.join(","),
+      ...clinics.map(clinic => [
+        `"${clinic.name}"`,
+        `"${clinic.address}"`,
+        `"${clinic.phone}${clinic.phoneAlt ? ` / ${clinic.phoneAlt}` : ''}"`,
+        `"${clinic.whatsapp || ''}"`,
+        `"${clinic.email}"`,
+        `"${clinic.website}"`
+      ].join(","))
+    ].join("\n");
+
+    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = "egg-freezing-clinics-hong-kong.csv";
+    link.click();
+    URL.revokeObjectURL(link.href);
+  };
+
   return (
     <section className="py-16 bg-secondary">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -106,8 +128,14 @@ const EggFreezingClinicsHK = () => {
           ← Back to Egg Freezing & Surrogacy
         </Link>
         
-        <div className="flex items-center gap-3 mb-2">
-          <Building2 className="w-8 h-8 text-primary" />
+        <div className="flex items-center justify-between mb-2">
+          <div className="flex items-center gap-3">
+            <Building2 className="w-8 h-8 text-primary" />
+          </div>
+          <Button variant="outline" onClick={downloadCSV} className="gap-2">
+            <Download className="w-4 h-4" />
+            Download List
+          </Button>
         </div>
         <h1 className="text-3xl font-bold">Egg Freezing Clinics in Hong Kong</h1>
         <p className="mt-3 text-muted-foreground max-w-2xl">
