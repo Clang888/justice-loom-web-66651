@@ -115,7 +115,7 @@ const EggFreezingSurrogacy = () => {
                 </div>
                 
                 <p className="text-xs text-muted-foreground mb-3 text-center">
-                  Full guide includes HK clinic comparisons, TCM foods for egg health, legal & financial considerations
+                  Full guide includes HK clinic comparisons, TCM foods for egg health, jurisdictional & financial considerations
                 </p>
                 
                 <Button 
