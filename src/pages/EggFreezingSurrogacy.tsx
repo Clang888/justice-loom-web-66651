@@ -82,14 +82,6 @@ const EggFreezingSurrogacy = () => {
           <div className="text-center">
             <h2 className="text-2xl font-semibold mb-6">Egg Freezing Resources</h2>
             <div className="space-y-6">
-              <Link to="/egg-freezing-clinics-hk" className="block bg-card border-2 border-green-500 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
-                <span className="block bg-green-600 text-white text-xs font-semibold px-2 py-1 rounded mb-2 w-fit mx-auto">FREE</span>
-                <h3 className="font-semibold text-lg mb-2">Egg Freezing Clinics in Hong Kong</h3>
-                <p className="text-sm text-muted-foreground">
-                  Find reputable fertility clinics offering egg freezing services in Hong Kong.
-                </p>
-              </Link>
-
               <div className="bg-card border-2 border-blue-300 rounded-2xl p-6 shadow-sm">
                 <Link to="/fertility-guide" className="block hover:opacity-80 transition-opacity">
                   <h3 className="font-semibold text-lg mb-2">Egg Optimisation Planning Guide</h3>
@@ -104,6 +96,14 @@ const EggFreezingSurrogacy = () => {
                   PURCHASE GUIDE HK$199
                 </Button>
               </div>
+
+              <Link to="/egg-freezing-clinics-hk" className="block bg-card border-2 border-green-500 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
+                <span className="block bg-green-600 text-white text-xs font-semibold px-2 py-1 rounded mb-2 w-fit mx-auto">FREE</span>
+                <h3 className="font-semibold text-lg mb-2">Egg Freezing Clinics in Hong Kong</h3>
+                <p className="text-sm text-muted-foreground">
+                  Find reputable fertility clinics offering egg freezing services in Hong Kong.
+                </p>
+              </Link>
             </div>
           </div>
         </div>
