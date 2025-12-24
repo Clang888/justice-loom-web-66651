@@ -1,4 +1,4 @@
-import { Building2, MapPin, Phone, Globe, Mail, MessageCircle, BookOpen, Download, FileText } from "lucide-react";
+import { Building2, MapPin, Phone, Globe, Mail, MessageCircle, Download, FileText } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { PDFDocument, rgb, StandardFonts } from "pdf-lib";
@@ -316,11 +316,11 @@ const EggFreezingClinicsHK = () => {
               </p>
             </div>
             <div className="flex gap-3">
-              <Button onClick={downloadCSV} className="gap-2 bg-blue-900 hover:bg-blue-800 text-white">
+              <Button onClick={downloadCSV} className="gap-2 bg-blue-600 hover:bg-blue-700 text-white">
                 <Download className="w-4 h-4" />
                 CSV
               </Button>
-              <Button onClick={downloadPDF} className="gap-2 bg-blue-900 hover:bg-blue-800 text-white">
+              <Button onClick={downloadPDF} className="gap-2 bg-blue-600 hover:bg-blue-700 text-white">
                 <FileText className="w-4 h-4" />
                 PDF
               </Button>
@@ -338,8 +338,7 @@ const EggFreezingClinicsHK = () => {
               </p>
             </div>
             <Link to="/fertility-guide">
-              <Button className="gap-2 whitespace-nowrap bg-blue-600 hover:bg-blue-700 text-white">
-                <BookOpen className="w-4 h-4" />
+              <Button className="whitespace-nowrap bg-blue-600 hover:bg-blue-700 text-white">
                 Purchase Guide HK$199
               </Button>
             </Link>
