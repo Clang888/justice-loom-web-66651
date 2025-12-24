@@ -1,4 +1,4 @@
-import { Building2, MapPin, Phone, Globe, Mail, MessageCircle, Download, FileText } from "lucide-react";
+import { Building2, MapPin, Phone, Globe, Mail, MessageCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { PDFDocument, rgb, StandardFonts } from "pdf-lib";
@@ -100,27 +100,6 @@ interface Clinic {
 }
 
 const EggFreezingClinicsHK = () => {
-  const downloadCSV = () => {
-    const headers = ["Name", "Address", "Phone", "WhatsApp", "Email", "Website"];
-    const csvContent = [
-      headers.join(","),
-      ...clinics.map(clinic => [
-        `"${clinic.name}"`,
-        `"${clinic.address}"`,
-        `"${clinic.phone}${clinic.phoneAlt ? ` / ${clinic.phoneAlt}` : ''}"`,
-        `"${clinic.whatsapp || ''}"`,
-        `"${clinic.email}"`,
-        `"${clinic.website}"`
-      ].join(","))
-    ].join("\n");
-
-    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
-    const link = document.createElement("a");
-    link.href = URL.createObjectURL(blob);
-    link.download = "egg-freezing-clinics-hong-kong.csv";
-    link.click();
-    URL.revokeObjectURL(link.href);
-  };
 
   const downloadPDF = async () => {
     const pdfDoc = await PDFDocument.create();
@@ -315,16 +294,9 @@ const EggFreezingClinicsHK = () => {
                 Save this list for offline reference in CSV or PDF format
               </p>
             </div>
-            <div className="flex gap-3">
-              <Button onClick={downloadCSV} className="gap-2 bg-blue-600 hover:bg-blue-700 text-white">
-                <Download className="w-4 h-4" />
-                CSV
-              </Button>
-              <Button onClick={downloadPDF} className="gap-2 bg-blue-600 hover:bg-blue-700 text-white">
-                <FileText className="w-4 h-4" />
-                PDF
-              </Button>
-            </div>
+            <Button onClick={downloadPDF} className="whitespace-nowrap bg-blue-600 hover:bg-blue-700 text-white">
+              Download PDF Clinic List
+            </Button>
           </div>
         </div>
 
