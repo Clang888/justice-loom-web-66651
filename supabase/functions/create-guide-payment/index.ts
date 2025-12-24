@@ -43,6 +43,7 @@ serve(async (req) => {
     }
 
     // Create a one-time payment session for the Egg Optimisation Planning Guide
+    // Configured for Hong Kong customers with HKD currency
     const session = await stripe.checkout.sessions.create({
       customer: customerId,
       customer_email: customerId ? undefined : email,
@@ -55,12 +56,14 @@ serve(async (req) => {
       mode: "payment",
       locale: "en",
       billing_address_collection: "required",
-      payment_method_types: ["card"],
-      payment_method_options: {
-        card: {
-          setup_future_usage: undefined,
-        },
+      phone_number_collection: {
+        enabled: true,
       },
+      // Restrict shipping/billing to Hong Kong only
+      shipping_address_collection: {
+        allowed_countries: ["HK"],
+      },
+      payment_method_types: ["card"],
       success_url: `${req.headers.get("origin")}/fertility-guide?payment=success`,
       cancel_url: `${req.headers.get("origin")}/egg-freezing-surrogacy?payment=canceled`,
     });
