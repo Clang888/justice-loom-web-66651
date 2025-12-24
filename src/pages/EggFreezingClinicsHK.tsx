@@ -297,26 +297,36 @@ const EggFreezingClinicsHK = () => {
           ← Back to Egg Freezing & Surrogacy
         </Link>
         
-        <div className="flex items-center justify-between mb-2 flex-wrap gap-3">
-          <div className="flex items-center gap-3">
-            <Building2 className="w-8 h-8 text-primary" />
-          </div>
-          <div className="flex gap-2">
-            <Button variant="outline" onClick={downloadCSV} className="gap-2">
-              <Download className="w-4 h-4" />
-              CSV
-            </Button>
-            <Button variant="outline" onClick={downloadPDF} className="gap-2">
-              <FileText className="w-4 h-4" />
-              PDF
-            </Button>
-          </div>
+        <div className="flex items-center gap-3 mb-2">
+          <Building2 className="w-8 h-8 text-primary" />
         </div>
         <h1 className="text-3xl font-bold">Egg Freezing Clinics in Hong Kong</h1>
         <p className="mt-3 text-muted-foreground max-w-2xl">
           A list of reputable fertility clinics offering egg freezing services in Hong Kong. 
           Please verify information directly with the clinics as details may change.
         </p>
+
+        {/* Download Clinics List Banner */}
+        <div className="mt-8 bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10 border border-primary/20 rounded-2xl p-6">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+            <div>
+              <h2 className="text-lg font-semibold mb-1">Download Clinics List</h2>
+              <p className="text-sm text-muted-foreground">
+                Save this list for offline reference in CSV or PDF format
+              </p>
+            </div>
+            <div className="flex gap-3">
+              <Button onClick={downloadCSV} className="gap-2 bg-blue-900 hover:bg-blue-800 text-white">
+                <Download className="w-4 h-4" />
+                CSV
+              </Button>
+              <Button onClick={downloadPDF} className="gap-2 bg-blue-900 hover:bg-blue-800 text-white">
+                <FileText className="w-4 h-4" />
+                PDF
+              </Button>
+            </div>
+          </div>
+        </div>
 
         {/* Premium Guide Banner */}
         <div className="mt-8 bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10 border border-primary/20 rounded-2xl p-6">
