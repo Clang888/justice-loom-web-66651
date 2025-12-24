@@ -1,13 +1,11 @@
 import { useState } from "react";
-import { Baby, Snowflake, ChevronDown, ChevronUp } from "lucide-react";
+import { Baby, Snowflake } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import SurrogacyJourneyTracker from "@/components/SurrogacyJourneyTracker";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 
 const EggFreezingSurrogacy = () => {
-  const [showTracker, setShowTracker] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   const handlePurchase = async () => {
@@ -50,25 +48,13 @@ const EggFreezingSurrogacy = () => {
                 </p>
               </Link>
 
-              <div className="bg-card border-2 border-green-500 rounded-2xl p-6 shadow-sm text-center min-h-[180px] flex flex-col justify-center">
+              <Link to="/surrogacy-tracker" className="block bg-card border-2 border-green-500 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow min-h-[180px] flex flex-col justify-center">
                 <span className="block bg-green-600 text-white text-xs font-semibold px-2 py-1 rounded mb-2 w-fit mx-auto">FREE</span>
                 <h3 className="text-lg font-semibold mb-2">Surrogacy Journey Tracker</h3>
                 <p className="text-sm text-muted-foreground">
-                  Understanding your options and making informed decisions about your surrogacy journey...{" "}
-                  <button 
-                    onClick={() => setShowTracker(!showTracker)} 
-                    className="text-primary hover:underline font-medium inline-flex items-center gap-1"
-                  >
-                    {showTracker ? "show less" : "read more"}
-                    {showTracker ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
-                  </button>
+                  Track your path from initial research to bringing baby home with our step-by-step guide.
                 </p>
-                {showTracker && (
-                  <div className="mt-6">
-                    <SurrogacyJourneyTracker />
-                  </div>
-                )}
-              </div>
+              </Link>
 
               {/* Surrogacy Considerations Card */}
               <div className="bg-card border border-border rounded-2xl p-6 shadow-sm min-h-[180px] flex flex-col justify-center">
