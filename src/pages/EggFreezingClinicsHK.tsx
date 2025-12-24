@@ -334,7 +334,7 @@ const EggFreezingClinicsHK = () => {
             <div>
               <h2 className="text-lg font-semibold mb-1">Egg Optimisation Planning Guide</h2>
               <p className="text-sm text-muted-foreground">
-                Complete roadmap with TCM foods, clinic comparisons, legal guidance & recovery tips
+                Complete roadmap with TCM foods, clinic comparisons, egg optimisation readiness & recovery tips
               </p>
             </div>
             <Link to="/fertility-guide">
