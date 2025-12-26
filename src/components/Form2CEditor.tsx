@@ -88,7 +88,6 @@ const Form2CEditor = ({ onClose }: Form2CEditorProps) => {
   const [totalPages, setTotalPages] = useState(1);
   const [pageCanvasData, setPageCanvasData] = useState<Record<number, any>>({});
   const [pdfDoc, setPdfDoc] = useState<pdfjsLib.PDFDocumentProxy | null>(null);
-  const [fieldsInitialized, setFieldsInitialized] = useState<Record<number, boolean>>({});
 
   // Load PDF document
   useEffect(() => {
@@ -231,27 +230,24 @@ const Form2CEditor = ({ onClose }: Form2CEditorProps) => {
               top: 0,
             });
             
+            // Clear canvas first
+            fabricCanvas.clear();
             fabricCanvas.backgroundImage = fabricImg;
             
             // Restore any saved text objects for this page
             if (pageCanvasData[currentPage]) {
               fabricCanvas.loadFromJSON(pageCanvasData[currentPage], () => {
+                // Re-set background after loading JSON
+                fabricCanvas.backgroundImage = fabricImg;
                 fabricCanvas.renderAll();
+                setIsLoading(false);
               });
             } else {
-              fabricCanvas.clear();
-              fabricCanvas.backgroundImage = fabricImg;
-              
-              // Add pre-positioned fields only if not already initialized
-              if (!fieldsInitialized[currentPage]) {
-                addPrePositionedFields(fabricCanvas, currentPage);
-                setFieldsInitialized(prev => ({ ...prev, [currentPage]: true }));
-              }
-              
+              // Add pre-positioned fields for new pages
+              addPrePositionedFields(fabricCanvas, currentPage);
               fabricCanvas.renderAll();
+              setIsLoading(false);
             }
-            
-            setIsLoading(false);
           } catch (err) {
             console.error("Error setting up fabric image", err);
             toast.error("Failed to load page");
@@ -273,7 +269,7 @@ const Form2CEditor = ({ onClose }: Form2CEditorProps) => {
     };
     
     renderPage();
-  }, [fabricCanvas, pdfDoc, currentPage, pageCanvasData, fieldsInitialized, addPrePositionedFields]);
+  }, [fabricCanvas, pdfDoc, currentPage, addPrePositionedFields]);
 
   // Save current page data before switching
   const saveCurrentPageData = useCallback(() => {
