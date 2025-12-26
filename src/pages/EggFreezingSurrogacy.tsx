@@ -62,7 +62,7 @@ const EggFreezingSurrogacy = () => {
                   <Baby className="w-6 h-6 text-primary" />
                   <h3 className="font-semibold text-xl">Surrogacy Considerations</h3>
                 </div>
-                <ul className="space-y-2 text-sm text-muted-foreground text-left">
+                <ul className="space-y-2 text-sm text-muted-foreground text-left mx-auto w-fit">
                   <li>→ UK surrogacy law and parental orders</li>
                   <li>→ International surrogacy considerations</li>
                   <li>→ Surrogate and intended parent agreements</li>
