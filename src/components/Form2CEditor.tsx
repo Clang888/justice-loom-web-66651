@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Download, X, Plus, ZoomIn, ZoomOut, Type, ChevronLeft, ChevronRight } from "lucide-react";
 import { toast } from "sonner";
 import * as pdfjsLib from "pdfjs-dist";
+import { useTranslation } from "react-i18next";
 
 // Set up PDF.js worker
 pdfjsLib.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.js`;
@@ -15,10 +16,14 @@ interface Form2CEditorProps {
 const FIXED_WIDTH = 800;
 const FIXED_HEIGHT = 1100;
 
-// Multiple PDFs to load as part of Form 2C
-const PDF_URLS = [
+// PDFs by language
+const PDF_URLS_EN = [
   "/forms/form-2c.pdf",
   "/forms/form-2c-acknowledgement.pdf"
+];
+
+const PDF_URLS_ZH = [
+  "/forms/form-2c-zh.pdf"
 ];
 
 interface PageInfo {
@@ -38,6 +43,10 @@ const Form2CEditor = ({ onClose }: Form2CEditorProps) => {
   const [pdfDocs, setPdfDocs] = useState<pdfjsLib.PDFDocumentProxy[]>([]);
   const [pageMapping, setPageMapping] = useState<PageInfo[]>([]);
 
+  const { i18n } = useTranslation();
+  const isChineseLocale = i18n.language?.startsWith("zh");
+  const pdfUrls = isChineseLocale ? PDF_URLS_ZH : PDF_URLS_EN;
+
   // Load all PDF documents
   useEffect(() => {
     const loadPdfs = async () => {
@@ -45,8 +54,8 @@ const Form2CEditor = ({ onClose }: Form2CEditorProps) => {
         const docs: pdfjsLib.PDFDocumentProxy[] = [];
         const mapping: PageInfo[] = [];
         
-        for (let pdfIndex = 0; pdfIndex < PDF_URLS.length; pdfIndex++) {
-          const pdf = await pdfjsLib.getDocument(PDF_URLS[pdfIndex]).promise;
+        for (let pdfIndex = 0; pdfIndex < pdfUrls.length; pdfIndex++) {
+          const pdf = await pdfjsLib.getDocument(pdfUrls[pdfIndex]).promise;
           docs.push(pdf);
           
           for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
@@ -63,7 +72,7 @@ const Form2CEditor = ({ onClose }: Form2CEditorProps) => {
       }
     };
     loadPdfs();
-  }, []);
+  }, [pdfUrls]);
 
   // Initialize canvas
   useEffect(() => {
