@@ -2,6 +2,7 @@ import { useState } from "react";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import Form2Editor from "@/components/Form2Editor";
 import Form2CEditor from "@/components/Form2CEditor";
 import FormEEditor from "@/components/FormEEditor";
 
@@ -16,6 +17,10 @@ const divorceCategories = [
     id: "main-cause",
     title: "The Divorce (Main Cause)",
     forms: [
+      {
+        id: "form-2",
+        name: "Petition_Form 2: Behaviour",
+      },
       {
         id: "form-2c",
         name: "Petition_Form 2C: Joint application for divorce based on two years' separation",
@@ -40,11 +45,14 @@ const divorceCategories = [
 ];
 
 const DivorceForms = () => {
+  const [showForm2Editor, setShowForm2Editor] = useState(false);
   const [showForm2CEditor, setShowForm2CEditor] = useState(false);
   const [showFormEEditor, setShowFormEEditor] = useState(false);
 
   const handleFormClick = (formId: string) => {
-    if (formId === "form-2c") {
+    if (formId === "form-2") {
+      setShowForm2Editor(true);
+    } else if (formId === "form-2c") {
       setShowForm2CEditor(true);
     } else if (formId === "form-e") {
       setShowFormEEditor(true);
@@ -106,6 +114,10 @@ const DivorceForms = () => {
           ))}
         </div>
       </div>
+
+      {showForm2Editor && (
+        <Form2Editor onClose={() => setShowForm2Editor(false)} />
+      )}
 
       {showForm2CEditor && (
         <Form2CEditor onClose={() => setShowForm2CEditor(false)} />
