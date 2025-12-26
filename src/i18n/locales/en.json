@@ -108,6 +108,19 @@
     "needGuidanceDesc": "Receive personalised expert guidance on international surrogacy before you take the first step.",
     "bookConsultation": "Book a Consultation"
   },
+  "testimonials": {
+    "title": "What people say",
+    "quote1": "It's rare to find such a phenomenal talent as Caroline… vast experience in the courtroom and extensive knowledge of international law give her an incalculable advantage.",
+    "quote1Author": "Warren Lichtenstein, Founder & Executive Chairman, Steel Partners Holdings (NY, USA)",
+    "quote2": "A highly skilled and experienced attorney and mediator with an excellent reputation for professionalism and integrity… an asset to the clients she serves.",
+    "quote2Author": "James M. Lyons, Former US Observer to the National Fund for Ireland; Special Advisor to President Clinton",
+    "quote3": "She demonstrated that rare gift of coupling a solid grasp of geo-economic issues with market fluency.",
+    "quote3Author": "Dr. Enzio von Pfeil, Associate Partner, St. James's Place Wealth Management (HK)",
+    "quote4": "Caroline's knowledge of geopolitics coupled with her vast experience of mediation skills delivers an unmatched par excellence in a courtroom setting. What took 3 years at other law firms, she closed in 3 months time! Eternally grateful.",
+    "quote4Author": "Ntombi Matshoba (South Africa)",
+    "quote5": "Caroline Langley became a quiet anchor in my fight to bring my children home. She showed up, listening first, offering thoughtful, practical guidance, and steadying me when the ground felt like quicksand. There's no ego with Caroline; she is humble, grounded, and unmistakably child centred. What also sets her apart is her clear grasp of how responsible media can protect children and influence outcomes. Caroline helped me balance public advocacy with legal strategy, never chasing headlines, always safeguarding the case and keeping the focus where it belongs. She doesn't just point to a path forward; she helps you find your footing on it. For any parent living the nightmare of parental abduction, Caroline's integrity, calm, and quiet expertise make an extraordinary difference.",
+    "quote5Author": "Mandy Kelly, Mother & Advocate (Dublin)"
+  },
   "language": {
     "en": "English",
     "zh-HK": "繁體中文"
