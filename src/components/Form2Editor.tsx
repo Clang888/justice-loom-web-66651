@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, useCallback } from "react";
-import { Canvas as FabricCanvas, FabricImage, IText } from "fabric";
+import { Canvas as FabricCanvas, FabricImage, IText, Rect } from "fabric";
 import { Button } from "@/components/ui/button";
 import { Download, X, Plus, ZoomIn, ZoomOut, Type, ChevronLeft, ChevronRight } from "lucide-react";
 import { toast } from "sonner";
@@ -12,9 +12,47 @@ interface Form2EditorProps {
   onClose: () => void;
 }
 
+interface FormField {
+  id: string;
+  x: number;
+  y: number;
+  width: number;
+  placeholder?: string;
+}
+
 const FIXED_WIDTH = 800;
 const FIXED_HEIGHT = 1100;
 const PDF_URL = "/forms/form-2.pdf";
+
+// Pre-positioned form fields per page (adjust coordinates based on actual form layout)
+const PAGE_FIELDS: Record<number, FormField[]> = {
+  1: [
+    { id: "case_number", x: 580, y: 95, width: 180, placeholder: "Case No." },
+    { id: "court_registry", x: 200, y: 155, width: 350, placeholder: "Court/Registry" },
+    { id: "petitioner_name", x: 200, y: 230, width: 350, placeholder: "Petitioner Name" },
+    { id: "respondent_name", x: 200, y: 280, width: 350, placeholder: "Respondent Name" },
+    { id: "marriage_date", x: 200, y: 360, width: 200, placeholder: "Date of Marriage" },
+    { id: "marriage_place", x: 200, y: 410, width: 350, placeholder: "Place of Marriage" },
+    { id: "petitioner_address", x: 200, y: 490, width: 500, placeholder: "Petitioner Address" },
+    { id: "respondent_address", x: 200, y: 570, width: 500, placeholder: "Respondent Address" },
+    { id: "occupation_petitioner", x: 200, y: 650, width: 300, placeholder: "Petitioner Occupation" },
+    { id: "occupation_respondent", x: 200, y: 700, width: 300, placeholder: "Respondent Occupation" },
+  ],
+  2: [
+    { id: "children_details", x: 100, y: 150, width: 600, placeholder: "Children details (names, dates of birth)" },
+    { id: "separation_date", x: 200, y: 300, width: 200, placeholder: "Date of Separation" },
+    { id: "desertion_details", x: 100, y: 400, width: 600, placeholder: "Details of desertion" },
+  ],
+  3: [
+    { id: "other_proceedings", x: 100, y: 150, width: 600, placeholder: "Other proceedings details" },
+    { id: "agreement_details", x: 100, y: 350, width: 600, placeholder: "Agreement/arrangement details" },
+  ],
+  4: [
+    { id: "petitioner_signature", x: 100, y: 600, width: 250, placeholder: "Petitioner Signature" },
+    { id: "date_signed", x: 450, y: 600, width: 150, placeholder: "Date" },
+    { id: "solicitor_name", x: 100, y: 700, width: 300, placeholder: "Solicitor Name (if applicable)" },
+  ],
+};
 
 const Form2Editor = ({ onClose }: Form2EditorProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -26,6 +64,7 @@ const Form2Editor = ({ onClose }: Form2EditorProps) => {
   const [totalPages, setTotalPages] = useState(1);
   const [pageCanvasData, setPageCanvasData] = useState<Record<number, any>>({});
   const [pdfDoc, setPdfDoc] = useState<pdfjsLib.PDFDocumentProxy | null>(null);
+  const [fieldsInitialized, setFieldsInitialized] = useState<Record<number, boolean>>({});
 
   // Load PDF document
   useEffect(() => {
@@ -66,6 +105,63 @@ const Form2Editor = ({ onClose }: Form2EditorProps) => {
         canvas.dispose();
       }
     };
+  }, []);
+
+  // Add pre-positioned fields to canvas
+  const addPrePositionedFields = useCallback((canvas: FabricCanvas, page: number) => {
+    const fields = PAGE_FIELDS[page] || [];
+    
+    fields.forEach((field) => {
+      // Create background rectangle for the field
+      const rect = new Rect({
+        left: field.x,
+        top: field.y,
+        width: field.width,
+        height: 22,
+        fill: "rgba(255, 255, 240, 0.9)",
+        stroke: "#cbd5e1",
+        strokeWidth: 1,
+        rx: 2,
+        ry: 2,
+        selectable: false,
+        evented: false,
+      });
+      
+      // Create editable text field
+      const text = new IText(field.placeholder || "", {
+        left: field.x + 4,
+        top: field.y + 3,
+        fontSize: 12,
+        fontFamily: "Arial",
+        fill: "#64748b",
+        width: field.width - 8,
+        selectable: true,
+        editable: true,
+      });
+
+      // Clear placeholder on first edit
+      text.on("editing:entered", () => {
+        if (text.text === field.placeholder) {
+          text.set("text", "");
+          text.set("fill", "#000000");
+          canvas.renderAll();
+        }
+      });
+
+      // Restore placeholder if empty
+      text.on("editing:exited", () => {
+        if (text.text === "") {
+          text.set("text", field.placeholder || "");
+          text.set("fill", "#64748b");
+          canvas.renderAll();
+        }
+      });
+
+      canvas.add(rect);
+      canvas.add(text);
+    });
+    
+    canvas.renderAll();
   }, []);
 
   // Render PDF page to canvas
@@ -121,6 +217,13 @@ const Form2Editor = ({ onClose }: Form2EditorProps) => {
             } else {
               fabricCanvas.clear();
               fabricCanvas.backgroundImage = fabricImg;
+              
+              // Add pre-positioned fields only if not already initialized
+              if (!fieldsInitialized[currentPage]) {
+                addPrePositionedFields(fabricCanvas, currentPage);
+                setFieldsInitialized(prev => ({ ...prev, [currentPage]: true }));
+              }
+              
               fabricCanvas.renderAll();
             }
             
@@ -146,7 +249,7 @@ const Form2Editor = ({ onClose }: Form2EditorProps) => {
     };
     
     renderPage();
-  }, [fabricCanvas, pdfDoc, currentPage, pageCanvasData]);
+  }, [fabricCanvas, pdfDoc, currentPage, pageCanvasData, fieldsInitialized, addPrePositionedFields]);
 
   // Save current page data before switching
   const saveCurrentPageData = useCallback(() => {
