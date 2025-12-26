@@ -142,11 +142,11 @@ const EggFreezingSurrogacy = () => {
                   <Snowflake className="w-6 h-6 text-primary" />
                   <h3 className="font-semibold text-xl">Egg Freezing Considerations</h3>
                 </div>
-                <ul className="space-y-2 text-sm text-muted-foreground text-left">
-                  <li>Consent and storage agreements</li>
-                  <li>Storage duration and renewal rights</li>
-                  <li>Partner consent considerations</li>
-                  <li>Cross-border storage regulations</li>
+                <ul className="space-y-2 text-sm text-muted-foreground text-left mx-auto w-fit">
+                  <li>→ Consent and storage agreements</li>
+                  <li>→ Storage duration and renewal rights</li>
+                  <li>→ Partner consent considerations</li>
+                  <li>→ Cross-border storage regulations</li>
                 </ul>
               </div>
             </div>
