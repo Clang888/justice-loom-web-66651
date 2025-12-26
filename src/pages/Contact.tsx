@@ -20,7 +20,7 @@ const Contact = () => {
     
     try {
       const { error } = await supabase
-        .from("newsletter_subscribers")
+        .from("contact_enquiries" as any)
         .insert({ name: name.trim(), email: email.trim() });
 
       if (error) {
