@@ -3,6 +3,12 @@ import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { useTranslation } from "react-i18next";
+import { z } from "zod";
+
+const contactSchema = z.object({
+  name: z.string().trim().min(1, "Name is required").max(255, "Name must be under 255 characters"),
+  email: z.string().trim().email("Invalid email address").max(255, "Email must be under 255 characters")
+});
 
 const Contact = () => {
   const [name, setName] = useState("");
@@ -13,8 +19,9 @@ const Contact = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!name.trim() || !email.trim()) {
-      toast.error("Please fill in all fields");
+    const validation = contactSchema.safeParse({ name, email });
+    if (!validation.success) {
+      toast.error(validation.error.issues[0]?.message || "Validation error");
       return;
     }
 
@@ -23,7 +30,7 @@ const Contact = () => {
     try {
       const { error } = await supabase
         .from("contact_enquiries" as any)
-        .insert({ name: name.trim(), email: email.trim() });
+        .insert(validation.data);
 
       if (error) {
         if (error.code === "23505") {
