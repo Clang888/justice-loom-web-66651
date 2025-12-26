@@ -24,33 +24,59 @@ const FIXED_WIDTH = 800;
 const FIXED_HEIGHT = 1100;
 const PDF_URL = "/forms/form-2.pdf";
 
-// Pre-positioned form fields per page (adjust coordinates based on actual form layout)
+// Pre-positioned form fields per page based on actual form layout
 const PAGE_FIELDS: Record<number, FormField[]> = {
   1: [
-    { id: "case_number", x: 580, y: 95, width: 180, placeholder: "Case No." },
-    { id: "court_registry", x: 200, y: 155, width: 350, placeholder: "Court/Registry" },
-    { id: "petitioner_name", x: 200, y: 230, width: 350, placeholder: "Petitioner Name" },
-    { id: "respondent_name", x: 200, y: 280, width: 350, placeholder: "Respondent Name" },
-    { id: "marriage_date", x: 200, y: 360, width: 200, placeholder: "Date of Marriage" },
-    { id: "marriage_place", x: 200, y: 410, width: 350, placeholder: "Place of Marriage" },
-    { id: "petitioner_address", x: 200, y: 490, width: 500, placeholder: "Petitioner Address" },
-    { id: "respondent_address", x: 200, y: 570, width: 500, placeholder: "Respondent Address" },
-    { id: "occupation_petitioner", x: 200, y: 650, width: 300, placeholder: "Petitioner Occupation" },
-    { id: "occupation_respondent", x: 200, y: 700, width: 300, placeholder: "Respondent Occupation" },
+    // Case number at top
+    { id: "case_number", x: 480, y: 118, width: 120, placeholder: "Case No." },
+    // Paragraph 1 - Marriage details
+    { id: "marriage_day", x: 175, y: 205, width: 60, placeholder: "Day" },
+    { id: "marriage_month_year", x: 280, y: 205, width: 180, placeholder: "Month/Year" },
+    { id: "spouse_name", x: 175, y: 228, width: 400, placeholder: "Spouse Name" },
+    { id: "marriage_place", x: 100, y: 270, width: 500, placeholder: "Place of Marriage" },
+    // Paragraph 2 - Cohabitation
+    { id: "cohabitation_address", x: 100, y: 330, width: 500, placeholder: "Address where parties cohabited" },
+    // Paragraph 4 - Occupations and addresses
+    { id: "petitioner_occupation", x: 195, y: 410, width: 200, placeholder: "Petitioner Occupation" },
+    { id: "petitioner_address", x: 240, y: 433, width: 400, placeholder: "Petitioner Address" },
+    { id: "respondent_occupation", x: 195, y: 455, width: 200, placeholder: "Respondent Occupation" },
+    { id: "respondent_address", x: 240, y: 478, width: 400, placeholder: "Respondent Address" },
+    // Paragraph 5 - Children
+    { id: "children_number", x: 165, y: 515, width: 80, placeholder: "Number" },
+    { id: "children_names", x: 520, y: 515, width: 200, placeholder: "Names" },
   ],
   2: [
-    { id: "children_details", x: 100, y: 150, width: 600, placeholder: "Children details (names, dates of birth)" },
-    { id: "separation_date", x: 200, y: 300, width: 200, placeholder: "Date of Separation" },
-    { id: "desertion_details", x: 100, y: 400, width: 600, placeholder: "Details of desertion" },
+    // Paragraph 6 - Previous proceedings
+    { id: "previous_proceedings", x: 100, y: 160, width: 550, placeholder: "Previous proceedings details (if any)" },
+    // Paragraph 7 - Agreements
+    { id: "agreement_details", x: 100, y: 340, width: 550, placeholder: "Agreement/arrangement details" },
+    // Paragraph 9 - Desertion details
+    { id: "desertion_day", x: 495, y: 510, width: 60, placeholder: "Day" },
+    { id: "desertion_month_year", x: 130, y: 535, width: 200, placeholder: "Month/Year" },
   ],
   3: [
-    { id: "other_proceedings", x: 100, y: 150, width: 600, placeholder: "Other proceedings details" },
-    { id: "agreement_details", x: 100, y: 350, width: 600, placeholder: "Agreement/arrangement details" },
+    // Prayer section - Children names
+    { id: "custody_children", x: 520, y: 125, width: 200, placeholder: "Child(ren) names" },
+    // Signature section
+    { id: "signature", x: 150, y: 240, width: 300, placeholder: "Signature" },
+    // Persons to be served
+    { id: "persons_served", x: 100, y: 320, width: 550, placeholder: "Names and addresses of persons to be served" },
+    // Petitioner address for service
+    { id: "address_for_service", x: 100, y: 400, width: 550, placeholder: "Petitioner address for service" },
+    // Date
+    { id: "petition_day", x: 150, y: 455, width: 60, placeholder: "Day" },
+    { id: "petition_month_year", x: 250, y: 455, width: 200, placeholder: "Month/Year" },
   ],
   4: [
-    { id: "petitioner_signature", x: 100, y: 600, width: 250, placeholder: "Petitioner Signature" },
-    { id: "date_signed", x: 450, y: 600, width: 150, placeholder: "Date" },
-    { id: "solicitor_name", x: 100, y: 700, width: 300, placeholder: "Solicitor Name (if applicable)" },
+    // Note page - usually no fields needed
+  ],
+  5: [
+    // Cover page
+    { id: "cover_case_no", x: 480, y: 95, width: 120, placeholder: "Case No." },
+    { id: "petitioner_name_cover", x: 300, y: 235, width: 250, placeholder: "Petitioner Name" },
+    { id: "respondent_name_cover", x: 300, y: 330, width: 250, placeholder: "Respondent Name" },
+    { id: "husband_wife", x: 350, y: 520, width: 100, placeholder: "Husband/Wife" },
+    { id: "solicitors_name", x: 280, y: 575, width: 300, placeholder: "Solicitors Name" },
   ],
 };
 
