@@ -23,7 +23,7 @@ const divorceCategories = [
       },
       {
         id: "form-2c",
-        name: "Petition_Form 2C: Joint application for divorce based on two years' separation",
+        name: "Petition_Form 2C: Joint Application for Divorce based on Two Years' Separation",
       },
     ] as FormItem[],
   },
