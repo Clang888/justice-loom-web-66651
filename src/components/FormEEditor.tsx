@@ -8,6 +8,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useNavigate } from "react-router-dom";
 import { User } from "@supabase/supabase-js";
 import { validateAndSanitizeFormData, sanitizeLoadedFormData } from "@/lib/formDataValidation";
+import { useTranslation } from "react-i18next";
 
 // Set up PDF.js worker
 pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js`;
@@ -20,10 +21,14 @@ const FIXED_WIDTH = 800;
 const FIXED_HEIGHT = 1100;
 const FORM_E_NAME = "Form E: Financial Statement";
 
-// Multiple PDFs to load as part of Form E
-const PDF_URLS = [
+// PDFs by language
+const PDF_URLS_EN = [
   "/forms/form-e.pdf",
   "/forms/form-e-additional.pdf"
+];
+
+const PDF_URLS_ZH = [
+  "/forms/form-e-zh.pdf"
 ];
 
 const FormEEditor = ({ onClose }: FormEEditorProps) => {
@@ -115,6 +120,10 @@ const FormEEditor = ({ onClose }: FormEEditorProps) => {
   }, [user]);
 
   // Load all PDFs and convert pages to images
+  const { i18n } = useTranslation();
+  const isChineseLocale = i18n.language?.startsWith("zh");
+  const pdfUrls = isChineseLocale ? PDF_URLS_ZH : PDF_URLS_EN;
+
   useEffect(() => {
     const loadAllPDFs = async () => {
       try {
@@ -122,7 +131,7 @@ const FormEEditor = ({ onClose }: FormEEditorProps) => {
         const allImages: string[] = [];
         let totalPageCount = 0;
         
-        for (const pdfUrl of PDF_URLS) {
+        for (const pdfUrl of pdfUrls) {
           const response = await fetch(pdfUrl);
           if (!response.ok) throw new Error(`Failed to fetch PDF: ${pdfUrl}`);
           
@@ -160,7 +169,7 @@ const FormEEditor = ({ onClose }: FormEEditorProps) => {
     };
     
     loadAllPDFs();
-  }, []);
+  }, [pdfUrls]);
 
   // Initialize canvas
   useEffect(() => {
