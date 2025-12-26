@@ -56,6 +56,21 @@
     "about": "關於我們",
     "copyright": "Just Law。版權所有。"
   },
+  "services": {
+    "divorce": "離婚",
+    "fillableDivorceForms": "可填寫離婚表格",
+    "formEFinancial": "表格E（財務報表）",
+    "betaCalculator": "表格E計算器測試版",
+    "willsEstates": "遺囑及遺產",
+    "willsDescription": "簡單遺囑、持久授權書、預設醫療指示、遺囑執行人及見證人",
+    "joinBeta": "加入測試版",
+    "earlyAccess": "搶先體驗表格E計算器",
+    "betaDescription": "輸入您的電郵以使用我們的表格E計算器測試版。我們會向您發送新功能和改進的最新消息。您的參與和意見對我們非常重要。",
+    "cancel": "取消",
+    "getAccess": "獲取使用權",
+    "submitting": "提交中...",
+    "privacyNote": "我們尊重您的私隱。您的電郵僅用於測試版更新通知。"
+  },
   "language": {
     "en": "English",
     "zh-HK": "繁體中文"
