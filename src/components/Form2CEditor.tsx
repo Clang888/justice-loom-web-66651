@@ -14,7 +14,17 @@ interface Form2CEditorProps {
 
 const FIXED_WIDTH = 800;
 const FIXED_HEIGHT = 1100;
-const PDF_URL = "/forms/form-2c.pdf";
+
+// Multiple PDFs to load as part of Form 2C
+const PDF_URLS = [
+  "/forms/form-2c.pdf",
+  "/forms/form-2c-acknowledgement.pdf"
+];
+
+interface PageInfo {
+  pdfIndex: number;
+  pageNum: number;
+}
 
 const Form2CEditor = ({ onClose }: Form2CEditorProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -25,21 +35,34 @@ const Form2CEditor = ({ onClose }: Form2CEditorProps) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [pageCanvasData, setPageCanvasData] = useState<Record<number, any>>({});
-  const [pdfDoc, setPdfDoc] = useState<pdfjsLib.PDFDocumentProxy | null>(null);
+  const [pdfDocs, setPdfDocs] = useState<pdfjsLib.PDFDocumentProxy[]>([]);
+  const [pageMapping, setPageMapping] = useState<PageInfo[]>([]);
 
-  // Load PDF document
+  // Load all PDF documents
   useEffect(() => {
-    const loadPdf = async () => {
+    const loadPdfs = async () => {
       try {
-        const pdf = await pdfjsLib.getDocument(PDF_URL).promise;
-        setPdfDoc(pdf);
-        setTotalPages(pdf.numPages);
+        const docs: pdfjsLib.PDFDocumentProxy[] = [];
+        const mapping: PageInfo[] = [];
+        
+        for (let pdfIndex = 0; pdfIndex < PDF_URLS.length; pdfIndex++) {
+          const pdf = await pdfjsLib.getDocument(PDF_URLS[pdfIndex]).promise;
+          docs.push(pdf);
+          
+          for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+            mapping.push({ pdfIndex, pageNum });
+          }
+        }
+        
+        setPdfDocs(docs);
+        setPageMapping(mapping);
+        setTotalPages(mapping.length);
       } catch (err) {
-        console.error("Error loading PDF:", err);
-        toast.error("Failed to load PDF document");
+        console.error("Error loading PDFs:", err);
+        toast.error("Failed to load PDF documents");
       }
     };
-    loadPdf();
+    loadPdfs();
   }, []);
 
   // Initialize canvas
@@ -70,13 +93,17 @@ const Form2CEditor = ({ onClose }: Form2CEditorProps) => {
 
   // Render PDF page to canvas
   useEffect(() => {
-    if (!fabricCanvas || !pdfDoc) return;
+    if (!fabricCanvas || pdfDocs.length === 0 || pageMapping.length === 0) return;
 
     const renderPage = async () => {
       setIsLoading(true);
       
       try {
-        const page = await pdfDoc.getPage(currentPage);
+        const pageInfo = pageMapping[currentPage - 1];
+        if (!pageInfo) return;
+        
+        const pdfDoc = pdfDocs[pageInfo.pdfIndex];
+        const page = await pdfDoc.getPage(pageInfo.pageNum);
         const viewport = page.getViewport({ scale: 2 });
         
         // Create a temporary canvas for PDF rendering
@@ -146,7 +173,7 @@ const Form2CEditor = ({ onClose }: Form2CEditorProps) => {
     };
     
     renderPage();
-  }, [fabricCanvas, pdfDoc, currentPage, pageCanvasData]);
+  }, [fabricCanvas, pdfDocs, pageMapping, currentPage, pageCanvasData]);
 
   // Save current page data before switching
   const saveCurrentPageData = useCallback(() => {
@@ -225,7 +252,7 @@ const Form2CEditor = ({ onClose }: Form2CEditorProps) => {
   };
 
   const handleDownload = useCallback(async () => {
-    if (!fabricCanvas || !pdfDoc) return;
+    if (!fabricCanvas || pdfDocs.length === 0 || pageMapping.length === 0) return;
 
     // Save current page first
     saveCurrentPageData();
@@ -235,7 +262,11 @@ const Form2CEditor = ({ onClose }: Form2CEditorProps) => {
     // Download each page
     for (let pageNum = 1; pageNum <= totalPages; pageNum++) {
       try {
-        const page = await pdfDoc.getPage(pageNum);
+        const pageInfo = pageMapping[pageNum - 1];
+        if (!pageInfo) continue;
+        
+        const pdfDoc = pdfDocs[pageInfo.pdfIndex];
+        const page = await pdfDoc.getPage(pageInfo.pageNum);
         const viewport = page.getViewport({ scale: 2 });
         
         const tempCanvas = document.createElement("canvas");
@@ -308,7 +339,7 @@ const Form2CEditor = ({ onClose }: Form2CEditorProps) => {
     }
 
     toast.success("All pages downloaded!");
-  }, [fabricCanvas, pdfDoc, pageCanvasData, saveCurrentPageData, totalPages]);
+  }, [fabricCanvas, pdfDocs, pageMapping, pageCanvasData, saveCurrentPageData, totalPages]);
 
   return (
     <div className="fixed inset-0 bg-background/95 z-50 flex flex-col">
