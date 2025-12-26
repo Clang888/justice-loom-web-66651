@@ -14,11 +14,6 @@ const divorceCategories = [
   {
     id: "main-cause",
     title: "The Divorce (Main Cause)",
-    forms: [] as FormItem[],
-  },
-  {
-    id: "financial",
-    title: "Financial",
     forms: [
       {
         id: "form-2c",
@@ -26,6 +21,11 @@ const divorceCategories = [
         description: "Joint application for divorce based on two years' separation",
       },
     ] as FormItem[],
+  },
+  {
+    id: "financial",
+    title: "Financial",
+    forms: [] as FormItem[],
   },
   {
     id: "children",
