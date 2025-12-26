@@ -15,11 +15,11 @@ export default defineConfig({
     componentTagger(),
     VitePWA({
       registerType: "autoUpdate",
-      includeAssets: ["favicon.svg", "just-law-logo.jpg"],
+      includeAssets: ["favicon.png", "just-law-logo.jpg"],
       manifest: {
-        name: "Just Law",
+        name: "Just Law 法律教育",
         short_name: "Just Law",
-        description: "Easy-to-use legal guidance for self-represented people. Access to justice made simple.",
+        description: "Easy-to-use legal guidance for self-represented people. 讓法律知識易於尋找、易於理解、易於使用。",
         theme_color: "#1e3a5f",
         background_color: "#ffffff",
         display: "standalone",
@@ -45,7 +45,7 @@ export default defineConfig({
         ]
       },
       workbox: {
-        globPatterns: ["**/*.{js,css,html,ico,png,svg,jpg,jpeg}"],
+        globPatterns: ["**/*.{js,css,html,ico,png,svg,jpg,jpeg,json}"],
         maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
         globIgnores: ["**/guides/**", "**/*.pdf"]
       }
