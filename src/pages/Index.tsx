@@ -1,5 +1,4 @@
-import { Link } from "react-router-dom";
-import { ShieldCheck, Globe, BookOpen, Hammer, ChevronRight } from "lucide-react";
+import { Globe } from "lucide-react";
 import heroImage from "@/assets/hero-teahouse.jpg";
 
 const Index = () => {
@@ -61,38 +60,6 @@ const Index = () => {
                 Alex is a technology consultant and product designer based in Ireland, specialising in accessible, human-centered digital solutions. With a focus on demystifying complex systems, Alex builds applications that enable users to navigate technology with confidence and ease. His recent work includes Passenger.ie, an app that transforms the train booking experience for elderly users, making online rail services effortless and inclusive. Alex's approach combines deep user empathy with technical innovation, translating real-world friction points into intuitive digital experiences. In addition to development, Alex delivers digital literacy training to seniors and government organisations across Ireland, bridging the gap between people and technology through both education and design.
               </p>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Services Section */}
-      <section className="py-20 gradient-warm relative">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_hsl(200_45%_30%_/_0.05),_transparent_50%)]"></div>
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative">
-          <h2 className="text-3xl sm:text-4xl font-bold font-serif">Services</h2>
-          <p className="mt-4 text-muted-foreground max-w-2xl text-lg">
-            Plain-English pathways, worksheets, and templates to help you move forward with confidence.
-          </p>
-
-          <div className="mt-10 grid md:grid-cols-3 gap-8">
-            {[
-              { icon: <Hammer className="w-6 h-6" />, title: "Divorce & Finance", text: "Timetables (FDA/FDR), Form E guidance, disclosure checklists, settlement prep." },
-              { icon: <ShieldCheck className="w-6 h-6" />, title: "Wills & Estates", text: "Starter packs, asset schedules, executorship basics, witness requirements." },
-              { icon: <BookOpen className="w-6 h-6" />, title: "Small Claims", text: "Claim flow, evidence packs, hearing day prep, negotiation scripts." },
-            ].map((card, i) => (
-              <div key={i} className="card-elevated rounded-2xl p-8 hover-lift">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="p-3 bg-accent/20 rounded-xl text-accent">
-                    {card.icon}
-                  </div>
-                  <h3 className="font-semibold text-lg font-serif">{card.title}</h3>
-                </div>
-                <p className="text-sm text-muted-foreground leading-relaxed">{card.text}</p>
-                <Link to="/contact" className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-accent transition-colors">
-                  Enquire <ChevronRight className="w-4 h-4" />
-                </Link>
-              </div>
-            ))}
           </div>
         </div>
       </section>
