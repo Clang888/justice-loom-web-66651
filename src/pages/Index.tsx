@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
-import { ShieldCheck, Globe, Briefcase, MessageSquare, BookOpen, Hammer, ChevronRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { ShieldCheck, Globe, BookOpen, Hammer, ChevronRight } from "lucide-react";
 import heroImage from "@/assets/hero-teahouse.jpg";
 
 const Index = () => {
@@ -61,105 +60,6 @@ const Index = () => {
               <p className="text-sm text-muted-foreground leading-relaxed">
                 Alex is a technology consultant and product designer based in Ireland, specialising in accessible, human-centered digital solutions. With a focus on demystifying complex systems, Alex builds applications that enable users to navigate technology with confidence and ease. His recent work includes Passenger.ie, an app that transforms the train booking experience for elderly users, making online rail services effortless and inclusive. Alex's approach combines deep user empathy with technical innovation, translating real-world friction points into intuitive digital experiences. In addition to development, Alex delivers digital literacy training to seniors and government organisations across Ireland, bridging the gap between people and technology through both education and design.
               </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* AI Tools Section */}
-      <section className="py-20 gradient-hero relative">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_hsl(35_80%_55%_/_0.08),_transparent_60%)]"></div>
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative">
-          <div className="text-center mb-14">
-            <h2 className="text-4xl sm:text-5xl font-bold mb-4 font-serif">
-              AI Legal Tools
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Choose your AI assistant based on your needs
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {/* Briefcase Card */}
-            <div className="card-elevated rounded-2xl p-8 hover-lift">
-              <div className="flex items-center gap-4 mb-5">
-                <div className="p-4 bg-gradient-accent rounded-xl shadow-warm">
-                  <Briefcase className="w-8 h-8 text-primary-foreground" />
-                </div>
-                <div>
-                  <h3 className="text-2xl font-bold font-serif">Briefcase</h3>
-                  <p className="text-sm text-muted-foreground">Describe It, Fill It, Download It</p>
-                </div>
-              </div>
-
-              <p className="text-muted-foreground mb-6 leading-relaxed">
-                Tell us your issue, and we will provide the relevant court form based on your information. Some forms are ready to download now. The Hong Kong Form E is in Beta Testing and is free for you to try. The remainder of the forms are in development and will be ready in Q1 of 2026.
-              </p>
-
-              <div className="flex gap-3">
-                <Link to="/forms" className="flex-1">
-                  <Button className="w-full" size="lg" variant="outline">
-                    Browse Forms
-                  </Button>
-                </Link>
-                <Link to="/briefcase" className="flex-1">
-                  <Button className="w-full" size="lg">
-                    Try Form E Beta
-                  </Button>
-                </Link>
-              </div>
-            </div>
-
-            {/* My Legal Assistant Card */}
-            <div className="card-elevated rounded-2xl p-8 hover-lift">
-              <div className="flex items-center gap-4 mb-5">
-                <div className="p-4 bg-gradient-accent rounded-xl shadow-warm">
-                  <MessageSquare className="w-8 h-8 text-primary-foreground" />
-                </div>
-                <div>
-                  <h3 className="text-2xl font-bold font-serif">My Legal Assistant</h3>
-                  <p className="text-sm text-muted-foreground">In-Depth Legal Consultation</p>
-                </div>
-              </div>
-
-              <div className="mb-6">
-                <span className="inline-block px-4 py-1.5 bg-accent/20 text-accent-foreground text-xs font-semibold rounded-full mb-4 border border-accent/30">
-                  <MessageSquare className="w-3 h-3 inline mr-1" />
-                  Consultative & Educational
-                </span>
-                <p className="text-muted-foreground mb-4 leading-relaxed">
-                  My Legal Assistant is a conversational AI that helps Hong Kong residents understand their legal situation through detailed discussion. 
-                  Users can explain their case in depth, and the assistant provides guidance on their legal options and next steps. 
-                  The assistant then tells users which specific forms they need to file.
-                </p>
-              </div>
-
-              <div className="mb-6">
-                <h4 className="font-semibold mb-3 flex items-center gap-2 text-sm">
-                  <BookOpen className="w-4 h-4 text-accent" />
-                  Use Cases:
-                </h4>
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li className="flex items-start gap-2">
-                    <span className="text-accent mt-0.5">•</span>
-                    <span>User explains full divorce situation → Assistant discusses options, timelines, considerations → Then recommends forms needed</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-accent mt-0.5">•</span>
-                    <span>Get detailed guidance on legal procedures and what to expect</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-accent mt-0.5">•</span>
-                    <span>Understand your rights and available legal options</span>
-                  </li>
-                </ul>
-              </div>
-
-              <Link to="/assistant">
-                <Button className="w-full" size="lg" variant="secondary">
-                  Start Consultation
-                </Button>
-              </Link>
             </div>
           </div>
         </div>
