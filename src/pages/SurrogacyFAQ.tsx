@@ -1,4 +1,4 @@
-import { HelpCircle, ChevronDown, ChevronLeft } from "lucide-react";
+import { ChevronDown, ChevronLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -21,9 +21,6 @@ const SurrogacyFAQ = () => {
           {t('faq.backLink')}
         </Link>
 
-        <div className="flex items-center gap-3 mb-2">
-          <HelpCircle className="w-8 h-8 text-primary" />
-        </div>
         <h1 className="text-3xl font-bold">{t('faq.title')}</h1>
         <p className="mt-3 text-muted-foreground max-w-2xl">
           {t('faq.subtitle')}
