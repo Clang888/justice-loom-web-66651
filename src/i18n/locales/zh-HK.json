@@ -158,6 +158,18 @@
     "q15": "我可以冷凍胚胎而不是卵子嗎？",
     "a15": "可以，如果您是已婚異性戀夫婦。根據現行規管框架，單身女性和同性伴侶目前無法在香港獲得使用捐贈精子的治療，無論是人工授精（IUI）、試管嬰兒（IVF）還是胚胎冷凍。"
   },
+  "contact": {
+    "title": "聯絡我們",
+    "subtitle": "如需諮詢、演講邀請或一般查詢，請與我們聯繫。",
+    "name": "姓名",
+    "namePlaceholder": "您的姓名",
+    "email": "電郵",
+    "emailPlaceholder": "your@email.com",
+    "submit": "提交",
+    "submitting": "提交中...",
+    "emailLabel": "電郵",
+    "phoneLabel": "電話"
+  },
   "language": {
     "en": "English",
     "zh-HK": "繁體中文"
