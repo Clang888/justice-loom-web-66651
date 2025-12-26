@@ -7,6 +7,7 @@ import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { useNavigate } from "react-router-dom";
 import { User } from "@supabase/supabase-js";
+import { validateAndSanitizeFormData, sanitizeLoadedFormData } from "@/lib/formDataValidation";
 
 // Set up PDF.js worker
 pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js`;
@@ -88,10 +89,14 @@ const FormEEditor = ({ onClose }: FormEEditorProps) => {
         if (savedForm) {
           setSavedFormId(savedForm.id);
           if (savedForm.form_data && typeof savedForm.form_data === "object") {
-            const formData = savedForm.form_data as Record<string, any>;
-            if (formData.pageCanvasData) {
-              setPageCanvasData(formData.pageCanvasData);
-              toast.success("Loaded your saved progress");
+            // Sanitize loaded form data
+            const sanitizedData = sanitizeLoadedFormData(savedForm.form_data);
+            if (sanitizedData && typeof sanitizedData === "object") {
+              const formData = sanitizedData as Record<string, unknown>;
+              if (formData.pageCanvasData) {
+                setPageCanvasData(formData.pageCanvasData as Record<number, unknown>);
+                toast.success("Loaded your saved progress");
+              }
             }
           }
         }
@@ -272,16 +277,24 @@ const FormEEditor = ({ onClose }: FormEEditorProps) => {
       // Wait a bit for state to update
       await new Promise(resolve => setTimeout(resolve, 100));
 
-      const formData = {
+      const rawFormData = {
         pageCanvasData: { ...pageCanvasData, [currentPage]: fabricCanvas?.toJSON() }
       };
+
+      // Validate and sanitize form data before saving
+      const { isValid, data: sanitizedFormData, error: validationError } = validateAndSanitizeFormData(rawFormData);
+      
+      if (!isValid || !sanitizedFormData) {
+        toast.error(validationError || "Invalid form data");
+        return;
+      }
 
       if (savedFormId) {
         // Update existing saved form
         const { error } = await supabase
           .from("saved_forms")
           .update({ 
-            form_data: formData,
+            form_data: JSON.parse(JSON.stringify(sanitizedFormData)),
             updated_at: new Date().toISOString()
           })
           .eq("id", savedFormId);
@@ -291,12 +304,12 @@ const FormEEditor = ({ onClose }: FormEEditorProps) => {
         // Create new saved form
         const { data, error } = await supabase
           .from("saved_forms")
-          .insert({
+          .insert([{
             user_id: user.id,
             legal_form_id: legalFormId,
-            form_data: formData,
+            form_data: JSON.parse(JSON.stringify(sanitizedFormData)),
             is_completed: false
-          })
+          }])
           .select("id")
           .single();
 
