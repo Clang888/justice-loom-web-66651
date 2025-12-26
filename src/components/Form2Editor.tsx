@@ -318,7 +318,7 @@ const Form2Editor = ({ onClose }: Form2EditorProps) => {
           <Button variant="ghost" size="icon" onClick={onClose}>
             <X className="h-5 w-5" />
           </Button>
-          <h2 className="font-semibold">Petition_Form 2: Behaviour</h2>
+          <h2 className="font-semibold">Petition_Form 2: Application for Divorce based on Behaviour</h2>
         </div>
         
         <div className="flex items-center gap-2">

@@ -19,7 +19,7 @@ const divorceCategories = [
     forms: [
       {
         id: "form-2",
-        name: "Petition_Form 2: Behaviour",
+        name: "Petition_Form 2: Application for Divorce based on Behaviour",
       },
       {
         id: "form-2c",
