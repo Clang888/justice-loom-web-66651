@@ -3,6 +3,7 @@ import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import Form2CEditor from "@/components/Form2CEditor";
+import FormEEditor from "@/components/FormEEditor";
 
 interface FormItem {
   id: string;
@@ -25,7 +26,13 @@ const divorceCategories = [
   {
     id: "financial",
     title: "Financial",
-    forms: [] as FormItem[],
+    forms: [
+      {
+        id: "form-e",
+        name: "Form E: Financial Statement",
+        description: "Full financial disclosure form for divorce proceedings",
+      },
+    ] as FormItem[],
   },
   {
     id: "children",
@@ -36,10 +43,13 @@ const divorceCategories = [
 
 const DivorceForms = () => {
   const [showForm2CEditor, setShowForm2CEditor] = useState(false);
+  const [showFormEEditor, setShowFormEEditor] = useState(false);
 
   const handleFormClick = (formId: string) => {
     if (formId === "form-2c") {
       setShowForm2CEditor(true);
+    } else if (formId === "form-e") {
+      setShowFormEEditor(true);
     }
   };
 
@@ -101,6 +111,10 @@ const DivorceForms = () => {
 
       {showForm2CEditor && (
         <Form2CEditor onClose={() => setShowForm2CEditor(false)} />
+      )}
+
+      {showFormEEditor && (
+        <FormEEditor onClose={() => setShowFormEEditor(false)} />
       )}
     </section>
   );
