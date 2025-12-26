@@ -1,4 +1,4 @@
-import { Scale, ShieldCheck, FileText, Calculator, FlaskConical, Mail, Loader2 } from "lucide-react";
+import { Loader2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
@@ -72,31 +72,25 @@ const Services = () => {
         <div className="mt-8 flex flex-col md:flex-row justify-center gap-6">
           {/* Divorce Card */}
           <div className="bg-card border border-border rounded-2xl p-6 shadow-sm w-full max-w-sm">
-            <div className="flex items-center gap-3">
-              <Scale className="w-6 h-6" />
-              <h3 className="font-semibold text-lg">{t('services.divorce')}</h3>
-            </div>
+            <h3 className="font-semibold text-lg">{t('services.divorce')}</h3>
             
             <div className="mt-4 space-y-2">
               <Link to="/divorce-forms">
-                <Button variant="outline" size="sm" className="w-full justify-start gap-2">
-                  <FileText className="w-4 h-4" />
+                <Button variant="outline" size="sm" className="w-full justify-start">
                   {t('services.fillableDivorceForms')}
                 </Button>
               </Link>
               <Link to="/form-e">
-                <Button variant="outline" size="sm" className="w-full justify-start gap-2">
-                  <Calculator className="w-4 h-4" />
+                <Button variant="outline" size="sm" className="w-full justify-start">
                   {t('services.formEFinancial')}
                 </Button>
               </Link>
               <Button 
                 variant="outline" 
                 size="sm" 
-                className="w-full justify-start gap-2 bg-green-500 text-white border-green-500 hover:bg-green-600 hover:border-green-600"
+                className="w-full justify-start bg-green-500 text-white border-green-500 hover:bg-green-600 hover:border-green-600"
                 onClick={handleBetaClick}
               >
-                <FlaskConical className="w-4 h-4" />
                 {t('services.betaCalculator')}
               </Button>
             </div>
@@ -104,10 +98,7 @@ const Services = () => {
 
           {/* Wills & Estates Card */}
           <div className="bg-card border border-border rounded-2xl p-6 shadow-sm w-full max-w-sm">
-            <div className="flex items-center gap-3">
-              <ShieldCheck className="w-6 h-6" />
-              <h3 className="font-semibold text-lg">{t('services.willsEstates')}</h3>
-            </div>
+            <h3 className="font-semibold text-lg">{t('services.willsEstates')}</h3>
             <p className="mt-3 text-sm text-muted-foreground">
               {t('services.willsDescription')}
             </p>
@@ -118,14 +109,9 @@ const Services = () => {
         {showEmailCapture && (
           <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
             <div className="bg-card border border-border rounded-2xl p-6 max-w-md w-full">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="p-2 bg-primary/10 rounded-lg">
-                  <FlaskConical className="w-5 h-5 text-primary" />
-                </div>
-                <div>
-                  <h3 className="font-semibold">{t('services.joinBeta')}</h3>
-                  <p className="text-sm text-muted-foreground">{t('services.earlyAccess')}</p>
-                </div>
+              <div className="mb-4">
+                <h3 className="font-semibold">{t('services.joinBeta')}</h3>
+                <p className="text-sm text-muted-foreground">{t('services.earlyAccess')}</p>
               </div>
 
               <p className="text-sm text-muted-foreground mb-4">
@@ -133,15 +119,14 @@ const Services = () => {
               </p>
 
               <form onSubmit={handleEmailSubmit} className="space-y-4">
-                <div className="relative">
-                  <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                <div>
                   <input
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="your@email.com"
                     required
-                    className="w-full pl-10 pr-4 py-2.5 bg-secondary/50 border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                    className="w-full px-4 py-2.5 bg-secondary/50 border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary"
                   />
                 </div>
 
