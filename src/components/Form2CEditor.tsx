@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, useCallback } from "react";
-import { Canvas as FabricCanvas, FabricImage, IText, Rect } from "fabric";
+import { Canvas as FabricCanvas, FabricImage, IText } from "fabric";
 import { Button } from "@/components/ui/button";
 import { Download, X, Plus, ZoomIn, ZoomOut, Type, ChevronLeft, ChevronRight } from "lucide-react";
 import { toast } from "sonner";
@@ -12,71 +12,9 @@ interface Form2CEditorProps {
   onClose: () => void;
 }
 
-interface FormField {
-  id: string;
-  x: number;
-  y: number;
-  width: number;
-  placeholder?: string;
-}
-
 const FIXED_WIDTH = 800;
 const FIXED_HEIGHT = 1100;
 const PDF_URL = "/forms/form-2c.pdf";
-
-// Pre-positioned form fields per page based on actual form layout
-const PAGE_FIELDS: Record<number, FormField[]> = {
-  1: [
-    // Case number at top
-    { id: "case_number", x: 480, y: 105, width: 120, placeholder: "Case No." },
-    // Paragraph 1 - Marriage details
-    { id: "marriage_day", x: 175, y: 195, width: 60, placeholder: "Day" },
-    { id: "marriage_month_year", x: 280, y: 195, width: 120, placeholder: "Month/Year" },
-    { id: "spouse_name", x: 175, y: 218, width: 400, placeholder: "Spouse Name" },
-    { id: "marriage_place", x: 100, y: 258, width: 550, placeholder: "Place of Marriage" },
-    // Paragraph 2 - Cohabitation
-    { id: "cohabitation_address", x: 100, y: 320, width: 550, placeholder: "Address where parties cohabited" },
-    // Paragraph 3 - Petitioner details
-    { id: "petitioner_occupation", x: 195, y: 400, width: 250, placeholder: "Petitioner Occupation" },
-    { id: "petitioner_address", x: 100, y: 435, width: 550, placeholder: "Petitioner Address" },
-    { id: "respondent_occupation", x: 195, y: 475, width: 250, placeholder: "Respondent Occupation" },
-    { id: "respondent_address", x: 100, y: 510, width: 550, placeholder: "Respondent Address" },
-    // Paragraph 4 - Children
-    { id: "children_details", x: 450, y: 555, width: 250, placeholder: "Children names/details" },
-  ],
-  2: [
-    // Paragraph 6 - Previous proceedings
-    { id: "previous_proceedings", x: 100, y: 180, width: 550, placeholder: "Previous proceedings details (if any)" },
-    // Paragraph 7 - Agreements
-    { id: "agreement_details", x: 100, y: 280, width: 550, placeholder: "Agreement/arrangement details" },
-    // Paragraph 9 - Separation details
-    { id: "separation_day", x: 495, y: 395, width: 60, placeholder: "Day" },
-    { id: "separation_month_year", x: 130, y: 420, width: 150, placeholder: "Month/Year" },
-  ],
-  3: [
-    // Prayer section - Children names
-    { id: "custody_children", x: 480, y: 95, width: 200, placeholder: "Child(ren) names" },
-    // Ancillary relief
-    { id: "ancillary_relief", x: 100, y: 180, width: 550, placeholder: "Ancillary relief details" },
-    // Signature section
-    { id: "signature", x: 150, y: 250, width: 300, placeholder: "Signature" },
-    // Persons to be served
-    { id: "persons_served", x: 100, y: 330, width: 550, placeholder: "Names and addresses of persons to be served" },
-    // Petitioner address for service
-    { id: "address_for_service", x: 100, y: 410, width: 550, placeholder: "Petitioner address for service" },
-    // Date
-    { id: "petition_day", x: 150, y: 465, width: 60, placeholder: "Day" },
-    { id: "petition_month_year", x: 250, y: 465, width: 150, placeholder: "Month/Year" },
-  ],
-  4: [
-    // Cover page
-    { id: "cover_case_no", x: 480, y: 95, width: 120, placeholder: "Case No." },
-    { id: "petitioner_name_cover", x: 300, y: 200, width: 250, placeholder: "Petitioner Name" },
-    { id: "respondent_name_cover", x: 300, y: 290, width: 250, placeholder: "Respondent Name" },
-    { id: "husband_wife", x: 350, y: 430, width: 100, placeholder: "Husband/Wife" },
-    { id: "solicitors_name", x: 280, y: 490, width: 300, placeholder: "Solicitors Name" },
-  ],
-};
 
 const Form2CEditor = ({ onClose }: Form2CEditorProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -128,63 +66,6 @@ const Form2CEditor = ({ onClose }: Form2CEditorProps) => {
         canvas.dispose();
       }
     };
-  }, []);
-
-  // Add pre-positioned fields to canvas
-  const addPrePositionedFields = useCallback((canvas: FabricCanvas, page: number) => {
-    const fields = PAGE_FIELDS[page] || [];
-    
-    fields.forEach((field) => {
-      // Create background rectangle for the field
-      const rect = new Rect({
-        left: field.x,
-        top: field.y,
-        width: field.width,
-        height: 22,
-        fill: "rgba(255, 255, 240, 0.9)",
-        stroke: "#cbd5e1",
-        strokeWidth: 1,
-        rx: 2,
-        ry: 2,
-        selectable: false,
-        evented: false,
-      });
-      
-      // Create editable text field
-      const text = new IText(field.placeholder || "", {
-        left: field.x + 4,
-        top: field.y + 3,
-        fontSize: 12,
-        fontFamily: "Arial",
-        fill: "#64748b",
-        width: field.width - 8,
-        selectable: true,
-        editable: true,
-      });
-
-      // Clear placeholder on first edit
-      text.on("editing:entered", () => {
-        if (text.text === field.placeholder) {
-          text.set("text", "");
-          text.set("fill", "#000000");
-          canvas.renderAll();
-        }
-      });
-
-      // Restore placeholder if empty
-      text.on("editing:exited", () => {
-        if (text.text === "") {
-          text.set("text", field.placeholder || "");
-          text.set("fill", "#64748b");
-          canvas.renderAll();
-        }
-      });
-
-      canvas.add(rect);
-      canvas.add(text);
-    });
-    
-    canvas.renderAll();
   }, []);
 
   // Render PDF page to canvas
@@ -243,8 +124,6 @@ const Form2CEditor = ({ onClose }: Form2CEditorProps) => {
                 setIsLoading(false);
               });
             } else {
-              // Add pre-positioned fields for new pages
-              addPrePositionedFields(fabricCanvas, currentPage);
               fabricCanvas.renderAll();
               setIsLoading(false);
             }
@@ -269,7 +148,7 @@ const Form2CEditor = ({ onClose }: Form2CEditorProps) => {
     };
     
     renderPage();
-  }, [fabricCanvas, pdfDoc, currentPage, addPrePositionedFields]);
+  }, [fabricCanvas, pdfDoc, currentPage]);
 
   // Save current page data before switching
   const saveCurrentPageData = useCallback(() => {
