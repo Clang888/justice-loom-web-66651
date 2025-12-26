@@ -1,6 +1,6 @@
 import { ReactNode, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { LogOut, Shield } from "lucide-react";
+import { LogOut, Shield, Menu, X } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { User } from "@supabase/supabase-js";
 import { Button } from "@/components/ui/button";
@@ -13,6 +13,7 @@ interface LayoutProps {
 const Layout = ({ children }: LayoutProps) => {
   const [user, setUser] = useState<User | null>(null);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
   const { toast } = useToast();
 
@@ -71,14 +72,19 @@ const Layout = ({ children }: LayoutProps) => {
       });
     }
   };
+
+  const closeMobileMenu = () => setMobileMenuOpen(false);
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* NAV */}
       <header className="sticky top-0 z-50 bg-card/80 backdrop-blur border-b border-border no-print">
-        <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center h-16">
+        <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
           <Link to="/" className="flex items-center font-semibold text-lg">
             <img src="/just-law-logo.jpg" alt="Just Law" className="h-16 w-auto" />
           </Link>
+          
+          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center justify-center gap-6 text-sm flex-1">
             <Link to="/services" className="hover:text-foreground text-center">Divorce<br />& Wills</Link>
             <Link to="/egg-freezing-surrogacy" className="hover:text-foreground text-center">Surrogacy<br />& Egg Freezing</Link>
@@ -112,7 +118,79 @@ const Layout = ({ children }: LayoutProps) => {
               Contact
             </Link>
           </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            className="md:hidden p-2 text-foreground"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
         </nav>
+
+        {/* Mobile Navigation */}
+        {mobileMenuOpen && (
+          <div className="md:hidden bg-card border-t border-border">
+            <div className="px-4 py-4 space-y-3">
+              <Link to="/services" onClick={closeMobileMenu} className="block py-2 hover:text-primary">
+                Divorce & Wills
+              </Link>
+              <Link to="/egg-freezing-surrogacy" onClick={closeMobileMenu} className="block py-2 hover:text-primary">
+                Surrogacy & Egg Freezing
+              </Link>
+              <Link to="/books" onClick={closeMobileMenu} className="block py-2 hover:text-primary">
+                Books & Public Speaking
+              </Link>
+              <Link to="/testimonials" onClick={closeMobileMenu} className="block py-2 hover:text-primary">
+                Testimonials
+              </Link>
+              <Link to="/surrogacy-faq" onClick={closeMobileMenu} className="block py-2 hover:text-primary">
+                FAQs
+              </Link>
+              <Link to="/community" onClick={closeMobileMenu} className="block py-2 hover:text-primary">
+                Community
+              </Link>
+              {isAdmin && (
+                <Link to="/admin" onClick={closeMobileMenu} className="block py-2 hover:text-primary flex items-center gap-1">
+                  <Shield className="w-4 h-4" />
+                  Admin
+                </Link>
+              )}
+              <div className="pt-3 border-t border-border space-y-3">
+                {user ? (
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => {
+                      handleLogout();
+                      closeMobileMenu();
+                    }}
+                    className="w-full inline-flex items-center justify-center gap-1"
+                  >
+                    <LogOut className="w-4 h-4" />
+                    Logout
+                  </Button>
+                ) : (
+                  <Link
+                    to="/auth"
+                    onClick={closeMobileMenu}
+                    className="block text-center rounded-full bg-[#1e3a5f] text-white px-4 py-2 hover:bg-[#152a45] transition-colors"
+                  >
+                    Login
+                  </Link>
+                )}
+                <Link
+                  to="/contact"
+                  onClick={closeMobileMenu}
+                  className="block text-center rounded-full bg-[#1e3a5f] text-white px-4 py-2 hover:bg-[#152a45] transition-colors"
+                >
+                  Contact
+                </Link>
+              </div>
+            </div>
+          </div>
+        )}
       </header>
 
       {/* CONTENT */}
