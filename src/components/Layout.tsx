@@ -5,6 +5,8 @@ import { supabase } from "@/integrations/supabase/client";
 import { User } from "@supabase/supabase-js";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
+import { useTranslation } from "react-i18next";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 interface LayoutProps {
   children: ReactNode;
@@ -16,6 +18,7 @@ const Layout = ({ children }: LayoutProps) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
   const { toast } = useToast();
+  const { t } = useTranslation();
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -86,17 +89,17 @@ const Layout = ({ children }: LayoutProps) => {
           
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center justify-center gap-6 text-sm flex-1">
-            <Link to="/services" className="hover:text-foreground text-center">Divorce<br />& Wills</Link>
-            <Link to="/egg-freezing-surrogacy" className="hover:text-foreground text-center">Surrogacy<br />& Egg Freezing</Link>
+            <Link to="/services" className="hover:text-foreground text-center">{t('nav.divorceWills').split(' & ').join('\n& ').split('\n').map((line, i) => <span key={i}>{i > 0 && <br />}{line}</span>)}</Link>
+            <Link to="/egg-freezing-surrogacy" className="hover:text-foreground text-center">{t('nav.surrogacyEggFreezing').split(' & ').join('\n& ').split('\n').map((line, i) => <span key={i}>{i > 0 && <br />}{line}</span>)}</Link>
             
-            <Link to="/books" className="hover:text-foreground text-center">Books &<br />Public Speaking</Link>
-            <Link to="/testimonials" className="hover:text-foreground">Testimonials</Link>
-            <Link to="/surrogacy-faq" className="hover:text-foreground">FAQs</Link>
-            <Link to="/community" className="hover:text-foreground">Community</Link>
+            <Link to="/books" className="hover:text-foreground text-center">{t('nav.booksPublicSpeaking').split(' & ').join('\n& ').split('\n').map((line, i) => <span key={i}>{i > 0 && <br />}{line}</span>)}</Link>
+            <Link to="/testimonials" className="hover:text-foreground">{t('nav.testimonials')}</Link>
+            <Link to="/surrogacy-faq" className="hover:text-foreground">{t('nav.faqs')}</Link>
+            <Link to="/community" className="hover:text-foreground">{t('nav.community')}</Link>
             {isAdmin && (
               <Link to="/admin" className="hover:text-foreground flex items-center gap-1">
                 <Shield className="w-4 h-4" />
-                Admin
+                {t('nav.admin')}
               </Link>
             )}
             {user && (
@@ -107,11 +110,12 @@ const Layout = ({ children }: LayoutProps) => {
                 className="inline-flex items-center gap-1"
               >
                 <LogOut className="w-4 h-4" />
-                Logout
+                {t('nav.logout')}
               </Button>
             )}
+            <LanguageSwitcher />
             <Link to="/contact" className="rounded-full bg-[#1e3a5f] text-white px-4 py-1.5 hover:bg-[#152a45] transition-colors">
-              Contact
+              {t('nav.contact')}
             </Link>
           </div>
 
@@ -130,34 +134,35 @@ const Layout = ({ children }: LayoutProps) => {
           <div className="md:hidden bg-card border-t border-border">
             <div className="px-4 py-4 space-y-3">
               <Link to="/services" onClick={closeMobileMenu} className="block py-2 hover:text-primary">
-                Divorce & Wills
+                {t('nav.divorceWills')}
               </Link>
               <Link to="/egg-freezing-surrogacy" onClick={closeMobileMenu} className="block py-2 hover:text-primary">
-                Surrogacy & Egg Freezing
+                {t('nav.surrogacyEggFreezing')}
               </Link>
               <Link to="/books" onClick={closeMobileMenu} className="block py-2 hover:text-primary">
-                Books & Public Speaking
+                {t('nav.booksPublicSpeaking')}
               </Link>
               <Link to="/testimonials" onClick={closeMobileMenu} className="block py-2 hover:text-primary">
-                Testimonials
+                {t('nav.testimonials')}
               </Link>
               <Link to="/surrogacy-faq" onClick={closeMobileMenu} className="block py-2 hover:text-primary">
-                FAQs
+                {t('nav.faqs')}
               </Link>
               <Link to="/community" onClick={closeMobileMenu} className="block py-2 hover:text-primary">
-                Community
+                {t('nav.community')}
               </Link>
               <Link to="/install" onClick={closeMobileMenu} className="block py-2 hover:text-primary flex items-center gap-2">
                 <Download className="w-4 h-4" />
-                Install App
+                {t('nav.installApp')}
               </Link>
               {isAdmin && (
                 <Link to="/admin" onClick={closeMobileMenu} className="block py-2 hover:text-primary flex items-center gap-1">
                   <Shield className="w-4 h-4" />
-                  Admin
+                  {t('nav.admin')}
                 </Link>
               )}
               <div className="pt-3 border-t border-border space-y-3">
+                <LanguageSwitcher />
                 {user && (
                   <Button
                     variant="outline"
@@ -169,7 +174,7 @@ const Layout = ({ children }: LayoutProps) => {
                     className="w-full inline-flex items-center justify-center gap-1"
                   >
                     <LogOut className="w-4 h-4" />
-                    Logout
+                    {t('nav.logout')}
                   </Button>
                 )}
                 <Link
@@ -177,7 +182,7 @@ const Layout = ({ children }: LayoutProps) => {
                   onClick={closeMobileMenu}
                   className="block text-center rounded-full bg-[#1e3a5f] text-white px-4 py-2 hover:bg-[#152a45] transition-colors"
                 >
-                  Contact
+                  {t('nav.contact')}
                 </Link>
               </div>
             </div>
@@ -197,35 +202,35 @@ const Layout = ({ children }: LayoutProps) => {
                 <img src="/just-law-logo.jpg" alt="Just Law" className="h-8 w-auto" />
                 <span>Just Law</span>
               </div>
-              <p className="text-sm text-muted-foreground">Making Justice Easy to Find, Easy to Use and Easy to Understand.</p>
+              <p className="text-sm text-muted-foreground">{t('footer.tagline')}</p>
             </div>
             <div>
-              <h4 className="font-semibold mb-3 text-sm">Company</h4>
+              <h4 className="font-semibold mb-3 text-sm">{t('footer.company')}</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><Link to="/mission" className="hover:underline">Mission</Link></li>
-                <li><Link to="/about" className="hover:underline">About</Link></li>
-                <li><Link to="/books" className="hover:underline">Books & Public Speaking</Link></li>
+                <li><Link to="/mission" className="hover:underline">{t('footer.mission')}</Link></li>
+                <li><Link to="/about" className="hover:underline">{t('footer.about')}</Link></li>
+                <li><Link to="/books" className="hover:underline">{t('nav.booksPublicSpeaking')}</Link></li>
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold mb-3 text-sm">Resources</h4>
+              <h4 className="font-semibold mb-3 text-sm">{t('footer.resources')}</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><Link to="/services" className="hover:underline">Divorce & Wills</Link></li>
-                <li><Link to="/egg-freezing-surrogacy" className="hover:underline">Surrogacy & Egg Freezing</Link></li>
-                <li><Link to="/books" className="hover:underline">Books & Public Speaking</Link></li>
-                <li><Link to="/testimonials" className="hover:underline">Testimonials</Link></li>
+                <li><Link to="/services" className="hover:underline">{t('nav.divorceWills')}</Link></li>
+                <li><Link to="/egg-freezing-surrogacy" className="hover:underline">{t('nav.surrogacyEggFreezing')}</Link></li>
+                <li><Link to="/books" className="hover:underline">{t('nav.booksPublicSpeaking')}</Link></li>
+                <li><Link to="/testimonials" className="hover:underline">{t('nav.testimonials')}</Link></li>
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold mb-3 text-sm">Connect</h4>
+              <h4 className="font-semibold mb-3 text-sm">{t('footer.connect')}</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><Link to="/community" className="hover:underline">Community</Link></li>
-                <li><Link to="/contact" className="hover:underline">Contact</Link></li>
+                <li><Link to="/community" className="hover:underline">{t('nav.community')}</Link></li>
+                <li><Link to="/contact" className="hover:underline">{t('nav.contact')}</Link></li>
               </ul>
             </div>
           </div>
           <div className="mt-8 pt-6 border-t border-border text-center text-sm text-muted-foreground">
-            &copy; {new Date().getFullYear()} Just Law. All rights reserved.
+            &copy; {new Date().getFullYear()} {t('footer.copyright')}
           </div>
         </div>
       </footer>

@@ -1,0 +1,63 @@
+{
+  "nav": {
+    "divorceWills": "Divorce & Wills",
+    "surrogacyEggFreezing": "Surrogacy & Egg Freezing",
+    "booksPublicSpeaking": "Books & Public Speaking",
+    "testimonials": "Testimonials",
+    "faqs": "FAQs",
+    "community": "Community",
+    "admin": "Admin",
+    "logout": "Logout",
+    "contact": "Contact",
+    "installApp": "Install App"
+  },
+  "hero": {
+    "badge": "Just Law",
+    "title": "Your Guide to",
+    "titleHighlight": "Self-Representation",
+    "subtitle": "Navigate the Legal System with Confidence",
+    "description": "Our mission is to make justice easy to find, easy to understand, and easy to use.",
+    "jurisdictions": "Common-law focus: Hong Kong, United States, England & Wales, Republic of Ireland."
+  },
+  "about": {
+    "title": "About us",
+    "caroline": {
+      "name": "CAROLINE LANGLEY",
+      "role": "CEO and Co-Founder",
+      "bio": "Caroline is a barrister and legal innovator based in Hong Kong with over 30 years of frontline experience in law. She is qualified and has practised in 4 jurisdictions. She founded Just Law Education to make legal knowledge clear, practical, and accessible. Her forthcoming book, \"A Litigant's Guide to Self Representation in HK Family Court\", builds on that mission, offering step-by-step guidance for litigants in person. Her current project \"My Legal Assistant\", uses AI to simplify court forms and procedures, a concept that recently attracted a buy out offer from a Silicon Valley tech company. Caroline is dedicated to transforming real world legal challenges into intelligent, user friendly digital solutions."
+    },
+    "alex": {
+      "name": "ALEX SANTOS",
+      "role": "CTO and Co-Founder",
+      "bio": "Alex is a technology consultant and product designer based in Ireland, specialising in accessible, human-centered digital solutions. With a focus on demystifying complex systems, Alex builds applications that enable users to navigate technology with confidence and ease. His recent work includes Passenger.ie, an app that transforms the train booking experience for elderly users, making online rail services effortless and inclusive. Alex's approach combines deep user empathy with technical innovation, translating real-world friction points into intuitive digital experiences. In addition to development, Alex delivers digital literacy training to seniors and government organisations across Ireland, bridging the gap between people and technology through both education and design."
+    }
+  },
+  "mission": {
+    "title": "What we stand for",
+    "description": "It is Just, Right and Fair that everyone can access to justice. It is also Just, Right and Fair that the tools needed to access justice are easy to find, easy to understand and easy to use. We design practical, compassionate resources for self-represented litigants, starting with Hong Kong and other common-law jurisdictions.",
+    "glanceTitle": "At a glance",
+    "glance1": "30+ years of multi-jurisdictional civil practice",
+    "glance2": "Clear how-to procedural guides",
+    "glance3": "Community-driven learning & peer support",
+    "glance4": "Ethical and easy to use product design"
+  },
+  "community": {
+    "title": "Join the community",
+    "description": "Connect with others, ask questions, and share what you've learned. Our LinkedIn group offers practical discussions, templates, and updates.",
+    "linkedinTitle": "LinkedIn Group",
+    "linkedinDescription": "Just Law. Join the conversation with over 1,500 members."
+  },
+  "footer": {
+    "tagline": "Making Justice Easy to Find, Easy to Use and Easy to Understand.",
+    "company": "Company",
+    "resources": "Resources",
+    "connect": "Connect",
+    "mission": "Mission",
+    "about": "About",
+    "copyright": "Just Law. All rights reserved."
+  },
+  "language": {
+    "en": "English",
+    "zh-HK": "繁體中文"
+  }
+}
