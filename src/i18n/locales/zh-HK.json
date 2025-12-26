@@ -170,6 +170,18 @@
     "emailLabel": "電郵",
     "phoneLabel": "電話"
   },
+  "books": {
+    "title": "書籍及指南",
+    "subtitle": "從法庭程序時間表到財務披露，我們出版實用的資源供您使用。",
+    "hkFamilyCourt": "香港家事法庭：自我代表指南",
+    "hkFamilyCourtDesc": "由香港大學出版社出版（2026年）。為希望在香港家事法庭自我代表的人士提供的逐步指南。",
+    "divorceJournal": "我的離婚日記工作手冊",
+    "divorceJournalDesc": "預計於2026年春季出版。一本指導讀者處理離婚各個方面的工作手冊。",
+    "joinWaitingList": "加入等候名單",
+    "speakingEngagements": "演講活動",
+    "hireSpeaker": "邀請 Caroline 進行演講",
+    "speakingCount": "超過30場國際演講活動，包括："
+  },
   "language": {
     "en": "English",
     "zh-HK": "繁體中文"
