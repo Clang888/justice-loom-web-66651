@@ -71,6 +71,18 @@
     "submitting": "提交中...",
     "privacyNote": "我們尊重您的私隱。您的電郵僅用於測試版更新通知。"
   },
+  "divorceForms": {
+    "title": "可填寫離婚表格",
+    "description": "選擇類別以查看可用表格。點擊任何表格即可在線上填寫。",
+    "backButton": "返回離婚及遺囑",
+    "comingSoon": "表格即將推出...",
+    "mainCause": "離婚（主要理由）",
+    "financial": "財務",
+    "children": "子女",
+    "form2": "呈請書_表格2：基於行為的離婚申請",
+    "form2c": "呈請書_表格2C：基於分居兩年的共同離婚申請",
+    "formE": "表格E：財務報表"
+  },
   "eggFreezingSurrogacy": {
     "title": "代孕及冷凍卵子",
     "surrogacyResources": "代孕資源",

@@ -71,6 +71,18 @@
     "submitting": "Submitting...",
     "privacyNote": "We respect your privacy. Your email will only be used for beta updates."
   },
+  "divorceForms": {
+    "title": "Fillable Divorce Forms",
+    "description": "Select a category to view available forms. Click on any form to fill it out online.",
+    "backButton": "Back to Divorce & Wills",
+    "comingSoon": "Forms coming soon...",
+    "mainCause": "The Divorce (Main Cause)",
+    "financial": "Financial",
+    "children": "Children",
+    "form2": "Petition_Form 2: Application for Divorce based on Behaviour",
+    "form2c": "Petition_Form 2C: Joint Application for Divorce based on Two Years' Separation",
+    "formE": "Form E: Financial Statement"
+  },
   "eggFreezingSurrogacy": {
     "title": "Surrogacy & Egg Freezing",
     "surrogacyResources": "Surrogacy Resources",

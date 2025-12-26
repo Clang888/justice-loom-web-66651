@@ -2,49 +2,57 @@ import { useState } from "react";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "react-i18next";
 import Form2Editor from "@/components/Form2Editor";
 import Form2CEditor from "@/components/Form2CEditor";
 import FormEEditor from "@/components/FormEEditor";
 
 interface FormItem {
   id: string;
-  name: string;
+  nameKey: string;
   description?: string;
 }
 
-const divorceCategories = [
+interface CategoryItem {
+  id: string;
+  titleKey: string;
+  forms: FormItem[];
+}
+
+const divorceCategories: CategoryItem[] = [
   {
     id: "main-cause",
-    title: "The Divorce (Main Cause)",
+    titleKey: "divorceForms.mainCause",
     forms: [
       {
         id: "form-2",
-        name: "Petition_Form 2: Application for Divorce based on Behaviour",
+        nameKey: "divorceForms.form2",
       },
       {
         id: "form-2c",
-        name: "Petition_Form 2C: Joint Application for Divorce based on Two Years' Separation",
+        nameKey: "divorceForms.form2c",
       },
-    ] as FormItem[],
+    ],
   },
   {
     id: "financial",
-    title: "Financial",
+    titleKey: "divorceForms.financial",
     forms: [
       {
         id: "form-e",
-        name: "Form E: Financial Statement",
+        nameKey: "divorceForms.formE",
       },
-    ] as FormItem[],
+    ],
   },
   {
     id: "children",
-    title: "Children",
-    forms: [] as FormItem[],
+    titleKey: "divorceForms.children",
+    forms: [],
   },
 ];
 
 const DivorceForms = () => {
+  const { t } = useTranslation();
   const [showForm2Editor, setShowForm2Editor] = useState(false);
   const [showForm2CEditor, setShowForm2CEditor] = useState(false);
   const [showFormEEditor, setShowFormEEditor] = useState(false);
@@ -65,13 +73,13 @@ const DivorceForms = () => {
         <Link to="/services">
           <Button variant="ghost" size="sm" className="mb-6 gap-2">
             <ArrowLeft className="w-4 h-4" />
-            Back to Divorce & Wills
+            {t("divorceForms.backButton")}
           </Button>
         </Link>
 
-        <h1 className="text-3xl font-bold">Fillable Divorce Forms</h1>
+        <h1 className="text-3xl font-bold">{t("divorceForms.title")}</h1>
         <p className="mt-3 text-muted-foreground max-w-2xl">
-          Select a category to view available forms. Click on any form to fill it out online.
+          {t("divorceForms.description")}
         </p>
 
         <div className="mt-8 grid grid-cols-1 max-w-2xl gap-6">
@@ -81,7 +89,7 @@ const DivorceForms = () => {
               className="bg-card border border-border rounded-2xl p-6 shadow-sm"
             >
               <div className="mb-4">
-                <h2 className="font-semibold text-lg">{category.title}</h2>
+                <h2 className="font-semibold text-lg">{t(category.titleKey)}</h2>
               </div>
 
               {category.forms.length > 0 ? (
@@ -95,7 +103,7 @@ const DivorceForms = () => {
                       onClick={() => handleFormClick(form.id)}
                     >
                       <div>
-                        <div className="font-medium">{form.name}</div>
+                        <div className="font-medium">{t(form.nameKey)}</div>
                         {form.description && (
                           <div className="text-xs text-muted-foreground mt-1">
                             {form.description}
@@ -107,7 +115,7 @@ const DivorceForms = () => {
                 </div>
               ) : (
                 <p className="text-sm text-muted-foreground italic">
-                  Forms coming soon...
+                  {t("divorceForms.comingSoon")}
                 </p>
               )}
             </div>
