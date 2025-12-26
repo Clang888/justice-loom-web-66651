@@ -99,7 +99,7 @@ const Layout = ({ children }: LayoutProps) => {
                 Admin
               </Link>
             )}
-            {user ? (
+            {user && (
               <Button
                 variant="outline"
                 size="sm"
@@ -109,10 +109,6 @@ const Layout = ({ children }: LayoutProps) => {
                 <LogOut className="w-4 h-4" />
                 Logout
               </Button>
-            ) : (
-              <Link to="/auth" className="rounded-full bg-[#1e3a5f] text-white px-4 py-1.5 hover:bg-[#152a45] transition-colors">
-                Login
-              </Link>
             )}
             <Link to="/contact" className="rounded-full bg-[#1e3a5f] text-white px-4 py-1.5 hover:bg-[#152a45] transition-colors">
               Contact
@@ -162,7 +158,7 @@ const Layout = ({ children }: LayoutProps) => {
                 </Link>
               )}
               <div className="pt-3 border-t border-border space-y-3">
-                {user ? (
+                {user && (
                   <Button
                     variant="outline"
                     size="sm"
@@ -175,14 +171,6 @@ const Layout = ({ children }: LayoutProps) => {
                     <LogOut className="w-4 h-4" />
                     Logout
                   </Button>
-                ) : (
-                  <Link
-                    to="/auth"
-                    onClick={closeMobileMenu}
-                    className="block text-center rounded-full bg-[#1e3a5f] text-white px-4 py-2 hover:bg-[#152a45] transition-colors"
-                  >
-                    Login
-                  </Link>
                 )}
                 <Link
                   to="/contact"
