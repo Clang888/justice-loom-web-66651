@@ -65,29 +65,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* What We Stand For Section */}
-      <section className="py-20 bg-card relative">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-3 gap-10 items-start">
-            <div className="lg:col-span-2">
-              <h2 className="text-3xl sm:text-4xl font-bold font-serif">What we stand for</h2>
-              <p className="mt-6 text-muted-foreground leading-relaxed text-lg">
-                It is Just, Right and Fair that everyone can access to justice. It is also Just, Right and Fair that the tools needed to access justice are easy to find, easy to understand and easy to use. We design practical, compassionate resources for self-represented litigants, starting with Hong Kong and other common-law jurisdictions.
-              </p>
-            </div>
-            <div className="card-elevated rounded-2xl p-6">
-              <h3 className="font-semibold mb-4 font-serif text-lg">At a glance</h3>
-              <ul className="space-y-3 text-sm text-muted-foreground">
-                <li className="flex items-start gap-2"><span className="text-accent">✓</span> 30+ years of multi-jurisdictional civil practice</li>
-                <li className="flex items-start gap-2"><span className="text-accent">✓</span> Clear how-to procedural guides</li>
-                <li className="flex items-start gap-2"><span className="text-accent">✓</span> Community-driven learning & peer support</li>
-                <li className="flex items-start gap-2"><span className="text-accent">✓</span> Ethical and easy to use product design</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Services Section */}
       <section className="py-20 gradient-warm relative">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_hsl(200_45%_30%_/_0.05),_transparent_50%)]"></div>
