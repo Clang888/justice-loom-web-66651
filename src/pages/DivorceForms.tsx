@@ -30,7 +30,6 @@ const divorceCategories = [
       {
         id: "form-e",
         name: "Form E: Financial Statement",
-        description: "Full financial disclosure form for divorce proceedings",
       },
     ] as FormItem[],
   },
