@@ -46,7 +46,7 @@ const Index = () => {
           <div className="grid md:grid-cols-2 gap-8">
             {/* Caroline Langley */}
             <div className="card-elevated rounded-2xl p-8 hover-lift">
-              <div className="bg-[hsl(155_30%_45%)] rounded-xl p-4 mb-6">
+              <div className="bg-background rounded-xl p-4 mb-6">
                 <img src="/caroline-langley.png" alt="Caroline Langley" className="w-full aspect-square object-cover rounded-lg shadow-lg" />
               </div>
               <h3 className="font-bold text-xl mb-1 font-serif">{t('about.caroline.name')}</h3>
@@ -58,7 +58,7 @@ const Index = () => {
 
             {/* Alexandre Santos de Salles */}
             <div className="card-elevated rounded-2xl p-8 hover-lift">
-              <div className="bg-[hsl(155_30%_45%)] rounded-xl p-4 mb-6">
+              <div className="bg-background rounded-xl p-4 mb-6">
                 <img src="/alex-santos.png" alt="Alexandre Santos de Salles" className="w-full aspect-square object-cover rounded-lg shadow-lg" />
               </div>
               <h3 className="font-bold text-xl mb-1 font-serif">{t('about.alex.name')}</h3>
