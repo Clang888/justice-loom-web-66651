@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Download, X, Plus, ZoomIn, ZoomOut, Type, ChevronLeft, ChevronRight } from "lucide-react";
 import { toast } from "sonner";
 import * as pdfjsLib from "pdfjs-dist";
+import { useTranslation } from "react-i18next";
 
 // Set up PDF.js worker
 pdfjsLib.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.js`;
@@ -14,7 +15,10 @@ interface Form2EditorProps {
 
 const FIXED_WIDTH = 800;
 const FIXED_HEIGHT = 1100;
-const PDF_URL = "/forms/form-2.pdf";
+
+// PDFs by language
+const PDF_URL_EN = "/forms/form-2.pdf";
+const PDF_URL_ZH = "/forms/form-2-zh.pdf";
 
 const Form2Editor = ({ onClose }: Form2EditorProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -27,11 +31,15 @@ const Form2Editor = ({ onClose }: Form2EditorProps) => {
   const [pageCanvasData, setPageCanvasData] = useState<Record<number, any>>({});
   const [pdfDoc, setPdfDoc] = useState<pdfjsLib.PDFDocumentProxy | null>(null);
 
+  const { i18n } = useTranslation();
+  const isChineseLocale = i18n.language?.startsWith("zh");
+  const pdfUrl = isChineseLocale ? PDF_URL_ZH : PDF_URL_EN;
+
   // Load PDF document
   useEffect(() => {
     const loadPdf = async () => {
       try {
-        const pdf = await pdfjsLib.getDocument(PDF_URL).promise;
+        const pdf = await pdfjsLib.getDocument(pdfUrl).promise;
         setPdfDoc(pdf);
         setTotalPages(pdf.numPages);
       } catch (err) {
@@ -40,7 +48,7 @@ const Form2Editor = ({ onClose }: Form2EditorProps) => {
       }
     };
     loadPdf();
-  }, []);
+  }, [pdfUrl]);
 
   // Initialize canvas
   useEffect(() => {
