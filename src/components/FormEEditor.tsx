@@ -20,6 +20,12 @@ const FIXED_WIDTH = 800;
 const FIXED_HEIGHT = 1100;
 const FORM_E_NAME = "Form E: Financial Statement";
 
+// Multiple PDFs to load as part of Form E
+const PDF_URLS = [
+  "/forms/form-e.pdf",
+  "/forms/form-e-additional.pdf"
+];
+
 const FormEEditor = ({ onClose }: FormEEditorProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -108,48 +114,52 @@ const FormEEditor = ({ onClose }: FormEEditorProps) => {
     loadSavedForm();
   }, [user]);
 
-  // Load PDF and convert pages to images
+  // Load all PDFs and convert pages to images
   useEffect(() => {
-    const loadPDF = async () => {
+    const loadAllPDFs = async () => {
       try {
         setIsLoading(true);
-        const response = await fetch("/forms/form-e.pdf");
-        if (!response.ok) throw new Error("Failed to fetch PDF");
+        const allImages: string[] = [];
+        let totalPageCount = 0;
         
-        const arrayBuffer = await response.arrayBuffer();
-        const bytes = new Uint8Array(arrayBuffer);
-        
-        const loadingTask = pdfjsLib.getDocument({ data: bytes });
-        const pdfDoc = await loadingTask.promise;
-        setTotalPages(pdfDoc.numPages);
-        
-        const images: string[] = [];
-        
-        for (let i = 1; i <= pdfDoc.numPages; i++) {
-          const page = await pdfDoc.getPage(i);
-          const viewport = page.getViewport({ scale: 2 });
+        for (const pdfUrl of PDF_URLS) {
+          const response = await fetch(pdfUrl);
+          if (!response.ok) throw new Error(`Failed to fetch PDF: ${pdfUrl}`);
           
-          const canvas = document.createElement("canvas");
-          const context = canvas.getContext("2d");
-          canvas.height = viewport.height;
-          canvas.width = viewport.width;
+          const arrayBuffer = await response.arrayBuffer();
+          const bytes = new Uint8Array(arrayBuffer);
           
-          if (context) {
-            await page.render({ canvasContext: context, viewport }).promise;
-            images.push(canvas.toDataURL("image/png"));
+          const loadingTask = pdfjsLib.getDocument({ data: bytes });
+          const pdfDoc = await loadingTask.promise;
+          totalPageCount += pdfDoc.numPages;
+          
+          for (let i = 1; i <= pdfDoc.numPages; i++) {
+            const page = await pdfDoc.getPage(i);
+            const viewport = page.getViewport({ scale: 2 });
+            
+            const canvas = document.createElement("canvas");
+            const context = canvas.getContext("2d");
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+            
+            if (context) {
+              await page.render({ canvasContext: context, viewport }).promise;
+              allImages.push(canvas.toDataURL("image/png"));
+            }
           }
         }
         
-        setPageImages(images);
+        setTotalPages(totalPageCount);
+        setPageImages(allImages);
         setIsLoading(false);
       } catch (error) {
-        console.error("Error loading PDF:", error);
+        console.error("Error loading PDFs:", error);
         toast.error("Failed to load PDF");
         setIsLoading(false);
       }
     };
     
-    loadPDF();
+    loadAllPDFs();
   }, []);
 
   // Initialize canvas
