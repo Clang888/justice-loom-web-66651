@@ -1,6 +1,6 @@
 import { ReactNode, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { LogOut, Shield, Menu, X } from "lucide-react";
+import { LogOut, Shield, Menu, X, Download } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { User } from "@supabase/supabase-js";
 import { Button } from "@/components/ui/button";
@@ -150,6 +150,10 @@ const Layout = ({ children }: LayoutProps) => {
               </Link>
               <Link to="/community" onClick={closeMobileMenu} className="block py-2 hover:text-primary">
                 Community
+              </Link>
+              <Link to="/install" onClick={closeMobileMenu} className="block py-2 hover:text-primary flex items-center gap-2">
+                <Download className="w-4 h-4" />
+                Install App
               </Link>
               {isAdmin && (
                 <Link to="/admin" onClick={closeMobileMenu} className="block py-2 hover:text-primary flex items-center gap-1">
