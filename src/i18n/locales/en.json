@@ -170,6 +170,18 @@
     "emailLabel": "Email",
     "phoneLabel": "Phone"
   },
+  "books": {
+    "title": "Books & Guides",
+    "subtitle": "From courtroom timelines to financial disclosure, we publish practical resources you can actually use.",
+    "hkFamilyCourt": "Hong Kong Family Court: A Guide to Self Representation",
+    "hkFamilyCourtDesc": "Published by HKU Press (2026). A step by step guide for anyone wanting to represent themselves in Family Court in Hong Kong.",
+    "divorceJournal": "My Divorce Journal Workbook",
+    "divorceJournalDesc": "Scheduled for publication in Spring 2026. A workbook to guide the user through all aspects of divorce.",
+    "joinWaitingList": "Join the Waiting List",
+    "speakingEngagements": "Speaking Engagements",
+    "hireSpeaker": "Hire Caroline for a Speaking Engagement",
+    "speakingCount": "30+ international speaking engagements including:"
+  },
   "language": {
     "en": "English",
     "zh-HK": "繁體中文"

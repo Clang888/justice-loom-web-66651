@@ -1,6 +1,7 @@
 import { ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { useTranslation } from "react-i18next";
 
 const speakingEngagements = [
   { date: "7 Dec 2022", event: "Alienated Children First Webinar", topic: "DIY Hague Applications Part 2" },
@@ -30,11 +31,13 @@ const speakingEngagements = [
 ];
 
 const Books = () => {
+  const { t } = useTranslation();
+
   return (
     <section className="py-16 bg-secondary">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-bold mb-3">Books & Guides</h2>
-        <p className="text-muted-foreground mb-6">From courtroom timelines to financial disclosure, we publish practical resources you can actually use.</p>
+        <h2 className="text-3xl font-bold mb-3">{t('books.title')}</h2>
+        <p className="text-muted-foreground mb-6">{t('books.subtitle')}</p>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           <div className="bg-card border border-border rounded-2xl p-5 flex gap-4">
@@ -44,9 +47,8 @@ const Books = () => {
               className="w-24 h-auto rounded-lg shadow-md flex-shrink-0"
             />
             <div>
-              <h3 className="font-semibold">Hong Kong Family Court: A Guide to Self Representation</h3>
-              <p className="text-sm text-muted-foreground mt-2">Published by HKU Press (2026). A step by step guide for anyone wanting to represent themselves in Family Court in Hong Kong.</p>
-              
+              <h3 className="font-semibold">{t('books.hkFamilyCourt')}</h3>
+              <p className="text-sm text-muted-foreground mt-2">{t('books.hkFamilyCourtDesc')}</p>
             </div>
           </div>
           <div className="bg-card border border-border rounded-2xl p-5 flex gap-4">
@@ -56,17 +58,17 @@ const Books = () => {
               className="w-24 h-auto rounded-lg shadow-md flex-shrink-0"
             />
             <div>
-              <h3 className="font-semibold">My Divorce Journal Workbook</h3>
-              <p className="text-sm text-muted-foreground mt-2">Scheduled for publication in Spring 2026. A workbook to guide the user through all aspects of divorce.</p>
-              <Link to="/contact" className="mt-3 inline-flex items-center gap-2 text-sm font-medium hover:underline">Join the Waiting List <ChevronRight className="w-4 h-4" /></Link>
+              <h3 className="font-semibold">{t('books.divorceJournal')}</h3>
+              <p className="text-sm text-muted-foreground mt-2">{t('books.divorceJournalDesc')}</p>
+              <Link to="/contact" className="mt-3 inline-flex items-center gap-2 text-sm font-medium hover:underline">{t('books.joinWaitingList')} <ChevronRight className="w-4 h-4" /></Link>
             </div>
           </div>
           <div className="bg-card border border-border rounded-2xl p-5 lg:row-span-2">
-            <h4 className="font-semibold mb-2">Speaking Engagements</h4>
+            <h4 className="font-semibold mb-2">{t('books.speakingEngagements')}</h4>
             <Link to="/speaking-enquiry" className="mb-3 inline-flex items-center gap-2 text-sm font-medium hover:underline">
-              Hire Caroline for a Speaking Engagement <ChevronRight className="w-4 h-4" />
+              {t('books.hireSpeaker')} <ChevronRight className="w-4 h-4" />
             </Link>
-            <p className="text-sm text-muted-foreground mb-3">30+ international speaking engagements including:</p>
+            <p className="text-sm text-muted-foreground mb-3">{t('books.speakingCount')}</p>
             <ScrollArea className="h-[320px] pr-3">
               <ul className="space-y-3">
                 {speakingEngagements.map((engagement, index) => (
