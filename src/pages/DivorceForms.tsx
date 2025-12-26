@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ArrowLeft, FileText, Users, Wallet } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import Form2CEditor from "@/components/Form2CEditor";
@@ -14,13 +14,11 @@ const divorceCategories = [
   {
     id: "main-cause",
     title: "The Divorce (Main Cause)",
-    icon: FileText,
     forms: [] as FormItem[],
   },
   {
     id: "financial",
     title: "Financial",
-    icon: Wallet,
     forms: [
       {
         id: "form-2c",
@@ -32,7 +30,6 @@ const divorceCategories = [
   {
     id: "children",
     title: "Children",
-    icon: Users,
     forms: [] as FormItem[],
   },
 ];
@@ -67,8 +64,7 @@ const DivorceForms = () => {
               key={category.id}
               className="bg-card border border-border rounded-2xl p-6 shadow-sm"
             >
-              <div className="flex items-center gap-3 mb-4">
-                <category.icon className="w-6 h-6 text-primary" />
+              <div className="mb-4">
                 <h2 className="font-semibold text-lg">{category.title}</h2>
               </div>
 
