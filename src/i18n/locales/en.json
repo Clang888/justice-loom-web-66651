@@ -158,6 +158,18 @@
     "q15": "Can I freeze embryos instead of eggs?",
     "a15": "Yes, if you are a married heterosexual couple. Single women and same-sex couples cannot currently access treatment with donor sperm in Hong Kong, whether for IUI, IVF, or embryo freezing, under the existing regulatory framework."
   },
+  "contact": {
+    "title": "Get in touch",
+    "subtitle": "Contact us for consultations, speaking engagement requests or general questions.",
+    "name": "Name",
+    "namePlaceholder": "Your name",
+    "email": "Email",
+    "emailPlaceholder": "your@email.com",
+    "submit": "Submit",
+    "submitting": "Submitting...",
+    "emailLabel": "Email",
+    "phoneLabel": "Phone"
+  },
   "language": {
     "en": "English",
     "zh-HK": "繁體中文"
