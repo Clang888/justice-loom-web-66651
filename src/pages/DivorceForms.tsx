@@ -4,13 +4,11 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import Form2CEditor from "@/components/Form2CEditor";
 import FormEEditor from "@/components/FormEEditor";
-import PDFEditor from "@/components/PDFEditor";
 
 interface FormItem {
   id: string;
   name: string;
   description?: string;
-  pdfUrl?: string;
 }
 
 const divorceCategories = [
@@ -20,32 +18,7 @@ const divorceCategories = [
     forms: [
       {
         id: "form-2c",
-        name: "Petition Form 2C: Joint application for divorce based on two years' separation",
-      },
-      {
-        id: "petition-consent-1-year",
-        name: "Petition for Divorce: Consent (1 Year Separation)",
-        pdfUrl: "/forms/petition-consent-1-year.pdf",
-      },
-      {
-        id: "petition-2-years-separation",
-        name: "Petition for Divorce: Two Years' Separation",
-        pdfUrl: "/forms/petition-2-years-separation.pdf",
-      },
-      {
-        id: "petition-desertion",
-        name: "Petition for Divorce: Desertion",
-        pdfUrl: "/forms/petition-desertion.pdf",
-      },
-      {
-        id: "petition-behaviour",
-        name: "Petition for Divorce: Behaviour",
-        pdfUrl: "/forms/petition-behaviour.pdf",
-      },
-      {
-        id: "petition-adultery",
-        name: "Petition for Divorce: Adultery",
-        pdfUrl: "/forms/petition-adultery.pdf",
+        name: "Petition_Form 2C: Joint application for divorce based on two years' separation",
       },
     ] as FormItem[],
   },
@@ -69,15 +42,12 @@ const divorceCategories = [
 const DivorceForms = () => {
   const [showForm2CEditor, setShowForm2CEditor] = useState(false);
   const [showFormEEditor, setShowFormEEditor] = useState(false);
-  const [activePdfForm, setActivePdfForm] = useState<FormItem | null>(null);
 
-  const handleFormClick = (form: FormItem) => {
-    if (form.id === "form-2c") {
+  const handleFormClick = (formId: string) => {
+    if (formId === "form-2c") {
       setShowForm2CEditor(true);
-    } else if (form.id === "form-e") {
+    } else if (formId === "form-e") {
       setShowFormEEditor(true);
-    } else if (form.pdfUrl) {
-      setActivePdfForm(form);
     }
   };
 
@@ -114,7 +84,7 @@ const DivorceForms = () => {
                       variant="outline"
                       size="sm"
                       className="w-full justify-start text-left h-auto py-3"
-                      onClick={() => handleFormClick(form)}
+                      onClick={() => handleFormClick(form.id)}
                     >
                       <div>
                         <div className="font-medium">{form.name}</div>
@@ -143,14 +113,6 @@ const DivorceForms = () => {
 
       {showFormEEditor && (
         <FormEEditor onClose={() => setShowFormEEditor(false)} />
-      )}
-
-      {activePdfForm && activePdfForm.pdfUrl && (
-        <PDFEditor
-          pdfUrl={activePdfForm.pdfUrl}
-          formName={activePdfForm.name}
-          onClose={() => setActivePdfForm(null)}
-        />
       )}
     </section>
   );
