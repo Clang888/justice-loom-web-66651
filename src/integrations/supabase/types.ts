@@ -192,6 +192,30 @@ export type Database = {
         }
         Relationships: []
       }
+      payment_session_logs: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          ip_address: string | null
+          session_id: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          ip_address?: string | null
+          session_id: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          ip_address?: string | null
+          session_id?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           created_at: string | null
