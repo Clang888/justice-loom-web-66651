@@ -4,8 +4,11 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
+import { useTranslation } from "react-i18next";
 import planningCalendarImage from "@/assets/fertility-planning-calendar.jpg";
+
 const EggFreezingSurrogacy = () => {
+  const { t } = useTranslation();
   const [isLoading, setIsLoading] = useState(false);
 
   const handlePurchase = async () => {
@@ -31,28 +34,27 @@ const EggFreezingSurrogacy = () => {
   return (
     <section className="py-16 bg-secondary">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <h1 className="text-3xl font-bold">Egg Freezing & Surrogacy</h1>
-
+        <h1 className="text-3xl font-bold">{t('eggFreezingSurrogacy.title')}</h1>
 
         {/* Resources Section - Two Column Layout */}
         <div className="mt-12 grid md:grid-cols-2 gap-8 items-start">
           {/* Surrogacy Resources */}
           <div className="text-center">
-            <h2 className="text-2xl font-semibold mb-6">Surrogacy Resources</h2>
+            <h2 className="text-2xl font-semibold mb-6">{t('eggFreezingSurrogacy.surrogacyResources')}</h2>
             <div className="grid gap-6">
               <Link to="/surrogacy-states" className="block bg-card border-2 border-green-500 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow min-h-[180px] flex flex-col justify-center">
-                <span className="block bg-green-600 text-white text-xs font-semibold px-2 py-1 rounded mb-2 w-fit mx-auto">FREE</span>
-                <h3 className="font-semibold text-lg mb-2">USA Surrogacy Friendly States</h3>
+                <span className="block bg-green-600 text-white text-xs font-semibold px-2 py-1 rounded mb-2 w-fit mx-auto">{t('eggFreezingSurrogacy.free')}</span>
+                <h3 className="font-semibold text-lg mb-2">{t('eggFreezingSurrogacy.usaSurrogacyStates')}</h3>
                 <p className="text-sm text-muted-foreground">
-                  Browse the list of US states with supportive surrogacy laws.
+                  {t('eggFreezingSurrogacy.usaSurrogacyDesc')}
                 </p>
               </Link>
 
               <Link to="/surrogacy-tracker" className="block bg-card border-2 border-green-500 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow min-h-[180px] flex flex-col justify-center">
-                <span className="block bg-green-600 text-white text-xs font-semibold px-2 py-1 rounded mb-2 w-fit mx-auto">FREE</span>
-                <h3 className="text-lg font-semibold mb-2">Surrogacy Journey Tracker</h3>
+                <span className="block bg-green-600 text-white text-xs font-semibold px-2 py-1 rounded mb-2 w-fit mx-auto">{t('eggFreezingSurrogacy.free')}</span>
+                <h3 className="text-lg font-semibold mb-2">{t('eggFreezingSurrogacy.surrogacyTracker')}</h3>
                 <p className="text-sm text-muted-foreground">
-                  Track your path from initial research to bringing baby home with our step-by-step guide.
+                  {t('eggFreezingSurrogacy.surrogacyTrackerDesc')}
                 </p>
               </Link>
 
@@ -60,13 +62,13 @@ const EggFreezingSurrogacy = () => {
               <div className="bg-card border border-border rounded-2xl p-6 shadow-sm min-h-[180px] flex flex-col justify-center">
                 <div className="flex items-center justify-center gap-3 mb-4">
                   <Baby className="w-6 h-6 text-primary" />
-                  <h3 className="font-semibold text-xl">Surrogacy Considerations</h3>
+                  <h3 className="font-semibold text-xl">{t('eggFreezingSurrogacy.surrogacyConsiderations')}</h3>
                 </div>
                 <ul className="space-y-2 text-sm text-muted-foreground text-left mx-auto w-fit">
-                  <li>→ UK surrogacy law and parental orders</li>
-                  <li>→ International surrogacy considerations</li>
-                  <li>→ Surrogate and intended parent agreements</li>
-                  <li>→ Birth registration and citizenship</li>
+                  <li>→ {t('eggFreezingSurrogacy.ukSurrogacyLaw')}</li>
+                  <li>→ {t('eggFreezingSurrogacy.internationalSurrogacy')}</li>
+                  <li>→ {t('eggFreezingSurrogacy.surrogateAgreements')}</li>
+                  <li>→ {t('eggFreezingSurrogacy.birthRegistration')}</li>
                 </ul>
               </div>
             </div>
@@ -74,10 +76,10 @@ const EggFreezingSurrogacy = () => {
 
           {/* Egg Freezing Resources */}
           <div className="text-center">
-            <h2 className="text-2xl font-semibold mb-6">Egg Freezing Resources</h2>
+            <h2 className="text-2xl font-semibold mb-6">{t('eggFreezingSurrogacy.eggFreezingResources')}</h2>
             <div className="grid gap-6">
               <div className="bg-card border-2 border-blue-300 rounded-2xl p-6 shadow-sm flex flex-col">
-                <h3 className="font-semibold text-lg mb-3 text-center">Egg Optimisation Planning Guide</h3>
+                <h3 className="font-semibold text-lg mb-3 text-center">{t('eggFreezingSurrogacy.eggOptimisationGuide')}</h3>
                 
                 {/* Teaser matching guide design */}
                 <div className="rounded-xl overflow-hidden border-4 border-[#8fa89a] mb-4">
@@ -94,20 +96,20 @@ const EggFreezingSurrogacy = () => {
                     <div className="w-3/5 bg-[#f5d547] p-4 flex flex-col justify-center" style={{ fontFamily: "'Comic Sans MS', cursive, sans-serif" }}>
                       <div className="space-y-3">
                         <div>
-                          <p className="text-sm font-bold text-black">Month 1-2:</p>
-                          <p className="text-sm text-black">Research & Initial Consultation</p>
+                          <p className="text-sm font-bold text-black">{t('eggFreezingSurrogacy.month1_2')}</p>
+                          <p className="text-sm text-black">{t('eggFreezingSurrogacy.month1_2Desc')}</p>
                         </div>
                         <div>
-                          <p className="text-sm font-bold text-black">Month 3:</p>
-                          <p className="text-sm text-black">Preparation Phase</p>
+                          <p className="text-sm font-bold text-black">{t('eggFreezingSurrogacy.month3')}</p>
+                          <p className="text-sm text-black">{t('eggFreezingSurrogacy.month3Desc')}</p>
                         </div>
                         <div>
-                          <p className="text-sm font-bold text-black">Month 4:</p>
-                          <p className="text-sm text-black">Stimulation Cycle (10-14 days)</p>
+                          <p className="text-sm font-bold text-black">{t('eggFreezingSurrogacy.month4')}</p>
+                          <p className="text-sm text-black">{t('eggFreezingSurrogacy.month4Desc')}</p>
                         </div>
                         <div>
-                          <p className="text-sm font-bold text-black">Post-Retrieval:</p>
-                          <p className="text-sm text-black">Recovery & Storage</p>
+                          <p className="text-sm font-bold text-black">{t('eggFreezingSurrogacy.postRetrieval')}</p>
+                          <p className="text-sm text-black">{t('eggFreezingSurrogacy.postRetrievalDesc')}</p>
                         </div>
                       </div>
                     </div>
@@ -115,7 +117,7 @@ const EggFreezingSurrogacy = () => {
                 </div>
                 
                 <p className="text-xs text-muted-foreground mb-3 text-center">
-                  Full guide includes HK clinic comparisons, TCM foods for egg health, jurisdictional & financial considerations
+                  {t('eggFreezingSurrogacy.guideIncludes')}
                 </p>
                 
                 <Button 
@@ -124,15 +126,15 @@ const EggFreezingSurrogacy = () => {
                   disabled={isLoading}
                   className="w-full bg-blue-600 hover:bg-blue-700 text-white uppercase font-semibold"
                 >
-                  {isLoading ? "Loading..." : "PURCHASE GUIDE HK$199"}
+                  {isLoading ? t('eggFreezingSurrogacy.loading') : t('eggFreezingSurrogacy.purchaseGuide')}
                 </Button>
               </div>
 
               <Link to="/egg-freezing-clinics-hk" className="block bg-card border-2 border-green-500 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow min-h-[180px] flex flex-col justify-center">
-                <span className="block bg-green-600 text-white text-xs font-semibold px-2 py-1 rounded mb-2 w-fit mx-auto">FREE</span>
-                <h3 className="font-semibold text-lg mb-2">Egg Freezing Clinics in Hong Kong</h3>
+                <span className="block bg-green-600 text-white text-xs font-semibold px-2 py-1 rounded mb-2 w-fit mx-auto">{t('eggFreezingSurrogacy.free')}</span>
+                <h3 className="font-semibold text-lg mb-2">{t('eggFreezingSurrogacy.eggFreezingClinicsHK')}</h3>
                 <p className="text-sm text-muted-foreground">
-                  Find reputable fertility clinics offering egg freezing services in Hong Kong.
+                  {t('eggFreezingSurrogacy.eggFreezingClinicsDesc')}
                 </p>
               </Link>
 
@@ -140,25 +142,25 @@ const EggFreezingSurrogacy = () => {
               <div className="bg-card border border-border rounded-2xl p-6 shadow-sm min-h-[180px] flex flex-col justify-center">
                 <div className="flex items-center justify-center gap-3 mb-4">
                   <Snowflake className="w-6 h-6 text-primary" />
-                  <h3 className="font-semibold text-xl">Egg Freezing Considerations</h3>
+                  <h3 className="font-semibold text-xl">{t('eggFreezingSurrogacy.eggFreezingConsiderations')}</h3>
                 </div>
                 <ul className="space-y-2 text-sm text-muted-foreground text-left mx-auto w-fit">
-                  <li>→ Consent and storage agreements</li>
-                  <li>→ Storage duration and renewal rights</li>
-                  <li>→ Partner consent considerations</li>
-                  <li>→ Cross-border storage regulations</li>
+                  <li>→ {t('eggFreezingSurrogacy.consentStorage')}</li>
+                  <li>→ {t('eggFreezingSurrogacy.storageDuration')}</li>
+                  <li>→ {t('eggFreezingSurrogacy.partnerConsent')}</li>
+                  <li>→ {t('eggFreezingSurrogacy.crossBorderStorage')}</li>
                 </ul>
               </div>
             </div>
           </div>
         </div>
         <div className="mt-12 bg-card border border-border rounded-2xl p-8 text-center">
-          <h2 className="text-2xl font-semibold mb-3">Need Guidance?</h2>
+          <h2 className="text-2xl font-semibold mb-3">{t('eggFreezingSurrogacy.needGuidance')}</h2>
           <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
-            Receive personalised expert guidance on international surrogacy<br />before you take the first step.
+            {t('eggFreezingSurrogacy.needGuidanceDesc')}
           </p>
           <Link to="/contact">
-            <Button size="lg">Book a Consultation</Button>
+            <Button size="lg">{t('eggFreezingSurrogacy.bookConsultation')}</Button>
           </Link>
         </div>
       </div>
