@@ -56,6 +56,21 @@
     "about": "About",
     "copyright": "Just Law. All rights reserved."
   },
+  "services": {
+    "divorce": "Divorce",
+    "fillableDivorceForms": "Fillable Divorce Forms",
+    "formEFinancial": "Form E (Financial Statement)",
+    "betaCalculator": "Beta Testing Form E Calculator",
+    "willsEstates": "Wills & Estates",
+    "willsDescription": "Simple Wills, Enduring Power of Attorney, Advanced Directives, Executors & Witnesses",
+    "joinBeta": "Join the Beta",
+    "earlyAccess": "Get early access to Form E Calculator",
+    "betaDescription": "Enter your email to access our beta Form E Calculator. We'll keep you updated on new features and improvements. Your participation and feedback is important to us.",
+    "cancel": "Cancel",
+    "getAccess": "Get Access",
+    "submitting": "Submitting...",
+    "privacyNote": "We respect your privacy. Your email will only be used for beta updates."
+  },
   "language": {
     "en": "English",
     "zh-HK": "繁體中文"

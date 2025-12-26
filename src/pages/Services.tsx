@@ -5,8 +5,10 @@ import { useState } from "react";
 import FormECalculator from "@/components/FormECalculator";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
+import { useTranslation } from "react-i18next";
 
 const Services = () => {
+  const { t } = useTranslation();
   const [showCalculator, setShowCalculator] = useState(false);
   const [showEmailCapture, setShowEmailCapture] = useState(false);
   const [email, setEmail] = useState("");
@@ -72,20 +74,20 @@ const Services = () => {
           <div className="bg-card border border-border rounded-2xl p-6 shadow-sm w-full max-w-sm">
             <div className="flex items-center gap-3">
               <Scale className="w-6 h-6" />
-              <h3 className="font-semibold text-lg">Divorce</h3>
+              <h3 className="font-semibold text-lg">{t('services.divorce')}</h3>
             </div>
             
             <div className="mt-4 space-y-2">
               <Link to="/divorce-forms">
                 <Button variant="outline" size="sm" className="w-full justify-start gap-2">
                   <FileText className="w-4 h-4" />
-                  Fillable Divorce Forms
+                  {t('services.fillableDivorceForms')}
                 </Button>
               </Link>
               <Link to="/form-e">
                 <Button variant="outline" size="sm" className="w-full justify-start gap-2">
                   <Calculator className="w-4 h-4" />
-                  Form E (Financial Statement)
+                  {t('services.formEFinancial')}
                 </Button>
               </Link>
               <Button 
@@ -95,7 +97,7 @@ const Services = () => {
                 onClick={handleBetaClick}
               >
                 <FlaskConical className="w-4 h-4" />
-                Beta Testing Form E Calculator
+                {t('services.betaCalculator')}
               </Button>
             </div>
           </div>
@@ -104,10 +106,10 @@ const Services = () => {
           <div className="bg-card border border-border rounded-2xl p-6 shadow-sm w-full max-w-sm">
             <div className="flex items-center gap-3">
               <ShieldCheck className="w-6 h-6" />
-              <h3 className="font-semibold text-lg">Wills & Estates</h3>
+              <h3 className="font-semibold text-lg">{t('services.willsEstates')}</h3>
             </div>
             <p className="mt-3 text-sm text-muted-foreground">
-              Simple Wills, Enduring Power of Attorney,<br />Advanced Directives, Executors & Witnesses
+              {t('services.willsDescription')}
             </p>
           </div>
         </div>
@@ -121,13 +123,13 @@ const Services = () => {
                   <FlaskConical className="w-5 h-5 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-semibold">Join the Beta</h3>
-                  <p className="text-sm text-muted-foreground">Get early access to Form E Calculator</p>
+                  <h3 className="font-semibold">{t('services.joinBeta')}</h3>
+                  <p className="text-sm text-muted-foreground">{t('services.earlyAccess')}</p>
                 </div>
               </div>
 
               <p className="text-sm text-muted-foreground mb-4">
-                Enter your email to access our beta Form E Calculator. We'll keep you updated on new features and improvements. Your participation and feedback is important to us.
+                {t('services.betaDescription')}
               </p>
 
               <form onSubmit={handleEmailSubmit} className="space-y-4">
@@ -150,7 +152,7 @@ const Services = () => {
                     className="flex-1"
                     onClick={() => setShowEmailCapture(false)}
                   >
-                    Cancel
+                    {t('services.cancel')}
                   </Button>
                   <Button 
                     type="submit" 
@@ -160,17 +162,17 @@ const Services = () => {
                     {isSubmitting ? (
                       <>
                         <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                        Submitting...
+                        {t('services.submitting')}
                       </>
                     ) : (
-                      "Get Access"
+                      t('services.getAccess')
                     )}
                   </Button>
                 </div>
               </form>
 
               <p className="mt-4 text-xs text-muted-foreground text-center">
-                We respect your privacy. Your email will only be used for beta updates.
+                {t('services.privacyNote')}
               </p>
             </div>
           </div>
