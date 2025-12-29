@@ -74,7 +74,7 @@
   },
   "divorceForms": {
     "title": "Fillable Divorce Forms",
-    "description": "Select a category to view available forms. Click on any form to fill it out online.",
+    "description": "The fillable forms editor only stores text in the browser memory. Nothing is saved to a database or server. Once downloaded, the data exists only in the PNG files on the user's device.",
     "popupNote": "Note: Some forms open as PDFs in a new tab. If a form doesn't open, please check your browser's pop-up blocker settings.",
     "backButton": "Back to Divorce & Wills",
     "comingSoon": "Forms coming soon...",
