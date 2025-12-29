@@ -70,11 +70,11 @@
     "getAccess": "Get Access",
     "submitting": "Submitting...",
     "privacyNote": "We respect your privacy. Your email will only be used for beta updates.",
-    "formsPrivacyNotice": "The fillable forms editor only stores text in the browser memory. Nothing is saved to a database or server. Once downloaded, the data exists only in the PNG files on the user's device."
+    "formsPrivacyNotice": "The fillable forms editor stores only text in the browser memory. Nothing is saved to a database or server. Once downloaded, the data exists only in the PNG files on the user's device."
   },
   "divorceForms": {
     "title": "Divorce Forms",
-    "description": "The fillable forms editor only stores text in the browser memory. Nothing is saved to a database or server. Once downloaded, the data exists only in the PNG files on the user's device.",
+    "description": "The fillable forms editor stores only text in the browser memory. Nothing is saved to a database or server. Once downloaded, the data exists only in the PNG files on the user's device.",
     "popupNote": "Note: Some forms open as PDFs in a new tab. If a form doesn't open, please check your browser's pop-up blocker settings.",
     "backButton": "Back to Divorce & Wills",
     "comingSoon": "Forms coming soon...",
