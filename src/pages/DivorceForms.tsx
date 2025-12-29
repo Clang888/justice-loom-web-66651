@@ -101,8 +101,8 @@ const DivorceForms = () => {
         <p className="mt-3 text-muted-foreground max-w-2xl">
           {t("divorceForms.description")}
         </p>
-        <p className="mt-2 text-sm text-muted-foreground/80 max-w-2xl">
-          {t("divorceForms.popupNote")}
+        <p className="mt-4 text-sm text-muted-foreground bg-muted/50 p-3 rounded-lg max-w-2xl">
+          ⚠️ {t("divorceForms.popupNote")}
         </p>
 
         <div className="mt-8 grid grid-cols-1 max-w-2xl gap-6">
