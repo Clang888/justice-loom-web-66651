@@ -16,8 +16,8 @@ interface Form2SeparationEditorProps {
 const FIXED_WIDTH = 800;
 const FIXED_HEIGHT = 1100;
 
-// Local PDF file
-const PDF_URL = "/forms/form-2-separation.pdf";
+// Local PDF file - Two Years' Separation form
+const PDF_URL = "/forms/form-2-two-years-separation.pdf";
 
 const Form2SeparationEditor = ({ onClose }: Form2SeparationEditorProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
