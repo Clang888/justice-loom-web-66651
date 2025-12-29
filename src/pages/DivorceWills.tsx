@@ -7,7 +7,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { useTranslation } from "react-i18next";
 
-const Services = () => {
+const DivorceWills = () => {
   const { t } = useTranslation();
   const [showCalculator, setShowCalculator] = useState(false);
   const [showEmailCapture, setShowEmailCapture] = useState(false);
@@ -177,4 +177,4 @@ const Services = () => {
   );
 };
 
-export default Services;
+export default DivorceWills;

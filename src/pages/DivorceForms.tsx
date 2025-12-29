@@ -77,7 +77,7 @@ const DivorceForms = () => {
   return (
     <section className="py-16 bg-secondary min-h-screen">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <Link to="/services">
+        <Link to="/divorce-wills">
           <Button variant="ghost" size="sm" className="mb-6 gap-2">
             <ArrowLeft className="w-4 h-4" />
             {t("divorceForms.backButton")}
