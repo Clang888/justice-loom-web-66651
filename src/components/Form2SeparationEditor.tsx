@@ -5,6 +5,7 @@ import { Download, X, Plus, ZoomIn, ZoomOut, Type, ChevronLeft, ChevronRight } f
 import { toast } from "sonner";
 import * as pdfjsLib from "pdfjs-dist";
 import { useTranslation } from "react-i18next";
+import i18n from "i18next";
 
 // Set up PDF.js worker
 pdfjsLib.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.js`;
@@ -16,8 +17,13 @@ interface Form2SeparationEditorProps {
 const FIXED_WIDTH = 800;
 const FIXED_HEIGHT = 1100;
 
-// Local PDF file - Two Years' Separation form
-const PDF_URL = "/forms/form-2-two-years-separation.pdf";
+// Local PDF files - Two Years' Separation form (language-specific)
+const PDF_URL_EN = "/forms/form-2-two-years-separation.pdf";
+const PDF_URL_ZH = "/forms/form-2-two-years-separation-zh.pdf";
+
+const getPdfUrl = () => {
+  return i18n.language === "zh-HK" ? PDF_URL_ZH : PDF_URL_EN;
+};
 
 const Form2SeparationEditor = ({ onClose }: Form2SeparationEditorProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -36,7 +42,7 @@ const Form2SeparationEditor = ({ onClose }: Form2SeparationEditorProps) => {
   useEffect(() => {
     const loadPdf = async () => {
       try {
-        const pdf = await pdfjsLib.getDocument(PDF_URL).promise;
+        const pdf = await pdfjsLib.getDocument(getPdfUrl()).promise;
         setPdfDoc(pdf);
         setTotalPages(pdf.numPages);
       } catch (err) {
