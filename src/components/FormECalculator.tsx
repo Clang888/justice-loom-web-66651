@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
+import { useTranslation } from "react-i18next";
 import { 
   Calculator, 
   Home, 
@@ -54,6 +55,7 @@ interface Section {
 
 const FormECalculator = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const [showTaxCalculator, setShowTaxCalculator] = useState(false);
   const [showExportDropdown, setShowExportDropdown] = useState(false);
   const [hasFeedbackCompleted, setHasFeedbackCompleted] = useState(false);
@@ -82,112 +84,112 @@ const FormECalculator = () => {
   const [assetSections, setAssetSections] = useState<Section[]>([
     {
       id: "A",
-      title: "A. Matrimonial Home (2.1)",
+      title: t('formECalculator.sections.A'),
       isExpanded: true,
       items: [
-        { id: "matrimonialHome", label: "Net value of your interest in the matrimonial home", value: 0, icon: <Home className="w-4 h-4" /> },
+        { id: "matrimonialHome", label: t('formECalculator.assets.matrimonialHome'), value: 0, icon: <Home className="w-4 h-4" /> },
       ]
     },
     {
       id: "B",
-      title: "B. Other Landed Properties (2.2)",
+      title: t('formECalculator.sections.B'),
       isExpanded: true,
       items: [
-        { id: "otherProperty1", label: "Other Property 1 (net value)", value: 0, icon: <Building className="w-4 h-4" /> },
-        { id: "otherProperty2", label: "Other Property 2 (net value)", value: 0, icon: <Building className="w-4 h-4" /> },
-        { id: "otherProperty3", label: "Other Property 3 (net value)", value: 0, icon: <Building className="w-4 h-4" /> },
+        { id: "otherProperty1", label: t('formECalculator.assets.otherProperty1'), value: 0, icon: <Building className="w-4 h-4" /> },
+        { id: "otherProperty2", label: t('formECalculator.assets.otherProperty2'), value: 0, icon: <Building className="w-4 h-4" /> },
+        { id: "otherProperty3", label: t('formECalculator.assets.otherProperty3'), value: 0, icon: <Building className="w-4 h-4" /> },
       ]
     },
     {
       id: "C",
-      title: "C. Bank Accounts (2.3)",
+      title: t('formECalculator.sections.C'),
       isExpanded: true,
       items: [
-        { id: "currentAccounts", label: "Current Accounts", value: 0, icon: <Wallet className="w-4 h-4" /> },
-        { id: "savingsAccounts", label: "Savings Accounts", value: 0, icon: <PiggyBank className="w-4 h-4" /> },
-        { id: "fixedDeposits", label: "Fixed / Term Deposits", value: 0, icon: <Banknote className="w-4 h-4" /> },
-        { id: "otherAccounts", label: "Other Bank Accounts", value: 0, icon: <Wallet className="w-4 h-4" /> },
+        { id: "currentAccounts", label: t('formECalculator.assets.currentAccounts'), value: 0, icon: <Wallet className="w-4 h-4" /> },
+        { id: "savingsAccounts", label: t('formECalculator.assets.savingsAccounts'), value: 0, icon: <PiggyBank className="w-4 h-4" /> },
+        { id: "fixedDeposits", label: t('formECalculator.assets.fixedDeposits'), value: 0, icon: <Banknote className="w-4 h-4" /> },
+        { id: "otherAccounts", label: t('formECalculator.assets.otherAccounts'), value: 0, icon: <Wallet className="w-4 h-4" /> },
       ]
     },
     {
       id: "D",
-      title: "D. Private Company Shareholding (2.4)",
+      title: t('formECalculator.sections.D'),
       isExpanded: true,
       items: [
-        { id: "companyShares1", label: "Company 1 - Shareholding/Beneficial Interest", value: 0, icon: <Building className="w-4 h-4" /> },
-        { id: "companyShares2", label: "Company 2 - Shareholding/Beneficial Interest", value: 0, icon: <Building className="w-4 h-4" /> },
+        { id: "companyShares1", label: t('formECalculator.assets.companyShares1'), value: 0, icon: <Building className="w-4 h-4" /> },
+        { id: "companyShares2", label: t('formECalculator.assets.companyShares2'), value: 0, icon: <Building className="w-4 h-4" /> },
       ]
     },
     {
       id: "E",
-      title: "E. Other Business Interests (2.6)",
+      title: t('formECalculator.sections.E'),
       isExpanded: true,
       items: [
-        { id: "business1", label: "Business 1 - Value of Interest", value: 0, icon: <Briefcase className="w-4 h-4" /> },
-        { id: "business2", label: "Business 2 - Value of Interest", value: 0, icon: <Briefcase className="w-4 h-4" /> },
+        { id: "business1", label: t('formECalculator.assets.business1'), value: 0, icon: <Briefcase className="w-4 h-4" /> },
+        { id: "business2", label: t('formECalculator.assets.business2'), value: 0, icon: <Briefcase className="w-4 h-4" /> },
       ]
     },
     {
       id: "F",
-      title: "F. Stocks, Bonds & Securities (2.7)",
+      title: t('formECalculator.sections.F'),
       isExpanded: true,
       items: [
-        { id: "stocks", label: "Stocks & Shares", value: 0, icon: <TrendingUp className="w-4 h-4" /> },
-        { id: "bonds", label: "Bonds", value: 0, icon: <FileText className="w-4 h-4" /> },
-        { id: "unitTrusts", label: "Unit Trusts / Mutual Funds", value: 0, icon: <TrendingUp className="w-4 h-4" /> },
-        { id: "otherSecurities", label: "Other Securities / Investments", value: 0, icon: <TrendingUp className="w-4 h-4" /> },
+        { id: "stocks", label: t('formECalculator.assets.stocks'), value: 0, icon: <TrendingUp className="w-4 h-4" /> },
+        { id: "bonds", label: t('formECalculator.assets.bonds'), value: 0, icon: <FileText className="w-4 h-4" /> },
+        { id: "unitTrusts", label: t('formECalculator.assets.unitTrusts'), value: 0, icon: <TrendingUp className="w-4 h-4" /> },
+        { id: "otherSecurities", label: t('formECalculator.assets.otherSecurities'), value: 0, icon: <TrendingUp className="w-4 h-4" /> },
       ]
     },
     {
       id: "G",
-      title: "G. Life Insurance & Endowment Policies (2.8)",
+      title: t('formECalculator.sections.G'),
       isExpanded: true,
       items: [
-        { id: "lifeInsurance1", label: "Life Insurance Policy 1 (Surrender Value)", value: 0, icon: <Shield className="w-4 h-4" /> },
-        { id: "lifeInsurance2", label: "Life Insurance Policy 2 (Surrender Value)", value: 0, icon: <Shield className="w-4 h-4" /> },
-        { id: "endowment", label: "Endowment Policies (Surrender Value)", value: 0, icon: <Shield className="w-4 h-4" /> },
+        { id: "lifeInsurance1", label: t('formECalculator.assets.lifeInsurance1'), value: 0, icon: <Shield className="w-4 h-4" /> },
+        { id: "lifeInsurance2", label: t('formECalculator.assets.lifeInsurance2'), value: 0, icon: <Shield className="w-4 h-4" /> },
+        { id: "endowment", label: t('formECalculator.assets.endowment'), value: 0, icon: <Shield className="w-4 h-4" /> },
       ]
     },
     {
       id: "H",
-      title: "H. Debts Owed to You (2.9)",
+      title: t('formECalculator.sections.H'),
       isExpanded: true,
       items: [
-        { id: "debtsOwed1", label: "Debt Owed to You 1", value: 0, icon: <Banknote className="w-4 h-4" /> },
-        { id: "debtsOwed2", label: "Debt Owed to You 2", value: 0, icon: <Banknote className="w-4 h-4" /> },
+        { id: "debtsOwed1", label: t('formECalculator.assets.debtsOwed1'), value: 0, icon: <Banknote className="w-4 h-4" /> },
+        { id: "debtsOwed2", label: t('formECalculator.assets.debtsOwed2'), value: 0, icon: <Banknote className="w-4 h-4" /> },
       ]
     },
     {
       id: "I",
-      title: "I. Valuable Personal Items (2.10)",
+      title: t('formECalculator.sections.I'),
       isExpanded: true,
       items: [
-        { id: "vehicles", label: "Motor Vehicles", value: 0, icon: <Car className="w-4 h-4" /> },
-        { id: "jewellery", label: "Jewellery", value: 0, icon: <Gem className="w-4 h-4" /> },
-        { id: "boats", label: "Boats", value: 0, icon: <MoreHorizontal className="w-4 h-4" /> },
-        { id: "otherValuables", label: "Other Valuable Items", value: 0, icon: <MoreHorizontal className="w-4 h-4" /> },
+        { id: "vehicles", label: t('formECalculator.assets.vehicles'), value: 0, icon: <Car className="w-4 h-4" /> },
+        { id: "jewellery", label: t('formECalculator.assets.jewellery'), value: 0, icon: <Gem className="w-4 h-4" /> },
+        { id: "boats", label: t('formECalculator.assets.boats'), value: 0, icon: <MoreHorizontal className="w-4 h-4" /> },
+        { id: "otherValuables", label: t('formECalculator.assets.otherValuables'), value: 0, icon: <MoreHorizontal className="w-4 h-4" /> },
       ]
     },
     {
       id: "J",
-      title: "J. Other Assets (2.11)",
+      title: t('formECalculator.sections.J'),
       isExpanded: true,
       items: [
-        { id: "shareOptions", label: "Share Option Scheme", value: 0, icon: <TrendingUp className="w-4 h-4" /> },
-        { id: "trustInterests", label: "Trust Interests", value: 0, icon: <FileText className="w-4 h-4" /> },
-        { id: "expectedInheritance", label: "Expected Inheritance", value: 0, icon: <Banknote className="w-4 h-4" /> },
-        { id: "otherAssets", label: "Other Assets", value: 0, icon: <MoreHorizontal className="w-4 h-4" /> },
+        { id: "shareOptions", label: t('formECalculator.assets.shareOptions'), value: 0, icon: <TrendingUp className="w-4 h-4" /> },
+        { id: "trustInterests", label: t('formECalculator.assets.trustInterests'), value: 0, icon: <FileText className="w-4 h-4" /> },
+        { id: "expectedInheritance", label: t('formECalculator.assets.expectedInheritance'), value: 0, icon: <Banknote className="w-4 h-4" /> },
+        { id: "otherAssets", label: t('formECalculator.assets.otherAssets'), value: 0, icon: <MoreHorizontal className="w-4 h-4" /> },
       ]
     },
     {
       id: "K",
-      title: "K. Pensions / MPF / Gratuity (2.12)",
+      title: t('formECalculator.sections.K'),
       isExpanded: true,
       items: [
-        { id: "mpf", label: "Mandatory Provident Fund (MPF)", value: 0, icon: <Briefcase className="w-4 h-4" /> },
-        { id: "orso", label: "ORSO / Superannuation Scheme", value: 0, icon: <Briefcase className="w-4 h-4" /> },
-        { id: "pension", label: "Pension Scheme", value: 0, icon: <Briefcase className="w-4 h-4" /> },
-        { id: "gratuity", label: "Contract Gratuity", value: 0, icon: <Banknote className="w-4 h-4" /> },
+        { id: "mpf", label: t('formECalculator.assets.mpf'), value: 0, icon: <Briefcase className="w-4 h-4" /> },
+        { id: "orso", label: t('formECalculator.assets.orso'), value: 0, icon: <Briefcase className="w-4 h-4" /> },
+        { id: "pension", label: t('formECalculator.assets.pension'), value: 0, icon: <Briefcase className="w-4 h-4" /> },
+        { id: "gratuity", label: t('formECalculator.assets.gratuity'), value: 0, icon: <Banknote className="w-4 h-4" /> },
       ]
     },
   ]);
@@ -196,15 +198,15 @@ const FormECalculator = () => {
   const [liabilitySections, setLiabilitySections] = useState<Section[]>([
     {
       id: "L",
-      title: "L. All Liabilities (2.13)",
+      title: t('formECalculator.sections.L'),
       isExpanded: true,
       items: [
-        { id: "mortgages", label: "Mortgages (not already deducted from property values)", value: 0, icon: <Home className="w-4 h-4" /> },
-        { id: "bankLoans", label: "Bank Loans", value: 0, icon: <CreditCard className="w-4 h-4" /> },
-        { id: "creditCards", label: "Credit Card Balances", value: 0, icon: <CreditCard className="w-4 h-4" /> },
-        { id: "hirePurchase", label: "Lease-to-Own / Rent-to-Own / Deferred Payment Plan", value: 0, icon: <Car className="w-4 h-4" /> },
-        { id: "taxOwed", label: "Tax Owed", value: 0, icon: <Receipt className="w-4 h-4" /> },
-        { id: "otherLiabilities", label: "Other Liabilities", value: 0, icon: <Minus className="w-4 h-4" /> },
+        { id: "mortgages", label: t('formECalculator.liabilities.mortgages'), value: 0, icon: <Home className="w-4 h-4" /> },
+        { id: "bankLoans", label: t('formECalculator.liabilities.bankLoans'), value: 0, icon: <CreditCard className="w-4 h-4" /> },
+        { id: "creditCards", label: t('formECalculator.liabilities.creditCards'), value: 0, icon: <CreditCard className="w-4 h-4" /> },
+        { id: "hirePurchase", label: t('formECalculator.liabilities.hirePurchase'), value: 0, icon: <Car className="w-4 h-4" /> },
+        { id: "taxOwed", label: t('formECalculator.liabilities.taxOwed'), value: 0, icon: <Receipt className="w-4 h-4" /> },
+        { id: "otherLiabilities", label: t('formECalculator.liabilities.otherLiabilities'), value: 0, icon: <Minus className="w-4 h-4" /> },
       ]
     },
   ]);
@@ -213,61 +215,61 @@ const FormECalculator = () => {
   const [expenseSections, setExpenseSections] = useState<Section[]>([
     {
       id: "4.1",
-      title: "4.1 General / Household Expenses",
+      title: t('formECalculator.sections.4.1'),
       isExpanded: true,
       items: [
-        { id: "rent", label: "Rent", value: 0, icon: <Home className="w-4 h-4" /> },
-        { id: "mortgage", label: "Mortgage Instalments", value: 0, icon: <Home className="w-4 h-4" /> },
-        { id: "utilities", label: "Utilities (electricity, gas, rates, telephone, water)", value: 0, icon: <Zap className="w-4 h-4" /> },
-        { id: "managementFees", label: "Management Fees", value: 0, icon: <Building className="w-4 h-4" /> },
-        { id: "food", label: "Food", value: 0, icon: <ShoppingCart className="w-4 h-4" /> },
-        { id: "household", label: "Household Expenses", value: 0, icon: <Home className="w-4 h-4" /> },
-        { id: "carExpenses", label: "Car Expenses", value: 0, icon: <Car className="w-4 h-4" /> },
-        { id: "insuranceGeneral", label: "Insurance Premia", value: 0, icon: <Shield className="w-4 h-4" /> },
-        { id: "domesticHelper", label: "Domestic Helper(s)", value: 0, icon: <Users className="w-4 h-4" /> },
-        { id: "otherGeneral", label: "Other", value: 0, icon: <MoreHorizontal className="w-4 h-4" /> },
+        { id: "rent", label: t('formECalculator.expenses.rent'), value: 0, icon: <Home className="w-4 h-4" /> },
+        { id: "mortgage", label: t('formECalculator.expenses.mortgage'), value: 0, icon: <Home className="w-4 h-4" /> },
+        { id: "utilities", label: t('formECalculator.expenses.utilities'), value: 0, icon: <Zap className="w-4 h-4" /> },
+        { id: "managementFees", label: t('formECalculator.expenses.managementFees'), value: 0, icon: <Building className="w-4 h-4" /> },
+        { id: "food", label: t('formECalculator.expenses.food'), value: 0, icon: <ShoppingCart className="w-4 h-4" /> },
+        { id: "household", label: t('formECalculator.expenses.household'), value: 0, icon: <Home className="w-4 h-4" /> },
+        { id: "carExpenses", label: t('formECalculator.expenses.carExpenses'), value: 0, icon: <Car className="w-4 h-4" /> },
+        { id: "insuranceGeneral", label: t('formECalculator.expenses.insuranceGeneral'), value: 0, icon: <Shield className="w-4 h-4" /> },
+        { id: "domesticHelper", label: t('formECalculator.expenses.domesticHelper'), value: 0, icon: <Users className="w-4 h-4" /> },
+        { id: "otherGeneral", label: t('formECalculator.expenses.otherGeneral'), value: 0, icon: <MoreHorizontal className="w-4 h-4" /> },
       ]
     },
     {
       id: "4.2",
-      title: "4.2 Personal Expenses",
+      title: t('formECalculator.sections.4.2'),
       isExpanded: true,
       items: [
-        { id: "mealsOut", label: "Meals Out of Home", value: 0, icon: <ShoppingCart className="w-4 h-4" /> },
-        { id: "transport", label: "Transport", value: 0, icon: <Car className="w-4 h-4" /> },
-        { id: "clothing", label: "Clothing / Shoes", value: 0, icon: <ShoppingCart className="w-4 h-4" /> },
-        { id: "grooming", label: "Personal Grooming (haircut, cosmetics)", value: 0, icon: <Heart className="w-4 h-4" /> },
-        { id: "entertainment", label: "Entertainment / Presents", value: 0, icon: <Heart className="w-4 h-4" /> },
-        { id: "holiday", label: "Holiday", value: 0, icon: <Plane className="w-4 h-4" /> },
-        { id: "medical", label: "Medical / Dental", value: 0, icon: <Heart className="w-4 h-4" /> },
-        { id: "tax", label: "Tax", value: 0, icon: <Receipt className="w-4 h-4" /> },
-        { id: "insurancePersonal", label: "Insurance Premia", value: 0, icon: <Shield className="w-4 h-4" /> },
-        { id: "interimMaintenance", label: "Interim Maintenance", value: 0, icon: <Banknote className="w-4 h-4" /> },
-        { id: "contributionParents", label: "Contribution to Parents", value: 0, icon: <Users className="w-4 h-4" /> },
-        { id: "dependentFamily", label: "Dependent Family Members", value: 0, icon: <Users className="w-4 h-4" /> },
-        { id: "otherPersonal", label: "Others", value: 0, icon: <MoreHorizontal className="w-4 h-4" /> },
+        { id: "mealsOut", label: t('formECalculator.expenses.mealsOut'), value: 0, icon: <ShoppingCart className="w-4 h-4" /> },
+        { id: "transport", label: t('formECalculator.expenses.transport'), value: 0, icon: <Car className="w-4 h-4" /> },
+        { id: "clothing", label: t('formECalculator.expenses.clothing'), value: 0, icon: <ShoppingCart className="w-4 h-4" /> },
+        { id: "grooming", label: t('formECalculator.expenses.grooming'), value: 0, icon: <Heart className="w-4 h-4" /> },
+        { id: "entertainment", label: t('formECalculator.expenses.entertainment'), value: 0, icon: <Heart className="w-4 h-4" /> },
+        { id: "holiday", label: t('formECalculator.expenses.holiday'), value: 0, icon: <Plane className="w-4 h-4" /> },
+        { id: "medical", label: t('formECalculator.expenses.medical'), value: 0, icon: <Heart className="w-4 h-4" /> },
+        { id: "tax", label: t('formECalculator.expenses.tax'), value: 0, icon: <Receipt className="w-4 h-4" /> },
+        { id: "insurancePersonal", label: t('formECalculator.expenses.insurancePersonal'), value: 0, icon: <Shield className="w-4 h-4" /> },
+        { id: "interimMaintenance", label: t('formECalculator.expenses.interimMaintenance'), value: 0, icon: <Banknote className="w-4 h-4" /> },
+        { id: "contributionParents", label: t('formECalculator.expenses.contributionParents'), value: 0, icon: <Users className="w-4 h-4" /> },
+        { id: "dependentFamily", label: t('formECalculator.expenses.dependentFamily'), value: 0, icon: <Users className="w-4 h-4" /> },
+        { id: "otherPersonal", label: t('formECalculator.expenses.otherPersonal'), value: 0, icon: <MoreHorizontal className="w-4 h-4" /> },
       ]
     },
     {
       id: "4.3",
-      title: "4.3 Children's Expenses",
+      title: t('formECalculator.sections.4.3'),
       isExpanded: true,
       items: [
-        { id: "schoolFees", label: "School Fees", value: 0, icon: <GraduationCap className="w-4 h-4" /> },
-        { id: "extraTuition", label: "Extra Tuition Fees", value: 0, icon: <GraduationCap className="w-4 h-4" /> },
-        { id: "booksStationery", label: "School Books and Stationery", value: 0, icon: <FileText className="w-4 h-4" /> },
-        { id: "schoolTransport", label: "Transport to School (incl. school bus)", value: 0, icon: <Car className="w-4 h-4" /> },
-        { id: "childMedical", label: "Medical / Dental", value: 0, icon: <Heart className="w-4 h-4" /> },
-        { id: "extraCurricular", label: "Extra Curricular Activities", value: 0, icon: <Users className="w-4 h-4" /> },
-        { id: "childEntertainment", label: "Entertainment / Presents", value: 0, icon: <Heart className="w-4 h-4" /> },
-        { id: "childHolidays", label: "Holidays", value: 0, icon: <Plane className="w-4 h-4" /> },
-        { id: "childClothing", label: "Clothing / Shoes", value: 0, icon: <ShoppingCart className="w-4 h-4" /> },
-        { id: "childInsurance", label: "Insurance Premia", value: 0, icon: <Shield className="w-4 h-4" /> },
-        { id: "lunchPocket", label: "Lunches and Pocket Money", value: 0, icon: <Banknote className="w-4 h-4" /> },
-        { id: "childTransport", label: "Other Transport", value: 0, icon: <Car className="w-4 h-4" /> },
-        { id: "childMinding", label: "Child-minding Fees", value: 0, icon: <Users className="w-4 h-4" /> },
-        { id: "uniform", label: "Uniform", value: 0, icon: <ShoppingCart className="w-4 h-4" /> },
-        { id: "otherChildren", label: "Others", value: 0, icon: <MoreHorizontal className="w-4 h-4" /> },
+        { id: "schoolFees", label: t('formECalculator.expenses.schoolFees'), value: 0, icon: <GraduationCap className="w-4 h-4" /> },
+        { id: "extraTuition", label: t('formECalculator.expenses.extraTuition'), value: 0, icon: <GraduationCap className="w-4 h-4" /> },
+        { id: "booksStationery", label: t('formECalculator.expenses.booksStationery'), value: 0, icon: <FileText className="w-4 h-4" /> },
+        { id: "schoolTransport", label: t('formECalculator.expenses.schoolTransport'), value: 0, icon: <Car className="w-4 h-4" /> },
+        { id: "childMedical", label: t('formECalculator.expenses.childMedical'), value: 0, icon: <Heart className="w-4 h-4" /> },
+        { id: "extraCurricular", label: t('formECalculator.expenses.extraCurricular'), value: 0, icon: <Users className="w-4 h-4" /> },
+        { id: "childEntertainment", label: t('formECalculator.expenses.childEntertainment'), value: 0, icon: <Heart className="w-4 h-4" /> },
+        { id: "childHolidays", label: t('formECalculator.expenses.childHolidays'), value: 0, icon: <Plane className="w-4 h-4" /> },
+        { id: "childClothing", label: t('formECalculator.expenses.childClothing'), value: 0, icon: <ShoppingCart className="w-4 h-4" /> },
+        { id: "childInsurance", label: t('formECalculator.expenses.childInsurance'), value: 0, icon: <Shield className="w-4 h-4" /> },
+        { id: "lunchPocket", label: t('formECalculator.expenses.lunchPocket'), value: 0, icon: <Banknote className="w-4 h-4" /> },
+        { id: "childTransport", label: t('formECalculator.expenses.childTransport'), value: 0, icon: <Car className="w-4 h-4" /> },
+        { id: "childMinding", label: t('formECalculator.expenses.childMinding'), value: 0, icon: <Users className="w-4 h-4" /> },
+        { id: "uniform", label: t('formECalculator.expenses.uniform'), value: 0, icon: <ShoppingCart className="w-4 h-4" /> },
+        { id: "otherChildren", label: t('formECalculator.expenses.otherChildren'), value: 0, icon: <MoreHorizontal className="w-4 h-4" /> },
       ]
     },
   ]);
@@ -465,7 +467,7 @@ const FormECalculator = () => {
                   <button
                     onClick={() => setShowTaxCalculator(true)}
                     className="mr-2 p-1.5 bg-primary/10 hover:bg-primary/20 rounded text-primary transition-colors"
-                    title="Open HK Tax Calculator"
+                    title={t('formECalculator.openTaxCalculator')}
                   >
                     <Calculator className="w-4 h-4" />
                   </button>
@@ -497,10 +499,10 @@ const FormECalculator = () => {
         <div>
           <h3 className="text-xl font-semibold flex items-center gap-2">
             <Calculator className="w-5 h-5 text-primary" />
-            Form E Calculator
+            {t('formECalculator.title')}
           </h3>
           <p className="text-sm text-muted-foreground mt-1">
-            Financial Statement for Divorce Proceedings (Hong Kong)
+            {t('formECalculator.subtitle')}
           </p>
         </div>
         <div className="flex gap-2 print:hidden">
@@ -510,9 +512,9 @@ const FormECalculator = () => {
               size="sm" 
               onClick={() => {
                 if (!hasFeedbackCompleted) {
-                  toast.info("Please complete the feedback form before exporting", {
+                  toast.info(t('formECalculator.feedbackRequired'), {
                     action: {
-                      label: "Give Feedback",
+                      label: t('formECalculator.giveFeedback'),
                       onClick: () => navigate("/form-e-feedback")
                     }
                   });
@@ -523,7 +525,7 @@ const FormECalculator = () => {
               className="flex items-center gap-2"
             >
               <Download className="w-4 h-4" />
-              Export
+              {t('formECalculator.export')}
               <ChevronDown className="w-3 h-3" />
             </Button>
             {showExportDropdown && hasFeedbackCompleted && (
@@ -533,14 +535,14 @@ const FormECalculator = () => {
                   className="w-full flex items-center gap-2 px-4 py-2 text-sm hover:bg-secondary/50 transition-colors rounded-t-lg"
                 >
                   <Download className="w-4 h-4" />
-                  Export to CSV
+                  {t('formECalculator.exportCSV')}
                 </button>
                 <button
                   onClick={handleCopyToClipboard}
                   className="w-full flex items-center gap-2 px-4 py-2 text-sm hover:bg-secondary/50 transition-colors rounded-b-lg"
                 >
                   <Copy className="w-4 h-4" />
-                  Copy to Clipboard
+                  {t('formECalculator.copyClipboard')}
                 </button>
               </div>
             )}
@@ -550,9 +552,9 @@ const FormECalculator = () => {
             size="sm" 
             onClick={() => {
               if (!hasFeedbackCompleted) {
-                toast.info("Please complete the feedback form before printing", {
+                toast.info(t('formECalculator.feedbackRequired'), {
                   action: {
-                    label: "Give Feedback",
+                    label: t('formECalculator.giveFeedback'),
                     onClick: () => navigate("/form-e-feedback")
                   }
                 });
@@ -563,7 +565,7 @@ const FormECalculator = () => {
             className="flex items-center gap-2"
           >
             <Printer className="w-4 h-4" />
-            Print
+            {t('formECalculator.print')}
           </Button>
           <Button 
             variant={hasFeedbackCompleted ? "default" : "outline"}
@@ -576,7 +578,7 @@ const FormECalculator = () => {
             ) : (
               <MessageSquare className="w-4 h-4" />
             )}
-            {hasFeedbackCompleted ? "Feedback Submitted" : "Feedback"}
+            {hasFeedbackCompleted ? t('formECalculator.feedbackSubmitted') : t('formECalculator.feedback')}
           </Button>
           <Button 
             variant="outline" 
@@ -585,7 +587,7 @@ const FormECalculator = () => {
             className="flex items-center gap-2"
           >
             <RotateCcw className="w-4 h-4" />
-            Reset All
+            {t('formECalculator.resetAll')}
           </Button>
         </div>
       </div>
@@ -596,7 +598,7 @@ const FormECalculator = () => {
           <div className="flex items-center justify-between mb-3 sticky top-0 bg-card py-2 z-10">
             <div className="flex items-center gap-2">
               <Plus className="w-5 h-5 text-green-600" />
-              <h4 className="font-semibold">Part 2: Assets (Sections A-K)</h4>
+              <h4 className="font-semibold">{t('formECalculator.part2Assets')}</h4>
             </div>
           </div>
           <div className="space-y-2">
@@ -608,15 +610,15 @@ const FormECalculator = () => {
           {/* Assets Summary */}
           <div className="mt-4 space-y-2 p-3 bg-green-50 dark:bg-green-950/20 rounded-lg border border-green-200 dark:border-green-900">
             <div className="flex justify-between text-sm">
-              <span>Sub-total (A-J)</span>
+              <span>{t('formECalculator.subTotalAJ')}</span>
               <span className="font-medium text-green-600">{formatCurrency(subTotalAtoJ)}</span>
             </div>
             <div className="flex justify-between text-sm">
-              <span>K. Pensions/MPF</span>
+              <span>{t('formECalculator.pensionsMPF')}</span>
               <span className="font-medium text-green-600">{formatCurrency(pensionsTotal)}</span>
             </div>
             <div className="flex justify-between font-semibold border-t border-green-300 dark:border-green-800 pt-2">
-              <span>TOTAL ASSETS</span>
+              <span>{t('formECalculator.totalAssets')}</span>
               <span className="text-green-600 text-lg">{formatCurrency(totalAssets)}</span>
             </div>
           </div>
@@ -627,7 +629,7 @@ const FormECalculator = () => {
           <div className="flex items-center justify-between mb-3 sticky top-0 bg-card py-2 z-10">
             <div className="flex items-center gap-2">
               <Minus className="w-5 h-5 text-red-600" />
-              <h4 className="font-semibold">Part 2: Liabilities (Section L)</h4>
+              <h4 className="font-semibold">{t('formECalculator.part2Liabilities')}</h4>
             </div>
             <span className="text-red-600 font-bold text-lg">
               {formatCurrency(totalLiabilities)}
@@ -648,7 +650,7 @@ const FormECalculator = () => {
             : "bg-red-50 border-red-200 dark:bg-red-950/20 dark:border-red-900"
         )}>
           <div className="flex items-center justify-between">
-            <span className="font-semibold">NET VALUE (Assets - Liabilities)</span>
+            <span className="font-semibold">{t('formECalculator.netValue')}</span>
             <span className={cn(
               "text-xl font-bold",
               netWorth >= 0 ? "text-green-600" : "text-red-600"
@@ -663,7 +665,7 @@ const FormECalculator = () => {
           <div className="flex items-center justify-between mb-3 sticky top-0 bg-card py-2 z-10">
             <div className="flex items-center gap-2">
               <Receipt className="w-5 h-5 text-amber-600" />
-              <h4 className="font-semibold">Part 4: Current Monthly Expenses</h4>
+              <h4 className="font-semibold">{t('formECalculator.part4Expenses')}</h4>
             </div>
           </div>
           <div className="space-y-2">
@@ -675,19 +677,19 @@ const FormECalculator = () => {
           {/* Expenses Summary */}
           <div className="mt-4 space-y-2 p-3 bg-amber-50 dark:bg-amber-950/20 rounded-lg border border-amber-200 dark:border-amber-900">
             <div className="flex justify-between text-sm">
-              <span>4.1 Total Monthly Household Expenses</span>
+              <span>{t('formECalculator.totalHouseholdExpenses')}</span>
               <span className="font-medium text-amber-600">{formatCurrency(householdExpenses)}</span>
             </div>
             <div className="flex justify-between text-sm">
-              <span>4.2 Total Monthly Personal Expenses</span>
+              <span>{t('formECalculator.totalPersonalExpenses')}</span>
               <span className="font-medium text-amber-600">{formatCurrency(personalExpenses)}</span>
             </div>
             <div className="flex justify-between text-sm">
-              <span>4.3 Total Monthly Expenses for Children</span>
+              <span>{t('formECalculator.totalChildrenExpenses')}</span>
               <span className="font-medium text-amber-600">{formatCurrency(childrenExpenses)}</span>
             </div>
             <div className="flex justify-between font-semibold border-t border-amber-300 dark:border-amber-800 pt-2">
-              <span>TOTAL MONTHLY EXPENSES</span>
+              <span>{t('formECalculator.totalMonthlyExpenses')}</span>
               <span className="text-amber-600 text-lg">{formatCurrency(totalMonthlyExpenses)}</span>
             </div>
           </div>
@@ -696,7 +698,7 @@ const FormECalculator = () => {
 
       <div className="mt-4 p-4 bg-primary/5 rounded-xl border border-primary/10 flex-shrink-0">
         <p className="text-sm text-muted-foreground">
-          <strong className="text-foreground">Disclaimer:</strong> This Form E Calculator is for guidance purposes only and is not a "Court ready" form for filing. The actual Form E requires complete financial disclosure with supporting documents.
+          <strong className="text-foreground">{t('formECalculator.disclaimer')}</strong> {t('formECalculator.disclaimerText')}
         </p>
       </div>
 
