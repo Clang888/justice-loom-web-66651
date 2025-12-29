@@ -25,12 +25,7 @@ const divorceCategories: CategoryItem[] = [
   {
     id: "joint-applications",
     titleKey: "divorceForms.jointApplications",
-    forms: [
-      {
-        id: "form-2c",
-        nameKey: "divorceForms.form2c",
-      },
-    ],
+    forms: [],
   },
   {
     id: "main-cause",
@@ -39,6 +34,10 @@ const divorceCategories: CategoryItem[] = [
       {
         id: "form-2",
         nameKey: "divorceForms.form2",
+      },
+      {
+        id: "form-2c",
+        nameKey: "divorceForms.form2cOneYear",
       },
       {
         id: "form-2-separation",
