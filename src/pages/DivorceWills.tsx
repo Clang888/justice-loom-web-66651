@@ -69,7 +69,7 @@ const DivorceWills = () => {
     <section className="py-16 bg-secondary">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
         <p className="text-sm text-muted-foreground max-w-2xl mx-auto mb-8">
-          The fillable forms editor only stores text only in the browser memory. Nothing is saved to a database or server. Once downloaded, the data exists only in the PNG files on the user's device.
+          {t('services.formsPrivacyNotice')}
         </p>
 
         <div className="flex flex-col md:flex-row justify-center gap-6">
