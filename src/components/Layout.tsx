@@ -89,7 +89,7 @@ const Layout = ({ children }: LayoutProps) => {
           
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center justify-center gap-6 text-sm flex-1">
-            <Link to="/services" className="hover:text-foreground text-center">{t('nav.divorceWills').split(' & ').join('\n& ').split('\n').map((line, i) => <span key={i}>{i > 0 && <br />}{line}</span>)}</Link>
+            <Link to="/divorce-wills" className="hover:text-foreground text-center">{t('nav.divorceWills').split(' & ').join('\n& ').split('\n').map((line, i) => <span key={i}>{i > 0 && <br />}{line}</span>)}</Link>
             <Link to="/egg-freezing-surrogacy" className="hover:text-foreground text-center">{t('nav.surrogacyEggFreezing').split(' & ').join('\n& ').split('\n').map((line, i) => <span key={i}>{i > 0 && <br />}{line}</span>)}</Link>
             
             <Link to="/books" className="hover:text-foreground text-center">{t('nav.booksPublicSpeaking').split(' & ').join('\n& ').split('\n').map((line, i) => <span key={i}>{i > 0 && <br />}{line}</span>)}</Link>
@@ -133,7 +133,7 @@ const Layout = ({ children }: LayoutProps) => {
         {mobileMenuOpen && (
           <div className="md:hidden bg-card border-t border-border">
             <div className="px-4 py-4 space-y-3">
-              <Link to="/services" onClick={closeMobileMenu} className="block py-2 hover:text-primary">
+              <Link to="/divorce-wills" onClick={closeMobileMenu} className="block py-2 hover:text-primary">
                 {t('nav.divorceWills')}
               </Link>
               <Link to="/egg-freezing-surrogacy" onClick={closeMobileMenu} className="block py-2 hover:text-primary">
@@ -215,7 +215,7 @@ const Layout = ({ children }: LayoutProps) => {
             <div>
               <h4 className="font-semibold mb-3 text-sm">{t('footer.resources')}</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><Link to="/services" className="hover:underline">{t('nav.divorceWills')}</Link></li>
+                <li><Link to="/divorce-wills" className="hover:underline">{t('nav.divorceWills')}</Link></li>
                 <li><Link to="/egg-freezing-surrogacy" className="hover:underline">{t('nav.surrogacyEggFreezing')}</Link></li>
                 <li><Link to="/books" className="hover:underline">{t('nav.booksPublicSpeaking')}</Link></li>
                 <li><Link to="/testimonials" className="hover:underline">{t('nav.testimonials')}</Link></li>
