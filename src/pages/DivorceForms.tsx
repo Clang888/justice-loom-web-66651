@@ -36,6 +36,10 @@ const divorceCategories: CategoryItem[] = [
         id: "form-2-separation",
         nameKey: "divorceForms.form2Separation",
       },
+      {
+        id: "form-adultery",
+        nameKey: "divorceForms.formAdultery",
+      },
     ],
   },
   {
@@ -71,6 +75,8 @@ const DivorceForms = () => {
       setShowForm2SeparationEditor(true);
     } else if (formId === "form-e") {
       setShowFormEEditor(true);
+    } else if (formId === "form-adultery") {
+      window.open("/forms/form-adultery.pdf", "_blank");
     }
   };
 
