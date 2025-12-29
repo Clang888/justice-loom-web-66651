@@ -31,16 +31,22 @@ const divorceCategories: CategoryItem[] = [
         nameKey: "divorceForms.form2",
       },
       {
-        id: "form-2c",
-        nameKey: "divorceForms.form2c",
-      },
-      {
         id: "form-2-separation",
         nameKey: "divorceForms.form2Separation",
       },
       {
         id: "form-adultery",
         nameKey: "divorceForms.formAdultery",
+      },
+    ],
+  },
+  {
+    id: "joint-applications",
+    titleKey: "divorceForms.jointApplications",
+    forms: [
+      {
+        id: "form-2c",
+        nameKey: "divorceForms.form2c",
       },
     ],
   },
