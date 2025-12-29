@@ -69,7 +69,8 @@
     "cancel": "Cancel",
     "getAccess": "Get Access",
     "submitting": "Submitting...",
-    "privacyNote": "We respect your privacy. Your email will only be used for beta updates."
+    "privacyNote": "We respect your privacy. Your email will only be used for beta updates.",
+    "formsPrivacyNotice": "The fillable forms editor only stores text in the browser memory. Nothing is saved to a database or server. Once downloaded, the data exists only in the PNG files on the user's device."
   },
   "divorceForms": {
     "title": "Fillable Divorce Forms",
