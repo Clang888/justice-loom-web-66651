@@ -25,7 +25,12 @@ const divorceCategories: CategoryItem[] = [
   {
     id: "joint-applications",
     titleKey: "divorceForms.jointApplications",
-    forms: [],
+    forms: [
+      {
+        id: "form-2c-joint",
+        nameKey: "divorceForms.form2cJoint",
+      },
+    ],
   },
   {
     id: "main-cause",
@@ -77,7 +82,7 @@ const DivorceForms = () => {
   const handleFormClick = (formId: string) => {
     if (formId === "form-2") {
       setShowForm2Editor(true);
-    } else if (formId === "form-2c") {
+    } else if (formId === "form-2c" || formId === "form-2c-joint") {
       setShowForm2CEditor(true);
     } else if (formId === "form-2-separation") {
       setShowForm2SeparationEditor(true);
