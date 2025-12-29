@@ -75,6 +75,7 @@
   "divorceForms": {
     "title": "可填寫離婚表格",
     "description": "選擇類別以查看可用表格。點擊任何表格即可在線上填寫。",
+    "popupNote": "注意：部分表格會以PDF格式在新分頁中開啟。如表格無法開啟，請檢查瀏覽器的彈出式視窗攔截設定。",
     "backButton": "返回離婚及遺囑",
     "comingSoon": "表格即將推出...",
     "mainCause": "離婚（主要理由）",
