@@ -10,7 +10,7 @@ import Mission from "./pages/Mission";
 import About from "./pages/About";
 import DivorceWills from "./pages/DivorceWills";
 import DivorceForms from "./pages/DivorceForms";
-import Books from "./pages/Books";
+import BooksPublicSpeaking from "./pages/BooksPublicSpeaking";
 import Speaking from "./pages/Speaking";
 import SpeakingEnquiry from "./pages/SpeakingEnquiry";
 import Testimonials from "./pages/Testimonials";
@@ -48,7 +48,7 @@ const App = () => (
               <Route path="/about" element={<About />} />
               <Route path="/divorce-wills" element={<DivorceWills />} />
               <Route path="/divorce-forms" element={<DivorceForms />} />
-              <Route path="/books" element={<Books />} />
+              <Route path="/books-public-speaking" element={<BooksPublicSpeaking />} />
               <Route path="/speaking" element={<Speaking />} />
               <Route path="/speaking-enquiry" element={<SpeakingEnquiry />} />
               <Route path="/testimonials" element={<Testimonials />} />
