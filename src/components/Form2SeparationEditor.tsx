@@ -16,8 +16,8 @@ interface Form2SeparationEditorProps {
 const FIXED_WIDTH = 800;
 const FIXED_HEIGHT = 1100;
 
-// Google Drive PDF - converted to direct download URL
-const PDF_URL = "https://drive.google.com/uc?export=download&id=1Dtc_RJMtb3UU9iS4eQgwMNH_tsBQWIzA";
+// Local PDF file
+const PDF_URL = "/forms/form-2-separation.pdf";
 
 const Form2SeparationEditor = ({ onClose }: Form2SeparationEditorProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
