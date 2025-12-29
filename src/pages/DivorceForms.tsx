@@ -76,7 +76,14 @@ const DivorceForms = () => {
     } else if (formId === "form-e") {
       setShowFormEEditor(true);
     } else if (formId === "form-adultery") {
-      window.open("/forms/form-adultery.pdf", "_blank");
+      // Use anchor tag download approach instead of window.open
+      const link = document.createElement('a');
+      link.href = "/forms/form-adultery.pdf";
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
     }
   };
 
