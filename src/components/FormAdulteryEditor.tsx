@@ -16,8 +16,8 @@ interface FormAdulteryEditorProps {
 const FIXED_WIDTH = 800;
 const FIXED_HEIGHT = 1100;
 
-// Local PDF file - Adultery petition form
-const PDF_URL = "/forms/form-adultery.pdf";
+// Local PDF file - Adultery petition form (English)
+const PDF_URL = "/forms/form-adultery-en.pdf";
 
 const FormAdulteryEditor = ({ onClose }: FormAdulteryEditorProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
