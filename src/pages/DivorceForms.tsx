@@ -7,6 +7,8 @@ import Form2Editor from "@/components/Form2Editor";
 import Form2CEditor from "@/components/Form2CEditor";
 import Form2SeparationEditor from "@/components/Form2SeparationEditor";
 import FormEEditor from "@/components/FormEEditor";
+import FormAdulteryEditor from "@/components/FormAdulteryEditor";
+
 interface FormItem {
   id: string;
   nameKey: string;
@@ -65,6 +67,7 @@ const DivorceForms = () => {
   const [showForm2CEditor, setShowForm2CEditor] = useState(false);
   const [showForm2SeparationEditor, setShowForm2SeparationEditor] = useState(false);
   const [showFormEEditor, setShowFormEEditor] = useState(false);
+  const [showFormAdulteryEditor, setShowFormAdulteryEditor] = useState(false);
 
   const handleFormClick = (formId: string) => {
     if (formId === "form-2") {
@@ -76,14 +79,7 @@ const DivorceForms = () => {
     } else if (formId === "form-e") {
       setShowFormEEditor(true);
     } else if (formId === "form-adultery") {
-      // Use anchor tag download approach instead of window.open
-      const link = document.createElement('a');
-      link.href = "/forms/form-adultery.pdf";
-      link.target = "_blank";
-      link.rel = "noopener noreferrer";
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
+      setShowFormAdulteryEditor(true);
     }
   };
 
@@ -118,41 +114,22 @@ const DivorceForms = () => {
               {category.forms.length > 0 ? (
                 <div className="space-y-2">
                   {category.forms.map((form) => (
-                    form.id === "form-adultery" ? (
-                      <a
-                        key={form.id}
-                        href="/forms/form-adultery.pdf"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center justify-start w-full text-left h-auto py-3 px-4 border border-input bg-background hover:bg-accent hover:text-accent-foreground rounded-md"
-                      >
-                        <div>
-                          <div className="text-sm">{t(form.nameKey)}</div>
-                          {form.description && (
-                            <div className="text-xs text-muted-foreground mt-1">
-                              {form.description}
-                            </div>
-                          )}
-                        </div>
-                      </a>
-                    ) : (
-                      <Button
-                        key={form.id}
-                        variant="outline"
-                        size="sm"
-                        className="w-full justify-start text-left h-auto py-3"
-                        onClick={() => handleFormClick(form.id)}
-                      >
-                        <div>
-                          <div className="text-sm">{t(form.nameKey)}</div>
-                          {form.description && (
-                            <div className="text-xs text-muted-foreground mt-1">
-                              {form.description}
-                            </div>
-                          )}
-                        </div>
-                      </Button>
-                    )
+                    <Button
+                      key={form.id}
+                      variant="outline"
+                      size="sm"
+                      className="w-full justify-start text-left h-auto py-3"
+                      onClick={() => handleFormClick(form.id)}
+                    >
+                      <div>
+                        <div className="text-sm">{t(form.nameKey)}</div>
+                        {form.description && (
+                          <div className="text-xs text-muted-foreground mt-1">
+                            {form.description}
+                          </div>
+                        )}
+                      </div>
+                    </Button>
                   ))}
                 </div>
               ) : (
@@ -179,6 +156,10 @@ const DivorceForms = () => {
 
       {showFormEEditor && (
         <FormEEditor onClose={() => setShowFormEEditor(false)} />
+      )}
+
+      {showFormAdulteryEditor && (
+        <FormAdulteryEditor onClose={() => setShowFormAdulteryEditor(false)} />
       )}
     </section>
   );
