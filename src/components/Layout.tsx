@@ -94,7 +94,7 @@ const Layout = ({ children }: LayoutProps) => {
             
             <Link to="/books-public-speaking" className="hover:text-foreground text-center">{t('nav.booksPublicSpeaking').split(' & ').join('\n& ').split('\n').map((line, i) => <span key={i}>{i > 0 && <br />}{line}</span>)}</Link>
             <Link to="/testimonials" className="hover:text-foreground">{t('nav.testimonials')}</Link>
-            <Link to="/surrogacy-faq" className="hover:text-foreground">{t('nav.faqs')}</Link>
+            <Link to="/faq" className="hover:text-foreground">{t('nav.faqs')}</Link>
             <Link to="/community" className="hover:text-foreground">{t('nav.community')}</Link>
             {isAdmin && (
               <Link to="/admin" className="hover:text-foreground flex items-center gap-1">
@@ -145,7 +145,7 @@ const Layout = ({ children }: LayoutProps) => {
               <Link to="/testimonials" onClick={closeMobileMenu} className="block py-2 hover:text-primary">
                 {t('nav.testimonials')}
               </Link>
-              <Link to="/surrogacy-faq" onClick={closeMobileMenu} className="block py-2 hover:text-primary">
+              <Link to="/faq" onClick={closeMobileMenu} className="block py-2 hover:text-primary">
                 {t('nav.faqs')}
               </Link>
               <Link to="/community" onClick={closeMobileMenu} className="block py-2 hover:text-primary">
