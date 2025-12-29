@@ -92,7 +92,7 @@ const Layout = ({ children }: LayoutProps) => {
             <Link to="/divorce-wills" className="hover:text-foreground text-center">{t('nav.divorceWills').split(' & ').join('\n& ').split('\n').map((line, i) => <span key={i}>{i > 0 && <br />}{line}</span>)}</Link>
             <Link to="/egg-freezing-surrogacy" className="hover:text-foreground text-center">{t('nav.surrogacyEggFreezing').split(' & ').join('\n& ').split('\n').map((line, i) => <span key={i}>{i > 0 && <br />}{line}</span>)}</Link>
             
-            <Link to="/books" className="hover:text-foreground text-center">{t('nav.booksPublicSpeaking').split(' & ').join('\n& ').split('\n').map((line, i) => <span key={i}>{i > 0 && <br />}{line}</span>)}</Link>
+            <Link to="/books-public-speaking" className="hover:text-foreground text-center">{t('nav.booksPublicSpeaking').split(' & ').join('\n& ').split('\n').map((line, i) => <span key={i}>{i > 0 && <br />}{line}</span>)}</Link>
             <Link to="/testimonials" className="hover:text-foreground">{t('nav.testimonials')}</Link>
             <Link to="/surrogacy-faq" className="hover:text-foreground">{t('nav.faqs')}</Link>
             <Link to="/community" className="hover:text-foreground">{t('nav.community')}</Link>
@@ -139,7 +139,7 @@ const Layout = ({ children }: LayoutProps) => {
               <Link to="/egg-freezing-surrogacy" onClick={closeMobileMenu} className="block py-2 hover:text-primary">
                 {t('nav.surrogacyEggFreezing')}
               </Link>
-              <Link to="/books" onClick={closeMobileMenu} className="block py-2 hover:text-primary">
+              <Link to="/books-public-speaking" onClick={closeMobileMenu} className="block py-2 hover:text-primary">
                 {t('nav.booksPublicSpeaking')}
               </Link>
               <Link to="/testimonials" onClick={closeMobileMenu} className="block py-2 hover:text-primary">
@@ -209,7 +209,7 @@ const Layout = ({ children }: LayoutProps) => {
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li><Link to="/mission" className="hover:underline">{t('footer.mission')}</Link></li>
                 <li><Link to="/about" className="hover:underline">{t('footer.about')}</Link></li>
-                <li><Link to="/books" className="hover:underline">{t('nav.booksPublicSpeaking')}</Link></li>
+                <li><Link to="/books-public-speaking" className="hover:underline">{t('nav.booksPublicSpeaking')}</Link></li>
               </ul>
             </div>
             <div>
@@ -217,7 +217,7 @@ const Layout = ({ children }: LayoutProps) => {
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li><Link to="/divorce-wills" className="hover:underline">{t('nav.divorceWills')}</Link></li>
                 <li><Link to="/egg-freezing-surrogacy" className="hover:underline">{t('nav.surrogacyEggFreezing')}</Link></li>
-                <li><Link to="/books" className="hover:underline">{t('nav.booksPublicSpeaking')}</Link></li>
+                <li><Link to="/books-public-speaking" className="hover:underline">{t('nav.booksPublicSpeaking')}</Link></li>
                 <li><Link to="/testimonials" className="hover:underline">{t('nav.testimonials')}</Link></li>
               </ul>
             </div>

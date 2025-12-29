@@ -30,7 +30,7 @@ const speakingEngagements = [
   { date: "4 June 2010, Denver, CO", event: "AFCC 47th Annual Conference", topic: "Traversing the Trail of International Alienation" },
 ];
 
-const Books = () => {
+const BooksPublicSpeaking = () => {
   const { t } = useTranslation();
 
   return (
@@ -94,4 +94,4 @@ const Books = () => {
   );
 };
 
-export default Books;
+export default BooksPublicSpeaking;
