@@ -5,8 +5,8 @@ import { Button } from "@/components/ui/button";
 import { useTranslation } from "react-i18next";
 import Form2Editor from "@/components/Form2Editor";
 import Form2CEditor from "@/components/Form2CEditor";
+import Form2SeparationEditor from "@/components/Form2SeparationEditor";
 import FormEEditor from "@/components/FormEEditor";
-
 interface FormItem {
   id: string;
   nameKey: string;
@@ -32,6 +32,10 @@ const divorceCategories: CategoryItem[] = [
         id: "form-2c",
         nameKey: "divorceForms.form2c",
       },
+      {
+        id: "form-2-separation",
+        nameKey: "divorceForms.form2Separation",
+      },
     ],
   },
   {
@@ -55,6 +59,7 @@ const DivorceForms = () => {
   const { t } = useTranslation();
   const [showForm2Editor, setShowForm2Editor] = useState(false);
   const [showForm2CEditor, setShowForm2CEditor] = useState(false);
+  const [showForm2SeparationEditor, setShowForm2SeparationEditor] = useState(false);
   const [showFormEEditor, setShowFormEEditor] = useState(false);
 
   const handleFormClick = (formId: string) => {
@@ -62,6 +67,8 @@ const DivorceForms = () => {
       setShowForm2Editor(true);
     } else if (formId === "form-2c") {
       setShowForm2CEditor(true);
+    } else if (formId === "form-2-separation") {
+      setShowForm2SeparationEditor(true);
     } else if (formId === "form-e") {
       setShowFormEEditor(true);
     }
@@ -129,6 +136,10 @@ const DivorceForms = () => {
 
       {showForm2CEditor && (
         <Form2CEditor onClose={() => setShowForm2CEditor(false)} />
+      )}
+
+      {showForm2SeparationEditor && (
+        <Form2SeparationEditor onClose={() => setShowForm2SeparationEditor(false)} />
       )}
 
       {showFormEEditor && (
