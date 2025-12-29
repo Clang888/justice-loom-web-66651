@@ -115,22 +115,41 @@ const DivorceForms = () => {
               {category.forms.length > 0 ? (
                 <div className="space-y-2">
                   {category.forms.map((form) => (
-                    <Button
-                      key={form.id}
-                      variant="outline"
-                      size="sm"
-                      className="w-full justify-start text-left h-auto py-3"
-                      onClick={() => handleFormClick(form.id)}
-                    >
-                      <div>
-                        <div className="font-medium">{t(form.nameKey)}</div>
-                        {form.description && (
-                          <div className="text-xs text-muted-foreground mt-1">
-                            {form.description}
-                          </div>
-                        )}
-                      </div>
-                    </Button>
+                    form.id === "form-adultery" ? (
+                      <a
+                        key={form.id}
+                        href="/forms/form-adultery.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-start w-full text-left h-auto py-3 px-4 border border-input bg-background hover:bg-accent hover:text-accent-foreground rounded-md text-sm font-medium"
+                      >
+                        <div>
+                          <div className="font-medium">{t(form.nameKey)}</div>
+                          {form.description && (
+                            <div className="text-xs text-muted-foreground mt-1">
+                              {form.description}
+                            </div>
+                          )}
+                        </div>
+                      </a>
+                    ) : (
+                      <Button
+                        key={form.id}
+                        variant="outline"
+                        size="sm"
+                        className="w-full justify-start text-left h-auto py-3"
+                        onClick={() => handleFormClick(form.id)}
+                      >
+                        <div>
+                          <div className="font-medium">{t(form.nameKey)}</div>
+                          {form.description && (
+                            <div className="text-xs text-muted-foreground mt-1">
+                              {form.description}
+                            </div>
+                          )}
+                        </div>
+                      </Button>
+                    )
                   ))}
                 </div>
               ) : (
