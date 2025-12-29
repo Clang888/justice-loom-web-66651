@@ -60,7 +60,7 @@ const App = () => (
               <Route path="/assistant" element={<Assistant />} />
               <Route path="/egg-freezing-surrogacy" element={<EggFreezingSurrogacy />} />
               <Route path="/surrogacy-states" element={<SurrogacyStates />} />
-              <Route path="/surrogacy-faq" element={<SurrogacyFAQ />} />
+              <Route path="/faq" element={<SurrogacyFAQ />} />
               <Route path="/surrogacy-tracker" element={<SurrogacyTracker />} />
               <Route path="/egg-freezing-clinics-hk" element={<EggFreezingClinicsHK />} />
               <Route path="/form-e" element={<FormE />} />
