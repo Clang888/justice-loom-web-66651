@@ -68,8 +68,11 @@ const Services = () => {
   return (
     <section className="py-16 bg-secondary">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
+        <p className="text-sm text-muted-foreground max-w-2xl mx-auto mb-8">
+          The fillable forms editor only stores text only in the browser memory. Nothing is saved to a database or server. Once downloaded, the data exists only in the PNG files on the user's device.
+        </p>
 
-        <div className="mt-8 flex flex-col md:flex-row justify-center gap-6">
+        <div className="flex flex-col md:flex-row justify-center gap-6">
           {/* Divorce Card */}
           <div className="bg-card border border-border rounded-2xl p-6 shadow-sm w-full max-w-sm">
             <h3 className="font-semibold text-lg">{t('services.divorce')}</h3>
