@@ -127,7 +127,7 @@ const DivorceForms = () => {
                         className="inline-flex items-center justify-start w-full text-left h-auto py-3 px-4 border border-input bg-background hover:bg-accent hover:text-accent-foreground rounded-md"
                       >
                         <div>
-                          <div className="font-medium text-sm">{t(form.nameKey)}</div>
+                          <div className="text-sm">{t(form.nameKey)}</div>
                           {form.description && (
                             <div className="text-xs text-muted-foreground mt-1">
                               {form.description}
@@ -144,7 +144,7 @@ const DivorceForms = () => {
                         onClick={() => handleFormClick(form.id)}
                       >
                         <div>
-                          <div className="font-medium">{t(form.nameKey)}</div>
+                          <div className="text-sm">{t(form.nameKey)}</div>
                           {form.description && (
                             <div className="text-xs text-muted-foreground mt-1">
                               {form.description}
