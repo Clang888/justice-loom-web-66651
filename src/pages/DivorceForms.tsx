@@ -23,6 +23,16 @@ interface CategoryItem {
 
 const divorceCategories: CategoryItem[] = [
   {
+    id: "joint-applications",
+    titleKey: "divorceForms.jointApplications",
+    forms: [
+      {
+        id: "form-2c",
+        nameKey: "divorceForms.form2c",
+      },
+    ],
+  },
+  {
     id: "main-cause",
     titleKey: "divorceForms.mainCause",
     forms: [
@@ -37,16 +47,6 @@ const divorceCategories: CategoryItem[] = [
       {
         id: "form-adultery",
         nameKey: "divorceForms.formAdultery",
-      },
-    ],
-  },
-  {
-    id: "joint-applications",
-    titleKey: "divorceForms.jointApplications",
-    forms: [
-      {
-        id: "form-2c",
-        nameKey: "divorceForms.form2c",
       },
     ],
   },
